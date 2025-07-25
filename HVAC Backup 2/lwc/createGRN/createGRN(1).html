@@ -1,0 +1,207 @@
+<template > 
+    <div if:false={showImageUpload}>
+
+        <div  if:false={grnCreated}>
+            <div if:false={otherStatus}>
+                <div if:false={notApplicable}>
+                    <div if:false={noMR}>
+                       
+                    
+        <!--<lightning-button-icon class="slds-modal__close" variant="base" icon-name="utility:close" title="Close" icon-class="slds-button_icon-inverse" onclick={hideModalBox}  alternative-text="Close"></lightning-button-icon>-->
+        <lightning-card>
+             <div style="font-weight: bold; font-size:large; text-align:center" >
+                <h2>
+                    Part Transfer GRN
+                </h2>
+                
+
+             </div>
+            <div if:false={isMobileDevice}> 
+            <div class="slds-table--header-fixed_container" style="height:100%;">
+                <div class="slds-scrollable_y slds-scrollable_x" style="height:100%;">
+                    
+                    <table border="1" cellspacing="0" cellpadding="0" class=" slds-table slds-table_cell-buffer ">
+                        <thead>
+                        <tr class="slds-text-title_caps">
+                            <th scope="col" style="width:150px;text-align: center;">
+                                <div class="slds-truncate " title="Part Name">Part Name</div>
+                            </th>
+                            
+                            <th scope="col" style="width:150px;text-align: center;">
+                                <div class="slds-truncate " title="Product Description">Part Code</div>
+                            </th>
+                            <th scope="col" style="width:150px;text-align: center;">
+                                <div class="slds-truncate " title="Status">Qty Requested</div>
+                            </th>
+                           <!--
+                            <th  if:false={isMR} scope="col" style="width:100px;text-align: center;">
+                                <div class="slds-truncate " title="Quantity Sent">Qty Sent</div>
+                            </th>
+
+                           --> 
+                            <th scope="col" style="width:150px;text-align: center;">
+                                <div class="slds-truncate " title="Quantity Received (Good)">Qty Recieved</div>
+                            </th>
+                            <th scope="col" style="width:150px;text-align: center;">
+                                <div class="slds-truncate " title="Quantity Damaged">Qty Damaged</div>
+                            </th>
+                            <th scope="col" style="width:150px;text-align: center;">
+                                <div class="slds-truncate " title="Quantity Mismatched">Mismatched/Missing</div>
+                            </th>
+                            
+
+                            <!--
+                                <th scope="col" style="width:150px;text-align: center;">
+                                <div class="slds-truncate " title="Quantity Missing/Short">Qty Missing/Short</div>
+                            </th>
+                            -->
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <template for:each={data} for:item="item">
+                            <tr key={item.id}>
+                            
+                                <td class="slds-cell-wrap">
+                                    <!--<input type="text" value={item.status} disabled={disabledInput} data-id={item.id} />-->
+                                    <div data-id={item.id}> {item.name} </div>
+                                </td>
+                                <td class="slds-cell-wrap">
+                                    <!--<input type="text" value={item.status} disabled={disabledInput} data-id={item.id} />-->
+                                    <div data-id={item.id} style="white-space: pre-wrap;"> {item.code} </div>
+                                </td>
+                                <td class="slds-cell-wrap" style="text-align: center;">
+                                    <!--<input type="text" value={item.status} disabled={disabledInput} data-id={item.id} />-->
+                                    <input type="number" value={item.quantityRequested} disabled={disabledInput} data-id={item.id} style="text-align: center;"/>
+                                </td>
+                               <!--
+ <td if:false={isMR}>
+                                    <input type="number" value={item.quantitySent} disabled={disabledInput} data-id={item.id} style="text-align: center;"/>
+                                </td>
+                               -->
+                               
+                                <td>
+                                    <input type="number" value={item.quantityRecieved} oninput={handleQuantityRecievedChange} data-id={item.id} class="no-spinner"   style="text-align: center;"/>
+                                </td>
+                                <td>
+                                    <input type="number" value={item.quantityDamaged} oninput={handleQuantityDamagedChange} data-id={item.id} class="no-spinner"  style="text-align: center;"/>
+                                </td>
+                                <td>
+                                    <input type="number" value={item.quantityMismatched} oninput={handleQuantityMismatchedChange} data-id={item.id} class="no-spinner"  style="text-align: center;"/>
+                                </td>
+                                
+                          <!--
+                                <td>
+                                    <input type="number" value={item.quantityMissing} oninput={handleQuantityMissingChange} data-id={item.id} style="text-align: center;"/>
+                                </td>
+                          -->      
+                            </tr>
+                        </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+                        <!-- for mobile device----------------------------------------------------------------------------------- -->
+                        <template if:true={isMobileDevice}>
+                            <div style="width: 100%;">
+                                <template for:each={data} for:item="item">
+                                    <div key={item.id} class="card-container slds-m-around--xx-large" >
+                                        <div class="card-item">
+                                            <span class="bold-label"><b>Product Name:</b></span> {item.name}
+                                        </div>
+                                        <div class="card-item">
+                                            <span class="bold-label"><b>Status:</b></span> {item.status}
+                                        </div>
+                                        <div class="card-item">
+                                            <span class="bold-label"><b>Qty Sent:</b></span> {item.quantitySent}
+                                        </div>
+                                        <div class="card-item">
+                                            <span class="bold-label"><b>Qty Recieved:</b></span>
+                                            <input type="number" value={item.quantityRecieved} oninput={handleQuantityRecievedChange} data-id={item.id} />
+                                        </div>
+                                        <div class="card-item">
+                                            <span class="bold-label"><b>Qty Mismatched:</b></span>
+                                            <input type="number" value={item.quantityMismatched} oninput={handleQuantityMismatchedChange} data-id={item.id} />
+                                        </div>
+                                        <div class="card-item">
+                                            <span class="bold-label"><b>Qty Damaged:</b></span>
+                                            <input type="number" value={item.quantityDamaged} oninput={handleQuantityDamagedChange} data-id={item.id} />
+                                        </div>
+                                        <div class="card-item">
+                                            <span class="bold-label"><b>Qty Missing/Short:</b></span>
+                                            <input type="number" value={item.quantityMissing} oninput={handleQuantityMissingChange} data-id={item.id} />
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+        
+                        <!-- for mobile device----------------------------------------------------------------------------------- -->
+        
+            
+            <br/>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="brand" label="Submit" title="Primary action" onclick={handleSubmit} class="slds-m-left_x-small"></lightning-button>
+            
+            
+            </div>
+        </lightning-card>
+                </div>
+                </div>
+    
+    </div>
+</div>
+    </div>
+    
+    <div if:true={grnCreated}>
+        <lightning-layout multiple-rows class="header-row">
+            <lightning-layout-item size="7" padding="around-small" >
+                <div style="font-weight: bold; font-size:large; text-align:center">GRN Already Created</div>
+            </lightning-layout-item>
+            
+        </lightning-layout>
+       
+           
+    </div>
+    <div if:true={otherStatus}>
+        <lightning-layout multiple-rows class="header-row">
+            <lightning-layout-item size="10" padding="around-small" >
+                <div style="font-weight: bold; font-size:medium; text-align:center">
+                    GRN cannot be created at this status of Part Request </div>
+            </lightning-layout-item>
+            
+        </lightning-layout>
+       
+           
+    </div>
+    <div if:true={notApplicable}>
+        <lightning-layout multiple-rows class="header-row">
+            <lightning-layout-item size="10" padding="around-small" >
+                <div style="font-weight: bold; font-size:medium; text-align:center">
+                    GRN can only be created when destination location is Channel Partner </div>
+            </lightning-layout-item>
+            
+        </lightning-layout>
+       
+           
+    </div>
+    <div if:true={noMR}>
+        <lightning-layout multiple-rows class="header-row">
+            <lightning-layout-item size="10" padding="around-small" >
+                <div style="font-weight: bold; font-size:medium; text-align:center">
+                    GRN is not applicable as SAP MR number is blank </div>
+            </lightning-layout-item>
+            
+        </lightning-layout>
+       
+           
+    </div>
+    
+    <div>
+         <template if:true={showImageUpload}>
+            <lightning-flow flow-api-name={flowApiName} flow-input-variables={flowInputVariable} onstatuschange={handleFlowStatusChange} ></lightning-flow>
+        </template>
+    </div>
+ </template>

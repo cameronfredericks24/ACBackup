@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Parent Of CSV Mapping Uploader</description>
+    <fields>
+        <fullName>Apex_Class_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Apex Class Name</label>
+        <length>250</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Apex_Method_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Apex Method Name</label>
+        <length>200</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Process_Name__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Process Name</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Product Registration</fullName>
+                    <default>true</default>
+                    <label>Product Registration</label>
+                </value>
+                <value>
+                    <fullName>Ticket Creation</fullName>
+                    <default>false</default>
+                    <label>Ticket Creation</label>
+                </value>
+                <value>
+                    <fullName>Work Order Creation</fullName>
+                    <default>false</default>
+                    <label>Work Order Creation</label>
+                </value>
+                <value>
+                    <fullName>Product Transfer Creation</fullName>
+                    <default>false</default>
+                    <label>Product Transfer Creation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Size__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Size</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Parent CSV Mapping</label>
+    <pluralLabel>Parent CSV Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

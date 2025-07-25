@@ -1,0 +1,4 @@
+<aura:component implements="lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader">
+    <aura:attribute name="recordId" type="String" />
+    <c:sendContactSAP aura:id="sendContactSAP" recordId="{!v.recordId}"></c:sendContactSAP>
+</aura:component>

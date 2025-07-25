@@ -1,0 +1,39 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "22a4bb38-f456-43ef-a9cc-3710da2cb944",
+  "label" : "Service Ticket Line Item Related List",
+  "regions" : [ {
+    "id" : "d4da8f05-1b38-4e79-841f-5c481d82cf7e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "f680860d-efcc-4e1e-b4a5-303b10a75b57",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "23f03187-16d3-4f0b-b196-43ff08fb006c",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "774079b4-7439-4d14-b499-a7ecec5b62f0",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-1WL"
+}

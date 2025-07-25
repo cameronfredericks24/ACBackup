@@ -1,0 +1,10 @@
+{
+  "activeViewId" : "5bd7fff3-c5d6-4df5-99ea-1cc0cb0a328c",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "593a29b0-8296-4d08-a788-3e43d4f62c9c",
+  "label" : "Service Contract List",
+  "routeType" : "list-810",
+  "type" : "route",
+  "urlPrefix" : "servicecontract"
+}

@@ -1,0 +1,228 @@
+<template>
+    <template if:true={loading}>
+        <div class="exampleHolder">
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </div>
+    </template>
+    <!-- File Input Section -->
+    <template if:false={loading}>
+        <lightning-layout multiple-rows="true" class="slds-m-left_xx-large slds-m-right_xx-large slds-m-top_large">
+
+
+            <lightning-layout-item size="12">
+
+                <div class="slds-col slds-m-top_large disclaimer">
+                    <div class="slds-col slds-align_absolute-center section">
+                        <p class="date-format">Installation Date format - 'YYYY-MM-DD', example - '2024-07-26'</p>
+                    </div>
+                    <div class="slds-col slds-align_absolute-center section" if:false={requiredFieldticket}>
+                        <p class="info">Please fill all the fields to register the Asset</p>
+                    </div>
+                    <div class="slds-col slds-align_absolute-center section" if:true={requiredFieldticket}>
+                        <p class="info">Required Columns - Customer Name, Customer Phone, Customer Email, Customer Type,
+                            Pincode, Product Subfamily Code, Service Department, Subject, Type </p>
+                    </div>
+                </div>
+
+
+                <div class="">
+                    <div class="template-container file-input">
+
+                        <lightning-input type="file" label="Upload File" accept={acceptedFormats}
+                            onchange={handleFileUpload}></lightning-input>
+
+                        <template if:true={showBtn}>
+                            <div class="btn" style="padding: 20px;">
+                                <lightning-button class="upload-button" label="Create Records" variant="brand"
+                                    onclick={handleCreateRecords}></lightning-button>
+                            </div>
+                        </template>
+
+                    </div>
+
+                    <template if:true={fieldMissingBoolean}>
+                        <template for:each={fieldMissing} for:item="fs" for:index="index">
+                            <div class="error-container" key={fs.index}>
+                                <p class="error-message">{fs} is a required field for uploading data</p>
+                            </div>
+                        </template>
+
+                    </template>
+                    <template if:true={sizeLimitPage}>
+
+                        <div class="error-container">
+                            <p class="error-message">File Rows is {fileRows} and we have limit of {sizeLimit} rows </p>
+                        </div>
+
+
+                    </template>
+                    <template if:true={noRecordPage}>
+
+                        <div class="error-container">
+                            <p class="error-message">No Records Found In The Sheet </p>
+                        </div>
+
+                    </template>
+
+                    <!-- File Upload Section -->
+
+                    <template if:false={showBtn}>
+                        <template if:false={uploadingMessage}>
+                            <div class="download-link-container">
+                                <p class="download-link">
+                                    Please Download Sample File before uploading <lightning-icon
+                                        icon-name="action:download" alternative-text="download" title="Download Sample"
+                                        onclick={generateCSV}>
+
+                                    </lightning-icon>
+                                </p>
+
+                                <!-- <a class="download-link">
+                 Please  Download Sample File before uploading
+                </a> -->
+
+                            </div>
+
+                        </template>
+                    </template>
+                    <template if:true={uploadingMessage}>
+                        <div class="download-link-container" if:true={showSuccMsg}>
+                            <p class="download-link">
+                                Your File is uploaded Succesfully and it will be download automatically on click of
+                                Download Icon to see success and failure Records <lightning-icon
+                                    icon-name="action:download" alternative-text="download" title="Download Sample"
+                                    onclick={getUploadData}>
+
+                                </lightning-icon>
+                            </p>
+                            <!-- <a class="download-link">
+                     Please  Download Sample File before uploading
+                    </a> -->
+
+                        </div>
+                        <div class="download-link-container" if:true={ticketCreation}>
+                            <p class="downloadUI-link">
+                                File has some data missing. Please check the file and reupload. File will be downloaded
+                                automatically on click of
+                                Download Icon to see success and failure Records <lightning-icon
+                                    icon-name="action:download" alternative-text="download" title="Download Sample"
+                                    onclick={getUploadData}>
+
+                                </lightning-icon>
+                            </p>
+                            <!-- <a class="download-link">
+                     Please  Download Sample File before uploading
+                    </a> -->
+
+                        </div>
+                        <div class="download-link-container" if:true={jobQueued}>
+                            <p class="download-link">
+                                Your File is uploaded Succesfully and it will be download automatically on click of
+                                Download Icon to see success and failure Records. Please refresh the page after some
+                                time to see uploaded results.
+                            </p>
+
+                        </div>
+                    </template>
+                </div>
+            </lightning-layout-item>
+
+
+            <!-- <lightning-datatable
+                key-field="id"
+                columns={columns}
+                data={bulkUploadJobList}
+                show-row-number-column
+                row-number-offset={rowOffset}
+                hide-checkbox-column
+               
+                >
+        </lightning-datatable> -->
+
+            <lightning-layout-item size="12">
+                <div class="slds-text-heading_small slds-m-bottom_small slds-m-top_small">Bulk Uploading Result:</div>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12">
+
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout"
+                    style="background: snow;">
+                    <thead>
+                        <tr>
+                            <th class="slds-size_4-of-12" scope="col">
+                                <div class="slds-line-clamp">Name</div>
+                            </th>
+
+                            <th class="slds-size_4-of-12" scope="col">
+                                <div class="slds-line-clamp">Total Record Count</div>
+                            </th>
+                            <th style="padding: 2px;" class="text-center slds-size_4-of-12" scope="col">
+                                <div class="slds-truncate">Success Record Count</div>
+                            </th>
+                            <th style="padding: 2px;" class="text-center slds-size_4-of-12" scope="col">
+                                <div class="slds-truncate">Failed Record Count</div>
+                            </th>
+                            <th style="padding: 2px;" class="text-center slds-size_4-of-12" scope="col">
+                                <div class="slds-truncate">Uploaded By</div>
+                            </th>
+                            <th style="padding: 2px;" class="text-center slds-size_4-of-12" scope="col">
+                                <div class="slds-truncate">Uploaded On</div>
+                            </th>
+
+                            <th class="text-center slds-size_4-of-12" scope="col">
+                                <div class="slds-truncate">File</div>
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={bulkUploadJobList} for:item="bu" for:index="key">
+                            <tr class="slds-hint-parent" key={bu.Name}>
+                                <td data-label="Name">
+                                    <div class="slds-line-clamp" title={bu.Name}>{bu.Name}</div>
+                                </td>
+
+                                <td data-label="Total Record Count">
+                                    <div class="slds-line-clamp" title={bu.totalRecordCount}>{bu.totalRecordCount}</div>
+                                </td>
+                                <td data-label="Success Record Count">
+                                    <div class="text-center slds-truncate" title={bu.successRecordCount}>
+                                        {bu.successRecordCount}</div>
+                                </td>
+                                <td data-label="Failed Record Count">
+                                    <div class="text-center slds-truncate" title={bu.failedRecordCount}>
+                                        {bu.failedRecordCount}</div>
+                                </td>
+                                <td data-label="Uploaded By">
+                                    <div class="text-center slds-truncate" title={bu.successRecordCount}>{bu.uploadedBy}
+                                    </div>
+                                </td>
+                                <td data-label="Uploaded On">
+                                    <div class="text-center slds-truncate" title={bu.failedRecordCount}>{bu.uploadedOn}
+                                    </div>
+                                </td>
+
+                                <td data-label="file">
+                                    <div data-title={bu.file} data-name={bu.Name} class="" style="cursor: pointer;"
+                                        onclick={getUploadData2}>
+                                        <lightning-icon data-title={bu.file} data-name={bu.Name}
+                                            icon-name="action:download" alternative-text="download"
+                                            title="Download Sample"> </lightning-icon>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+
+                    </tbody>
+                </table>
+                <lightning-button variant="base" icon-name="utility:chevronleft" onclick={previousHandler}
+                    disabled={disablePrevious}></lightning-button>
+                <lightning-button variant="base" icon-name="utility:chevronright" icon-position="right"
+                    onclick={nextHandler} disabled={disableNext}></lightning-button>
+            </lightning-layout-item>
+
+        </lightning-layout>
+    </template>
+</template>

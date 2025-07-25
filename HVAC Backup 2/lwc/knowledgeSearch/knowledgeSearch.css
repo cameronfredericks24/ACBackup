@@ -1,0 +1,57 @@
+.knowledge-search {
+    margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        //height: 1vh;
+        flex-direction: column;
+    }
+        .search-container {
+        text-align: center;
+    }
+
+.search-input {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+.search-image img {
+        max-width: 200px;
+        margin-bottom: 18px;
+    }
+
+.error {
+    color: red;
+ }
+
+.article-card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #f7f7f7;
+    width:100% ;
+    word-wrap: break-word;
+  }
+
+  .question-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+  }
+
+.question {
+    font-weight: 700;
+}
+
+.answer-container {
+    margin-top: 1rem;
+}
+
+.view-article a {
+    color: blue;
+}
+
+.no-articles {
+    font-style: italic;
+}

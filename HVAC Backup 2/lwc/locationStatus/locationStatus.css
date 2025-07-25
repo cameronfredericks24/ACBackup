@@ -1,0 +1,7 @@
+.dummy{
+	color : black;
+}
+.form-container {
+    display: flex;
+    justify-content: center; 
+}

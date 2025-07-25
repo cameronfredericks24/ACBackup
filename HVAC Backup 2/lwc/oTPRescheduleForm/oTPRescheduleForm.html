@@ -1,0 +1,66 @@
+<template>
+    <lightning-card>
+        <div class="logo-container">
+            <img src={logoUrl} alt="Logo" class="logo" />
+        </div>
+
+        <div if:true={showErrorMsg} class="slds-align_absolute-center slds-m-top_medium" style="color :red;">
+            Appointment can not be rescheduled at this status.
+        </div>
+        <!-- Reschedule Date Field -->
+         <div if:false={showErrorMsg}>
+        <div class="reschedule-container">
+            <lightning-input type="datetime" label="Reschedule Date" value={RescheduleDateTime} onchange={handleRescheduleDateChange} min={CurrentDateTime}></lightning-input>
+
+        </div>
+
+        <div class="otp-title slds-align_absolute-center">Enter OTP Code</div>
+        <br/>
+
+        <!-- OTP Input Fields -->
+        <div id="inputs" class="otp-container slds-align_absolute-center">
+            <input class="input" type="text" inputmode="numeric" maxlength="1" value={otpValue1} oninput={handleInput} onkeyup={handleKeyUp} data-index="0" />
+            <input class="input" type="text" inputmode="numeric" maxlength="1" value={otpValue2} oninput={handleInput} onkeyup={handleKeyUp} data-index="1" />
+            <input class="input" type="text" inputmode="numeric" maxlength="1" value={otpValue3} oninput={handleInput} onkeyup={handleKeyUp} data-index="2" />
+            <input class="input" type="text" inputmode="numeric" maxlength="1" value={otpValue4} oninput={handleInput} onkeyup={handleKeyUp} data-index="3" />
+        </div>
+
+        <div class="myPicklistPadding">
+                <c-bsl-resuseablemultiselect-combo-box label="Contact Emails" options={contactOptions}
+                    onitemselected={handleEmailNameChange} showfilterinput="true" showrefreshbutton="true"
+                    showclearbutton="true" showselectall="true" class="statusclass" disableonmousehover={disable}>
+                </c-bsl-resuseablemultiselect-combo-box>
+                 <span class="slds-m-top_large">
+                <c-bsl-resuseablemultiselect-combo-box label="Contact Number" options={contactNumberOptions}
+                onitemselected={handleContactNumberChange}  class="statusNumberclass" disableonmousehover={disable}>
+            </c-bsl-resuseablemultiselect-combo-box></span>
+        </div>
+
+        <br/><br/>
+        <div class="myButtonClass">
+            <div if:false={showExpired}>
+
+                <lightning-button if:false = {otpSent} variant="brand" label="Send OTP" onclick={sendOTP}></lightning-button>
+                <lightning-button if:true = {otpSent} variant="brand" label="Validate OTP" disabled={disabledVerify} onclick={validateOTP}></lightning-button>
+                <lightning-button if:true = {otpSent} variant="brand" label="Resend OTP" onclick={sendOTP}></lightning-button>
+            </div>
+            <div if:true={showExpired}>
+                <lightning-button variant="brand" label="Reset OTP" onclick={sendOTP}></lightning-button>
+            </div>
+        </div>
+
+        <div style="text-align : center; color :green; font : Verdana " if:true = {otpSent}>
+            <br />
+            OTP sent to: {email}
+            <br />
+            OTP sent to: {phone}
+        </div>
+        <!-- Spinner -->
+        <template if:true={showSpinner}>
+            <div class="spinner-container">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+    </div>
+    </lightning-card>
+</template>

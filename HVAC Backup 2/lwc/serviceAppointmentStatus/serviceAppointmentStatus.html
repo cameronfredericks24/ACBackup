@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Service Appointment Status">
+        <div class="slds-p-around_medium">
+            <lightning-combobox
+                label="Status"
+                value={status}
+                options={statusOptions}
+                onchange={handleChangeStatus}
+            ></lightning-combobox>
+        </div>
+
+        <div if:true={showfaultAction}>
+            <lightning-record-edit-form object-api-name={WorkOrder} record-id={recordId}>
+                <lightning-input-field field-name="Symptom__c"> </lightning-input-field>
+                <lightning-input-field field-name="Symptom_Comment__c"> </lightning-input-field>
+                <lightning-input-field field-name="Defect__c"> </lightning-input-field>
+                <lightning-input-field field-name="Defect_Comment__c"> </lightning-input-field>
+                <lightning-input-field field-name="Action__c"> </lightning-input-field>
+                <lightning-input-field field-name="Action_Comment__c"> </lightning-input-field>
+            </lightning-record-edit-form>
+        </div>
+
+        <lightning-button class="slds-m-left_small slds-m-top_small" label="Save" onclick={save}></lightning-button>
+    </lightning-card>
+</template>

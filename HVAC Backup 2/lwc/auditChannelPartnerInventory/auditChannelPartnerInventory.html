@@ -1,0 +1,91 @@
+<template>
+    <template if:true={showSpinner}>
+        <div class="exampleHolder">
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </div>
+    </template>
+    
+    <template if:true={showForm} >
+        <lightning-card >
+            <div class="slds-p-around_small">
+            <div class="" style="display: flex;">
+                <div class="" style="width:30%;">
+                    <lightning-input
+                        label="Search Product Name"
+                        type="search"
+                        onchange={handleSearch}
+                        placeholder="Enter a product name">
+                    </lightning-input>                
+                </div>
+                <div class="slds-m-left_small" style="width:20%;">
+                    <lightning-combobox
+                    name="SelectLocation"
+                    label="Select Location"
+                    placeholder="Select Location"
+                    options={locationOptions}
+                    onchange={handleChange} ></lightning-combobox>
+                </div>
+                <div class="" style="margin-top:auto;margin-left:45%;">
+                    <lightning-button variant="Brand" label="Submit" onclick={submitforApprovalMethod} class="slds-p-horizontal_x-small" ></lightning-button>
+                </div>
+            </div>
+            <br/>
+            <template if:true={records}>
+            <!--LIGHTNING DATATABLE-->
+                <div>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={recordsToDisplay}
+                        columns={columns}
+                        hide-checkbox-column="true"
+                        onsave={handleSave}
+                        draft-values={draftValues}
+                        >
+                    </lightning-datatable>
+                </div>
+                <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread" style="padding-top: 0.5em;">
+                    <!--RECORDS PER PAGE-->
+                    <div class="slds-col">
+                        <div class="slds-list_inline slds-p-bottom_xx-small">
+                            <label class="slds-text-color_weak slds-p-horizontal_x-small" for="recordsPerPage">Page Size:</label>
+                            <div class="slds-select_container">
+                                <select class="slds-select" name="defaultPageSize" id="recordsPerPage" onchange={handleRecordsPerPage}>
+                                    <template for:each={pageSizeOptions} for:item="option">
+                                        <option key={option} value={option}>{option}</option>
+                                    </template>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!--PAGE NAVIGATION-->
+                    <div class="slds-align_absolute-center" style="height:5rem">
+                        <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left"  class="slds-p-horizontal_x-small" alternative-text="first page" onclick={firstPage}></lightning-button>
+                        <lightning-button disabled={bDisableFirst} icon-name="utility:back"  alternative-text="Previous" onclick={previousPage}></lightning-button>
+                        &nbsp;
+                        <span class="slds-badge">{pageNumber} &nbsp;of&nbsp; {totalPages} &nbsp;&nbsp;Page(s)</span>
+                        &nbsp;
+                        <lightning-button disabled={bDisableLast} icon-name="utility:forward"  alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right"></lightning-button>
+                        <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right"  alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button>
+                    </div>
+                    <!--TOTAL RECORDS-->
+                    <div class="slds-clearfix">
+                        <div class="slds-float_right">
+                            <span class="slds-badge"> Total Records: {totalRecords}</span>
+                        </div>
+                    </div>
+                </div>                    
+            </template>
+            </div>
+        </lightning-card>
+    </template>
+    <template if:true={showError}>
+        <div class="slds-p-around_medium slds-text-color_error slds-align_absolute-center">
+            {error}
+        </div>
+    </template>
+    <template if:true={showSuccess}>
+        <div class="slds-p-around_medium slds-text-color_success slds-align_absolute-center">
+            {successMsg}
+        </div>
+    </template>
+</template>

@@ -1,0 +1,48 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "1070e43d-f221-476f-9905-de477918f86c",
+  "label" : "Bulk Ticket Creation",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "processName" : "Ticket Creation"
+      },
+      "componentName" : "c:genericFileUploader",
+      "id" : "323e0abb-b3af-498c-8cb2-c9b19dffbcdb",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d553abf1-e3d8-4e4d-a695-46fcf17971f9",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "d8d07154-132e-4678-b70c-49b9b6cf7fea",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "a62c77c3-9b5d-4d5b-b5ad-0f43e36dc37c",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Bulk Ticket Creation"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ce907f9a-88e2-490c-940a-53e8d912733c",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a2b92e4f-d9ba-4a7c-80e4-d8bfb3193e3b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-bulk-ticket-creation"
+}

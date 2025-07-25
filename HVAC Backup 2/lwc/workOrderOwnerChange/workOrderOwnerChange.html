@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Transfer Work Order">
+        <div class="slds-p-around_medium">
+            <lightning-input type="text" label="Work Order Id" value={workOrderId} onchange={handleWorkOrderIdChange}></lightning-input>
+            <lightning-input type="text" label="New Owner Id" value={newOwnerId} onchange={handleNewOwnerIdChange}></lightning-input>
+            <lightning-button variant="brand" label="Change Owner" onclick={changeOwner}></lightning-button>
+            <div if:true={error} class="slds-text-color_error">{error}</div>
+        </div>
+    </lightning-card>
+</template>

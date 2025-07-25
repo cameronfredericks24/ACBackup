@@ -1,0 +1,3341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Opportunity</baseObject>
+    <category>opportunities</category>
+    <deployed>true</deployed>
+    <description>Opportunity</description>
+    <join>
+        <join>
+            <join>
+                <outerJoin>true</outerJoin>
+                <relationship>SBQQ__Assets__r</relationship>
+            </join>
+            <outerJoin>true</outerJoin>
+            <relationship>SBQQ__LineItems__r</relationship>
+        </join>
+        <outerJoin>false</outerJoin>
+        <relationship>SBQQ__Quotes2__r</relationship>
+    </join>
+    <label>Opportunity</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity ID</displayNameOverride>
+            <field>Id</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
+            <field>Account</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Record Type</displayNameOverride>
+            <field>RecordType</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Private</displayNameOverride>
+            <field>IsPrivate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Opportunity Name</displayNameOverride>
+            <field>Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stage</displayNameOverride>
+            <field>StageName</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stage Sort Order</displayNameOverride>
+            <field>StageSortOrder</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Amount</displayNameOverride>
+            <field>Amount</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Probability (%)</displayNameOverride>
+            <field>Probability</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AICH_Comment__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Expected Revenue</displayNameOverride>
+            <field>ExpectedRevenue</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quantity</displayNameOverride>
+            <field>TotalOpportunityQuantity</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Expected Close Date</displayNameOverride>
+            <field>CloseDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Type</displayNameOverride>
+            <field>Type</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Next Step</displayNameOverride>
+            <field>NextStep</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source</displayNameOverride>
+            <field>LeadSource</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed</displayNameOverride>
+            <field>IsClosed</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Won</displayNameOverride>
+            <field>IsWon</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Forecast Category</displayNameOverride>
+            <field>ForecastCategoryName</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Campaign Source</displayNameOverride>
+            <field>Campaign</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Has Line Item</displayNameOverride>
+            <field>HasOpportunityLineItem</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Price Book</displayNameOverride>
+            <field>Pricebook2</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Activity</displayNameOverride>
+            <field>LastActivityDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Push Count</displayNameOverride>
+            <field>PushCount</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Stage Change Date</displayNameOverride>
+            <field>LastStageChangeDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact</displayNameOverride>
+            <field>Contact</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Partner Account</displayNameOverride>
+            <field>PrimaryPartnerAccount</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Partner Account</displayNameOverride>
+            <field>PartnerAccount</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Synced Quote</displayNameOverride>
+            <field>SyncedQuote</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract</displayNameOverride>
+            <field>Contract</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Budget Confirmed</displayNameOverride>
+            <field>Budget_Confirmed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discovery Completed</displayNameOverride>
+            <field>Discovery_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ROI Analysis Completed</displayNameOverride>
+            <field>ROI_Analysis_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Amended Contract</displayNameOverride>
+            <field>SBQQ__AmendedContract__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Loss Reason</displayNameOverride>
+            <field>Loss_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contracted</displayNameOverride>
+            <field>SBQQ__Contracted__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Create Contracted Prices</displayNameOverride>
+            <field>SBQQ__CreateContractedPrices__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Order Group ID</displayNameOverride>
+            <field>SBQQ__OrderGroupID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ordered</displayNameOverride>
+            <field>SBQQ__Ordered__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Quote</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Pricebook Id</displayNameOverride>
+            <field>SBQQ__QuotePricebookId__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Renewal</displayNameOverride>
+            <field>SBQQ__Renewal__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Renewed Contract</displayNameOverride>
+            <field>SBQQ__RenewedContract__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Status</displayNameOverride>
+            <field>sbaa__ApprovalStatus__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Step</displayNameOverride>
+            <field>sbaa__ApprovalStep__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approver</displayNameOverride>
+            <field>sbaa__Approver__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Step Approved</displayNameOverride>
+            <field>sbaa__StepApproved__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitted Date</displayNameOverride>
+            <field>sbaa__SubmittedDate__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Submitted User</displayNameOverride>
+            <field>sbaa__SubmittedUser__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC &amp; Component level customer name</displayNameOverride>
+            <field>AMC_Component_level_customer_name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC Downloading Value verification</displayNameOverride>
+            <field>AMC_Downloading_Value_verification__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC Head</displayNameOverride>
+            <field>AMC_Head__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC Mediator</displayNameOverride>
+            <field>AMC_Mediator__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC Terms of Payment with TOP guidelines</displayNameOverride>
+            <field>AMC_Terms_of_Payment_with_TOP_guidelines__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC need to be approve by the resp CFS</displayNameOverride>
+            <field>AMC_need_to_be_approve_by_the_resp_CFS__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC period</displayNameOverride>
+            <field>AMC_period__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC status</displayNameOverride>
+            <field>AMC_status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC value</displayNameOverride>
+            <field>AMC_value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Discount</displayNameOverride>
+            <field>Additional_Discount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address (Street)</displayNameOverride>
+            <field>Address__Street__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address (City)</displayNameOverride>
+            <field>Address__City__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address (ZIP/Postal Code)</displayNameOverride>
+            <field>Address__PostalCode__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address (State/Province)</displayNameOverride>
+            <field>Address__StateCode__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address (Country/Territory)</displayNameOverride>
+            <field>Address__CountryCode__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address (Latitude)</displayNameOverride>
+            <field>Address__Latitude__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address (Longitude)</displayNameOverride>
+            <field>Address__Longitude__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address (Geocode Accuracy)</displayNameOverride>
+            <field>Address__GeocodeAccuracy__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>All India Commericial Head</displayNameOverride>
+            <field>All_India_Commericial_Head__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>All India Head</displayNameOverride>
+            <field>All_India_Head__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Approval Status</displayNameOverride>
+            <field>Approval_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Architect/Consultant Name</displayNameOverride>
+            <field>Architect_Consultant_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Architect/Consultant Type</displayNameOverride>
+            <field>Architect_Consultant_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Area Manager</displayNameOverride>
+            <field>Area_Manager__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset</displayNameOverride>
+            <field>Asset__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bill &amp; Ship to Party Name and address</displayNameOverride>
+            <field>Bill_Ship_to_Party_Name_and_address__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Branch Commericial</displayNameOverride>
+            <field>Branch_Commericial__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Branch</displayNameOverride>
+            <field>Branch__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CBO Sent back</displayNameOverride>
+            <field>CBO_Sent_back__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CBO Validation</displayNameOverride>
+            <field>CBO_Validation__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CBO</displayNameOverride>
+            <field>CBO__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CFS Sent back</displayNameOverride>
+            <field>CFS_Sent_back__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CFS Validation</displayNameOverride>
+            <field>CFS_Validation__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CP</displayNameOverride>
+            <field>CP__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CP ctg &amp; sub ctg match lastyear contract</displayNameOverride>
+            <field>CP_ctg_sub_ctg_match_lastyear_contract__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Capacity UoM</displayNameOverride>
+            <field>Capacity_UoM__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Capacity</displayNameOverride>
+            <field>Capacity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Category</displayNameOverride>
+            <field>Category__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Central Commercial Manager</displayNameOverride>
+            <field>Central_Commercial_Manager__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Partner Account</displayNameOverride>
+            <field>Channel_Partner_Account__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Partner Code</displayNameOverride>
+            <field>Channel_Partner_Code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Partner No.</displayNameOverride>
+            <field>Channel_Partner_No__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Partner Type</displayNameOverride>
+            <field>Channel_Partner_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed Lost Reason</displayNameOverride>
+            <field>Closed_Lost_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comment(SME)</displayNameOverride>
+            <field>Comment_SME__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comment(CP)</displayNameOverride>
+            <field>Comment__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Compare Last &amp; This year downloading %</displayNameOverride>
+            <field>Compare_Last_This_year_downloading__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact</displayNameOverride>
+            <field>Contact__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Category</displayNameOverride>
+            <field>Contract_Category__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Type (Scope)</displayNameOverride>
+            <field>Contract_Type_Scope__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Type</displayNameOverride>
+            <field>Contract_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Value</displayNameOverride>
+            <field>Contract_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>Created_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Invoice Text</displayNameOverride>
+            <field>Customer_Invoice_Text__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer PO number and PO date</displayNameOverride>
+            <field>Customer_PO_number_and_PO_date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Type</displayNameOverride>
+            <field>Customer_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dealer</displayNameOverride>
+            <field>Dealer__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Department</displayNameOverride>
+            <field>Department__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discount</displayNameOverride>
+            <field>Discount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Division</displayNameOverride>
+            <field>Division__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DB Competitor</displayNameOverride>
+            <field>DB_Competitor__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>NAMO Head</displayNameOverride>
+            <field>NAMO_Head__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Downloading Value</displayNameOverride>
+            <field>Downloading_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EGM (Estimated Gross Margin)</displayNameOverride>
+            <field>EGM_Estimated_Gross_Margin__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EGM%</displayNameOverride>
+            <field>EGM__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ease AMC</displayNameOverride>
+            <field>Ease_AMC__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Date</displayNameOverride>
+            <field>End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Events Created</displayNameOverride>
+            <field>Events_Created__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Existing contract OS checking</displayNameOverride>
+            <field>Existing_contract_OS_checking__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Expected Amount</displayNameOverride>
+            <field>Expected_Amount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Expected Month</displayNameOverride>
+            <field>Expected_Month__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fiscal Period</displayNameOverride>
+            <field>Fiscal_Period__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fiscal Quarter</displayNameOverride>
+            <field>Fiscal_Quarter__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fiscal Year</displayNameOverride>
+            <field>Fiscal_Year__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Future Potential</displayNameOverride>
+            <field>Future_Potential__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>GST No. ,HSN/SAC code</displayNameOverride>
+            <field>GST_No_HSN_SAC_code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>GST Verify based on Bill Party Vs PO</displayNameOverride>
+            <field>GST_Verify_based_on_Bill_Party_Vs_PO__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Grand Total</displayNameOverride>
+            <field>Grand_Total__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Group</displayNameOverride>
+            <field>Group__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HR Manager</displayNameOverride>
+            <field>HR_Manager__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>% Hike compared to last year</displayNameOverride>
+            <field>Hike_compared_to_last_year__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Industry</displayNameOverride>
+            <field>Industry_New__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Segment</displayNameOverride>
+            <field>Industry__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Invoice Number</displayNameOverride>
+            <field>Invoice_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is CP Verified?</displayNameOverride>
+            <field>Is_CP_Verified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Draft Contract Created</displayNameOverride>
+            <field>Is_Draft_Contract_Created__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is NAMO</displayNameOverride>
+            <field>Is_NAMO__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Opportunity has Service contract&gt;</displayNameOverride>
+            <field>Is_Opportunity_has_Service_contract__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is PO/Signed Copy Uploaded?</displayNameOverride>
+            <field>Is_PO_Signed_Copy_Uploaded__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>KAM</displayNameOverride>
+            <field>KAM__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Year Price</displayNameOverride>
+            <field>Last_Year_Price__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Id</displayNameOverride>
+            <field>Lead_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Prioritization</displayNameOverride>
+            <field>Lead_Prioritization__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source Details</displayNameOverride>
+            <field>Lead_Source_Details__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead</displayNameOverride>
+            <field>Lead__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lost To</displayNameOverride>
+            <field>Lost_To__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MatCon Cost</displayNameOverride>
+            <field>MatCon_Cost__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Name</displayNameOverride>
+            <field>Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Events</displayNameOverride>
+            <field>No_of_Events__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Old Component Details</displayNameOverride>
+            <field>Old_Component_Details__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract End Date</displayNameOverride>
+            <field>Opportunity_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Name Auto Number</displayNameOverride>
+            <field>Opportunity_Name_Auto_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Start Date</displayNameOverride>
+            <field>Opportunity_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Order Lost To</displayNameOverride>
+            <field>Order_Lost_To__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Orders received on Dealer name</displayNameOverride>
+            <field>Orders_received_on_Dealer_name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outstanding Amount</displayNameOverride>
+            <field>Outstanding__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PMC</displayNameOverride>
+            <field>PMC__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PO Date</displayNameOverride>
+            <field>PO_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PO Duration - End</displayNameOverride>
+            <field>PO_Duration_End__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PO Duration - Start</displayNameOverride>
+            <field>PO_Duration_Start__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PO Number</displayNameOverride>
+            <field>PO_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PO Receipt Date</displayNameOverride>
+            <field>PO_Receipt_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PO Total Value (Basic)</displayNameOverride>
+            <field>PO_Total_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PO Uploaded?</displayNameOverride>
+            <field>PO_Uploaded__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment CR days with division Guidelines</displayNameOverride>
+            <field>Payment_CR_days_with_division_Guidelines__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Plant</displayNameOverride>
+            <field>Plant__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Price</displayNameOverride>
+            <field>Previous_Price__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC Profitability</displayNameOverride>
+            <field>Profitability__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Project ID</displayNameOverride>
+            <field>Project_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposed Value</displayNameOverride>
+            <field>Proposed_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Purchase orders Sign/Stamp verification</displayNameOverride>
+            <field>Purchase_orders_Sign_Stamp_verification__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Finalized</displayNameOverride>
+            <field>Quote_Finalized__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Regional Commercial Head</displayNameOverride>
+            <field>Regional_Commercial_Head__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Regional EFM Operation Manager</displayNameOverride>
+            <field>Regional_EFM_Operation_Manager__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Regional Manager</displayNameOverride>
+            <field>Regional_Manager__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Remarks</displayNameOverride>
+            <field>Remarks__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Resolve the system error master mismatch</displayNameOverride>
+            <field>Resolve_the_system_error_master_mismatch__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Revamp Type</displayNameOverride>
+            <field>Revamp_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Revised Value</displayNameOverride>
+            <field>Revised_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SAC</displayNameOverride>
+            <field>SAC__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ISNew</displayNameOverride>
+            <field>ISNew__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SDE</displayNameOverride>
+            <field>SDE__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SME</displayNameOverride>
+            <field>SME__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comment By CFS</displayNameOverride>
+            <field>Comment_By_CFS__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SMH</displayNameOverride>
+            <field>SMH__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SOL ID</displayNameOverride>
+            <field>SOL_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Security Deposits/ LD penatly clause</displayNameOverride>
+            <field>Security_Deposits_LD_penatly_clause__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sent for Approval For Discount</displayNameOverride>
+            <field>Sent_for_Approval_For_Discount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sent for Approval For Downloading Value</displayNameOverride>
+            <field>Sent_for_Approval_For_Downloading_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Contract</displayNameOverride>
+            <field>Service_Contract__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Division</displayNameOverride>
+            <field>Service_Division__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shift owner from CP to SME</displayNameOverride>
+            <field>Shift_owner_from_CP_to_SME__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Start Date</displayNameOverride>
+            <field>Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sub Industry</displayNameOverride>
+            <field>Sub_Industry_New__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Sub Segment</displayNameOverride>
+            <field>Sub_Industry__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subtotal</displayNameOverride>
+            <field>Subtotal__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tax</displayNameOverride>
+            <field>Tax__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Terms of Payment - Customer</displayNameOverride>
+            <field>Terms_of_Payment_Customer__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Terms of Payment - Dealer</displayNameOverride>
+            <field>Terms_of_Payment_Dealer__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Terms of Pymt advance then advance pymt?</displayNameOverride>
+            <field>Terms_of_Pymt_advance_then_advance_pymt__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Adjusted Downloading Value</displayNameOverride>
+            <field>Total_Adjusted_Downloading_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Downloading Value</displayNameOverride>
+            <field>Total_Downloading_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Price</displayNameOverride>
+            <field>Total_Price__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is CBO/CFS Verified?</displayNameOverride>
+            <field>Is_CBO_CFS_Verified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is CBO Verified?</displayNameOverride>
+            <field>Is_CBO_Verified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is_CFS_Verified?</displayNameOverride>
+            <field>Is_CFS_Verified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product sub category</displayNameOverride>
+            <field>Product_sub_category__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Project Category</displayNameOverride>
+            <field>Project_Category__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Document Required?</displayNameOverride>
+            <field>Document_Required__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Document List</displayNameOverride>
+            <field>Document_List__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC Days</displayNameOverride>
+            <field>AMC_Days__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Partner Type</displayNameOverride>
+            <field>Account_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Partner Code</displayNameOverride>
+            <field>Channel_Partner_Code_Fm__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cost Sheet Verified</displayNameOverride>
+            <field>Cost_Sheet_Verified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EGM Verified</displayNameOverride>
+            <field>EGM_Verified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Future Potential Reason</displayNameOverride>
+            <field>Future_Potential_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Invoice to customer</displayNameOverride>
+            <field>Invoice_to_customer__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Overdue O/S more than 90 Days</displayNameOverride>
+            <field>Overdue_OS__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Received ?</displayNameOverride>
+            <field>Payment_Received__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proforma Invoice Needed ?</displayNameOverride>
+            <field>Performa_Invoice_Needed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SF Customer ID</displayNameOverride>
+            <field>SF_Customer_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>TOP adv. &amp; ord. value &lt; 3L (Paid)</displayNameOverride>
+            <field>TOP_advance_and_order_value_3_Lacs__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Valid Name</displayNameOverride>
+            <field>Valid_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No.of Line</displayNameOverride>
+            <field>No_of_Line__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMT Notify SME</displayNameOverride>
+            <field>AMT_Notify_SME__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Address (Street)</displayNameOverride>
+            <field>Billing_Address__Street__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Address (City)</displayNameOverride>
+            <field>Billing_Address__City__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Address (ZIP/Postal Code)</displayNameOverride>
+            <field>Billing_Address__PostalCode__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Address (State/Province)</displayNameOverride>
+            <field>Billing_Address__StateCode__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Address (Country/Territory)</displayNameOverride>
+            <field>Billing_Address__CountryCode__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Address (Latitude)</displayNameOverride>
+            <field>Billing_Address__Latitude__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Address (Longitude)</displayNameOverride>
+            <field>Billing_Address__Longitude__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Address (Geocode Accuracy)</displayNameOverride>
+            <field>Billing_Address__GeocodeAccuracy__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Business Detail Verified?</displayNameOverride>
+            <field>Business_Detail_Verified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cost sheet uploaded</displayNameOverride>
+            <field>Cost_sheet_uploaded__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Create PMS?</displayNameOverride>
+            <field>Create_PMS__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date Assigned to CP</displayNameOverride>
+            <field>Date_Assigned_to_CP__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date Assigned to SME</displayNameOverride>
+            <field>Date_Assigned_to_SME__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Draft Comment</displayNameOverride>
+            <field>Draft_Comment__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Draft PMS date</displayNameOverride>
+            <field>Draft_PMS_date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dummy</displayNameOverride>
+            <field>Dummy__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Extended Warranty End Date</displayNameOverride>
+            <field>Extended_Warranty_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Extended Warranty Start Date</displayNameOverride>
+            <field>Extended_Warranty_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Flow Lookup(DND)</displayNameOverride>
+            <field>Flow_Lookup_DND__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Need Performa Invoice</displayNameOverride>
+            <field>Need_Performa_Invoice__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OEM Name</displayNameOverride>
+            <field>OEM_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Received Info Comment</displayNameOverride>
+            <field>Payment_Received_Info_Comment__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SDE Validation</displayNameOverride>
+            <field>SDE_Validation__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SME Validation</displayNameOverride>
+            <field>SME_Validation__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ship to Party</displayNameOverride>
+            <field>Ship_to_Party__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipping Address (Street)</displayNameOverride>
+            <field>Shipping_Address__Street__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipping Address (City)</displayNameOverride>
+            <field>Shipping_Address__City__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipping Address (ZIP/Postal Code)</displayNameOverride>
+            <field>Shipping_Address__PostalCode__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipping Address (State/Province)</displayNameOverride>
+            <field>Shipping_Address__StateCode__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipping Address (Country/Territory)</displayNameOverride>
+            <field>Shipping_Address__CountryCode__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipping Address (Latitude)</displayNameOverride>
+            <field>Shipping_Address__Latitude__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipping Address (Longitude)</displayNameOverride>
+            <field>Shipping_Address__Longitude__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipping Address (Geocode Accuracy)</displayNameOverride>
+            <field>Shipping_Address__GeocodeAccuracy__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Show Schedule PMS</displayNameOverride>
+            <field>Show_Schedule_PMS__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Transaction Id</displayNameOverride>
+            <field>Transaction_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Visiting Comments</displayNameOverride>
+            <field>Visiting_Comments__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>SubStatus__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Draft NAMO Head</displayNameOverride>
+            <field>Draft_NAMO_Head__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>By Pass QLI</displayNameOverride>
+            <field>By_Pass_QLI__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comment(SME)</displayNameOverride>
+            <field>Comment_By_SME__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comment(CP)</displayNameOverride>
+            <field>Comment_By_User__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Final Net Contract Value</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Final_Net_Contract_Value_Currency__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Account Record Type</displayNameOverride>
+            <field>Account.RecordType</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Actual Capacity</displayNameOverride>
+            <field>Asset__c.Actual_Capacity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Asset Name</displayNameOverride>
+            <field>Asset__c.Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Service Contract : Activation Date</displayNameOverride>
+            <field>Service_Contract__c.ActivationDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Bill To Name</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.SBQQ__BillingName__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Synced Quote : Bill To Name</displayNameOverride>
+            <field>SyncedQuote.BillingName</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Billing State/Province (text only)</displayNameOverride>
+            <field>Account.BillingState</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Branch : Branch ID</displayNameOverride>
+            <field>Branch__c.Id</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Branch : Branch Code</displayNameOverride>
+            <field>Branch__c.Branch_Code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Branch : Branch Name</displayNameOverride>
+            <field>Branch__c.Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Component Id</displayNameOverride>
+            <field>Asset__c.Component_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Component Id</displayNameOverride>
+            <field>Asset__c.SF_Component_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Comprehensive Warranty Start Date</displayNameOverride>
+            <field>Asset__c.Comprehensive_Warranty_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Comprehensive  Warranty End Date</displayNameOverride>
+            <field>Asset__c.Comprehensive_Warranty_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Contact Name</displayNameOverride>
+            <field>Account.Contact_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : CP</displayNameOverride>
+            <field>Account.CP__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : CP Category</displayNameOverride>
+            <field>Account.CP_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : CP Code</displayNameOverride>
+            <field>Account.CP_Code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : CP Name</displayNameOverride>
+            <field>Account.CP_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : CP Service Type</displayNameOverride>
+            <field>Account.CP_Service_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SAP Contract Number</displayNameOverride>
+            <field>SAP_Contract_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : CP User</displayNameOverride>
+            <field>Account.CP_User__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Customer Id</displayNameOverride>
+            <field>Account.Customer_Code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Customer Id</displayNameOverride>
+            <field>Account.Customer_Id_Formula__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Email</displayNameOverride>
+            <field>Account.Email__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Email</displayNameOverride>
+            <field>Account.VIP_Email__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Department : Department Name</displayNameOverride>
+            <field>Department__c.Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Department : Division</displayNameOverride>
+            <field>Department__c.Division__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Account Group</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Account_Group__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : CGST</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.CGST__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : GST No.</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.GST_No__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : GST Amount</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.GST_Amount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Install Date</displayNameOverride>
+            <field>Asset__c.InstallDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : JOIG</displayNameOverride>
+            <field>Account.JOIG__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : JOIG Number</displayNameOverride>
+            <field>Account.JOIG_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : JOIG Verified</displayNameOverride>
+            <field>Account.JOIG_Verified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Net Amount</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.SBQQ__NetAmount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Net Contract Value</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Net_Contract_Value_Currency__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : Category</displayNameOverride>
+            <field>CP__c.Category__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : CP</displayNameOverride>
+            <field>CP__c.CP__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : CP Category</displayNameOverride>
+            <field>CP__c.CP_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : CP Code</displayNameOverride>
+            <field>CP__c.CP_Code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : CP Name</displayNameOverride>
+            <field>CP__c.CP_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : CP Service Type</displayNameOverride>
+            <field>CP__c.CP_Service_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : Type</displayNameOverride>
+            <field>CP__c.Type</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Type</displayNameOverride>
+            <field>Account.Type</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Plant : Warehouse Code</displayNameOverride>
+            <field>Plant__c.Warehouse_Code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Service Contract : SAP Contract Number</displayNameOverride>
+            <field>Service_Contract__c.SAP_Contract_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Ship to Party : Account Name</displayNameOverride>
+            <field>Ship_to_Party__c.Account_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Ship to Party : Account Name</displayNameOverride>
+            <field>Ship_to_Party__c.Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Ship to Party : Customer Id</displayNameOverride>
+            <field>Ship_to_Party__c.Customer_Code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Ship to Party : Customer Id</displayNameOverride>
+            <field>Ship_to_Party__c.Customer_Id_Formula__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : PAN Number</displayNameOverride>
+            <field>Account.PAN_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Payment Credit Days</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Payment_Credit_Days__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Phone</displayNameOverride>
+            <field>Account.Phone</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Previous AMC</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Previous_AMC__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Previous Contract End Date</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Previous_Contract_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Previous Contract From</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Previous_Contract_From__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Previous Contract Price</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Previous_Contract_Price__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Previous Downloading Value</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Previous_Downloading_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Previous ERP Contract no</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Previous_ERP_Contract_no__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Previous Status</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Previous_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Primary Phone No.</displayNameOverride>
+            <field>Account.Primary_Phone_No__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Product Family</displayNameOverride>
+            <field>Asset__c.Product_Family__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Product Sub Family Name</displayNameOverride>
+            <field>Asset__c.Product_Sub_Family_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Product Sub Family</displayNameOverride>
+            <field>Asset__c.Product_Sub_Family__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Product</displayNameOverride>
+            <field>Asset__c.Product2</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Product Capacity</displayNameOverride>
+            <field>Asset__c.Product_Capacity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Capacity</displayNameOverride>
+            <field>Asset__c.Capacity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Capacity UOM</displayNameOverride>
+            <field>Asset__c.Capacity_UOM__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Proposed Period To</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Proposed_Period_To__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Proposed Period From</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Proposed_Period_From__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Primary Quote : Quote Number</displayNameOverride>
+            <field>SBQQ__PrimaryQuote__c.Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : SAP Customer Id</displayNameOverride>
+            <field>Account.SAP_Customer_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : SDE</displayNameOverride>
+            <field>Account.SDE__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : SAP External Component Id</displayNameOverride>
+            <field>Asset__c.SAP_External_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Serial Number</displayNameOverride>
+            <field>Asset__c.SerialNumber</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Service Department</displayNameOverride>
+            <field>Asset__c.Service_Department_L__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Service Department</displayNameOverride>
+            <field>Asset__c.Service_Department__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Service Division</displayNameOverride>
+            <field>Asset__c.Service_Division__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Service Division</displayNameOverride>
+            <field>Asset__c.Serviceable_Division__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bill To Address</displayNameOverride>
+            <field>Account.ShippingAddress</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Area</displayNameOverride>
+            <field>Account.Shipping_Area__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Country (text only)</displayNameOverride>
+            <field>Account.ShippingCountry</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping City</displayNameOverride>
+            <field>Account.ShippingCity</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Country</displayNameOverride>
+            <field>Account.ShippingCountryCode</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Floor</displayNameOverride>
+            <field>Account.Shipping_Floor__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Geocode Accuracy</displayNameOverride>
+            <field>Account.ShippingGeocodeAccuracy</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping House/Flat/Shop/Plot/Survey No</displayNameOverride>
+            <field>Account.Shipping_House_Flat_BlockNo__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Latitude</displayNameOverride>
+            <field>Account.ShippingLatitude</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Locality</displayNameOverride>
+            <field>Account.Shipping_Locality__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Longitude</displayNameOverride>
+            <field>Account.ShippingLongitude</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Pincode</displayNameOverride>
+            <field>Account.Shipping_Pincode__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Sector</displayNameOverride>
+            <field>Account.Shipping_Sector__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping State</displayNameOverride>
+            <field>Account.Shipping_State__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping State/Province</displayNameOverride>
+            <field>Account.ShippingStateCode</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping State/Province (text only)</displayNameOverride>
+            <field>Account.ShippingState</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Street</displayNameOverride>
+            <field>Account.ShippingStreet</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Sublocality</displayNameOverride>
+            <field>Account.Shipping_Sublocality__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Shipping Zip/Postal Code</displayNameOverride>
+            <field>Account.ShippingPostalCode</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : SIC Code</displayNameOverride>
+            <field>Account.Sic</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Service Contract : Standard Downloading value</displayNameOverride>
+            <field>Service_Contract__c.Standard_Downloading_value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Standard Warranty End Date</displayNameOverride>
+            <field>Asset__c.Standard_Warranty_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Standard Warranty Start Date</displayNameOverride>
+            <field>Asset__c.Standard_Warranty_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : TAN Number</displayNameOverride>
+            <field>Account.TAN_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Service Contract : Total Downloading value</displayNameOverride>
+            <field>Service_Contract__c.Total_Downloading_value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Service Contract : Total Download Value</displayNameOverride>
+            <field>Service_Contract__c.Total_Download_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Warranty AMC Expiry Date</displayNameOverride>
+            <field>Asset__c.Warranty_AMC_Expiry_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Asset : Wty / AMC Expiry date</displayNameOverride>
+            <field>Asset__c.Wty_AMC_Expiry_date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Group</displayNameOverride>
+            <field>Account.Group__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Synced Quote : Final Net Contract Value</displayNameOverride>
+            <field>SyncedQuote.Final_Net_Contract_Value__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Synced Quote : Final Net Contract Value</displayNameOverride>
+            <field>SyncedQuote.Final_Net_Contract_Value_Curr__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : GST Number</displayNameOverride>
+            <field>Account.GST_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : GST Verified</displayNameOverride>
+            <field>Account.GST_Verified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : Account Name</displayNameOverride>
+            <field>CP__c.TextName</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : Account Name</displayNameOverride>
+            <field>CP__c.Account_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : CP : Account Record Type</displayNameOverride>
+            <field>CP__c.RecordType</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Service Contract : Contract Name</displayNameOverride>
+            <field>Service_Contract__c.Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Service Contract : Contract Number</displayNameOverride>
+            <field>Service_Contract__c.ContractNumber</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Account Name : Billing Address</displayNameOverride>
+            <field>Account.BillingAddress</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Product : Code</displayNameOverride>
+            <field>SBQQ__Product__c.Code__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Product : Material Code</displayNameOverride>
+            <field>SBQQ__Product__c.Material_Code__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Product : Material Group</displayNameOverride>
+            <field>SBQQ__Product__c.Material_Group__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Product : Material Name</displayNameOverride>
+            <field>SBQQ__Product__c.Material_Name__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Product : Model Type</displayNameOverride>
+            <field>SBQQ__Product__c.Model_Type__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity : Ship to Party : Shipping Zip/Postal Code</displayNameOverride>
+            <field>Ship_to_Party__c.ShippingPostalCode</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ship_to_Party__c.SAP_Customer_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ship_to_Party__c.Customer_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Do_Not_Extract__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <masterLabel>Opportunities</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset Component Id</displayNameOverride>
+            <field>Asset_Component_Id__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset</displayNameOverride>
+            <field>Asset__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset Name</displayNameOverride>
+            <field>Name</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset Number</displayNameOverride>
+            <field>Asset_Number__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset Name</displayNameOverride>
+            <field>Asset_Names__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset Record Type</displayNameOverride>
+            <field>RecordType</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset Comprehensive Warranty End Date</displayNameOverride>
+            <field>Asset_Comprehensive_Warranty_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Registration Report Link</displayNameOverride>
+            <field>Registration_Report_Link__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC end Date</displayNameOverride>
+            <field>AMC_end_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC start Date</displayNameOverride>
+            <field>AMC_start_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
+            <field>Account</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : AMC end Date</displayNameOverride>
+            <field>Asset__c.AMC_end_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : AMC start Date</displayNameOverride>
+            <field>Asset__c.AMC_start_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Asset Name</displayNameOverride>
+            <field>Asset__c.Name</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Asset Name</displayNameOverride>
+            <field>Asset__c.Asset_Names__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Asset Number</displayNameOverride>
+            <field>Asset__c.Asset_Number__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Asset Record Type</displayNameOverride>
+            <field>Asset__c.RecordType</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Branch Name</displayNameOverride>
+            <field>Asset__c.Branch_Name__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Branch</displayNameOverride>
+            <field>Asset__c.Branch__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Billing Type</displayNameOverride>
+            <field>Asset__c.SBQQ__BillingType__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Capacity</displayNameOverride>
+            <field>Asset__c.Capacity__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Capacity UOM</displayNameOverride>
+            <field>Asset__c.Capacity_UOM__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Capture Product Add Date</displayNameOverride>
+            <field>Asset__c.Capture_Product_Add_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : City</displayNameOverride>
+            <field>Asset__c.City</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Component Id</displayNameOverride>
+            <field>Asset__c.Component_Id__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Component Id</displayNameOverride>
+            <field>Asset__c.SF_Component_Id__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Comprehensive  Warranty End Date</displayNameOverride>
+            <field>Asset__c.Comprehensive_Warranty_End_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Comprehensive Warranty Start Date</displayNameOverride>
+            <field>Asset__c.Comprehensive_Warranty_Start_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Contact</displayNameOverride>
+            <field>Asset__c.Contact</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Contract Type</displayNameOverride>
+            <field>Asset__c.Contract_Type__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Country</displayNameOverride>
+            <field>Asset__c.CountryCode</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : CP</displayNameOverride>
+            <field>Asset__c.CP__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : CP/Branch Backend DU</displayNameOverride>
+            <field>Asset__c.CP_Branch_Backend_DU__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : CP User</displayNameOverride>
+            <field>Asset__c.CP_User__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Created Date</displayNameOverride>
+            <field>Asset__c.CreatedDate</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Department</displayNameOverride>
+            <field>Asset__c.Department__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Division Name</displayNameOverride>
+            <field>Asset__c.Division_Name__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Equipment Location</displayNameOverride>
+            <field>Asset__c.Equipment_Location__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Dynamic Option ID</displayNameOverride>
+            <field>Asset__c.SBQQ__DynamicOptionId__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Extended Warranty End Date</displayNameOverride>
+            <field>Asset__c.Extended_Warranty_End_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Extended Warranty Start Date</displayNameOverride>
+            <field>Asset__c.Extended_Warranty_Start_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : External Id</displayNameOverride>
+            <field>Asset__c.ExternalIdentifier</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : FGR Number</displayNameOverride>
+            <field>Asset__c.FGR_Number__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Gas Type</displayNameOverride>
+            <field>Asset__c.Gas_Type__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : House/flat/Shop/Plot/Survey No</displayNameOverride>
+            <field>Asset__c.House_Flat_BlockNo__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Install Date</displayNameOverride>
+            <field>Asset__c.InstallDate</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Invoice Date</displayNameOverride>
+            <field>Asset__c.Invoice_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Invoice Number</displayNameOverride>
+            <field>Asset__c.Invoice_Number__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : In Warranty</displayNameOverride>
+            <field>Asset__c.In_Warranty__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Is Active</displayNameOverride>
+            <field>Asset__c.Is_Active__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Is Consumable</displayNameOverride>
+            <field>Asset__c.Is_Consumable__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : KAM</displayNameOverride>
+            <field>Asset__c.KAM__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Locality</displayNameOverride>
+            <field>Asset__c.Locality__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : List Price</displayNameOverride>
+            <field>Asset__c.SBQQ__ListPrice__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Material Group</displayNameOverride>
+            <field>Asset__c.Material_Group__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Location</displayNameOverride>
+            <field>Asset__c.Location</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Obligation</displayNameOverride>
+            <field>Asset__c.Obligation__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Obligation</displayNameOverride>
+            <field>Asset__c.Asset_Obligation__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Obligation</displayNameOverride>
+            <field>Asset__c.Obligation_new__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Opportunity</displayNameOverride>
+            <field>Asset__c.Conversion_Opportunity__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Part Code</displayNameOverride>
+            <field>Asset__c.Part_Code__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : PEP Opportunity</displayNameOverride>
+            <field>Asset__c.PEP_Opportunity__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Family</displayNameOverride>
+            <field>Asset__c.Product_Family__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Category</displayNameOverride>
+            <field>Asset__c.Product_Category_Formula__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product</displayNameOverride>
+            <field>Asset__c.Product2</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Model</displayNameOverride>
+            <field>Asset__c.Product_Model__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Make</displayNameOverride>
+            <field>Asset__c.Asset_Type__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Option</displayNameOverride>
+            <field>Asset__c.SBQQ__ProductOption__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Sub Family</displayNameOverride>
+            <field>Asset__c.Product_Sub_Family__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Sub Family Name</displayNameOverride>
+            <field>Asset__c.Product_Sub_Family_Name__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Promotional Warranty End Date</displayNameOverride>
+            <field>Asset__c.Promotional_Warranty_End_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Promotional Warranty Start Date</displayNameOverride>
+            <field>Asset__c.Promotional_Warranty_Start_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Promotional Warranty Type</displayNameOverride>
+            <field>Asset__c.Promotional_Warranty_Type__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Quote Line</displayNameOverride>
+            <field>Asset__c.SBQQ__QuoteLine__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Record Type</displayNameOverride>
+            <field>Asset__c.Record_Type__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Refrigerant Type</displayNameOverride>
+            <field>Asset__c.Refrigerant_Type__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Region</displayNameOverride>
+            <field>Asset__c.Region__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Register Date</displayNameOverride>
+            <field>Asset__c.Register_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Sales Department</displayNameOverride>
+            <field>Asset__c.Sales_Department_L__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Sale Date</displayNameOverride>
+            <field>Asset__c.Sale_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : SAP External Component Id</displayNameOverride>
+            <field>Asset__c.SAP_External_Id__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : SDE</displayNameOverride>
+            <field>Asset__c.SDE__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Serial Number</displayNameOverride>
+            <field>Asset__c.SerialNumber</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Contract</displayNameOverride>
+            <field>Asset__c.Service_Contract__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Division</displayNameOverride>
+            <field>Asset__c.Service_Division__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Division</displayNameOverride>
+            <field>Asset__c.Serviceable_Division__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Ticket</displayNameOverride>
+            <field>Asset__c.Service_Ticket__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Source</displayNameOverride>
+            <field>Asset__c.Source__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : State</displayNameOverride>
+            <field>Asset__c.StateCode</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Type</displayNameOverride>
+            <field>Asset__c.Type__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Wty / AMC Expiry date</displayNameOverride>
+            <field>Asset__c.Wty_AMC_Expiry_date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Warranty Days Remaining</displayNameOverride>
+            <field>Asset__c.Warranty_Days_Remaining__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Warranty AMC Expiry Date</displayNameOverride>
+            <field>Asset__c.Warranty_AMC_Expiry_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Standard Warranty End Date</displayNameOverride>
+            <field>Asset__c.Standard_Warranty_End_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Standard Warranty Start Date</displayNameOverride>
+            <field>Asset__c.Standard_Warranty_Start_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Capacity</displayNameOverride>
+            <field>Asset__c.Product_Capacity__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Category</displayNameOverride>
+            <field>Asset__c.Product_Category__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Department</displayNameOverride>
+            <field>Asset__c.Service_Department_L__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Department</displayNameOverride>
+            <field>Asset__c.Service_Department__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Sub Family : Code</displayNameOverride>
+            <field>Asset__c.Product_Sub_Family__c.Code__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset : Service Ticket : Ticket Number</displayNameOverride>
+            <field>Service_Ticket__c.Ticket_Number_Read_Only__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset : Service Ticket : Ticket Number</displayNameOverride>
+            <field>Service_Ticket__c.Ticket_Number__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset : Service Ticket : Service Ticket Status</displayNameOverride>
+            <field>Service_Ticket__c.Status</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Ticket : Ticket Number</displayNameOverride>
+            <field>Asset__c.Service_Ticket__c.Ticket_Number_Read_Only__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Ticket : Ticket Number</displayNameOverride>
+            <field>Asset__c.Service_Ticket__c.Ticket_Number__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Ticket : Service Ticket Status</displayNameOverride>
+            <field>Asset__c.Service_Ticket__c.Status</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Ticket : PMS Technician</displayNameOverride>
+            <field>Asset__c.Service_Ticket__c.PMS_Technician__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset : Parent Asset : Asset Name</displayNameOverride>
+            <field>Parent.Name</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset : Parent Asset : Asset Name</displayNameOverride>
+            <field>Parent.Asset_Names__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Product Family : Code</displayNameOverride>
+            <field>Asset__c.Product_Family__c.Code__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Asset__c.Account</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Asset__c.Account_Name__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Asset__c.Account.Name</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Asset__c.Account.SAP_Customer_Id__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Update_SDE__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_check__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r.SBQQ__Assets__r</table>
+        </columns>
+        <masterLabel>Assets</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Number</displayNameOverride>
+            <field>Name</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sell Price</displayNameOverride>
+            <field>Sell_Price__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Component Id</displayNameOverride>
+            <field>Component_Id__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Total</displayNameOverride>
+            <field>SBQQ__CustomerTotal__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Standard Downloading Value</displayNameOverride>
+            <field>Standard_Downloading_Value__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Line Name</displayNameOverride>
+            <field>Name</field>
+            <table>Opportunity.SBQQ__Quotes2__r.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AMC_Head__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Draft_NAMO_Head__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Plant__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BSL_AIDH__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BSL_SME__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bill To Name</displayNameOverride>
+            <field>SBQQ__BillingName__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Bill_To__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AMC status</displayNameOverride>
+            <field>AMC_status__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BSL_AM__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BSL_AICH__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Category</displayNameOverride>
+            <field>Contract_Category__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Final Net Contract Value</displayNameOverride>
+            <field>Final_Net_Contract_Value_Currency__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>GST Amount</displayNameOverride>
+            <field>GST_Amount__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Net Contract Value</displayNameOverride>
+            <field>Net_Contract_Value_Currency__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Invoice Number</displayNameOverride>
+            <field>Invoice_Number__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Credit Days</displayNameOverride>
+            <field>Payment_Credit_Days__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous AMC</displayNameOverride>
+            <field>Previous_AMC__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract End Date</displayNameOverride>
+            <field>Previous_Contract_End_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract From</displayNameOverride>
+            <field>Previous_Contract_From__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract Price</displayNameOverride>
+            <field>Previous_Contract_Price__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Downloading Value</displayNameOverride>
+            <field>Previous_Downloading_Value__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Service Contract</displayNameOverride>
+            <field>Service_Contract__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Status</displayNameOverride>
+            <field>Previous_Status__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous SAP Contract Number</displayNameOverride>
+            <field>SAP_Contract_Number__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous ERP Contract no</displayNameOverride>
+            <field>Previous_ERP_Contract_no__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product sub category</displayNameOverride>
+            <field>Product_sub_category__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposed Period From</displayNameOverride>
+            <field>Proposed_Period_From__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Downloading Value</displayNameOverride>
+            <field>Total_Downloading_Value_RollUp__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposed Period To</displayNameOverride>
+            <field>Proposed_Period_To__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposed Contract Value</displayNameOverride>
+            <field>Proposed_Contract_Value_Formula__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposal Sent Date</displayNameOverride>
+            <field>Proposal_Sent_Date__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposed Discount</displayNameOverride>
+            <field>Proposed_Discount__c</field>
+            <table>Opportunity.SBQQ__Quotes2__r</table>
+        </columns>
+        <masterLabel>Quote</masterLabel>
+    </sections>
+</ReportType>

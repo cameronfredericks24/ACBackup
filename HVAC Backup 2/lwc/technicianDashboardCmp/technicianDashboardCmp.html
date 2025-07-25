@@ -1,0 +1,122 @@
+<template>
+
+    <template if:true={showSpinner}>
+        <div class="spinner-container">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+
+    <div class="container">
+
+
+        <div class="slds-grid slds-gutters slds-grid_vertical">
+            <div class="slds-col slds-size_1-of-1">
+
+                <div class="user-container">
+                    <div class="user-header slds-p-around_xxx-small">
+                        <lightning-icon icon-name="standard:person_account" size="small"
+                            alternative-text="Technician"></lightning-icon>
+                        User
+                    </div>
+                    <div class="user-details slds-p-around_xxx-small">
+                        <div>Name: <b>{technicianName}</b> </div>
+
+                        <div class="star-rating">
+                            <template for:each={stars} for:item="star">
+                                <span key={star.id} class={star.class}></span>
+                            </template>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="service-appointments slds-p-vertical_x-small">
+                    <div class="service-header slds-p-around_xxx-small">
+                        <lightning-icon icon-name="standard:service_appointment" size="small"
+                            alternative-text="Service Appointments"></lightning-icon>
+                        Service Appointments
+                    </div>
+                    <div class="section-content slds-p-around_xxx-small">All Service Appointments: <span
+                            class="ticket-number">{totalWorkOrders}</span></div>
+                </div>
+
+            </div>
+
+            <!-- Refresh button with icon and label -->
+            <!-- <div class="slds-grid slds-grid_align-end slds-p-bottom_small">
+                <lightning-button-icon icon-name="utility:refresh" size="small" alternative-text="Refresh"
+                    class="slds-m-right_xx-small" onclick={handleRefresh}></lightning-button-icon>
+                <span>Refresh</span>
+            </div> -->
+
+            <!-- Smaller Refresh button -->
+            <div class="slds-grid slds-grid_align-end slds-p-bottom_small slds-m-right-xx_small">
+                <!-- <lightning-button label="Refresh"
+                      icon-name="utility:refresh"
+                      icon-position="left"
+                      size="xx-small"
+                      onclick={handleRefresh}
+                      class="slds-m-right_xx-small">
+    </lightning-button> -->
+                <lightning-icon icon-name="action:refresh" size="small" onclick={handleRefresh}
+                    class="slds-m-right_medium"> </lightning-icon>
+            </div>
+
+
+            <div class="slds-col slds-size_1-of-1">
+
+                <lightning-combobox name="Time Frame" label="Time Frame" value={timeFrame}
+                    placeholder="Select Time Frame" options={timeFrameOptions} onchange={handleTimeFrameChange}
+                    variant="label-hidden" class="slds-size_x-small slds-align_absolute-center"></lightning-combobox>
+
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <lightning-combobox name="Ticket Type" label="Ticket Type" value={ticketType}
+                    placeholder="Select Ticket Type" options={ticketTypeOptions} onchange={handleTicketTypeChange}
+                    variant="label-hidden" class="slds-size_x-small slds-align_absolute-center"></lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-4">
+                        <div class="card slds-box slds-text-align_center">
+                            <h2 class="blue-text">{allValue}</h2>
+                            <div class="ticket-type-div">All</div>
+                            <div class="slds-align_absolute-center card-indicator blue"></div>
+
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <div class="card slds-box slds-text-align_center">
+                            <h2 class="yellow-text">{allocatedValue}</h2>
+                            <div class="ticket-type-div">Ticket Allocated</div>
+                            <div class=" slds-align_absolute-center card-indicator yellow"></div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="slds-col slds-size_1-of-4">
+                        <div class="card slds-box slds-text-align_center">
+                            <h2 class="green-text">{workStartedValue}</h2>
+                            <div class="ticket-type-div"> Ticket Started</div>
+
+                            <div class="slds-align_absolute-center card-indicator green"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-4">
+                        <div class="card slds-box slds-text-align_center">
+                            <h2 class="grey-text">{materialPendingValue}</h2>
+                            <div class="ticket-type-div">Material Pending</div>
+                            <div class="slds-align_absolute-center card-indicator grey"></div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

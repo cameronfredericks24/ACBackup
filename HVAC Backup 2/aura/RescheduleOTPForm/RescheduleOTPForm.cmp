@@ -1,0 +1,23 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+       <aura:html tag="style">             
+         .slds-modal__container{        
+        width: 100% !important;
+        max-width: 25rem !important; 
+        }      
+     
+        .slds-modal__content {
+            padding : 0.01rem !important;
+            height: 100% !important;
+        	max-height: 40rem !important;
+        }
+         <!--  .slds-modal__footer{
+           display:none;
+           }-->
+    </aura:html>
+
+    <aura:attribute name="objectApiName" type="String" default="{!v.sObjectName}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- <c:productTransferCmpNew recordId="{!v.recordId}" /> -->
+     <c:oTPRescheduleForm recordId="{!v.recordId}" onotpsuccess = "{!c.closeQA}" onsuccess="{!c.handleSuccess}" onclose="{!c.closeModel}"/>
+
+</aura:component>

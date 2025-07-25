@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "55a65b98-9e92-4314-a608-6adcc9236d31",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "5741fdb6-d6b3-473e-aa50-a0c383ec6263",
+  "label" : "Salesforce Support Request",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-salesforce-support-request",
+  "type" : "route",
+  "urlPrefix" : "salesforce-support-request"
+}

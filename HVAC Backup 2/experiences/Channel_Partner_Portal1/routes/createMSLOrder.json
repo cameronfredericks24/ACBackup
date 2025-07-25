@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "731924c5-dd60-4e2c-b128-cf2693af8685",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "ee29dc1c-eaa3-4136-92f4-9dac6e7389c2",
+  "label" : "Create MSL Order",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-create-msl-order",
+  "type" : "route",
+  "urlPrefix" : "create-msl-order"
+}

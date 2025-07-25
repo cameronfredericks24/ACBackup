@@ -1,0 +1,46 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "5bdb223e-d1d1-4c2d-8b2c-3a01deedb8fa",
+  "label" : "Create Commissioning",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:commissioningCreationScreen",
+      "id" : "7eead957-aa5a-4958-be49-affdf921c3b3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "623dae68-6382-4570-9402-e7df88ff5260",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "c5919d16-2ffa-4d08-8db2-943761c5969d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "3570aa5f-5466-40cf-9adc-6722ce0e77c1",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Create Commissioning"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "0c3ce052-56b7-401a-92e1-2d951ebb1c8c",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "565832cd-5c00-4b97-b76c-92292967142e",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-create-commissioning"
+}

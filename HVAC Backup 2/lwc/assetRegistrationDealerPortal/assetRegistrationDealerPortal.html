@@ -1,0 +1,681 @@
+<template>
+
+    <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+        <div class="slds-size_2-of-12">
+            <!-- for blank space -->
+
+        </div>
+        <div class="slds-size_8-of-12">
+
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+            </template>
+            <template if:true={firstPage}>
+
+                <div class="slds-align_absolute-center">
+                    <div if:true={accountSearchVisibility} class="slds-col slds-m-top_x-small">
+
+
+                        <div class="slds-box slds-box_x-small slds-grid slds-gutters">
+
+                            <div class="slds-col">
+                                <div class="slds-text-align_center slds-m-around_x-small">
+
+                                    <lightning-input type="text" label="Account Name" onchange={handleAccountNameChange}
+                                        value={searchAccountName}></lightning-input>
+
+                                </div>
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-text-align_center slds-m-around_x-small">
+
+                                    <lightning-input type="text" label="Customer Id" onchange={handleCustomerIdChange}
+                                        value={searchCustomerId}></lightning-input>
+
+                                </div>
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-text-align_center slds-m-around_x-small">
+                                    <lightning-input type="text" label="Pincode" onchange={handlePincodeChange}
+                                        value={searchPincode}></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-col">
+                                <div class="slds-text-align_center slds-m-around_x-small">
+                                    <lightning-input type="phone" label="Phone Number"
+                                        onchange={handlePhoneNumberChangeSearch} value={searchPhoneNumber}>
+                                    </lightning-input>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-align_absolute-center slds-m-around_x-small">
+
+                            <div class="slds-grid slds-gutters_direct">
+                                <div class="slds-col">
+                                </div>
+                                <div class="slds-grid">
+                                    <div class="slds-col">
+                                        <lightning-button label="New Account" onclick={handleCreateNewAccount}
+                                            variant="brand-outline">
+                                            disabled={disableNewAccountButton}>
+                                        </lightning-button>
+
+                                    </div>
+                                    <div class="slds-col slds-p-left_x-small">
+
+                                        <lightning-button label="Search Account" onclick={fetchAccountFromCombination}
+                                            variant="brand">
+                                        </lightning-button>
+
+                                    </div>
+                                </div>
+                                <div class="slds-col">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <lightning-datatable key-field="Id" data={accounts} columns={columns}
+                                onrowselection={handleRowSelection} max-row-selection="1">
+                            </lightning-datatable>
+
+                            <!-- <lightning-input label="Selected Account Name" value={selectedAccountDisplay}
+                                disabled></lightning-input> -->
+                        </div>
+
+                    </div>
+
+                    <div if:true={createNewAccount} class="slds-p-around_medium slds-m-bottom_medium"
+                        style="width: 100%;">
+                        <div if:false={showAccountScreen} class="slds-m-bottom_medium">
+                            <lightning-combobox class="fontSize slds-m-bottom_small" name="fieldList"
+                                label="Select Customer" options={lstRecordTypes} placeholder="Select Customer Type"
+                                onchange={assignRecordType}>
+                            </lightning-combobox>
+                        </div>
+
+                        <div if:true={showAccountScreen} class="slds-box slds-theme_default slds-m-bottom_medium">
+                            <div class="slds-p-around_medium">
+                                <h1 class="slds-m-bottom_medium slds-text-heading_small slds-m-left_x-small">
+                                    {accountFoundMessage}
+                                </h1>
+                                <div class="slds-section account slds-is-open" data-id="account">
+                                    <h3 class="slds-section__title slds-section__title-action slds-m-bottom_small"
+                                        style="background: white;">
+                                        <lightning-icon icon-name="utility:switch" alternative-text="button icon"
+                                            size="xx-small"
+                                            class="slds-section__title-action-icon slds-button__icon_left">
+                                        </lightning-icon>
+                                        <span title={label} style="color:black">&nbsp;<strong> Account
+                                                Details</strong></span>
+                                    </h3>
+                                    <div class="slds-section__content slds-is-open"
+                                        style="box-shadow: #0606062b 5px 2px 13px; padding: 20px 25px;">
+                                        <lightning-record-edit-form data-id="accountForm" object-api-name="Account"
+                                            record-type-id={accountRecordTypeId} record-id={account.Id}
+                                            onsuccess={handleAccountSuccess} onerror={handleError}>
+                                            <div class="slds-grid">
+                                                <div class="slds-col slds-size_1-of-2">
+                                                    <div style="margin-left: 6%;margin-right: 8%;margin-top: 2%;">
+                                                        <lightning-input-field name="accountName" if:true={isCommercial}
+                                                            field-name="Name" value={account.Name} required="true"
+                                                            onchange={assignAccountValues}
+                                                            disabled={disableAccountName}>
+                                                        </lightning-input-field>
+                                                        <lightning-input-field if:false={isCommercial} name="Salutation"
+                                                            field-name="Salutation" value={account.Salutation}
+                                                            onchange={assignAccountValues} disabled={disableSal}>
+                                                        </lightning-input-field>
+                                                        <lightning-input-field if:false={isCommercial} name="FirstName"
+                                                            field-name="Name" value={account.Name}
+                                                            onchange={assignAccountValues} disabled={disableFirstName}>
+                                                        </lightning-input-field>
+                                                        <lightning-input-field name="group" field-name="Group__c"
+                                                            value={account.Group__c} if:true={isCommercial}
+                                                            disabled="true" onchange={assignAccountValues}>
+                                                        </lightning-input-field>
+                                                        <lightning-input-field name="segment" field-name="Industry"
+                                                            value={account.Industry} disabled={disableSegment}
+                                                            onchange={assignAccountValues} if:true={isCommercial}>
+                                                        </lightning-input-field>
+                                                        <lightning-input-field field-name="Sub_Segment__c"
+                                                            value={account.Sub_Segment__c}
+                                                            onchange={assignAccountValues} disabled={disableSubSegment}
+                                                            if:true={isCommercial}>
+                                                        </lightning-input-field>
+                                                        <lightning-input-field if:true={isCommercial}
+                                                            field-name="ParentId" value={account.ParentId}
+                                                            onchange={assignAccountValues} disabled={disableParentId}>
+                                                        </lightning-input-field>
+                                                        
+
+                                                        <lightning-input-field if:true={isCommercial}
+                                                        field-name="JOIG__c" value={account.JOIG__c}
+                                                        onchange={handleJOIGChange} disabled={disableJOIG} required>
+                                                    </lightning-input-field>
+
+
+                                                        <lightning-input-field if:true={isCommercial}
+                                                            field-name="GST_Number__c" value={account.GST_Number__c}
+                                                            onchange={assignAccountValues} >
+                                                        </lightning-input-field>
+                                                        <lightning-input-field if:true={isCommercial}
+                                                            field-name="PAN_Number__c" value={account.PAN_Number__c}
+                                                            onchange={assignAccountValues} disabled={disableParentId}
+                                                            >
+                                                        </lightning-input-field>
+                                                        <lightning-input-field if:true={isCommercial}
+                                                            field-name="TAN_Number__c" value={account.TAN_Number__c}
+                                                            onchange={assignAccountValues} >
+                                                        </lightning-input-field>
+                                                        <span if:false={isCommercial}>
+                                                            <lightning-input-field if:false={isNamo}
+                                                                field-name="Category__c" value={account.Category__c}
+                                                                onchange={assignAccountValues} disabled="true">
+                                                            </lightning-input-field>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-2 slds-m-left_medium">
+                                                    <div style="margin-right: 11%; margin-left: 0%;">
+                                                        <span if:true={isCommercial}>
+                                                            <lightning-input-field if:false={isNamo}
+                                                                field-name="Category__c" value={account.Category__c}
+                                                                onchange={assignAccountValues} disabled="true">
+                                                            </lightning-input-field>
+                                                        </span>
+                                                        <lightning-input-field if:true={isNamo}
+                                                            field-name="SOL_Store_ID__c" value={account.SOL_Store_ID__c}
+                                                            onchange={assignAccountValues} disabled={disableSolId}>
+                                                        </lightning-input-field>
+                                                        <lightning-input-field name="languagPreference"
+                                                            field-name="Language_Preference__c"
+                                                            value={account.Language_Preference__c}
+                                                            onchange={assignAccountValues}>
+                                                        </lightning-input-field>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </lightning-record-edit-form>
+                                        
+                                    </div>
+                                </div>
+                                <div>
+                                    <c-table-structure account-id={account.Id} class="contactChild"
+                                        contact-record-type={contactRecordType} onsubmitparent={setChildData}
+                                        is-commercial={isCommercial} object-name="Contact" title="Contact Details"
+                                        records={contactData} header-labels={headerLabels}>
+                                    </c-table-structure>
+                                </div>
+                                <div>
+                                    <c-table-structure class="addressChild" onsubmitparent={setChildData}
+                                        is-commercial={isCommercial} records={shippingAddress} show-address="true"
+                                        object-name="Address" title="Shipping Address Details"
+                                        header-labels={billingAddressheaderLabels}>
+                                    </c-table-structure>
+                                </div>
+                            </div>
+                            <div class="slds-align_absolute-center">
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col">
+                                        <lightning-button label="Save" onclick={saveAccountHandler} variant="brand">
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-button label="Cancel" onclick={handleCancel} variant="brand-outline">
+                            </lightning-button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div if:true={accountSelectedVisibility}>
+                    <lightning-input label="Selected Account Name" value={selectedAccountDisplay} disabled>
+                    </lightning-input>
+                </div>
+
+
+                <div class="slds-m-top_small">
+                    <lightning-radio-group name="Product Owner" label="Product Owner" options={productOwnerOptions}
+                        value={productOwner} onchange={handleProductOwnerChange} type="radio" required>
+                    </lightning-radio-group>
+                </div>
+
+                <div if:true={isBluestar}>
+                    <div if:true={assetRegTypeScreen}
+                        class="slds-p-around_xx-small slds-m-top_x-small slds-m-around_xx-small slds-box slds-theme_shade">
+                        <div>
+                            <lightning-combobox name="Product Type" label="Product Type" value={productType}
+                                placeholder="Select Product Type" options={productTypeOptions}
+                                onchange={handleProductTypeChange}></lightning-combobox>
+                        </div>
+
+                        <div if:true={regtypeVisibility}>
+                            <lightning-combobox name="Select Registration Type" label="Registration Details"
+                                value={picklistValue} placeholder="Select Registration Type" options={picklistOptions}
+                                onchange={handlePicklistChange} required></lightning-combobox>
+                        </div>
+
+                        <div if:true={notUnitary}>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <lightning-input type="number" label="Number of IDUs"
+                                        onchange={handleIDUNumberChange} value={totalIDU} required></lightning-input>
+                                </div>
+                                <div class="slds-col">
+                                    <lightning-input type="number" label="Number of ODUs"
+                                        onchange={handleODUNumberChange} value={totalODU} required></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-align_absolute-center slds-m-top_x-small">
+                                <lightning-button variant="brand" label="Next" onclick={handleFirstNext}>
+                                </lightning-button>
+                            </div>
+                        </div>
+
+                        <div if:true={unitaryModelSerialVisibility}>
+                            <div
+                                class="slds-p-around_xx-small slds-m-top_x-small slds-m-around_xx-small slds-box slds-theme_shade">
+                      
+
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <div class="custom-lookup">
+                                            <lightning-input type="search" label="Unitary Model Number"
+                                                onchange={handleOnChangeCustomLookupProductCodeUnitary}
+                                                onclick={handleOnClickCustomLookupProductCodeUnitary}
+                                                onfocus={handleOnFocusCustomLookupProductCodeUnitary}
+                                                onblur={handleOnBlurCustomLookupProductCodeUnitary} value={modelNumber}
+                                                required>
+                                            </lightning-input>
+                                            <template if:true={showAvailableCodesUnitary}>
+                                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                    role="listbox">
+                                                    <template for:each={filteredOptionsProductCode} for:item="option">
+                                                        <li key={option.value} role="presentation"
+                                                            class="slds-listbox__item">
+                                                            <div role="option" tabindex="0"
+                                                                class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                                onclick={handleModelNumberChangeCustomLookupUnitary}
+                                                                data-value={option.label} data-index={index}>
+                                                                <span class="slds-media__figure">
+                                                                    <!-- Location Icon -->
+                                                                    <lightning-icon icon-name="standard:product"
+                                                                        size="small"></lightning-icon>
+                                                                </span>
+                                                                <span class="slds-media__body">
+                                                                    <span class="slds-truncate">{option.label}</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </template>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <lightning-input type="text" label="Unitary Serial Number"
+                                            placeholder="Enter Serial Number..." onchange={handleSerialNumberChange}
+                                            value={serialNumber} required></lightning-input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slds-p-around_xx-small slds-m-top_x-small slds-m-around_xx-small slds-box slds-theme_shade"
+                        if:true={invoiceNumberScreen}>
+                        <lightning-input type="text" label="Enter Asset Purchase Invoice Number"
+                            onchange={handleInvoiceNumberChange} value={invoiceNumber} required></lightning-input>
+                    </div>
+
+                    <!-- Separate sections for IDUs and ODUs -->
+                    <div class="slds-p-around_xx-small slds-m-top_x-small slds-m-around_xx-small slds-box"
+                        if:true={serialModelInputVisibility}>
+
+                        <div class="slds-col slds-p-horizontal_medium">
+                            <span>
+                                <div class="slds-p-around_medium">
+                                    <h2 class="slds-text-heading_medium">Account Address</h2>
+                                    <div class="slds-grid slds-grid_align-start slds-p-top_small">
+                                        <lightning-icon icon-name="standard:address" alternative-text="Address"
+                                            size="small"></lightning-icon>
+                                        <span class="slds-m-left_small slds-text-body_regular">{addressToDisplay}</span>
+                                    </div>
+                                </div>
+
+                                <div class="slds-m-top_medium">
+
+                                    <div if:false={isNAMO} class="slds-m-top_x-small">
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-size_1-of-3">
+                                                <lightning-input type="date" label="Installation Date"
+                                                    placeholder="select date..." onchange={handleInstallationDateChange}
+                                                    value={installationDate}>
+                                                </lightning-input>
+
+                                            </div>
+
+                                            <div class="slds-col slds-size_1-of-3">
+
+                                            </div>
+
+                                            <div class="slds-col slds-size_1-of-3">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div if:true={isNAMO} class="slds-m-top_x-small">
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-size_1-of-2 slds-p-right_x-small">
+                                                <lightning-input type="date" label="Installation Date"
+                                                    placeholder="Select the date..."
+                                                    onchange={handleInstallationDateChange}
+                                                    value={installationDate}></lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2">
+                                                <lightning-input type="text" label="SOL Id"
+                                                    placeholder="Enter the sol id..." onchange={handleSOLchange}
+                                                    value={solId}></lightning-input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+
+                        <!-- ODU Section -->
+                        <div class="slds-box slds-theme_shade">
+                            <template for:each={oduInputs} for:item="input" for:index="index">
+                                <div key={input.id} class="slds-grid slds-grid_vertical slds-m-top_x-small">
+                                    <div class="slds-grid slds-gutters">
+                                        <div class="slds-col slds-size_6-of-12">
+                                            <div class="custom-lookup">
+                                                <lightning-input type="search" label={input.modelLabel}
+                                                    onchange={handleOnChangeCustomLookupProductCode}
+                                                    onclick={handleOnClickCustomLookupProductCode}
+                                                    onfocus={handleOnFocusCustomLookupProductCode}
+                                                    onblur={handleOnBlurCustomLookupProductCode}
+                                                    value={input.modelNumber} data-index={index} required>
+                                                </lightning-input>
+                                                <template if:true={input.showAvailableCodes}>
+                                                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                        role="listbox">
+                                                        <template for:each={filteredOptionsProductCode}
+                                                            for:item="option">
+                                                            <li key={option.value} role="presentation"
+                                                                class="slds-listbox__item">
+                                                                <div role="option" tabindex="0"
+                                                                    class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                                    onclick={handleModelNumberChangeCustomLookup}
+                                                                    data-value={option.label} data-index={index}>
+                                                                    <span class="slds-media__figure">
+                                                                        <!-- Location Icon -->
+                                                                        <lightning-icon icon-name="standard:product"
+                                                                            size="small"></lightning-icon>
+                                                                    </span>
+                                                                    <span class="slds-media__body">
+                                                                        <span
+                                                                            class="slds-truncate">{option.label}</span>
+                                                                    </span>
+                                                                </div>
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-size_6-of-12">
+                                            <lightning-input type="text" label={input.serialLabel}
+                                                placeholder="Enter ODU Serial Number..."
+                                                onchange={handleODUSerialNumberChange} data-index={index}
+                                                value={input.serialNumber} required></lightning-input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <div class="slds-align_absolute-center slds-m-top_x-small">
+                                <lightning-button variant="brand" label="Fetch ODU"
+                                    onclick={handleFetchODU}></lightning-button>
+                            </div>
+
+                        </div>
+
+
+                        <!-- display the asset details -->
+                        <div if:true={showODU} class="slds-m-top_x-small">
+                            <lightning-card title="Invoice Details">
+                                <div class="slds-p-around_medium">
+                                    <p><b>Invoice Number:</b> {invoiceDetails.INVOICE_NUMBER}</p>
+                                    <p><b>Invoice Date:</b> {invoiceDetails.INVOICE_DATE}</p>
+                                    <p><b>Customer Code:</b> {invoiceDetails.CUSTOMER_CODE}</p>
+                                    <p><b>CP Code:</b> {invoiceDetails.CP_CODE}</p>
+
+                                    <p><b>Sales Department:</b> {invoiceDetails.SALES_DEPARTMENT}</p>
+                                    <p><b>Service Department:</b> {invoiceDetails.SERVICE_DEPARTMENT}</p>
+
+                                    <p><b>Branch Code:</b> {invoiceDetails.BRANCH_CODE}</p>
+                                </div>
+                            </lightning-card>
+
+                            <lightning-accordion allow-multiple-sections-open>
+                                <template for:each={oduDetailsAccordion} for:item="product">
+                                    <lightning-accordion-section key={product.MODEL_CODE} name={product.MODEL_CODE}
+                                        label="PRODUCT">
+                                        <lightning-layout>
+                                            <lightning-layout-item flexibility="auto">
+                                                <p><b>Model Code:</b> {product.MODEL_CODE}</p>
+                                                <p><b>Serial Number:</b> {product.SERIAL_NUMBER}</p>
+                                                <p>
+                                                    <b>Manufacturing Date:</b> {product.MANUFACTURING_DATE}
+                                                </p>
+                                                <p><b>Installable:</b> {product.ZIS_INSTALLABLE}</p>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+
+                                    </lightning-accordion-section>
+
+                                    <template for:each={product.CHILD_PRODUCTS} for:item="childProduct">
+                                        <lightning-accordion-section key={childProduct.MODEL_CODE}
+                                            name={childProduct.MODEL_CODE} label="CHILD-PRODUCT">
+                                            <lightning-layout>
+                                                <lightning-layout-item flexibility="auto">
+                                                    <p><b>Model Code:</b> {childProduct.MODEL_CODE}</p>
+                                                    <p><b>Serial Number:</b> {childProduct.SERIAL_NUMBER}</p>
+                                                    <p>
+                                                        <b>Manufacturing Date:</b>
+                                                        {childProduct.MANUFACTURING_DATE}
+                                                    </p>
+                                                    <p><b>Installable:</b> {childProduct.ZIS_INSTALLABLE}</p>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+
+                                        </lightning-accordion-section>
+                                    </template>
+                                </template>
+                            </lightning-accordion>
+
+                            <div class="slds-align_absolute-center">
+                                <lightning-button variant="brand" label="Register ODU" onclick={handleRegisterODU}
+                                    disabled={registerODUButtonVisibility}></lightning-button>
+                            </div>
+                        </div>
+
+                        <!-- IDU Section -->
+                        <div if:true={showIDUSection} class="slds-box slds-theme_shade slds-m-top_small">
+                            <template for:each={iduInputs} for:item="input" for:index="index">
+                                <div key={input.id} class="slds-grid slds-grid_vertical slds-m-top_x-small">
+                                    <div class="slds-grid slds-gutters">
+
+                                        <div class="slds-col slds-size_6-of-12">
+
+                                            <div class="custom-lookup">
+                                                <lightning-input type="search" label={input.modelLabel}
+                                                    onchange={handleIDUOnChangeCustomLookupProductCode}
+                                                    onclick={handleIDUOnClickCustomLookupProductCode}
+                                                    onfocus={handleIDUOnFocusCustomLookupProductCode}
+                                                    onblur={handleIDUOnBlurCustomLookupProductCode}
+                                                    value={input.modelNumber} data-index={index} required>
+                                                </lightning-input>
+                                                <template if:true={input.showAvailableCodesIDU}>
+                                                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                        role="listbox">
+                                                        <template for:each={filteredOptionsProductCode}
+                                                            for:item="option">
+                                                            <li key={option.value} role="presentation"
+                                                                class="slds-listbox__item">
+                                                                <div role="option" tabindex="0"
+                                                                    class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                                    onclick={handleIDUModelNumberChangeCustomLookup}
+                                                                    data-value={option.label} data-index={index}>
+                                                                    <span class="slds-media__figure">
+                                                                        <lightning-icon icon-name="standard:product"
+                                                                            size="small"></lightning-icon>
+                                                                    </span>
+                                                                    <span class="slds-media__body">
+                                                                        <span
+                                                                            class="slds-truncate">{option.label}</span>
+                                                                    </span>
+                                                                </div>
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-size_6-of-12">
+                                            <lightning-input type="text" label={input.serialLabel}
+                                                placeholder="Enter IDU Serial Number..."
+                                                onchange={handleIDUSerialNumberChange} data-index={index}
+                                                value={input.serialNumber} required></lightning-input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                            <div class="slds-align_absolute-center slds-m-top_x-small">
+                                <lightning-button variant="brand" label="Fetch IDU"
+                                    onclick={handleFetchIDU}></lightning-button>
+                            </div>
+
+                            <!-- display the asset details -->
+                            <div if:true={showIDU}>
+
+                                <lightning-accordion allow-multiple-sections-open>
+                                    <template for:each={iduAccordionData} for:item="iduDetail">
+                                        <lightning-accordion-section key={iduDetail.IDU_ID} name={iduDetail.IDU_ID}
+                                            label="IDU Details">
+                                            <template for:each={iduDetail.PRODUCT} for:item="product">
+                                                <lightning-accordion-section key={product.MODEL_CODE}
+                                                    name={product.MODEL_CODE} label="PRODUCT">
+                                                    <lightning-layout>
+                                                        <lightning-layout-item flexibility="auto">
+                                                            <p><b>Model Code:</b> {product.MODEL_CODE}</p>
+                                                            <p><b>Serial Number:</b> {product.SERIAL_NUMBER}</p>
+                                                            <p><b>Manufacturing Date:</b>
+                                                                {product.MANUFACTURING_DATE}
+                                                            </p>
+                                                            <p><b>Installable:</b> {product.ZIS_INSTALLABLE}</p>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+
+                                                </lightning-accordion-section>
+
+                                                <template for:each={product.CHILD_PRODUCTS} for:item="childProduct">
+                                                    <lightning-accordion-section key={childProduct.MODEL_CODE}
+                                                        name={childProduct.MODEL_CODE} label="CHILD-PRODUCT">
+                                                        <lightning-layout>
+                                                            <lightning-layout-item flexibility="auto">
+                                                                <p><b>Model Code:</b> {childProduct.MODEL_CODE}</p>
+                                                                <p><b>Serial Number:</b>
+                                                                    {childProduct.SERIAL_NUMBER}
+                                                                </p>
+                                                                <p><b>Manufacturing Date:</b>
+                                                                    {childProduct.MANUFACTURING_DATE}
+                                                                </p>
+                                                                <p><b>Installable:</b>
+                                                                    {childProduct.ZIS_INSTALLABLE}
+                                                                </p>
+                                                            </lightning-layout-item>
+                                                        </lightning-layout>
+
+                                                    </lightning-accordion-section>
+                                                </template>
+                                            </template>
+                                        </lightning-accordion-section>
+                                    </template>
+                                </lightning-accordion>
+
+                                <div class="slds-align_absolute-center">
+                                    <lightning-button variant="brand" label="Register IDU" onclick={handleRegisterIDU}>
+                                    </lightning-button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="slds-p-around_xx-small slds-m-top_x-small slds-m-around_xx-small slds-box slds-theme_shade"
+                        if:true={assetDetailsScreen}>
+                        <div class="slds-m-top_x-small">
+                            <lightning-file-upload label="Upload File" name="Upload File" accept={acceptedFormats}
+                                record-id={accountId} onuploadfinished={handleUploadFinished} multiple>
+                            </lightning-file-upload>
+                        </div>
+                        <template if:true={isFileUploaded}>
+                            <div class="slds-m-top_medium">
+                                <p class="slds-m-bottom_x-small">Uploaded Files:</p>
+                                <div class="slds-box slds-box_x-small slds-theme_default">
+                                    <ul class="slds-list_dotted slds-p-around_small">
+                                        <template for:each={uploadedFileNames} for:item="file">
+                                            <li key={file.name} class="slds-item slds-p-vertical_x-small">
+                                                <a href="javascript:void(0);" onclick={handleFileClick}
+                                                    data-id={file.id}>{file.name}</a>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+
+
+                <div if:false={isBluestar}>
+                    <c-non-b-s-l-registration-dealer-portal
+                        account-id={accountId}></c-non-b-s-l-registration-dealer-portal>
+                </div>
+
+                <div if:true={nextButtonVisibility} class="slds-align_absolute-center">
+                    <lightning-button variant="brand" label="Next" onclick={handleNext}></lightning-button>
+                </div>
+            </template>
+
+
+            <template if:true={secondPage}>
+
+                <c-asset-details-display-dealer-portal-screen asset-details={assetDetails}
+                    uploaded-files={uploadedFileNames} account-id={accountId} product-type={productType}
+                    onaddproduct={handleAddProduct} onsuccess={handleSuccess}
+                    onbackclick={handleBackClick}></c-asset-details-display-dealer-portal-screen>
+            </template>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+</template>

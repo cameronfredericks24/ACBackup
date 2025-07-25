@@ -1,0 +1,202 @@
+<template>
+    <template if:true={loader}>
+        <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+    </template>
+
+    <template if:false={showOrderSummary}>
+        <div class="slds-text-align_center slds-p-around_medium">
+            <h1 class="slds-text-heading_large">Counter Sale</h1>
+        </div>
+
+        <!-- Account, Contact, and Service Ticket Selection -->
+        <div class="slds-grid slds-gutters slds-wrap">
+            <!-- Account Searchable Input -->
+            <div class="slds-col slds-size_1-of-3 slds-p-around_medium">
+                <label for="accountInput" class="slds-form-element__label">Account</label>
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <input type="text" id="accountInput" placeholder="Search Account"
+                            oninput={handleAccountSearch} value={accountSearchKey}
+                            class="slds-input">
+                    </div>
+                </div>
+
+                <!-- Show Account List based on search -->
+                <template if:true={showAccountList}>
+                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_left account-listbox" role="listbox">
+                        <template for:each={filteredAccounts} for:item="acc">
+                            <li key={acc.value} role="presentation" class="slds-listbox__item">
+                                <span class="slds-listbox__option slds-listbox__option_plain slds-media" role="option"
+                                      onclick={selectAccount} data-id={acc.value}>
+                                    <span class="slds-media__body">
+                                        {acc.label}
+                                    </span>
+                                </span>
+                            </li>
+                        </template>
+                    </ul>
+                </template>
+            </div>
+
+            <!-- Contact Selection -->
+            <div class="slds-col slds-size_1-of-3 slds-p-around_medium">
+                <lightning-combobox
+                    name="contact"
+                    label="Contact"
+                    value={selectedContactId}
+                    placeholder="Select a Contact"
+                    options={contactOptions}
+                    onchange={handleContactChange}>
+                </lightning-combobox>
+            </div>
+
+            <!-- Service Ticket Selection -->
+            <div class="slds-col slds-size_1-of-3 slds-p-around_medium">
+                <lightning-combobox
+                    name="workOrder"
+                    label="Service Ticket"
+                    value={selectedWorkOrderId}
+                    placeholder="Select a Ticket"
+                    options={workOrderOptions}
+                    onchange={handleWorkOrderChange}>
+                </lightning-combobox>
+            </div>
+        </div>
+
+        <!-- Product Search Input -->
+        <div class="slds-m-around_medium" style="width: 25%; position: relative;">
+            <label for="productSearchInput" class="slds-form-element__label">Search Product</label>
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <input type="text" id="productSearchInput" placeholder="Search Product"
+                        oninput={handleProductSearch} value={productSearchKey}
+                        class="slds-input">
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Table -->
+        <div class="slds-box slds-theme_default">
+            <lightning-card title="Products">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset slds-text-title_caps">
+                            <th scope="col"><div class="slds-truncate">Select</div></th>
+                            <th scope="col"><div class="slds-truncate">Product Name</div></th>
+                            <th scope="col"><div class="slds-truncate">HSN No</div></th>
+                            <th scope="col"><div class="slds-truncate">Quantity in Hand</div></th>
+                            <th scope="col"><div class="slds-truncate">Unit Price</div></th>
+                            <th scope="col"><div class="slds-truncate">Quantity Needed</div></th>
+                            <th scope="col"><div class="slds-truncate">Discount%</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={pagedProducts} for:item="prod">
+                            <tr key={prod.Id}>
+                                <!-- Select Checkbox -->
+                                <td scope="row">
+                                    <lightning-input 
+                                        type="checkbox" 
+                                        data-id={prod.Id} 
+                                        checked={prod.isSelected} 
+                                        disabled={prod.disabled} 
+                                        onchange={handleRowSelection}>
+                                    </lightning-input>
+                                </td>
+
+                                <!-- Product Name -->
+                                <td scope="row">{prod.Product2.Name}</td>
+
+                                <!-- HSN No -->
+                                <td scope="row">{prod.Product2.HSN_No__c}</td>
+
+                                <!-- Quantity in Hand -->
+                                <td scope="row">{prod.QuantityOnHand}</td>
+
+                                <!-- Unit Price -->
+                                <td>{prod.unitPrice}</td>
+
+                                <!-- Quantity Needed -->
+                                <td>
+                                    <lightning-input 
+                                        type="number" 
+                                        placeholder="Enter Quantity" 
+                                        data-id={prod.Id} 
+                                        data-price={prod.unitPrice} 
+                                        value={prod.quantity} 
+                                        disabled={prod.disabled} 
+                                        onchange={handleQuantityChange}>
+                                    </lightning-input>
+                                </td>
+
+                                <!-- Discount -->
+                                <td>
+                                    <lightning-input 
+                                        type="text" 
+                                        placeholder="Enter Discount%" 
+                                        data-id={prod.Id} 
+                                        data-field="discount" 
+                                        onchange={handleDiscountChange} 
+                                        value={prod.discount}
+                                        disabled={prod.discountDisabled}>
+                                    </lightning-input>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+
+                <!-- Pagination Controls -->
+                <div class="pagination">
+                    <lightning-button label="Previous" disabled={isPreviousDisabled} onclick={handlePreviousPage}></lightning-button>
+                    <span>Page {currentPage} of {totalPages}</span>
+                    <lightning-button label="Next" disabled={isNextDisabled} onclick={handleNextPage}></lightning-button>
+                </div>
+
+                <!-- Next Button -->
+                <div class="slds-align_absolute-center">
+                    <lightning-button variant="brand" label="View Summary" onclick={handleSubmit}></lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+    </template>
+
+    <!-- Order Summary Section -->
+<template if:true={showOrderSummary}>
+    <div class="slds-p-around_medium">
+        <h2 class="slds-text-heading_medium">Order Summary</h2>
+
+        <!-- Display Account, Contact, and Service Ticket details -->
+        <div>
+            <p><strong>Account:</strong> {selectedAccountName}</p>
+            <p><strong>Contact:</strong> {selectedContactName}</p>
+            <p><strong>Service Ticket:</strong> {selectedWorkOrderName}</p>
+        </div>
+    </div>
+
+    <!-- Datatable to show selected products -->
+    <lightning-datatable
+        key-field="Id"
+        data={selectedProductSummary} 
+        columns={columns}
+        hide-checkbox-column="true">
+    </lightning-datatable>
+    <!-- Display the total price -->
+<div class="slds-p-around_medium slds-text-align_right">
+    <p><strong>Total Price of All Products (incl. Tax):</strong> {totalPriceOfAllProducts}</p>
+</div>
+
+<div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-2">
+        <!-- Back Button -->
+        <lightning-button label="Back" onclick={handleBack} variant="neutral" class="slds-float_left"></lightning-button>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+        <!-- Submit Button -->
+        <lightning-button variant="brand" label="Submit Order" onclick={handleFinalSubmit} class="slds-float_right"></lightning-button>
+    </div>
+</div>
+
+</template>
+
+</template>

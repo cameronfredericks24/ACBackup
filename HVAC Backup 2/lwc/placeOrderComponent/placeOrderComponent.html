@@ -1,0 +1,128 @@
+<template>
+  <template if:true={loader}>
+    <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+  </template>
+
+  <template if:false={showOrderSummary}>
+
+    <div class="slds-text-align_center slds-p-around_medium">
+      <h1 class="slds-text-heading_large">Place Order</h1>
+    </div>
+
+   
+
+    <div class="slds-grid slds-gutters" style="justify-content: center;">
+     
+      
+       
+      <br/>
+      <div class="slds-col slds-size_1-of-2" style="font-weight: bolder;">
+        <lightning-input type="search" label="Search" onchange={handleSearchChange} placeholder="Search by Part Name or Part Code"></lightning-input>
+      </div>
+    </div>
+    <br/>
+
+    <div>
+      <div  class="slds-text-align_center slds-p-around_medium" style="font-weight: bolder;">
+        
+        <lightning-input 
+        type="checkbox"
+
+        label="Apply IGST?"
+        checked={isIGSTChecked} 
+        onchange={handleIGSTChange}>
+       </lightning-input>
+      </div>
+    </div>
+
+    <div class="slds-box slds-theme_default">
+      <lightning-card>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+          <thead>
+            <tr class="slds-line-height_reset slds-text-title_caps">
+              <th class="slds-is-resizable" scope="col">
+                <div class="slds-truncate" title="Name">Select</div>
+              </th>
+              <th class="slds-is-resizable" scope="col">
+                <div class="slds-truncate" title="Part Name">Part Name</div>
+              </th>
+              <th class="slds-is-resizable" scope="col">
+                <div class="slds-truncate" title="Part Code">Part Code</div>
+              </th>
+              <th class="slds-is-resizable" scope="col">
+                <div class="slds-truncate" title="Part Code">HSN Code</div>
+              </th>
+              <th class="slds-is-resizable" scope="col">
+                <div class="slds-truncate" title="Part Code">Part Tax</div>
+              </th>
+              <th class="slds-is-resizable" scope="col">
+                <div class="slds-truncate" title="Quantity">Quantity</div>
+              </th>
+              <th class="slds-is-resizable" scope="col">
+                <div class="slds-truncate" title="Price">Part Price</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <template if:true={accounts}>
+              <template for:each={accounts} for:item="prod">
+                <tr key={prod.Id}>
+                  <td scope="row">
+                    <lightning-input type="checkbox" data-id={prod.itemId} checked={prod.isSelected} onchange={handleRowSelection}></lightning-input>
+                  </td>
+                  <td scope="row" data-label="Part Name">
+                    <div class="slds-truncate" title={prod.Name}>{prod.itemName}</div>
+                  </td>
+                  <td scope="row" data-label="Part Code">
+                    <div class="slds-truncate" title={prod.AccountNumber}>{prod.itemCode}</div>
+                  </td>
+                  <td scope="row" data-label="Part Code">
+                    <div class="slds-truncate" title={prod.AccountNumber}>{prod.itemHSN}</div>
+                  </td>
+                  <td scope="row" data-label="Part Code">
+                    <div class="slds-truncate" title={prod.AccountNumber}>{prod.itemIGST}</div>
+                  </td>
+                  <td>
+                    <lightning-input type="number" placeholder="Enter Quantity" onchange={handleQuantityChange} data-id={prod.itemId} data-price={prod.itemPrice} value={prod.quantity} min="0" style="text-align: center;"></lightning-input>
+                  </td>
+                  <td scope="row" data-label="Part Price">
+                    <div class="slds-truncate" title={prod.itemPrice}>{prod.itemPrice}</div>
+                  </td>
+                </tr>
+              </template>
+            </template>
+          </tbody>
+        </table>
+
+        <template if:true={isDisplayNoRecords}>
+          <div class="slds-align_absolute-center">
+            <br />
+            No records found
+          </div>
+        </template>
+
+        <br />
+
+        <div class="slds-align_absolute-center">
+          <div class="slds-p-right_xx-small">
+            <lightning-button label="Prev" disabled={isPrev} onclick={handlePrev} variant="brand" icon-name="utility:back" name="prev"></lightning-button>
+          </div>
+          <span class="slds-badge slds-badge_lightest">
+            {recordStart}-{recordEnd} of {totalRecords} | Page {pageNumber} of {totalPages}
+          </span>
+          <div class="slds-p-left_xx-small">
+            <lightning-button label="Next" disabled={isNext} onclick={handleNext} variant="brand" icon-name="utility:forward" icon-position="right" name="next"></lightning-button>
+          </div>
+        </div>
+
+        <div class="slds-p-around_large slds-align_absolute-center">
+          <lightning-button variant="brand" label="Submit" onclick={handleSubmit}></lightning-button>
+        </div>
+      </lightning-card>
+    </div>
+  </template>
+
+  <template if:true={showOrderSummary}>
+    <c-view-order-summary rec-id={locationId} combined-products={selectedAccounts} total-price={totalPrice}  is-i-g-s-t-checked={isIGSTChecked} onback={handBack}></c-view-order-summary>
+  </template>
+</template>

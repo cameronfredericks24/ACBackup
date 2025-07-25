@@ -1,0 +1,104 @@
+.template-container {
+    text-align: center;
+    font-size: large;
+    background: snow;
+    padding: 20px;
+}
+
+.file-input {
+    /* Add any additional styling for the file input */
+}
+
+.upload-button {
+    /* Style for the Create Records button */
+    
+}
+
+
+.download-link-container {
+    text-align: center;
+    padding: 20px;
+   
+    cursor: pointer;
+    background: snow;
+}
+
+.download-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text color */
+    border: 1px solid #4caf50; /* Green border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.downloadUI-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #f22a2a; /* Green background */
+    color: white; /* White text color */
+    border: 1px solid #4caf50; /* Green border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.download-link:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.error-container {
+    border: 1px solid #ff3333;
+    background-color: #ffd6d6;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: #ff3333;
+    margin: 0;
+}
+
+.download-message {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.exampleHolder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.disclaimer {
+    background-color:beige;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+    margin-bottom: 10px;
+}
+
+.date-format, .info {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.date-format {
+    color: #0070d2;
+}

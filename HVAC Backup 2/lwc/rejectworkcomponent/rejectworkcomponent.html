@@ -1,0 +1,55 @@
+<template>
+    <div>
+        <template if:true={showWorkCompletedMessage}>
+            <div class="message work-rejected-successfully"> WorkOrder is already Completed </div>
+        </template>
+        <template if:false={showWorkCompletedMessage}>
+            <template if:true={showConfirmationScreen}>
+                <div class="confirmation-screen">
+                    <p>Are you sure you want to reject this work order?</p>
+                    <lightning-button label="Yes" onclick={handleRejectConfirmation}></lightning-button>
+                    <lightning-button label="No" onclick={handleCancelReject}></lightning-button>
+                </div>
+            </template>
+
+            <template if:false={showConfirmationScreen}>
+                <template if:true={showWorkrejectedMessage}>
+                    <div class="message work-rejected">Work already rejected</div>
+                </template>
+
+                <template if:false={showWorkrejectedMessage}>
+                    <template if:true={showRejectReason}>
+                        <div class="cancellation-reason">
+                            <label for="rejectReason">Select Reject Reason</label>
+                            <lightning-combobox class="custom-combobox" name="rejectReason" value={rejectReason}
+                                options={RejectReasonOptions} onchange={handleRejectReasonInput}>
+                            </lightning-combobox>
+
+                            <lightning-input class="reason-of-reject" label="Reason of Reject" placeholder="comments"
+                                name="reasonOfReject" style="width:75vw;" value={commissioningTicketReasonOfReject}
+                                onchange={handleCommissioningTicketReasonInput} required={isOthersSelected}>
+                            </lightning-input>
+
+                            <div class="slds-grid slds-gutters slds-align_absolute-center">
+                                <div class="slds-col">
+                                    <lightning-button label="Back" onclick={onBack}
+                                    variant="brand-outline"></lightning-button>
+                                   
+                                </div>
+                                <div class="slds-col">
+                               
+                                        <lightning-button label="Next" onclick={onnext}
+                                        class="next-button"></lightning-button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </template>
+                    <template if:true={showWorkrejectedSuccessfullyMessage}>
+                        <div class="message work-rejected-successfully">Work rejected successfully</div>
+                    </template>
+                </template>
+            </template>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Quote</baseObject>
+    <category>opportunities</category>
+    <deployed>true</deployed>
+    <description>Opportunities w/ Quotes w/ LineItems - CPAG CRBG</description>
+    <join>
+        <outerJoin>false</outerJoin>
+        <relationship>QuoteLineItems</relationship>
+    </join>
+    <label>Opportunities w/ Quotes w/ LineItems - CPAG CRBG</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Number</displayNameOverride>
+            <field>QuoteNumber</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Account Name</displayNameOverride>
+            <field>Opportunity.Account</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Name</displayNameOverride>
+            <field>Opportunity</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Type</displayNameOverride>
+            <field>Contract_Type__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Contract End Date</displayNameOverride>
+            <field>Opportunity.Opportunity_End_Date__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Contract Start Date</displayNameOverride>
+            <field>Opportunity.Opportunity_Start_Date__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Contract Type</displayNameOverride>
+            <field>Opportunity.Contract_Type__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Status</displayNameOverride>
+            <field>Status</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Stage</displayNameOverride>
+            <field>Opportunity.StageName</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Status</displayNameOverride>
+            <field>Opportunity.SubStatus__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Start Date</displayNameOverride>
+            <field>Opportunity.Start_Date__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : End Date</displayNameOverride>
+            <field>Opportunity.End_Date__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Is Overdue O/S more than 90 Days</displayNameOverride>
+            <field>Opportunity.Overdue_OS__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : KAM</displayNameOverride>
+            <field>Opportunity.KAM__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposed Period From</displayNameOverride>
+            <field>Proposed_Period_From__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposed Period To</displayNameOverride>
+            <field>Proposed_Period_To__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Department</displayNameOverride>
+            <field>Department__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Division</displayNameOverride>
+            <field>Division__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Plant : Warehouse Code</displayNameOverride>
+            <field>Opportunity.Plant__c.Warehouse_Code__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Plant : Warehouse Type</displayNameOverride>
+            <field>Opportunity.Plant__c.Warehouse_Type__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Branch : Region</displayNameOverride>
+            <field>Opportunity.Branch__c.Region__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Branch : Branch Name</displayNameOverride>
+            <field>Opportunity.Branch__c.Name</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Branch : Branch Code</displayNameOverride>
+            <field>Opportunity.Branch__c.Branch_Code__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Customer Segment</displayNameOverride>
+            <field>Opportunity.Industry__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Customer Sub Segment</displayNameOverride>
+            <field>Opportunity.Sub_Industry__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Customer Type</displayNameOverride>
+            <field>Opportunity.Customer_Type__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Customer Group</displayNameOverride>
+            <field>Opportunity.Group__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : PO Number</displayNameOverride>
+            <field>Opportunity.PO_Number__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : PO Date</displayNameOverride>
+            <field>Opportunity.PO_Date__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : PO Duration - Start</displayNameOverride>
+            <field>Opportunity.PO_Duration_Start__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : PO Duration - End</displayNameOverride>
+            <field>Opportunity.PO_Duration_End__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : PO Receipt Date</displayNameOverride>
+            <field>Opportunity.PO_Receipt_Date__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Downloading Value</displayNameOverride>
+            <field>Total_Download_Value_Rollup__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : PO Total Value (Basic)</displayNameOverride>
+            <field>Opportunity.PO_Total_Value__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : PO Uploaded?</displayNameOverride>
+            <field>Opportunity.PO_Uploaded__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : CBO</displayNameOverride>
+            <field>Opportunity.CBO__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Channel Partner Account : CP Code</displayNameOverride>
+            <field>Opportunity.Channel_Partner_Account__c.CP_Code__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Channel Partner Account : CP Name</displayNameOverride>
+            <field>Opportunity.Channel_Partner_Account__c.CP_Name__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Service Contract : SAP Contract Number</displayNameOverride>
+            <field>Opportunity.Service_Contract__c.SAP_Contract_Number__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Contract Category</displayNameOverride>
+            <field>Opportunity.Contract_Category__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HSN/SAC code</displayNameOverride>
+            <field>HSN_SAC_code_New__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Events</displayNameOverride>
+            <field>Number_of_Events__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Downloading Value</displayNameOverride>
+            <field>Previous_Downloading_Value__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Product : Product Code</displayNameOverride>
+            <field>Product2.ProductCode</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Product : Capacity UOM</displayNameOverride>
+            <field>Product2.Capacity_UOM__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CP %</displayNameOverride>
+            <field>CP__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Product : Product Sub Family</displayNameOverride>
+            <field>Product2.Product_Sub_Family__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Net Price</displayNameOverride>
+            <field>Net_Price__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Standard Downloading Value</displayNameOverride>
+            <field>Standard_Downloading_Value__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Product : Capacity</displayNameOverride>
+            <field>Product2.Capacity__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Product : Product Family</displayNameOverride>
+            <field>Product2.Family</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : CP : Account Name</displayNameOverride>
+            <field>CP__c.Name</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : CP : Account Name</displayNameOverride>
+            <field>CP__c.TextName</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : CP : Account Name</displayNameOverride>
+            <field>CP__c.Account_Name__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity.Account.SAP_Customer_Id__c</field>
+            <table>Quote</table>
+        </columns>
+        <masterLabel>Quotes</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Product : Product Name</displayNameOverride>
+            <field>Product2.Name</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>Status__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Component Id</displayNameOverride>
+            <field>Asset__c.Component_Id__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Name</displayNameOverride>
+            <field>Quote</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Account</displayNameOverride>
+            <field>Asset__c.Account</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Account : Account Name</displayNameOverride>
+            <field>Asset__c.Account.TextName</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Account : Account Name</displayNameOverride>
+            <field>Asset__c.Account.Account_Name__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Policy Name</displayNameOverride>
+            <field>Policy_Name__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote And Asset Combo Backend</displayNameOverride>
+            <field>Quote_And_Asset_Combo_Backend__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract Price</displayNameOverride>
+            <field>Previous_Contract_Price__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Account : Account Name</displayNameOverride>
+            <field>Asset__c.Account.Name</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : CP User</displayNameOverride>
+            <field>Asset__c.CP_User__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>QuoteAccount.SAP_Customer_Id__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>QuoteAccount.Customer_ID__c</field>
+            <table>Quote</table>
+        </columns>
+        <masterLabel>Quote Line New</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EGM (Estimated Gross Margin)</displayNameOverride>
+            <field>EGM_Formula__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EGM%</displayNameOverride>
+            <field>EGM_Percent_Formula__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Final Net Contract Value</displayNameOverride>
+            <field>Final_Net_Contract_Value_Curr__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discount</displayNameOverride>
+            <field>Discount</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Net Contract Value</displayNameOverride>
+            <field>Net_Contract_Value_Currency__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Year Price</displayNameOverride>
+            <field>Last_Year_Price_for_Asset__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Credit Days</displayNameOverride>
+            <field>Payment_Credit_Days__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Terms of Payment - Customer</displayNameOverride>
+            <field>Terms_of_Payment_Customer__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Grand Total</displayNameOverride>
+            <field>GrandTotal</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Downloading value</displayNameOverride>
+            <field>Total_Downloading_value__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Requested Downloading</displayNameOverride>
+            <field>Requested_Downloading__c</field>
+            <table>Quote</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Revise Total Downloading Value</displayNameOverride>
+            <field>Revise_Total_Downloading_Value__c</field>
+            <table>Quote</table>
+        </columns>
+        <masterLabel>Quotes Accounting</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Channel Partner Account : CP Name</displayNameOverride>
+            <field>Channel_Partner_Account__c.CP_Name__c</field>
+            <table>Quote</table>
+        </columns>
+        <masterLabel>Channel Partner</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote : Opportunity Name : Ship to Party</displayNameOverride>
+            <field>Opportunity.Ship_to_Party__c</field>
+            <table>Quote</table>
+        </columns>
+        <masterLabel>Ship To Party</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Service Contract : SAP Contract Number</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.SAP_Contract_Number__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Service Contract : Contract Period</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Contract_Period__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Service Contract : Contract Value</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Contract_Value__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Service Contract : Contract Type</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Contract_Type__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Service Contract : Contract Status</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Contract_Status__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Service Contract : Activation Date</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.ActivationDate</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line Item : Asset : Service Contract : Final Downloading Value</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Final_Downloading_Value__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <masterLabel>Service Contract(Asset)</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Downloading Value</displayNameOverride>
+            <field>Previous_Downloading_Value__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract From</displayNameOverride>
+            <field>Previous_Contract_From__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract To</displayNameOverride>
+            <field>Previous_Contract_To__c</field>
+            <table>Quote.QuoteLineItems</table>
+        </columns>
+        <masterLabel>Quote Line Items</masterLabel>
+    </sections>
+</ReportType>

@@ -1,0 +1,131 @@
+p {
+    padding-bottom: 5px; /* Adjust the padding value as needed */
+}
+
+.custom-lookup {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+
+.slds-dropdown {
+   
+    max-height: 150px; /* Adjust as needed */
+    overflow-y: auto; /* Enable vertical scrolling */}
+
+
+.slds-listbox__item {
+    cursor: pointer;
+}
+
+.slds-listbox__item:hover {
+    background-color: #f4f6f9;
+}
+
+.slds-listbox__option {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.InvoiceDetails{
+    text-align: center;
+    padding-top: 20%;
+    font-size: medium;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+}
+.AddressDetails{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+}
+
+
+.InvoiceGrid{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+
+
+}
+
+.ProductDiv {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transition for smooth color change */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+
+}
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ProductDiv:hover {
+    background-color: #A3CAAF; /* Change color on hover */
+    font-size: larger;
+    cursor: pointer;
+
+}
+
+
+.ProductDiv.clicked {
+    background-color: #7CB08A; /* Change color when clicked */
+    box-shadow: none; /* Remove box shadow when clicked */
+    border-radius: 5px;
+
+}
+
+.ChildProductDiv{
+    align-items: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transition for smooth color change */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.ChildProductDiv:hover {
+    background-color: #A3CAAF; /* Change color on hover */
+    font-size: larger;
+    cursor: pointer;
+
+
+}
+
+
+
+.ChildProductDiv.clicked {
+    background-color: #7CB08A;
+    /* background-color: #FAF0E6;  */
+    box-shadow: none; /* Remove box shadow when clicked */
+    border-radius: 5px;
+
+}
+
+
+:host ::slotted(lightning-tree-grid) [data-is-selectable="false"] .slds-checkbox {
+    display: none;
+}
+
+.THIS tr[aria-level="1"]  > td[data-col-key-value="0-SELECTABLE_CHECKBOX-0"]{
+    visibility:hidden !important;
+ }
+
+
+.slds-modal__container {
+  
+    position: relative;
+}
+
+.registered-product {
+    background-color: #d4edda; /* Green background for registered items */
+    color: #155724; /* Dark green text */
+}

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "f74e5b94-6ba0-4aa4-99bc-ad23040014f1",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "4a7684da-0d79-46a6-83ee-314a54d1c4b4",
+  "label" : "Inventory List",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-inventory-list",
+  "type" : "route",
+  "urlPrefix" : "inventory-list"
+}

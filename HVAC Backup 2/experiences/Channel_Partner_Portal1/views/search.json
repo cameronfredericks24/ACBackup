@@ -1,0 +1,63 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "e433bfbd-03f3-437c-b95b-61fd213dcdab",
+  "label" : "Search",
+  "regions" : [ {
+    "id" : "09f06804-13a4-4706-8219-813dcf99c73a",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "scopes" : [ {
+          "isPublic" : true,
+          "name" : "WorkOrder"
+        }, {
+          "isPublic" : true,
+          "name" : "KnowledgeArticleVersion"
+        }, {
+          "isPublic" : true,
+          "name" : "Account"
+        }, {
+          "isPublic" : true,
+          "name" : "Asset"
+        }, {
+          "isPublic" : true,
+          "name" : "WorkOrder"
+        }, {
+          "isPublic" : true,
+          "name" : "ProductItem"
+        }, {
+          "isPublic" : true,
+          "name" : "Opportunity"
+        }, {
+          "isPublic" : true,
+          "name" : "Lead"
+        }, {
+          "isPublic" : true,
+          "name" : "ProductRequest"
+        } ],
+        "searchResultFiltering" : true,
+        "searchTerm" : "{!term}",
+        "showTopResults" : true
+      },
+      "componentName" : "forceCommunity:search",
+      "id" : "1f3d1186-39a1-4439-b31f-d9a751c3cf7e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1ea477fb-b209-4d40-ab87-29439af3467c",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "fc1790df-ad4b-4214-8604-77e04b537c1b",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "global-search"
+}

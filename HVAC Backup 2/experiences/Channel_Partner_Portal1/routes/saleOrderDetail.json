@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "fa2a68d3-65a3-489a-b92d-d0931578ae25",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "cd220a6b-6f4a-4e8c-8e0a-c17ee7fbd4ea",
+  "label" : "Sale Order Detail",
+  "objectApiName" : "Sale_Order__c",
+  "routeType" : "detail-a4A",
+  "type" : "route",
+  "urlPrefix" : "sale-order"
+}

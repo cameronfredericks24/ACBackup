@@ -1,0 +1,29 @@
+<template>
+   <lightning-card>
+       <lightning-file-upload
+           label="Upload Image"
+           name="fileUploader"
+           multiple
+           accept=".jpg, .jpeg, .png, .pdf"
+           record-id={rowId}
+           onuploadfinished={handleUploadFinished}
+       ></lightning-file-upload>
+
+
+       <template if:true={files.length}>
+           <template for:each={files} for:item="file">
+               <div key={file.documentId} class="slds-box slds-box_x-small slds-m-around_small">
+                   <a href={file.url} target="_blank">
+                       <img src={file.url} alt={file.name} style="max-width: 100px; max-height: 100px; margin:20px" />
+                       <span>{file.name}</span>
+                   </a>
+                   
+                   <lightning-button-icon icon-name="utility:close" alternative-text="Delete" data-id={file.documentId} data-row-id={file.rowId} onclick={handleFileDelete}></lightning-button-icon>
+               </div>
+           </template>
+       </template>
+
+
+       
+   </lightning-card>
+</template>

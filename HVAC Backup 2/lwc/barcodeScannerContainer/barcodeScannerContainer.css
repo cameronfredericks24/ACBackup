@@ -1,0 +1,44 @@
+:host {
+    display: block;
+    margin: 1rem 0;
+}
+.slds-button_icon {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slds-button_icon:focus {
+    outline: none;
+}
+
+.custom-input {
+    width: 100%; /* Ensure the input takes the full width of the container */
+}
+
+.input-with-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-input input {
+    padding-right: 2rem; /* Adjust based on the icon size and spacing */
+}
+
+.icon-button {
+    position: absolute;
+    right: 0.5rem; /* Adjust based on desired positioning */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 15px;
+    margin-right: -5px;
+}

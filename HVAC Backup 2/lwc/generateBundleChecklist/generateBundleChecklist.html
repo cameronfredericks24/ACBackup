@@ -1,0 +1,76 @@
+<template>
+    <lightning-card class="custom-card">
+        <!-- Disclaimer below title -->
+        <p class="disclaimer">
+            ⚠️ At a time, you can bundle up to 20 tickets per Customer. ⚠️
+        </p>
+        <hr/>
+        <div class="mainContainer">
+            <template if:false={showDataScreen}>
+                <div class="center-content">
+                    <template if:true={isLoadingData}>
+                        <div class="exampleHolder">
+                            <lightning-spinner alternative-text="Loading Data" size="medium"></lightning-spinner>
+                        </div>
+                    </template>
+                    <template if:false={isLoadingData}>
+                        <lightning-button 
+                            variant="brand" 
+                            label="Get PMS Tickets" 
+                            title="Get PMS Tickets" 
+                            onclick={handleFetchData}
+                            class="action-button">
+                        </lightning-button>
+                    </template>
+                </div>
+            </template>
+
+            <template if:true={showDataScreen}>
+                <template if:false={showNewWorkOrder}>
+                    <template if:true={data}>
+                        <!-- Show No Data Message if data is empty -->
+                        <template if:false={hasData}>
+                            <p class="no-data-message">No data available to bundle.</p>
+                        </template>
+                        <template for:each={data} for:item="record">
+                            <div key={record.formattedValue} class="data-item">
+                                <input type="radio" name="account" value={record.formattedValue} data-value={record.formattedValue} onchange={handleSelection}/>
+                                <span class="record-text" data-value={record.formattedValue} onclick={handleSelection}>
+                                    {record.displayString}
+                                </span>
+                            </div>
+                        </template>                                    
+                    </template>
+                    <template if:true={error}>
+                        <p class="error-message">{error}</p>
+                    </template>
+                    <template if:true={isCreatingWorkOrder}>
+                        <div class="exampleHolder">
+                            <lightning-spinner alternative-text="Creating WorkOrder" size="medium"></lightning-spinner>
+                        </div>
+                    </template>
+                    <template if:false={isCreatingWorkOrder}>
+                        <div class="button-container">
+                            <lightning-button 
+                                variant="brand" 
+                                label="Generate Bundle Checklist" 
+                                title="Primary action" 
+                                onclick={handleSubmit} 
+                                class="action-button"
+                                disabled={isButtonDisabled}>
+                            </lightning-button>
+                        </div>
+                    </template>
+                </template>
+                <template if:true={showNewWorkOrder}>
+                    <div class="newST">
+                        <p>Your new Bulk PMS Ticket Number is: <strong>{ticketNumber}</strong></p>
+                    </div>
+                    <div class="button-container">
+                        <lightning-button class="back-button" label="Back" onclick={handleBack}></lightning-button>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

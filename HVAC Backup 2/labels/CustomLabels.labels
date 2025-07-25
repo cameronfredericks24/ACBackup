@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>BSL_AICH</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL AICH</shortDescription>
+        <value>005Bi0000036cfK</value>
+    </labels>
+    <labels>
+        <fullName>BSL_AIDH</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL AIDH</shortDescription>
+        <value>005Bi0000036fl7</value>
+    </labels>
+    <labels>
+        <fullName>BSL_AIH</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL AIH</shortDescription>
+        <value>005Bi000002hYGb</value>
+    </labels>
+    <labels>
+        <fullName>BSL_AM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL AM</shortDescription>
+        <value>005Bi000002hXKY</value>
+    </labels>
+    <labels>
+        <fullName>BSL_CBO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL CBO</shortDescription>
+        <value>005Ny00000783JxIAI</value>
+    </labels>
+    <labels>
+        <fullName>BSL_Default_Location</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL Default Location</shortDescription>
+        <value>1319I000000AIy9QAG</value>
+    </labels>
+    <labels>
+        <fullName>BSL_NPC_Location</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL NPC Location</shortDescription>
+        <value>131Ny000000POdRIAW</value>
+    </labels>
+    <labels>
+        <fullName>BSL_Portal_Image_url</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL Portal Image url</shortDescription>
+        <value>https://bluestarlimited.my.site.com/channelpartnerportal/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&amp;versionId=</value>
+    </labels>
+    <labels>
+        <fullName>BSL_RCH</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL RCH</shortDescription>
+        <value>005Bi0000036cFP</value>
+    </labels>
+    <labels>
+        <fullName>BSL_RM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL RM</shortDescription>
+        <value>005Bi0000036fun</value>
+    </labels>
+    <labels>
+        <fullName>BSL_SME</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL SME</shortDescription>
+        <value>005Bi000002hW3a</value>
+    </labels>
+    <labels>
+        <fullName>BSL_SMH</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSL SMH</shortDescription>
+        <value>005Bi0000036bko</value>
+    </labels>
+    <labels>
+        <fullName>BSl</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSl  org url</shortDescription>
+        <value>https://bluestarlimited.lightning.force.com/</value>
+    </labels>
+    <labels>
+        <fullName>BSl_org_url</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BSl org url</shortDescription>
+        <value>https://bluestarlimited.lightning.force.com/</value>
+    </labels>
+    <labels>
+        <fullName>Base_URL_for_image_preview</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Base URL for image preview</shortDescription>
+        <value>https://bluestarlimited.lightning.force.com/channelpartnerportal/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&amp;versionId=</value>
+    </labels>
+    <labels>
+        <fullName>Batch_Size</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Batch Size</shortDescription>
+        <value>200</value>
+    </labels>
+    <labels>
+        <fullName>Bluestar_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bluestar Email</shortDescription>
+        <value>customerservice@bluestarindia.com</value>
+    </labels>
+    <labels>
+        <fullName>Bluestar_Fax</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bluestar Fax</shortDescription>
+        <value>+91 172 5004007</value>
+    </labels>
+    <labels>
+        <fullName>Bluestar_GST_Number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bluestar GST Number</shortDescription>
+        <value>GS90VB089668</value>
+    </labels>
+    <labels>
+        <fullName>Bluestar_Income_Tax_PAN</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bluestar Income Tax PAN</shortDescription>
+        <value>CAGJ098HJ78</value>
+    </labels>
+    <labels>
+        <fullName>Bluestar_Telephone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bluestar Telephone</shortDescription>
+        <value>1860 266 6666</value>
+    </labels>
+    <labels>
+        <fullName>Bluestar_Website</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bluestar Website</shortDescription>
+        <value>www.bluestarindia.com</value>
+    </labels>
+    <labels>
+        <fullName>Bypass_User_DU</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bypass User DU</shortDescription>
+        <value>005Ny000006IRJ5IAO</value>
+    </labels>
+    <labels>
+        <fullName>Bypass_user</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bypass user</shortDescription>
+        <value>005Ny000006IRJ5IAO</value>
+    </labels>
+    <labels>
+        <fullName>Bypass_username</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bypass username</shortDescription>
+        <value>sureshkolli@bluestarindia.com</value>
+    </labels>
+    <labels>
+        <fullName>CBO_Contract_Modification_Label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CBO Contract Modification Label</shortDescription>
+        <value>0ML9I0000000KefWAE</value>
+    </labels>
+    <labels>
+        <fullName>CPAlternateUserProfileName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CPAlternateUserProfileName</shortDescription>
+        <value>BSL Admin</value>
+    </labels>
+    <labels>
+        <fullName>CPQPermissionSetGroupId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CPQPermissionSetGroupId</shortDescription>
+        <value>0PGNy0000000DEzOAM</value>
+    </labels>
+    <labels>
+        <fullName>CPQPermissionSetId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CPQPermissionSetId</shortDescription>
+        <value>0PSNy00000025GxOAI</value>
+    </labels>
+    <labels>
+        <fullName>CPQQuoteTemplateId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CPQQuoteTemplateId</shortDescription>
+        <value>a299I0000003OtpQAE</value>
+    </labels>
+    <labels>
+        <fullName>Case_CCO_Username</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case CCO Username</shortDescription>
+        <value>bsl@warpdrivetech.in.prod</value>
+    </labels>
+    <labels>
+        <fullName>Case_SAP_Username</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case SAP Username</shortDescription>
+        <value>genintegrationuser@wd.in</value>
+    </labels>
+    <labels>
+        <fullName>Commercial_Customer_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Commercial Customer Record Type</shortDescription>
+        <value>Commercial_Customer</value>
+    </labels>
+    <labels>
+        <fullName>Data_Migration</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Migration</shortDescription>
+        <value>datamigration.user@bluestarindia.prod</value>
+    </labels>
+    <labels>
+        <fullName>Data_Migration_User_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Migration User Id</shortDescription>
+        <value>005Ny000006lbYZIAY</value>
+    </labels>
+    <labels>
+        <fullName>DaysBetweenTodayAndEndOfMonth</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DaysBetweenTodayAndEndOfMonth</shortDescription>
+        <value>0</value>
+    </labels>
+    <labels>
+        <fullName>Default_Parent_Address_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default Parent Address Id</shortDescription>
+        <value>1319I0000006HkXQAU</value>
+    </labels>
+    <labels>
+        <fullName>Draft_NAMO_Head</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Draft_NAMO_Head</shortDescription>
+        <value>005Ny00000Abr8pIAB</value>
+    </labels>
+    <labels>
+        <fullName>Extended_Wty_PMS_Events</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Extended Wty PMS Events</shortDescription>
+        <value>2</value>
+    </labels>
+    <labels>
+        <fullName>Family_Names</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Family Names</shortDescription>
+        <value>f1,f2,f3</value>
+    </labels>
+    <labels>
+        <fullName>Gas_Capping_value</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Gas Capping value</shortDescription>
+        <value>6500</value>
+    </labels>
+    <labels>
+        <fullName>Hike_compared_to_last_year</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>% Hike compared to last year</shortDescription>
+        <value>1.15</value>
+    </labels>
+    <labels>
+        <fullName>KAM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>KAM</shortDescription>
+        <value>005Bi000002hkKz</value>
+    </labels>
+    <labels>
+        <fullName>MR_API_Internal_Order_Number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MR API Internal Order Number</shortDescription>
+        <value>502649</value>
+    </labels>
+    <labels>
+        <fullName>MSL_Days</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MSL Days</shortDescription>
+        <value>0</value>
+    </labels>
+    <labels>
+        <fullName>NAMO_Head</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NAMO Head</shortDescription>
+        <value>005Ny00000Abr8pIAB</value>
+    </labels>
+    <labels>
+        <fullName>No_PMS_days_Value</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No PMS days Value</shortDescription>
+        <value>30</value>
+    </labels>
+    <labels>
+        <fullName>Notification_Id_CBO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Notification Id CBO</shortDescription>
+        <value>0ML9I0000000KhtWAE</value>
+    </labels>
+    <labels>
+        <fullName>OppRenewalCPSDDays</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppRenewalCPSDDays</shortDescription>
+        <value>120</value>
+    </labels>
+    <labels>
+        <fullName>OppRenewalUPSDDays</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppRenewalUPSDDays</shortDescription>
+        <value>90</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_AMC_Record</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity AMC Record</shortDescription>
+        <value>012Ny0000003SwGIAU</value>
+    </labels>
+    <labels>
+        <fullName>Others_charges_limit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Others charges limit</shortDescription>
+        <value>15000</value>
+    </labels>
+    <labels>
+        <fullName>PMS</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PMS Days</shortDescription>
+        <value>30</value>
+    </labels>
+    <labels>
+        <fullName>PMS_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PMS Record Type</shortDescription>
+        <value>012Ny0000003SwmIAE</value>
+    </labels>
+    <labels>
+        <fullName>PMS_Work_Type_Record</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PMS Work Type Record</shortDescription>
+        <value>08qNy00000000BNIAY</value>
+    </labels>
+    <labels>
+        <fullName>Quantity_Mismatch</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quantity_Mismatch</shortDescription>
+        <value>Quantity not Matched !!!</value>
+    </labels>
+    <labels>
+        <fullName>QuoteTemplateId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuoteTemplateId</shortDescription>
+        <value>0EH9I0000004lgH</value>
+    </labels>
+    <labels>
+        <fullName>Quote_AMC_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote AMC Record Type</shortDescription>
+        <value>012Bi0000007pnNIAQ</value>
+    </labels>
+    <labels>
+        <fullName>SAP_Username</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SAP Username</shortDescription>
+        <value>sapintegrationuser@wd.in</value>
+    </labels>
+    <labels>
+        <fullName>ST_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ST URL</shortDescription>
+        <value>https://bluestarlimited.lightning.force.com</value>
+    </labels>
+    <labels>
+        <fullName>Sender_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sender Email</shortDescription>
+        <value>bslservice@bluestarindia.com</value>
+    </labels>
+    <labels>
+        <fullName>Service_Contract_Terms</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Service Contract Terms</shortDescription>
+        <value>12</value>
+    </labels>
+    <labels>
+        <fullName>Service_Report_Org_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Service Report Org URL</shortDescription>
+        <value>https://bluestarlimited.my.salesforce.com/services/data/v62.0/actions/standard/createServiceReport</value>
+    </labels>
+    <labels>
+        <fullName>Standard_PriceBook</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Standard PriceBook</shortDescription>
+        <value>01sNy00000006YTIAY</value>
+    </labels>
+    <labels>
+        <fullName>Survey_Link_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Survey Link 2</shortDescription>
+        <value>.</value>
+    </labels>
+    <labels>
+        <fullName>Survey_Link_3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Survey Link 3</shortDescription>
+        <value>my.salesforce-sites.com/</value>
+    </labels>
+    <labels>
+        <fullName>Survey_Link_4</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Survey Link 4</shortDescription>
+        <value>Survey?surveyinvitationid=</value>
+    </labels>
+    <labels>
+        <fullName>TAT_Criteria</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TAT Criteria</shortDescription>
+        <value>48</value>
+    </labels>
+    <labels>
+        <fullName>Test_For_DevOps</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Test For DevOps</shortDescription>
+        <value>Test Custom label for DevOps center</value>
+    </labels>
+    <labels>
+        <fullName>Threshold_Wty_Days_Auto_PMS</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Threshold Wty Days Auto PMS</shortDescription>
+        <value>60</value>
+    </labels>
+    <labels>
+        <fullName>TicketAssignmentAlternateUser</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CPAlternateUserProfileName</shortDescription>
+        <value>BSL Admin</value>
+    </labels>
+    <labels>
+        <fullName>Toll_Free_Number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Toll Free Number</shortDescription>
+        <value>1800 209 1177</value>
+    </labels>
+    <labels>
+        <fullName>Transaction_Note_Credit_Note_RT</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Transaction Note Credit Note RT</shortDescription>
+        <value>0129I000000AlKmQAK</value>
+    </labels>
+    <labels>
+        <fullName>Transaction_Note_Debit_Note_RT</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Transaction Note Debit Note RT</shortDescription>
+        <value>0129I000000AlKnQAK</value>
+    </labels>
+    <labels>
+        <fullName>Union_Territories</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Union Territories</shortDescription>
+        <value>DN
+DD
+JK
+LA
+CH
+DL
+PY
+LD
+AN</value>
+    </labels>
+    <labels>
+        <fullName>VIP_Case_Owner</fullName>
+        <categories>Case</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>VIP Case Owner</shortDescription>
+        <value>0059I000004W1Uy</value>
+    </labels>
+    <labels>
+        <fullName>Warranty_Extension_Warrnty_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Warranty Extension Warrnty Name</shortDescription>
+        <value>Warranty Extension</value>
+    </labels>
+    <labels>
+        <fullName>Work_Order_Cancel_Status_Validation_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Work Order Cancel Status Validation Error</shortDescription>
+        <value>Work Order cannot be canceled as MR exists.</value>
+    </labels>
+    <labels>
+        <fullName>Work_Order_Closed_Status_Validation_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Work Order Closed Status Validation Error</shortDescription>
+        <value>Work Order cannot be completed as MRs are not completed or canceled.</value>
+    </labels>
+    <labels>
+        <fullName>Work_Order_PMS_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Work Order PMS Record Type</shortDescription>
+        <value>0129I000000AlKzQAK</value>
+    </labels>
+    <labels>
+        <fullName>X43_52_NAMO_Head</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>43_52_NAMO_Head</shortDescription>
+        <value>005Ny00000782n9IAA</value>
+    </labels>
+    <labels>
+        <fullName>X50_51_56_NAMO_Head</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>50_51_56_NAMO_Head</shortDescription>
+        <value>005Ny00000782vLIAQ</value>
+    </labels>
+    <labels>
+        <fullName>X53_58_NAMO_Head</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>53_58_NAMO_Head</shortDescription>
+        <value>005Ny00000782n9IAA</value>
+    </labels>
+    <labels>
+        <fullName>bslStaticEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>bslStaticEmail</shortDescription>
+        <value>bslstarserv@gmail.com</value>
+    </labels>
+    <labels>
+        <fullName>sendEmailOrg</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>sendEmailOrg</shortDescription>
+        <value>true</value>
+    </labels>
+    <labels>
+        <fullName>survey_link_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>survey link 1</shortDescription>
+        <value>https://bluestarlimited</value>
+    </labels>
+</CustomLabels>

@@ -1,0 +1,410 @@
+<apex:page contentType="text/xml" showHeader="false" sidebar="false" controller="AMCTemplateController">
+    <block text-align="center" font-family="sans-serif" font-size="15"  >
+        <apex:outputText > PROPOSAL / PROFORMA INVOICE  </apex:outputText>
+    </block>
+    
+    <table table-layout="fixed" width="100%" >
+        <table-body> 
+            <table-row>
+                <table-cell display-align="center" >
+                    <table table-layout="fixed" width="100%" >
+                        <table-body> 
+                            <table-row>
+                                <table-cell display-align="up" number-columns-spanned="2" >
+                                    <block text-align="up" font-family="sans-serif" font-size="9" >
+                                        <apex:outputText >Proposal / Proforma Invoice No </apex:outputText>
+                                    </block>
+                                </table-cell>
+                                <table-cell display-align="down" number-columns-spanned="1" >
+                                    <block text-align="down" font-family="sans-serif" font-size="9"  >
+                                        <apex:outputText >: {!HTMLENCODE(proposalName)}</apex:outputText>
+                                    </block>
+                                </table-cell>
+                            </table-row>
+                            <table-row>
+                                <table-cell display-align="up" number-columns-spanned="2" >
+                                    <block  text-align="up" font-family="sans-serif" font-size="9" >
+                                        <apex:outputText > Proposal / Proforma Invoice Date</apex:outputText>
+                                    </block>
+                                    
+                                </table-cell>
+                                <table-cell display-align="down" number-columns-spanned="1" >
+                                    
+                                    <block text-align="down" font-family="sans-serif" font-size="9"  >
+                                        <apex:outputText >: {!HTMLENCODE(todayDateString)}</apex:outputText>
+                                    </block>
+                                </table-cell>
+                            </table-row>
+                        </table-body>   
+                    </table>
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="1" >
+                    <table table-layout="fixed" width="100%" >
+                        <table-body> 
+                            <table-row>
+                                <table-cell display-align="up" number-columns-spanned="3" >
+                                    <block  text-align="up" font-family="sans-serif" font-size="9" >
+                                        <apex:outputText >Proposed Period From</apex:outputText>
+                                    </block>
+                                </table-cell>
+                                <table-cell display-align="down" number-columns-spanned="2">
+                                    <block  text-align="down" font-family="sans-serif" font-size="9"  >
+                                        <apex:outputText >: {!HTMLENCODE(proposedFromDateString)}</apex:outputText>
+                                    </block>
+                                </table-cell>
+                            </table-row>
+                            <table-row>
+                                <table-cell display-align="up" number-columns-spanned="3" >
+                                    <block  text-align="up" font-family="sans-serif" font-size="9" >
+                                        <apex:outputText >Proposed Period To</apex:outputText>
+                                    </block>
+                                    
+                                </table-cell>
+                                <table-cell display-align="down" number-columns-spanned="2" >
+                                    
+                                    <block  text-align="down" font-family="sans-serif" font-size="9"  >
+                                        <apex:outputText >: {!HTMLENCODE(proposedToDateString)}</apex:outputText>
+                                    </block>
+                                </table-cell>
+                            </table-row>
+                        </table-body>   
+                    </table>
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    
+    <table border="1pt solid  #000000">
+        <table-body> 
+            <table-row >
+                <table-cell display-align="left"  number-columns-spanned="1" border="1pt solid  #000000" padding="3pt" >
+                    <block font-weight="bold" text-align="left"  font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >Customer Name and Address</apex:outputText>
+                    </block>
+                    
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >{!HTMLENCODE(accountName)}</block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >{!HTMLENCODE(accountStreet)}</block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >{!HTMLENCODE(accountCity)}, {!HTMLENCODE(accountState)}, {!HTMLENCODE(accountCountry)}, {!HTMLENCODE(accountPincode)}</block>
+                    <block >&nbsp;</block> 
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >GSTIN ID: {!HTMLENCODE(accountGST)} </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9" > TAN: {!HTMLENCODE(accountTAN)} &nbsp;, PAN: {!HTMLENCODE(accountPAN)}</block>
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+                    <block font-weight="bold" text-align="left"  font-family="sans-serif" font-size="9" >
+                        <apex:outputText > Installation Address: </apex:outputText>
+                    </block> 
+                    
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >{!HTMLENCODE(installationName)} </apex:outputText>                        
+                    </block> 
+                    
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >                        
+                        <apex:outputText >{!HTMLENCODE(installationAddress)} </apex:outputText>
+                    </block> 
+                    
+                    <block >&nbsp;</block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >GSTIN ID:{!HTMLENCODE(accountGST)}</block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9" >TAN: {!HTMLENCODE(accountTAN)} &nbsp;, PAN: {!HTMLENCODE(accountPAN)}</block>
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    <table border-bottom-style="solid"  border="1pt solid  #000000" font-size="9" font-family="sans-serif">
+        <table-body> 
+            <table-row >
+                <table-cell display-align="left"  number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+                    <block font-weight="bold" text-align="left"   >
+                        <apex:outputText > Sr.No. </apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="5" border="1pt solid  #000000" padding="3pt">
+                    <block font-weight="bold" text-align="left"    >
+                        <apex:outputText > Description </apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="1" border="1pt solid  #000000" padding="3pt" >
+                    <block font-weight="bold" text-align="left"   >
+                        <apex:outputText > HSN / SAC </apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="5" border="1pt solid  #000000" padding="3pt" >
+                    <block font-weight="bold" text-align="left"  >
+                        <apex:outputText > Type Of Contract </apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="2" border="1pt solid  #000000" padding="3pt" >
+                    <block font-weight="bold" text-align="left"   >
+                        <apex:outputText > Contract Premium Amt. </apex:outputText>
+                    </block> 
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    <table border-bottom-style="solid"  >
+        <table-body> 
+            <table-row >
+                <table-cell display-align="left"  number-columns-spanned="1" border="1pt solid  #000000" padding="3pt" >
+                    <block  text-align="left" font-family="sans-serif" font-size="9" >
+                        <apex:outputText > 1 </apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="5" border="1pt solid  #000000" padding="3pt">
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText > {!HTMLENCODE(customInvoiceText)} </apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText > {!HTMLENCODE(HSNCode)} </apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="5" border="1pt solid  #000000" padding="3pt">
+                    <block  text-align="left" font-family="sans-serif" font-size="9" >
+                        <apex:outputText >{!HTMLENCODE(contractType)} </apex:outputText>
+                    </block> 
+                </table-cell>
+                <!--<table-cell display-align="left" number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+<block  text-align="left" font-family="sans-serif" font-size="9"  >
+<apex:outputText > 1 </apex:outputText>
+</block> 
+</table-cell>-->
+                <table-cell display-align="right" number-columns-spanned="2" border="1pt solid  #000000" padding="3pt">
+                    <block  text-align="right" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText > {!quoteTotalPrice} </apex:outputText>
+                    </block> 
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    <table border-bottom-style="solid"  >
+        <table-body> 
+            <table-row >
+                <table-cell display-align="left"  number-columns-spanned="7" border="1pt solid  #000000" padding="3pt" >
+                    <block font-weight="bold" text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >  </apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="5" border="1pt solid  #000000" padding="3pt">
+                    <block font-weight="bold" text-align="left"  font-family="sans-serif" font-size="9"  >
+                        <apex:outputText > Total Taxable Amount</apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="right" number-columns-spanned="2" border="1pt solid  #000000" padding="3pt">
+                    <block font-weight="bold" text-align="right" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText > {!quoteTotalPrice}</apex:outputText>
+                    </block> 
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    <table border-bottom-style="solid"  >
+        <table-body> 
+            <table-row >
+                <table-cell display-align="left"  number-columns-spanned="7" border="1pt solid  #000000" padding="3pt" >
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >  Total Contract Value In Words: </apex:outputText>
+                    </block> 
+                    <block font-weight="bold" text-align="left"  font-family="sans-serif" font-size="9"  padding-bottom="5pt">
+                        <apex:outputText >{!HTMLENCODE(totalTaxedAmountInWords)}</apex:outputText>
+                    </block>
+                    
+                    <block   text-align="left" font-family="sans-serif" font-size="9">
+                        <apex:outputText > Taxes as applicable on date of Servicing / Invoicing. </apex:outputText>
+                    </block>
+                    <block     text-align="left" font-family="sans-serif" font-size="9">
+                        <apex:outputText > Billing Frequency: {!HTMLENCODE(BillingFrequencyPeriod)} </apex:outputText>
+                        
+                    </block>
+                    <block     text-align="left" font-family="sans-serif" font-size="9">
+                        <apex:outputText > Billing Due Period: {!HTMLENCODE(BillingDuePeriod)} </apex:outputText>
+                    </block>
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="5" border="1pt solid  #000000" padding="3pt">
+                    
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText rendered="{!taxcgstRate != 0}" value="%">CGST : {!taxcgstRate}</apex:outputText>
+                    </block>
+                    
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText rendered="{!taxsgstRate != 0}" value="%">SGST : {!taxsgstRate}</apex:outputText>
+                    </block>
+                    
+                    <block text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText rendered="{!taxugstRate != 0}" value="%">UGST : {!taxugstRate}</apex:outputText>
+                    </block>
+                    
+                    <block text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText rendered="{!taxigstRate != 0}" value="%">IGST  : {!taxigstRate}</apex:outputText>
+                    </block>
+                    
+                </table-cell>
+                <table-cell display-align="right" number-columns-spanned="2" border="1pt solid  #000000" padding="3pt">
+                    
+                    <block  text-align="right" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText rendered="{!cgstAmt != 0}"> {!cgstAmt}</apex:outputText>
+                    </block>
+                    
+                    <block  text-align="right" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText rendered="{!sgstAmt != 0}">{!sgstAmt} </apex:outputText>
+                    </block>
+                    
+                    <block  text-align="right" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText rendered="{!ugstAMT != 0}">{!ugstAMT} </apex:outputText>
+                    </block>
+                    
+                    <block  text-align="right" font-family="sans-serif" font-size="9" >
+                        <apex:outputText rendered="{!igstAMT != 0}">{!igstAMT} </apex:outputText>
+                    </block>
+                    
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    <table border-bottom-style="solid"  >
+        <table-body> 
+            <table-row >
+                <table-cell display-align="left"  number-columns-spanned="7" border="1pt solid  #000000" padding="3pt" >
+                    <block font-weight="bold" text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >  </apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="left" number-columns-spanned="5" border="1pt solid  #000000" padding="3pt">
+                    <block font-weight="bold" text-align="left"  font-family="sans-serif" font-size="9"  >
+                        <apex:outputText > Grand Total</apex:outputText>
+                    </block> 
+                </table-cell>
+                <table-cell display-align="right" number-columns-spanned="2" border="1pt solid  #000000" padding="3pt">
+                    <block font-weight="bold" text-align="right" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText > {!totalTaxedAmount}</apex:outputText>
+                    </block> 
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    <table border-bottom-style="solid"  >
+        <table-body> 
+            <table-row >
+                <table-cell display-align="left" number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+                    <block font-weight="bold" text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >Key Inclusions of the Contract</apex:outputText>
+                    </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >*  4 Preventive Maintenance Services per Annum</apex:outputText>
+                    </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >*  All Break Down Calls shall be attended</apex:outputText>
+                    </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >*  Refer the scope of work annexure.</apex:outputText>
+                    </block>
+                </table-cell>
+                <table-cell display-align="right" number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+                    <block font-weight="bold" text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >Key Exclusions of the Contract</apex:outputText>
+                    </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >*   Replacements of the equipment due to ageing</apex:outputText>
+                    </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >*   Day to day operations of the equipment</apex:outputText>
+                    </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >*   Any damages due to the external influences</apex:outputText>
+                    </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >*  Refer the scope of work annexure.</apex:outputText>
+                    </block>
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    <table border-bottom-style="solid"  >
+        <table-body> 
+            <table-row >
+                <table-cell display-align="left" number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >Division :  {!HTMLENCODE(quoteDepartment)} </apex:outputText>
+                    </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >Dealer Name/BA Name : {!HTMLENCODE(quoteDealerName)}</apex:outputText>
+                    </block>
+                </table-cell>
+                <table-cell display-align="right" number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >Sales Office  : {!HTMLENCODE(quoteBranchNumber)}</apex:outputText>
+                    </block>
+                    <block  text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >Income Tax PAN No  : AAACB4487D </apex:outputText>
+                    </block>
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    <block  text-align="left"   > &nbsp;</block>
+    <block text-align="left" font-family="sans-serif" font-size="9"  >
+        <apex:outputText > CONTRACT WILL BE VALID ON PAYMENT OF Contract Premium as per agreed Terms of Payment. </apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9" >
+        <apex:outputText >To enter into contract please sign and return to us the duplicate of this contract together with your cheque for the amount. </apex:outputText>
+    </block>  
+    <block text-align="left" font-family="sans-serif" font-size="9" >
+        <apex:outputText >Customer hereby enters into Maintenance Contract with Blue Star Limited and Blue Star Limited agrees to provide such services for the above machines as per terms and conditions enclosed.</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9" >
+        <apex:outputText > Tax exempted if exemption certification furnished by you.</apex:outputText>
+    </block>
+    
+    <block  text-align="left"   > &nbsp;</block>
+    
+    
+    
+    <table  >
+        <table-body font-family="sans-serif" font-size="9"> 
+            <table-row>
+                <table-cell display-align="left" number-columns-spanned="2" >
+                    <block  text-align="left"   >
+                        <apex:outputText >Enclosed Annexure </apex:outputText>
+                    </block>
+                    <block  text-align="left"  >
+                        <apex:outputText >* Equipment Details</apex:outputText>
+                    </block>
+                    <block  text-align="left"  >
+                        <apex:outputText >*  Scope of the Contract</apex:outputText>
+                    </block>
+                    <block  text-align="left"  >
+                        <apex:outputText >* Terms and Condition</apex:outputText>
+                    </block>
+                </table-cell>
+                <table-cell   display-align="center" number-columns-spanned="2" >
+                    <block  text-align="center">
+                        <apex:outputText >On behalf of customer</apex:outputText>
+                    </block>
+                    <block >
+                        <apex:outputText >&nbsp;</apex:outputText>
+                    </block>
+                    <block >
+                        <apex:outputText >&nbsp;</apex:outputText>
+                    </block>
+                    <block  text-align="center">                                         
+                        <apex:outputText >Signature and Office Stamp</apex:outputText>
+                    </block>
+                </table-cell>
+                <table-cell display-align="center" number-columns-spanned="2" margin-left="20pt">
+                    <block font-weight="bold" text-align="center" >
+                        <apex:outputText >For BLUE STAR LIMITED</apex:outputText>
+                    </block>
+                    <block >
+                        <apex:outputText >&nbsp;</apex:outputText>
+                    </block>
+                    <block >
+                        <apex:outputText >&nbsp;</apex:outputText>
+                    </block>
+                    <block  text-align="center" >
+                        <apex:outputText >Authorized Signatory</apex:outputText>
+                    </block>
+                </table-cell>
+            </table-row>
+        </table-body>   
+    </table>
+    
+</apex:page>

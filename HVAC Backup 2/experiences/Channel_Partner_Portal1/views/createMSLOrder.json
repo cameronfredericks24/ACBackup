@@ -1,0 +1,46 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "731924c5-dd60-4e2c-b128-cf2693af8685",
+  "label" : "Create MSL Order",
+  "regions" : [ {
+    "id" : "ebee00ee-1050-41c9-bec2-6e9bd4e8d3bd",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:productTransferCmpNew",
+      "id" : "076a8181-528b-4e4c-8099-336deeb738c7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "039b5701-b59c-4850-a100-1323e6251b4c",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "b3585ed9-09af-4a16-aa01-fffb77ff2614",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Create MSL Order"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "c2a76673-0aa8-4808-bd82-a0d5920beb78",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "14fbb803-7088-4320-b77c-9f37c934d1ec",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-create-msl-order"
+}

@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "2c073039-f7db-4eed-84ce-65e78ba9f32f",
+    "propertyOverrides" : {
+      "activeViewId" : "1070e43d-f221-476f-9905-de477918f86c"
+    },
+    "targetId" : "2a829873-e1d3-4579-aded-9ce171f07161",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Bulk_Ticket_Creation_Bulk_Ticket_Creation_Page",
+  "id" : "843cbfaf-2e1d-473f-b7ab-3b67b616316d",
+  "type" : "experienceVariation"
+}

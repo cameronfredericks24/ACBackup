@@ -1,0 +1,313 @@
+<apex:page standardController="WorkOrder" extensions="WorkOrderController" applyHtmlTag="false" showHeader="false" renderAs="pdf">
+
+    <apex:form >
+        <!-- Header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px;">
+            <img src="https://bluestarlimited--dev--c.sandbox.vf.force.com/resource/1718601809000/BSL_Logo?" alt="Logo" style="width: 100px;" />
+            <div style="text-align: center; color: #314b62; font-size: 24px; font-weight: bold;">
+                Preventive Maintenance Service Report
+            </div>
+        </div>
+
+        <!-- Customer Details Section -->
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; border: 1px solid black;">
+            <tr>
+                <td style="border: 1px solid black; vertical-align: top; width: 50%;">
+                    <div style="background-color: #314b62; color: white; font-weight: bold; padding: 10px;">
+                        Customer Details
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: bold; padding: 5px;">Customer ID</td>
+                                <td style="padding: 5px;">: {!account.Customer_ID__c}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; padding: 5px;">Name</td>
+                                <td style="padding: 5px;">: {!account.Name}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; padding: 5px;">Address</td>
+                                <td style="padding: 5px;">: {!account.BillingStreet}, {!account.BillingCity}, {!account.BillingState}, {!account.BillingPostalCode}, {!account.BillingCountry}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; padding: 5px;">Email Id</td>
+                                <td style="padding: 5px;">: {!account.Email__c}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; padding: 5px;">Mobile No</td>
+                                <td style="padding: 5px;">: {!account.Phone}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+
+                <!-- Service Ticket Details Section -->
+                <td style="border: 1px solid black; vertical-align: top; width: 50%;">
+                    <div style="background-color:#314b62; color: white; font-weight: bold; padding: 10px;">
+                        Service Ticket Details
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: bold; padding: 5px;">Checklist No</td>
+                                <td style="padding: 5px;">: {!currentWorkOrder.WorkOrderNumber}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; padding: 5px;">Channel Partner Type</td>
+                                <td style="padding: 5px;">: {!currentWorkOrder.CP__r.Type}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; padding: 5px;">Service Provider No</td>
+                                <td style="padding: 5px;">: {!currentWorkOrder.CP__r.CP_Code__c}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; padding: 5px;">Service Provider Name</td>
+                                <td style="padding: 5px;">: {!currentWorkOrder.CP__r.Name}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Service Ticket Details Table -->
+        <div style="border: 1px solid black;">
+            <div style="background-color: #314b62; color: white; font-weight: bold; padding: 10px;">
+                Service Ticket Details
+            </div>
+            <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid black; padding: 5px;">Line No</th>
+                        <th style="border: 1px solid black; padding: 5px;">Ticket No</th>
+                        <th style="border: 1px solid black; padding: 5px;">Model No</th>
+                        <th style="border: 1px solid black; padding: 5px;">Product Serial No</th>
+                        <th style="border: 1px solid black; padding: 5px;">Component No</th>
+                        <th style="border: 1px solid black; padding: 5px;">UOM</th>
+                        <th style="border: 1px solid black; padding: 5px;">SOL ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:variable var="lineNo" value="{!1}" />
+                    <apex:repeat value="{!allChildWorkOrders}" var="childInfo">
+                        <tr>
+                            <td style="border: 1px solid black; padding: 5px;">{!lineNo}</td>
+                            <apex:variable var="lineNo" value="{!lineNo + 1}" />
+                            <td style="border: 1px solid black; padding: 5px;">{!childInfo.workOrder.Ticket_Number_Read_Only__c}</td>
+                            <td style="border: 1px solid black; padding: 5px;">{!childInfo.workOrder.Asset.Model_Number__c}</td>
+                            <td style="border: 1px solid black; padding: 5px;">{!childInfo.workOrder.Asset.SerialNumber}</td>
+                            <td style="border: 1px solid black; padding: 5px;">{!childInfo.workOrder.Asset.SF_Component_Id__c}</td>
+                            <td style="border: 1px solid black; padding: 5px;">{!childInfo.workOrder.Asset.Capacity_UOM__c}</td>
+                            <td style="border: 1px solid black; padding: 5px;">{!account.SOL_Store_ID__c}</td>
+                        </tr>
+                    </apex:repeat>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Iterate over each group of Work Orders -->
+        <apex:repeat value="{!groupedWrapperList}" var="group">
+            <div style="font-weight: bold; background-color: #808080; border: 1px groove black; color: white;margin-top:20px; margin-bottom: 10px; text-transform: uppercase; padding: 5px;">
+                {!group.firstFourProductSubFamilies}
+            </div>
+            <table border="1" style="width: 100%; table-layout: fixed; border-collapse: collapse;" >
+                <thead style="background-color: #314b62; color:white;">
+                    <tr>
+                        <th style="width: 25%; background-color:grey"></th>
+                        <!-- Iterate through Work Orders in the group, up to 4 columns -->
+                        <apex:repeat value="{!group.workOrders}" var="wrapper">
+                            <th style="width: 25%; padding:5px;">
+                                <apex:outputText rendered="{!NOT(wrapper.isEmpty)}">{!wrapper.modelNo}</apex:outputText>
+                            </th>
+                        </apex:repeat>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Repeat for each Workplan in the group -->
+                    <apex:repeat value="{!group.workOrders}" var="wrapper">
+                        <apex:repeat value="{!wrapper.workplans}" var="wp" rendered="{!NOT(wrapper.isEmpty)}">
+                            <tr style="background-color: #808080; color:white; padding:5px;">
+                                <td colspan="5" style="text-align: left;">{!wp.workplanName}</td>
+                            </tr>
+                            <!-- Repeat for each Workstep -->
+                            <apex:repeat value="{!wp.worksteps}" var="ws">
+                                <tr>
+                                    <td style="text-align: left;">{!ws.Name}</td>
+                                    <!-- Iterate through Work Orders in the group to find matching Worksteps -->
+                                    <apex:repeat value="{!group.workOrders}" var="innerWrapper">
+                                        <td style="text-align: left;">
+                                            <apex:outputText rendered="{!NOT(innerWrapper.isEmpty)}">
+                                                <!-- Match Workstep by Name and display Status or '-' -->
+                                                <apex:repeat value="{!innerWrapper.workplans}" var="innerWp">
+                                                    <apex:repeat value="{!innerWp.worksteps}" var="innerWs">
+                                                        <apex:outputText rendered="{!innerWs.Name == ws.Name}">
+                                                            {!IF(innerWs.Status != null, innerWs.Status, '-')}
+                                                        </apex:outputText>
+                                                    </apex:repeat>
+                                                </apex:repeat>
+                                            </apex:outputText>
+                                            <!-- Display '-' if no matching Workstep is found -->
+                                            <apex:outputText rendered="{!innerWrapper.isEmpty}">-</apex:outputText>
+                                        </td>
+                                    </apex:repeat>
+                                </tr>
+                            </apex:repeat>
+                        </apex:repeat>
+                    </apex:repeat>
+                    <!-- Row for displaying image URLs -->
+                    <tr>
+                        <td style="text-align: left;">Attachments</td>
+                        <apex:repeat value="{!group.workOrders}" var="wrapper">
+                            <td style="text-align: left;">
+                                <apex:outputText rendered="{!NOT(wrapper.isEmpty) && wrapper.imageUrl != ''}">
+                                    <apex:image url="{!wrapper.imageUrl}" width="100%" height="150px"/>
+                                </apex:outputText>
+                                <apex:outputText rendered="{!wrapper.isEmpty || wrapper.imageUrl == ''}">-</apex:outputText>
+                            </td>
+                        </apex:repeat>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+        </apex:repeat>
+
+        <!-- Technician's Remarks -->
+        <div style="margin: 20px 0; padding: 10px;">
+            <strong>Technician's Remarks:</strong>
+            <p style="border-bottom: 1px solid black; margin-left: 5px;">{!technicianRemarks}</p>
+        </div>
+
+        <!-- Combined Table for all sections -->
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; border: 2px solid #333;">
+            <tbody>
+                <!-- First Row: Customer Signature and Service Details -->
+                <tr>
+                    <!-- Customer Signature Section -->
+                    <td style="border: 2px solid #333; vertical-align: top; width: 50%;">
+                        <div style="background-color: #004080; color: white; font-weight: bold; padding: 10px; text-align: left;">
+                            Customer Signature
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px; text-align: center;" colspan="2">
+                                        <img src="signature_image_url" alt="Signature" style="width: 100px; height: 100px;" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+
+                    <!-- Service Details Section -->
+                    <td style="border: 2px solid #333; vertical-align: top; width: 50%;">
+                        <div style="background-color: #004080; color: white; font-weight: bold; padding: 10px; text-align: left;">
+                            Service Details
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: bold; width: 50%; padding: 5px;">Report submission date:</td>
+                                    <td style="width: 50%; padding: 5px;">{!TEXT(TODAY())}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; padding: 5px;">Service done by:</td>
+                                    <td style="padding: 5px;">{!currentWorkOrder.CP__r.Name}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; padding: 5px;">Mobile Number:</td>
+                                    <td style="padding: 5px;">{!currentWorkOrder.CP__r.Phone}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; padding: 5px;">Work Completed Date:</td>
+                                    <td style="padding: 5px;">{!TEXT(TODAY())}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; padding: 5px;">Technician's Remarks:</td>
+                                    <td style="padding: 5px;">{!currentWorkOrder.Technician_s_Remarks__c}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Second Row: Customer Data and Hardcoded Value -->
+                <tr>
+                    <!-- Customer Data Section -->
+                    <td style="border: 2px solid #333; vertical-align: top; width: 50%; padding: 10px;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: bold;">Customer/Site In-charge:</td>
+                                    <td>{!account.Name}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold;">Mobile No.:</td>
+                                    <td>{!account.Phone}</td> 
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold;">OTP sent mobile no.:</td>
+                                    <td>{!account.CP__r.Phone__c}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold;">Email Id:</td>
+                                    <td>{!account.Email__c}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold;">Rating:</td>
+                                    <td>
+                                        <img src="rating_star_image_url" alt="Rating" style="width: 80px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold;">Customer's Remarks:</td>
+                                    <td>{!currentWorkOrder.Customer_s_Remark__c}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+
+                    <!-- Hardcoded Service Site Location Section -->
+                    <td style="border: 2px solid #333; vertical-align: top; width: 50%; padding: 10px;">
+                        <div style="padding: 10px; font-size: 14px;">
+                            <p style="margin: 0 0 10px 0;">To know your real service site location, please copy paste latitude and longitude number in to Google map: eg. (22.2909845,70.7886653)</p>
+                            <p style="margin: 0;"><a href="https://www.google.co.in/maps/place/17.4188383,78.4932654" target="_blank" style="color: #004080; text-decoration: none;">https://www.google.co.in/maps/place/17.4188383,78.4932654</a></p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Footer Section -->
+        <div class="footer" style="border-top: 2px solid #333; text-align: center;">
+            <div style="display: table; width: 100%; margin-bottom: 10px;">
+                <!-- Text and Images in One Row -->
+                <div style="display: table-row; background-color:#314b62; color:white;">
+                    <div style="display: table-cell; text-align: left; font-size: 20px; font-weight: bold; vertical-align: middle;">
+                        Download the Blue Star Customer Care APP
+                    </div>
+                    <div style="display: table-cell; text-align: right; vertical-align: middle;">
+                        <img src="https://bluestarlimited--dev--c.sandbox.vf.force.com/resource/1718700218000/Playstore_logo?" alt="Android App" style="height: 40px; margin-right: 20px; mix-blend-mode: multiply;" />
+                        <img src="https://bluestarlimited--dev--c.sandbox.vf.force.com/resource/1718700268000/Ios_logo?" alt="iOS App" style="height: 40px; mix-blend-mode: multiply;" />
+                    </div>
+                </div>
+            </div>
+            <div style="color: #314b62; font-weight: bold; padding: 15px; margin-top: 10px; border-radius: 5px;">
+                <div style="font-size: 14px; margin-bottom: 5px;">
+                    For any query, please email us at : <a href="mailto:customerservice@bluestarindia.com" style="color: #004080; text-decoration: none;">customerservice@bluestarindia.com</a>
+                </div>
+                <div style="font-size: 14px; margin-bottom: 5px;">
+                    24/7 Customer Care No. : 1800 209 1177 SMS 'SERVICE' to 57575
+                </div>
+                <div style="font-size: 14px; margin-bottom: 5px;">
+                    Visit us at <a href="http://www.bluestarindia.com" target="_blank" style="color: #004080; text-decoration: none;">www.bluestarindia.com</a>
+                </div>
+            </div>
+            <div style="margin-top: 5px; font-size: 12px; text-align: center;">
+                <strong style="text-decoration: underline;">Registered Address</strong><br>
+                Blue Star Ltd. Kasturi Buildings, Mohan T Advani Chowk, Jamshedji Tata Road, Mumbai - 400 020, India.</br>
+                Tel: +91 22 66654000 Fax: +91 22 66654152 CIN: L28920MH1949PLC006870
+            </div>
+        </div>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Transaction_Note_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Transaction_Note_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Process_start_date__c</fullName>
+        <externalId>false</externalId>
+        <label>Approval Process start date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Channel_Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Channel Partner</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Transaction Notes</relationshipLabel>
+        <relationshipName>Transaction_Notes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Conrt_Inv_Credit_Note_Composite_Key__c</fullName>
+        <externalId>false</externalId>
+        <formula>Service_Contract__r.ContractNumber +  Invoice__r.Invoice_No__c +  Transaction_Note_Id__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Conrt Inv Credit Note Composite Key</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Credit_Note_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit Note Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Debit_Note_Approval_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Debit Note Approval Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Awaiting Approval From SDE</fullName>
+                    <default>false</default>
+                    <label>Awaiting Approval From SDE</label>
+                </value>
+                <value>
+                    <fullName>Awaiting Approval From AM</fullName>
+                    <default>false</default>
+                    <label>Awaiting Approval From AM</label>
+                </value>
+                <value>
+                    <fullName>Awaiting Approval From CFS</fullName>
+                    <default>false</default>
+                    <label>Awaiting Approval From CFS</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Department__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Department</label>
+        <referenceTo>Department__c</referenceTo>
+        <relationshipLabel>Transaction Notes</relationshipLabel>
+        <relationshipName>Transaction_Notes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Invoice_No__c</fullName>
+        <externalId>false</externalId>
+        <label>SAP Invoice Number</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoice_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Invoice__r.Invoice_No__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Invoice Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoice__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Invoice</label>
+        <referenceTo>Invoice__c</referenceTo>
+        <relationshipLabel>Transaction Notes</relationshipLabel>
+        <relationshipName>Transaction_Notes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Local_Purchase_Line_Item__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Local Purchase Line Item</label>
+        <referenceTo>Local_Purchase_Line_Items__c</referenceTo>
+        <relationshipLabel>Transaction Notes</relationshipLabel>
+        <relationshipName>Transaction_Notes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Note_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Note Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Note_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Note Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Product Request</label>
+        <referenceTo>ProductRequest</referenceTo>
+        <relationshipLabel>Debit Note</relationshipLabel>
+        <relationshipName>Transaction_Notes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ReAssign_to_AM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>ReAssign to AM</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Reassign_To_CFS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Reassign To CFS</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Rejected_By_SDE_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Rejected By SDE Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Rejected_By_SDE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Rejected By SDE</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Rejected_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Rejected Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Chiller - Bluestar Engineer assigned component</fullName>
+                    <default>false</default>
+                    <label>Chiller - Bluestar Engineer assigned component</label>
+                </value>
+                <value>
+                    <fullName>Duplicate ticket</fullName>
+                    <default>false</default>
+                    <label>Duplicate ticket</label>
+                </value>
+                <value>
+                    <fullName>Not able to close</fullName>
+                    <default>false</default>
+                    <label>Not able to close</label>
+                </value>
+                <value>
+                    <fullName>Dealer not assigned</fullName>
+                    <default>false</default>
+                    <label>Dealer not assigned</label>
+                </value>
+                <value>
+                    <fullName>Third party installation done</fullName>
+                    <default>false</default>
+                    <label>Third party installation done</label>
+                </value>
+                <value>
+                    <fullName>Retail/Residential Customer-PMS on customer demand customer not in contract customer not allowing for Services</fullName>
+                    <default>false</default>
+                    <label>Retail/Residential Customer-PMS on customer demand customer not in contract customer not allowing for Services</label>
+                </value>
+                <value>
+                    <fullName>Stop services due to payment issue</fullName>
+                    <default>false</default>
+                    <label>Stop services due to payment issue</label>
+                </value>
+                <value>
+                    <fullName>No Safe to work</fullName>
+                    <default>false</default>
+                    <label>No Safe to work</label>
+                </value>
+                <value>
+                    <fullName>Wrong Channel mapped</fullName>
+                    <default>false</default>
+                    <label>Wrong Channel mapped</label>
+                </value>
+                <value>
+                    <fullName>Product scrapped</fullName>
+                    <default>false</default>
+                    <label>Product scrapped</label>
+                </value>
+                <value>
+                    <fullName>Site closed</fullName>
+                    <default>false</default>
+                    <label>Site closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Remarks__c</fullName>
+        <externalId>false</externalId>
+        <label>Remarks</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Return_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Return Order</label>
+        <referenceTo>ReturnOrder</referenceTo>
+        <relationshipLabel>Transaction Notes</relationshipLabel>
+        <relationshipName>Transaction_Notes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SDEApprover__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SDE</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Transaction_Notes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SF_Transaction_Note_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>SF Transaction Note Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ServiceAMApprover__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Service AM</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Transaction_Notes1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Service_Contract__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Service Contract</label>
+        <referenceTo>ServiceContract</referenceTo>
+        <relationshipLabel>Transaction Notes</relationshipLabel>
+        <relationshipName>Transaction_Notes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>in Active</fullName>
+                    <default>false</default>
+                    <label>in Active</label>
+                </value>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Inactive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Transaction_Note_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Transaction Note Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>RMR</fullName>
+                    <default>false</default>
+                    <label>RMR</label>
+                </value>
+                <value>
+                    <fullName>FGR</fullName>
+                    <default>false</default>
+                    <label>FGR</label>
+                </value>
+                <value>
+                    <fullName>PMS</fullName>
+                    <default>false</default>
+                    <label>PMS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Work_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Work Order</label>
+        <referenceTo>WorkOrder</referenceTo>
+        <relationshipLabel>Transaction Notes</relationshipLabel>
+        <relationshipName>Transaction_Notes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Transaction Note</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Type__c</columns>
+        <columns>Amount__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Debit_Note_Approval_Status__c</columns>
+        <columns>Department__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>CFS_Transaction_Note</fullName>
+        <columns>NAME</columns>
+        <columns>Amount__c</columns>
+        <columns>Channel_Partner__c</columns>
+        <columns>Debit_Note_Approval_Status__c</columns>
+        <columns>Department__c</columns>
+        <columns>Status__c</columns>
+        <columns>Type__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Queue</filterScope>
+        <label>CFS</label>
+        <queue>CFS</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>TN-{0000}</displayFormat>
+        <label>Transaction Note Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Transaction Notes</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Credit_Note</fullName>
+        <active>true</active>
+        <label>Credit Note</label>
+        <picklistValues>
+            <picklist>Debit_Note_Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Approval From AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Approval From CFS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Approval From SDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Rejected_Reason__c</picklist>
+            <values>
+                <fullName>Chiller - Bluestar Engineer assigned component</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dealer not assigned</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Duplicate ticket</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Safe to work</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not able to close</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product scrapped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail%2FResidential Customer-PMS on customer demand customer not in contract customer not allowing for Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Site closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stop services due to payment issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Third party installation done</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Channel mapped</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>in Active</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>FGR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RMR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Debit_Note</fullName>
+        <active>true</active>
+        <label>Debit Note</label>
+        <picklistValues>
+            <picklist>Debit_Note_Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Approval From AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Approval From CFS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Approval From SDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Rejected_Reason__c</picklist>
+            <values>
+                <fullName>Chiller - Bluestar Engineer assigned component</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dealer not assigned</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Duplicate ticket</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Safe to work</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not able to close</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product scrapped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail%2FResidential Customer-PMS on customer demand customer not in contract customer not allowing for Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Site closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stop services due to payment issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Third party installation done</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Channel mapped</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>in Active</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>FGR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RMR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Amount__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Channel_Partner__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Department__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Debit_Note_Approval_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

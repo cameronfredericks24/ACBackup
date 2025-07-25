@@ -1,0 +1,83 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "f74e5b94-6ba0-4aa4-99bc-ad23040014f1",
+  "label" : "Inventory List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "a5824a30-691b-4706-b43d-bd9714948f37",
+          "columns" : [ {
+            "UUID" : "edd0d8d7-852e-45e6-8fdb-1342bb6b19e9",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "a5824a30-691b-4706-b43d-bd9714948f37",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "enableInlineEdit" : true,
+            "filterName" : "All_ProductItems",
+            "layout" : "FULL",
+            "pageSize" : 25,
+            "scope" : "ProductItem",
+            "showActionBar" : true,
+            "showChartsPanel" : true,
+            "showDisplay" : "showall",
+            "showFilterPanel" : true,
+            "showImageIcon" : true,
+            "showManualRefreshButton" : true,
+            "showObjectName" : true,
+            "showPinnedList" : true,
+            "showSearchBar" : true
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "a0e4c345-680f-4434-be0f-38cc7f059fcb",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "edd0d8d7-852e-45e6-8fdb-1342bb6b19e9",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a1c40891-57a3-423d-a4f4-cd878b59f99f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Inventory List"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f5bf7116-8a1d-4397-9ab8-184b0d4b1a31",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f08277f0-b973-409a-bab5-1c82ca9eae3d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-inventory-list"
+}

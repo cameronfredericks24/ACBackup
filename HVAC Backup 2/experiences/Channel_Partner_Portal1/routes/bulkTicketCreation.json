@@ -1,0 +1,11 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "2a829873-e1d3-4579-aded-9ce171f07161",
+  "label" : "Bulk Ticket Creation",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-bulk-ticket-creation",
+  "type" : "route",
+  "urlPrefix" : "bulk-ticket-creation"
+}

@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>SBQQ__Quote__c</baseObject>
+    <category>opportunities</category>
+    <deployed>true</deployed>
+    <description>Opportunities w/ Quotes w/ LineItems - CPSD</description>
+    <join>
+        <outerJoin>false</outerJoin>
+        <relationship>SBQQ__LineItems__r</relationship>
+    </join>
+    <label>Opportunities w/ Quotes w/ LineItems CPSD</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Number</displayNameOverride>
+            <field>Name</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Channel Partner Account : Account Name</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Channel_Partner_Account__c.Name</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Opportunity Name</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Name</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Contract Type</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Contract_Type__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Contract End Date</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Opportunity_End_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Contract Start Date</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Opportunity_Start_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Contract Category</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Contract_Category__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>SBQQ__Status__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Stage</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.StageName</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Start Date</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Start_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Status</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.SubStatus__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : End Date</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.End_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Is Overdue O/S more than 90 Days</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Overdue_OS__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : KAM</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.KAM__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : KAM : Full Name</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.KAM__c.Name</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposed Period From</displayNameOverride>
+            <field>Proposed_Period_From__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Proposed Period To</displayNameOverride>
+            <field>Proposed_Period_To__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Department</displayNameOverride>
+            <field>Department__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Division Name</displayNameOverride>
+            <field>Division_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Plant : Warehouse Code</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Plant__c.Warehouse_Code__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Plant : Warehouse Type</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Plant__c.Warehouse_Type__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Branch : Region</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Branch__c.Region__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Branch : Branch Code</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Branch__c.Branch_Code__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Branch : Branch Name</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Branch__c.Name</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Group</displayNameOverride>
+            <field>Group__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Customer Segment</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Industry__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Customer Sub Segment</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Sub_Industry__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dealer</displayNameOverride>
+            <field>Dealer__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HSN/SAC code</displayNameOverride>
+            <field>HSN_SAC_code__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Events</displayNameOverride>
+            <field>Number_of_Events__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : PO Date</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.PO_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : PO Duration - End</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.PO_Duration_End__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : PO Duration - Start</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.PO_Duration_Start__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : PO Number</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.PO_Number__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : PO Receipt Date</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.PO_Receipt_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : PO Uploaded?</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.PO_Uploaded__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : PO Total Value (Basic)</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.PO_Total_Value__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CBO</displayNameOverride>
+            <field>CBO__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Channel Partner Account : CP Code</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Channel_Partner_Account__c.CP_Code__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Service Contract : SAP Contract Number</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Service_Contract__c.SAP_Contract_Number__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous AMC</displayNameOverride>
+            <field>Previous_AMC__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous ERP Contract no</displayNameOverride>
+            <field>Previous_ERP_Contract_no__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Downloading Value</displayNameOverride>
+            <field>Previous_Downloading_Value__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Status</displayNameOverride>
+            <field>Previous_Status__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract From</displayNameOverride>
+            <field>Previous_Contract_From__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract End Date</displayNameOverride>
+            <field>Previous_Contract_End_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract Price</displayNameOverride>
+            <field>Previous_Contract_Price__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>BS 360 Contact Person</displayNameOverride>
+            <field>BS_360_Contact_Person__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SBQQ__Account__c.SAP_Customer_Id__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SBQQ__Account__c.Customer_ID__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <masterLabel>CPQ Quotes</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EGM (Estimated Gross Margin)</displayNameOverride>
+            <field>EGM_Formula__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EGM%</displayNameOverride>
+            <field>EGM_Percent_Formula__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Final Net Contract Value</displayNameOverride>
+            <field>Final_Net_Contract_Value_Currency__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Final Discount %</displayNameOverride>
+            <field>Discount_L__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Net Contract Value</displayNameOverride>
+            <field>Net_Contract_Value_Currency__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Year Price</displayNameOverride>
+            <field>Last_Year_Price__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Credit Days</displayNameOverride>
+            <field>Payment_Credit_Days__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Terms</displayNameOverride>
+            <field>SBQQ__PaymentTerms__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Grand Total</displayNameOverride>
+            <field>Grand_Total__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Downloading Value</displayNameOverride>
+            <field>Total_Downloading_Value_RollUp__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Amount</displayNameOverride>
+            <field>SBQQ__CustomerAmount__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Requested Downloading</displayNameOverride>
+            <field>Requested_Downloading__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Revise Total Downloading Value</displayNameOverride>
+            <field>Revise_Total_Downloading_Value__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <masterLabel>CPQ Quotes Accounting</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : CP User</displayNameOverride>
+            <field>Asset__c.CP_User__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Line Name</displayNameOverride>
+            <field>Name</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Standard Downloading Value</displayNameOverride>
+            <field>Standard_Downloading_Value__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Net Total</displayNameOverride>
+            <field>SBQQ__NetTotal__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CP %</displayNameOverride>
+            <field>CP__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Code</displayNameOverride>
+            <field>SBQQ__ProductCode__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Product : Capacity</displayNameOverride>
+            <field>SBQQ__Product__c.Capacity__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Name</displayNameOverride>
+            <field>SBQQ__ProductName__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Product : Capacity UOM</displayNameOverride>
+            <field>SBQQ__Product__c.Capacity_UOM__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Product : Product Family</displayNameOverride>
+            <field>SBQQ__Product__c.Product_Family__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Account</displayNameOverride>
+            <field>Asset__c.Account</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Component Id</displayNameOverride>
+            <field>Component_Id__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous AMC</displayNameOverride>
+            <field>Previous_AMC__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Product : Product Sub Family</displayNameOverride>
+            <field>SBQQ__Product__c.Product_Sub_Family__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous ERP Contract no</displayNameOverride>
+            <field>Previous_ERP_Contract_no__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract Price</displayNameOverride>
+            <field>Previous_Contract_Price__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote And Asset Combo Backend</displayNameOverride>
+            <field>Quote_And_Asset_Combo_Backend__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract End Date</displayNameOverride>
+            <field>Previous_Contract_End_Date__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract From</displayNameOverride>
+            <field>Previous_Contract_From__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract Status</displayNameOverride>
+            <field>Previous_Contract_Status__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Downloading Value</displayNameOverride>
+            <field>Previous_Downloading_Value__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>Status__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Policy Name</displayNameOverride>
+            <field>Policy_Name__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Partner Downloading</displayNameOverride>
+            <field>CP_downloading_value__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : CP</displayNameOverride>
+            <field>Asset__c.CP__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Account : Account Name</displayNameOverride>
+            <field>Asset__c.Account.Name</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <masterLabel>Quote Line</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CP Name</displayNameOverride>
+            <field>CP_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CP Code Backend Data upload</displayNameOverride>
+            <field>CP_Code_Backend_Data_upload__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Channel Partner Account : Type</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Channel_Partner_Account__c.Type</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <masterLabel>Channel Partner</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Ship to Party : Account Name</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Ship_to_Party__c.Name</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Ship to Party : Customer Id</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Ship_to_Party__c.Customer_Code__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <masterLabel>Ship To Party</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bill To</displayNameOverride>
+            <field>Bill_To__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bill To Name</displayNameOverride>
+            <field>SBQQ__BillingName__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Account Name : Account Name</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Account.Name</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CPQ Quote : Opportunity : Account Name : Customer Id</displayNameOverride>
+            <field>SBQQ__Opportunity2__c.Account.Customer_Code__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <masterLabel>Bill To Party</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Contract : Contract Number</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.ContractNumber</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Contract : Contract Period</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Contract_Period__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Contract : Contract Value</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Contract_Value__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Contract : Contract Type</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Contract_Type__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Contract : Contract Status</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Contract_Status__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Contract : Activation Date</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.ActivationDate</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Contract : Final Downloading Value</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.Final_Downloading_Value__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quote Line : Asset : Service Contract : SAP Contract Number</displayNameOverride>
+            <field>Asset__c.Service_Contract__c.SAP_Contract_Number__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <masterLabel>Service Contract</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Prev Price</displayNameOverride>
+            <field>Prev_Price__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Contract To</displayNameOverride>
+            <field>Previous_Contract_To__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Prev Status</displayNameOverride>
+            <field>Prev_Status__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <masterLabel>Quote Lines</masterLabel>
+    </sections>
+</ReportType>

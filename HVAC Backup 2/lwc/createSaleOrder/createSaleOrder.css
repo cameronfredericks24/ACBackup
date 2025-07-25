@@ -1,0 +1,246 @@
+/* General Styles */
+.slds-m-around_medium {
+    margin: 1rem !important;
+}
+
+.slds-form-element__control {
+    width: 100%;
+}
+
+/* Account Search Box Styling */
+.account-search-box {
+    width: 100%; /* Ensure search input box is full width of its container */
+}
+.slds-text-heading_medium{
+    margin:auto;
+    text-align: center;
+}
+/* Account Listbox Styling - Modified for Fixed Width */
+.account-listbox {
+    width: 33%; /* Ensure the width matches the input box */
+    border: 1px solid #d8dde6;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    max-height: 10rem;
+    overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: auto;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    box-sizing: border-box; /* Ensures padding and borders are included in the element's width and height */
+}
+.slds-text-title_caps{
+    background-color: #1f79c2;
+}
+.slds-theme_default{
+    border: 1px solid;
+}
+/* Account Listbox Item */
+.slds-listbox__option {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: #4a4a4a;
+}
+
+.slds-listbox__option:hover {
+    background-color: #f3f4f6;
+    color: #1c1e22;
+}
+
+/* Header Row Styling with Background Color */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f79c2; /* Set header background color */
+    color: #ffffff; /* Ensure text is white for readability */
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid #d8dde6;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Add 0.5cm space between columns in the header */
+.header-text {
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    line-height: normal; /* Ensures consistent line height with the data rows */
+    padding: 0 0.5cm; /* Adds 0.5cm space to the left and right of each header column */
+    color: #ffffff; /* Set text color to white */
+}
+
+/* Ensure that both header and data rows share the same widths for consistency */
+
+/* Column Widths */
+.column-select {
+    flex-basis: 10%;
+    max-width: 10%;
+    text-align: center;
+}
+
+.column-name {
+    flex-basis: 30%;
+    max-width: 30%;
+    text-align: left;
+}
+
+.column-code {
+    flex-basis: 20%;
+    max-width: 20%;
+    text-align: left;
+}
+
+
+.column-needed{
+    flex-basis: 13%;
+    max-width: 13%;
+    text-align: left;
+}
+.column-available, .column-price {
+    flex-basis: 13%;
+    max-width: 13%;
+    text-align: center;
+}
+/* Add 0.5cm space between columns in the data rows */
+.column-select, .column-name, .column-code, .column-available, .column-needed, .column-price {
+    padding: 0 0.5cm; /* Adds 0.5cm space to the left and right of each data column */
+}
+
+/* Adjust the input box size specifically for the Quantity Needed column */
+.column-needed .slds-input {
+    width: 70%; /* Adjust the size of the input box here */
+    padding: 0.5rem;
+    border: 1px solid #d8dde6;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    line-height: normal; /* Ensure input fields align with the data */
+}
+
+/* Product Row Styling */
+.product-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensures vertical alignment is consistent */
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #d8dde6;
+    transition: background-color 0.3s;
+    background-color: #ffffff;
+}
+
+.product-row:hover {
+    background-color: #f3f4f6;
+}
+
+.product-text {
+    margin-left: 10px;
+    color: #4a4a4a;
+    width: 100%;
+    line-height: normal; /* Ensures consistent line height with the header */
+}
+
+/* Input Fields Alignment */
+.slds-input {
+    margin: 0;
+    padding: 0.5rem;
+    border: 1px solid #d8dde6;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    width: 100%;
+    line-height: normal; /* Ensure input fields align with the data */
+}
+
+/* Search Bar Container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color: #f9fafb;
+}
+
+.search-bar {
+    max-width: 50%; /* Adjust this percentage to control the width */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center; /* Center the pagination controls */
+    align-items: center;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-top: 1px solid #d8dde6;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Pagination button spacing */
+.pagination lightning-button {
+    margin: 0 10px; 
+}
+
+
+/* Buttons */
+.btn {
+    text-align: right;
+    padding-right: 13px;
+    padding-top: 13px;
+}
+
+/* Summary Section */
+.summary-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 5px;
+}
+
+.summary-item {
+    text-align: center;
+    margin: 0 20px;
+    font-size: 0.875rem;
+    color: #4a4a4a;
+}
+
+.order-summary-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1c1e22;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+/* Bold headings in summary */
+.bold {
+    font-weight: bold;
+    color: #1c1e22;
+}
+
+/* Improved Input Field Styling */
+.slds-input {
+    padding: 0.5rem;
+    border: 1px solid #d8dde6;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    width: 100%;
+    line-height: normal; /* Ensure input fields align with the data */
+}
+
+/* Improved Radio Button Styling */
+.radio-container {
+    display: flex;
+    align-items: center;
+}
+
+.radio-container lightning-input {
+    margin-right: 10px;
+}
+
+/* Card Styling */
+.lightning-card {
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}

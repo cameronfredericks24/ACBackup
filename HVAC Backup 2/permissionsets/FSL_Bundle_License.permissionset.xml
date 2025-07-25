@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows to use service appointment bundling feature</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Field Service Bundle for Dispatcher License</label>
+    <license>FieldServiceDispatcherPsl</license>
+</PermissionSet>

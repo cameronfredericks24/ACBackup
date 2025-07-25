@@ -1,0 +1,81 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsTwoCol48Layout",
+  "dataProviders" : [ ],
+  "id" : "9b122b30-4e4c-4534-895d-32323c27e476",
+  "label" : "Service Ticket Line Item Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "566387cd-dad0-4214-84f8-f4de85732cfa",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0bb2300a-12c2-4207-8866-5b08810a3219",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:bOMcomponent",
+      "id" : "eca571a3-4024-40c3-a96b-83e6ae3ff1fc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:nonBomComponent",
+      "id" : "8e3f3455-eb6c-40b2-825b-f0a3a0812b11",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "484757c3-3cc9-4c9c-b1bd-1615faf8b06e",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "b187e85b-3804-4a7d-8054-74aaa0f34c22",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "9cf403d4-a2a5-4788-98cf-eacfaa1970e5",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fd89b80c-7dd9-4a5d-a322-844103036b8f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordDetail",
+      "id" : "f385585a-ae89-4fc1-aba7-bc40b69d0bb6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7b1b71f2-e961-4f28-99d1-a60ed1309f49",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-1WL"
+}

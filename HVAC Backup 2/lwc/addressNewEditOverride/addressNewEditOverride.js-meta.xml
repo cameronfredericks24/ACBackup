@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>57.0</apiVersion>
+	<isExposed>true</isExposed>
+	<description>address form to auto populate city + state from map my india</description>
+	<targets>
+		<target>lightning__FlowScreen</target>
+		<target>lightning__RecordAction</target>
+		<target>lightning__RecordPage</target>
+		<target>lightning__AppPage</target>
+		<target>lightning__HomePage</target>
+		<target>lightningCommunity__Default</target>
+	</targets>
+     <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property label="pincode" name="pincode"  type="String" />
+            <property label="city" name="city"  type="String" />
+            <property label="state" name="state"  type="String" />
+            <property label="country" name="country"  type="String" />
+            <property label="flat" name="flat"  type="String" />
+            <property label="street" name="street"  type="String" />
+            <property label="locality" name="locality"  type="String" />
+            <property label="sublocality" name="sublocality"  type="String" />
+            <property label="sector" name="sector"  type="String" />
+             <property label="label" name="label"  type="String" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

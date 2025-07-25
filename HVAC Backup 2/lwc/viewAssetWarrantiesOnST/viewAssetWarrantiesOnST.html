@@ -1,0 +1,40 @@
+<template>
+    <lightning-card class="slds-align_absolute-center">
+
+        <div style="padding:1% 20% 1% 20% ;box-shadow: #0606062b 5px 2px 13px; padding: 15px;" >
+            <div class=" slds-align_absolute-center" style="font-size: larger;font-weight: 700;">
+                Asset Warranties
+            </div>
+
+        <template if:true={records}>
+            <div class="slds-grid slds-wrap">
+                <template for:each={records} for:item="rec">
+                    <div key={rec.Id} class="slds-col slds-size_1-of-1 slds-var-p-around_xx-small">
+                        <lightning-card title={rec.AssetWarrantyNumber} icon-name="standard:contact">
+                            <div class="slds-p-around_medium">
+                                <p>AssetWarrantyNumber:  <a href={rec.AssetWarrantyURL} target="_blank"> {rec.AssetWarrantyNumber}</a></p>
+                                <p>StartDate: {rec.StartDate}</p>
+                                <p>EndDate: {rec.EndDate}</p>
+                                <p>WarrantyType: {rec.WarrantyType}</p>
+                                <p>WarrantyTermId : {rec.WarrantyTermId}</p>
+                                <!-- Add more fields as needed -->
+                            </div>
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:true={error}>
+            <div class="slds-text-color_error slds-m-around_medium">
+                <p>Error loading records: {error.message}</p>
+            </div>
+        </template>
+        <template if:true={noRecordFound}>
+            <div class="slds-m-around_medium">
+                <p>No warranties found.</p>
+            </div>
+        </template>
+    </div>
+    </lightning-card>
+
+</template>

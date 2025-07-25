@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Department_Grouping__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Department Grouping</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SKU Level</fullName>
+                    <default>true</default>
+                    <label>SKU Level</label>
+                </value>
+                <value>
+                    <fullName>Sub Family Level</fullName>
+                    <default>false</default>
+                    <label>Sub Family Level</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Pricing Dept Mapping</label>
+    <pluralLabel>Pricing Dept Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

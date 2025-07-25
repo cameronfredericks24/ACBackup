@@ -1,0 +1,80 @@
+<template>
+<lightning-card>
+
+    <template for:each={assetDetails} for:item="assetDetail">
+        <div key={assetDetail.INVOICE_NUMBER} class="slds-p-around_medium lgc-bg">
+            
+            <!-- Accordion for all sections -->
+            <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+                
+                <!-- Invoice Details Section -->
+                <lightning-accordion-section label="Invoice Details" name="invoiceDetails">
+                    <div class="ProductDiv slds-p-around_medium lgc-bg">
+                        <div class="content-container">
+
+                        <p>Invoice Number: <b>{assetDetail.INVOICE_NUMBER}</b></p>
+                        <p>Invoice Date: <b>{assetDetail.INVOICE_DATE}</b></p>
+                        <p>Customer Code: <b>{assetDetail.CUSTOMER_CODE}</b></p>
+                        <p>Department: <b>{assetDetail.DEPARTMENT}</b></p>
+                        <p>Branch Code: <b>{assetDetail.BRANCH_CODE}</b></p>
+                        </div>
+                    </div>
+                </lightning-accordion-section>
+                
+                <!-- Products Section -->
+                <lightning-accordion-section label="Products" name="products">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <ul>
+                            <template for:each={assetDetail.PRODUCT} for:item="product">
+                                <li key={product.MODEL_CODE}>
+                                    <div class="ProductDiv slds-p-around_medium slds-m-around_small"
+                                         onclick={handleProductSelection}
+                                         data-serialnumber={product.SERIAL_NUMBER}
+                                         data-modelcode={product.MODEL_CODE}
+                                         data-manufacturingdate={product.MANUFACTURING_DATE}>
+                                        <div class="content-container">
+                                            <p>Model Code: <b>{product.MODEL_CODE}</b></p>
+                                            <p>Serial Number: <b>{product.SERIAL_NUMBER}</b></p>
+                                            <p>Manufacturing Date: {product.MANUFACTURING_DATE}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </lightning-accordion-section>
+                
+                <!-- Child Products Section -->
+                <lightning-accordion-section label="Child Products" name="childProducts">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <ul>
+                            <template for:each={assetDetail.CHILD_PRODUCTS} for:item="childProduct" for:index="index">
+                                <li key={childProduct.SERIAL_NUMBER}>
+                                    <div class="ChildProductDiv slds-p-around_medium slds-m-around_small"
+                                         onclick={handleChildProductSelection}
+                                         data-serialnumber={childProduct.SERIAL_NUMBER}
+                                         data-modelcode={childProduct.MODEL_CODE}
+                                         data-manufacturingdate={childProduct.MANUFACTURING_DATE}
+                                         data-index={index}>
+                                        <div class="content-container">
+                                            <p>Model Code: <b>{childProduct.MODEL_CODE}</b></p>
+                                            <p>Serial Number: <b>{childProduct.SERIAL_NUMBER}</b></p>
+                                            <p>Manufacturing Date: {childProduct.MANUFACTURING_DATE}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </lightning-accordion-section>
+                
+            </lightning-accordion>
+            
+        </div>
+    </template>
+    
+
+
+    </lightning-card>
+    
+</template>

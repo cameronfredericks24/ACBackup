@@ -1,0 +1,21 @@
+<template>
+    <div>
+        
+        <!--template if:false={islocationavailable}-->
+            <!--c-location-status record-id={recordId} onsubmitparent={handleLocationService} onnolocationfound={handleNoLocationFound}></c-location-status-->
+        <!--/template--> 
+        <template if:true={showWorkCompletedMessage}>
+                    <div class="message work-rejected-successfully"> WorkOrder is already Completed </div>
+        </template>
+        <template if:true={showLocationText}>
+            <div class="message work-started">Please Turn on your device location</div>
+        </template>
+         <template if:true={showWorkStartedMessage}>
+            <div class="message work-started">Work already started</div>
+        </template>
+        <template if:true={showWorkStartedSuccessfullyMessage}>
+            <div class="message work-started-successfully">Work started successfully</div>
+        </template>
+        
+    </div>
+</template>

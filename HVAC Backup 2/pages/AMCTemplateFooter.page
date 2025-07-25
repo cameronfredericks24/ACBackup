@@ -1,0 +1,12 @@
+<apex:page contentType="text/xml" showHeader="false" sidebar="false" controller="AMCTemplateController">
+    <block  text-align="center" font-family="sans-serif" font-size="6.5" >
+        <apex:outputPanel layout="none" >
+           Note: Computer Generated document and hence does not need Signature.
+        </apex:outputPanel>
+    </block>
+     <block  text-align="center" font-family="Calori" font-size="6" padding-top="15pt">
+        <apex:outputPanel layout="none">
+           Registered Office: Kasturi Buildings, Mohan T Advani chowk, Jamshedji Tata Road, Mumbai - 400 020, India,Tel:+91 22 66654000 Fax: +91 22 66654152 CIN: L28920MH1949PLC006870
+        </apex:outputPanel>
+    </block>
+</apex:page>

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "e0d6031c-2306-4346-8757-640ab9c33388",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "15309340-ec1c-4a9b-9096-5f12042305b5",
+  "label" : "DispatcherConsole",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-dispatcherconsole",
+  "type" : "route",
+  "urlPrefix" : "dispatcherconsole"
+}

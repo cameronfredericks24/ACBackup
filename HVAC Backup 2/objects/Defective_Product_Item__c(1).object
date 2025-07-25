@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Approval_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Approval Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Branch__c</fullName>
+        <externalId>false</externalId>
+        <formula>If(  ISPICKVAL(Defective_Category__c,&apos;RMR&apos;),
+(CASESAFEID(Part_Request__r.WorkOrder.Asset.Branch__c)),
+(CASESAFEID( Part_Request__r.Branch__c )))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Branch</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Branch_name__c</fullName>
+        <externalId>false</externalId>
+        <formula>If( ISPICKVAL(Defective_Category__c,&apos;RMR&apos;),
+(CASESAFEID( Part_Request__r.WorkOrder.Asset.Branch__r.Name )),
+(CASESAFEID( Part_Request__r.Branch__r.Name )))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Branch</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CGST__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL( Defective_Category__c ,&apos;Sales Order&apos;) ,  Part_Request_Line_Item__r.CGST__c  , 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CGST</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CP_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>Channel_Partner__r.CP_Code__c</formula>
+        <label>CP Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Channel_Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Channel Partner</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Defective Product Items</relationshipLabel>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Created_From_GRN__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Created From GRN</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Defective_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Defective/Mismatch Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>RMR</fullName>
+                    <default>true</default>
+                    <label>RMR</label>
+                </value>
+                <value>
+                    <fullName>Sales Order</fullName>
+                    <default>false</default>
+                    <label>Sales Order</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Defective_Part_Serial_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Defective Part Serial Number</label>
+        <length>55</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Defective_part_comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Defective part comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Defective_part_make__c</fullName>
+        <externalId>false</externalId>
+        <label>Defective part make</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Bluestar</fullName>
+                    <default>false</default>
+                    <label>Bluestar</label>
+                </value>
+                <value>
+                    <fullName>ERP</fullName>
+                    <default>false</default>
+                    <label>ERP</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IGST__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL( Defective_Category__c ,&apos;Sales Order&apos;) ,  Part_Request_Line_Item__r.Tax__c , 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>IGST</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Refers to the source inventory</description>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <referenceTo>Location</referenceTo>
+        <relationshipLabel>Defective Product Items</relationshipLabel>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PCT_Number__c</fullName>
+        <displayFormat>PCT -{0000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>PCT Number</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Part_Amount__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product_Transfer__r.Amount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Part Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Part_Claim_Number_Hyper__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR (
+$Profile.Name == &apos;Channel Partner User - ssd&apos;,
+$Profile.Name == &apos;Channel Partner User - esa&apos;,
+$Profile.Name == &apos;Channel Partner User - BA&apos;
+),
+HYPERLINK(
+&quot;/s/detail/&quot; &amp;  Reverse_GRN__c ,
+ Part_Claim_Number_Text__c  ,
+&quot;_top&quot;
+),
+
+
+
+
+HYPERLINK(
+&quot;/&quot; &amp;Reverse_GRN__c,
+Part_Claim_Number_Text__c ,
+&quot;_self&quot;
+)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Part Claim Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Part_Claim_Number_Text__c</fullName>
+        <externalId>false</externalId>
+        <formula>&apos;PCT-&apos; + Reverse_GRN__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Part Claim Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Part_Division_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL( Defective_Category__c , &apos;RMR&apos;), 
+Part_Request__r.WorkOrder.Asset.Serviceable_Division__r.Name,
+ Part_Request__r.Division__r.Name )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Part Division Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Part_Price__c</fullName>
+        <externalId>false</externalId>
+        <formula>if( ISPICKVAL(Defective_Category__c, &apos;Sales Order&apos;) , Part_Request_Line_Item__r.Part_Unit_Price__c ,1.00)</formula>
+        <label>Part Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Part_Request_Line_Item__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Part Request Line Item</label>
+        <referenceTo>ProductRequestLineItem</referenceTo>
+        <relationshipLabel>Defective Product Items</relationshipLabel>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Part_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Part Request</label>
+        <referenceTo>ProductRequest</referenceTo>
+        <relationshipLabel>Defective Product Items</relationshipLabel>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Part_Tax__c</fullName>
+        <externalId>false</externalId>
+        <formula>Part_Request_Line_Item__r.Tax__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Part Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Product_Division__c</fullName>
+        <externalId>false</externalId>
+        <formula>Part_Request__r.WorkOrder.Asset.Serviceable_Division__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Part Division</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Model__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product_Name__r.ProductCode</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Part Model</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Name_Text__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product_Name__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Part Name Text</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Part Name</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Defective Product Items</relationshipLabel>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_Transfer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Part Transfer</label>
+        <referenceTo>ProductTransfer</referenceTo>
+        <relationshipLabel>Defective Product Items</relationshipLabel>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Part Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Mismatched</fullName>
+                    <default>false</default>
+                    <label>Mismatched</label>
+                </value>
+                <value>
+                    <fullName>Damaged</fullName>
+                    <default>false</default>
+                    <label>Damaged</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Quantity_In_Transit__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantity In Transit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity_On_Hand__c</fullName>
+        <externalId>false</externalId>
+        <label>Defective Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity_UoM__c</fullName>
+        <description>refers to the unit of measurement</description>
+        <externalId>false</externalId>
+        <label>Quantity UoM</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Each</fullName>
+                    <default>false</default>
+                    <label>Each</label>
+                </value>
+                <value>
+                    <fullName>Kilogram</fullName>
+                    <default>false</default>
+                    <label>Kilogram</label>
+                </value>
+                <value>
+                    <fullName>Litre</fullName>
+                    <default>false</default>
+                    <label>Litre</label>
+                </value>
+                <value>
+                    <fullName>Mtr</fullName>
+                    <default>false</default>
+                    <label>Mtr</label>
+                </value>
+                <value>
+                    <fullName>Tonnage of Refrigeration</fullName>
+                    <default>false</default>
+                    <label>Tonnage of Refrigeration</label>
+                </value>
+                <value>
+                    <fullName>British Thermal Unit,Cubic Feet per Minute</fullName>
+                    <default>false</default>
+                    <label>British Thermal Unit,Cubic Feet per Minute</label>
+                </value>
+                <value>
+                    <fullName>Horse Power</fullName>
+                    <default>false</default>
+                    <label>Horse Power</label>
+                </value>
+                <value>
+                    <fullName>Centimeter/hour</fullName>
+                    <default>false</default>
+                    <label>Centimeter/hour</label>
+                </value>
+                <value>
+                    <fullName>Cubic meter/Hour</fullName>
+                    <default>false</default>
+                    <label>Cubic meter/Hour</label>
+                </value>
+                <value>
+                    <fullName>Cubic meter</fullName>
+                    <default>false</default>
+                    <label>Cubic meter</label>
+                </value>
+                <value>
+                    <fullName>Ampere</fullName>
+                    <default>false</default>
+                    <label>Ampere</label>
+                </value>
+                <value>
+                    <fullName>Kilowatt</fullName>
+                    <default>false</default>
+                    <label>Kilowatt</label>
+                </value>
+                <value>
+                    <fullName>Millimeter</fullName>
+                    <default>false</default>
+                    <label>Millimeter</label>
+                </value>
+                <value>
+                    <fullName>Gallons per mile (US)</fullName>
+                    <default>false</default>
+                    <label>Gallons per mile (US)</label>
+                </value>
+                <value>
+                    <fullName>British Thermal Unit</fullName>
+                    <default>false</default>
+                    <label>British Thermal Unit</label>
+                </value>
+                <value>
+                    <fullName>Nos</fullName>
+                    <default>false</default>
+                    <label>Nos</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reverse_GRN__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Part Claim Number</label>
+        <referenceTo>GRN__c</referenceTo>
+        <relationshipLabel>Defective Product Items</relationshipLabel>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SDE__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SDE</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SGST__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL( Defective_Category__c ,&apos;Sales Order&apos;) , Part_Request_Line_Item__r.SGST__c , 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SGST</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Serial_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Serial Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_AM__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Service AM</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Defective_Product_Items1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Service_Department_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( ISPICKVAL( Defective_Category__c , &apos;RMR&apos;),
+CASESAFEID( Part_Request__r.WorkOrder.Asset.Service_Department_L__r.Name ),
+CASESAFEID( Part_Request__r.Department__r.Name ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Service Department</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Department__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( ISPICKVAL( Defective_Category__c , &apos;RMR&apos;),
+CASESAFEID(Part_Request__r.WorkOrder.Asset.Service_Department_L__c),
+CASESAFEID( Part_Request__r.Department__c ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Service Department</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Ticket_Line_Item__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Service Ticket Line Item</label>
+        <referenceTo>WorkOrderLineItem</referenceTo>
+        <relationshipLabel>Defective Product Items</relationshipLabel>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Service_Ticket__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Service Ticket</label>
+        <referenceTo>WorkOrder</referenceTo>
+        <relationshipLabel>Defective Product Items</relationshipLabel>
+        <relationshipName>Defective_Product_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Defective Product Item</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Branch__c</columns>
+        <columns>Part_Claim_Number_Text__c</columns>
+        <columns>Service_Ticket_Line_Item__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Defective_Parts_SalesOrder_MSL</fullName>
+        <columns>NAME</columns>
+        <columns>Defective_Category__c</columns>
+        <columns>Part_Request__c</columns>
+        <columns>Quantity_On_Hand__c</columns>
+        <columns>Reverse_GRN__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Defective_Category__c</field>
+            <operation>equals</operation>
+            <value>Sales Order</value>
+        </filters>
+        <filters>
+            <field>Product_Type__c</field>
+            <operation>equals</operation>
+            <value>Damaged</value>
+        </filters>
+        <label>Defective Parts SalesOrder/MSL</label>
+    </listViews>
+    <listViews>
+        <fullName>RMR_Defective_Items</fullName>
+        <columns>NAME</columns>
+        <columns>Product_Division__c</columns>
+        <columns>Product_Model__c</columns>
+        <columns>Product_Name__c</columns>
+        <columns>Product_Transfer__c</columns>
+        <columns>Product_Type__c</columns>
+        <columns>Quantity_In_Transit__c</columns>
+        <columns>Reverse_GRN__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Defective_Category__c</field>
+            <operation>equals</operation>
+            <value>RMR</value>
+        </filters>
+        <filters>
+            <field>Product_Type__c</field>
+            <operation>equals</operation>
+            <value>Damaged</value>
+        </filters>
+        <label>RMR Defective Items</label>
+        <sharedTo>
+            <allPartnerUsers></allPartnerUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>DPI-{0000}</displayFormat>
+        <label>Defective Part Item Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Defective Product Items</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Import</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <listViewButtons>Good_Receive_Note</listViewButtons>
+        <listViewButtons>Part_Claim_LWC_Comp</listViewButtons>
+        <searchResultsCustomButtons>Part_Claim_LWC_Comp</searchResultsCustomButtons>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Good_Receive_Note</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Part Claim Tagging</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/GRN_for_Bulk_defective_Mismatched_Item?retUrl=/a3L/o</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Part_Claim_LWC_Comp</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Part Claim</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/lightning/cmp/__defectivePartUploadt?c__recordIds={!GETRECORDIDS($ObjectType.Defective_Product_Item__c)}</url>
+    </webLinks>
+</CustomObject>

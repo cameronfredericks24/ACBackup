@@ -1,0 +1,38 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="OtpController">
+       <aura:html tag="style">             
+         .slds-modal__container{        
+        width: 100% !important;
+        max-width: 25rem !important; 
+        }      
+     
+        .slds-modal__content {
+            padding : 0.01rem !important;
+            height: 100% !important;
+        	max-height: 40rem !important;
+        }
+         <!--  .slds-modal__footer{
+           display:none;
+           }-->
+    </aura:html>
+       <aura:attribute name="spinner" type="Boolean"/>   
+    <!--loading spinner start-->
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container my_pinner">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    <!-- Loading spinner end-->
+
+    <aura:attribute name="showCmp" type="boolean" default="false"/>
+
+    <aura:attribute name="objectApiName" type="String" default="{!v.sObjectName}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- <c:productTransferCmpNew recordId="{!v.recordId}" /> -->
+    <aura:if isTrue = "{!v.showCmp}">
+     <c:otpValidationForm recordId="{!v.recordId}" onotpsuccess = "{!c.closeOnOTP}" onsuccess="{!c.handleSuccess}" onclose="{!c.closeModel}"/>
+    </aura:if>
+</aura:component>

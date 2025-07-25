@@ -1,0 +1,75 @@
+/* Add custom styling here */
+.slds-grid {
+    margin: 20px;
+}
+
+.slds-col {
+    padding: 0 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+lightning-input {
+    width: 100%;
+}
+
+.lightning-button {
+    margin-top: 10px;
+}
+.bordered-div {
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 1rem; /* Adjust padding as needed */
+}
+.bordered-div:focus {
+    /* Add your styles for focus state here */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+/* Modal styling */
+/* .slds-modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slds-modal__container {
+    position: relative;
+    background-color: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 60%;
+    max-width: 600px;
+}
+
+.slds-modal__header {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid #d8dde6;
+}
+
+.slds-modal__content {
+    padding: 1.25rem;
+}
+
+.slds-modal__footer {
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid #d8dde6;
+    text-align: right;
+} 
+
+.slds-backdrop {
+    position: fixed;
+    z-index: 9998;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}*/

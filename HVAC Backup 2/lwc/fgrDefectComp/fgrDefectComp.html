@@ -1,0 +1,48 @@
+<template>
+    <lightning-card>
+        <div >
+            <lightning-layout>
+                <lightning-layout-item flexibility="auto" class="custom1-padding">
+                    <lightning-combobox name="equipmentType"
+                    label="Equipment Type"
+                    value={outputEquipTy}
+                    required="true"
+                    options={selectedEquipmentType}
+                    onchange={handleEquipTypeChange}>
+                </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto" class="custom-padding">
+                    <lightning-combobox name="mainDefect"
+                    label="Main Defect"
+                    value={outputMainDft}
+                    options={selectedMainDefect}
+                    required="true"
+                    disabled={mainDefectDisabled}
+                    onchange={handleMainDefectChange}
+                    >
+                   </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto" class="custom-padding">
+                    <lightning-combobox name="subDefect1"
+                    label="Sub Defect-1"
+                    value={outputsubDft1}
+                    options={selectedSubDefect1}
+                    onchange={handleSubDefect1Change}
+                    disabled={subDefect1Disabled}>
+                   </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto" class="custom2-padding">
+                    <lightning-combobox name="subDefect2"
+                    label="Sub Defect-2"
+                    value={outputsubDft2}
+                    options={selectedSubDefect2}
+                    onchange={handleSubDefect2Change}
+                    disabled={subDefect2Disabled}>
+                     </lightning-combobox>
+                </lightning-layout-item>
+            </lightning-layout>
+            <!-- <p>{outputMainDft}</p> -->
+        </div>
+    
+    </lightning-card>
+</template>

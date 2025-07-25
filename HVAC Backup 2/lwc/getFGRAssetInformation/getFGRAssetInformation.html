@@ -1,0 +1,77 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    <template if:true={firstPage}>
+        <div >
+            <div 
+                class="slds-p-around_xx-small slds-m-top_x-small slds-m-around_xx-small slds-box slds-theme_shade">
+
+                <div >
+                    <div
+                        class="slds-p-around_xx-small slds-m-top_x-small slds-m-around_xx-small slds-box slds-theme_shade">
+
+                        <div class="slds-p-around_xx-small">
+                            <strong>Invoice date or Invoice Number is not present. Please enter model number and serial number to fetch information.</strong>
+                        </div>
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_6-of-12">
+                                <div class="custom-lookup">
+                                    <lightning-input type="search" label="Model Number"
+                                        onchange={handleOnChangeCustomLookupProductCodeUnitary}
+                                        onclick={handleOnClickCustomLookupProductCodeUnitary}
+                                        onfocus={handleOnFocusCustomLookupProductCodeUnitary}
+                                        onblur={handleOnBlurCustomLookupProductCodeUnitary} disabled={disableSerial} value={modelNumber}
+                                        required>
+                                    </lightning-input>
+                                    <template if:true={showAvailableCodesUnitary}>
+                                        <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                            role="listbox">
+                                            <template for:each={filteredOptionsProductCode} for:item="option">
+                                                <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                    <div role="option" tabindex="0"
+                                                        class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                        onclick={handleModelNumberChangeCustomLookupUnitary}
+                                                        data-value={option.label} data-index={index}>
+                                                        <span class="slds-media__figure">
+                                                            <!-- Location Icon -->
+                                                            <lightning-icon icon-name="standard:product"
+                                                                size="small"></lightning-icon>
+                                                        </span>
+                                                        <span class="slds-media__body">
+                                                            <span class="slds-truncate">{option.label}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </template>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-input type="text" label="Serial Number"
+                                    placeholder="Enter Serial Number..." onchange={handleSerialNumberChange}
+                                    value={serialNumber} disabled={disableSerial} required></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div  class="slds-align_absolute-center">
+            <lightning-button variant="brand" label="Fetch" onclick={handleNext}></lightning-button>
+        </div>
+    </template>
+
+   <template if:true={secondPage}>
+        <div style="margin: auto;" >
+            <div><strong>Click on Next to create FGR.</strong><br/></div>
+            <div><strong>Model Number:</strong> {modelNumber}</div>
+            <div><strong>Serial Number:</strong> {serialNumber}</div>
+            <div><strong>Invoice Number:</strong> {invoiceNumber}</div>
+            <div><strong>Invoice Date:</strong> {invoiceDate}</div>
+            <div><strong>Sale Department:</strong> {department}</div>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,16 @@
+<apex:page standardStylesheets="true" showHeader="false">
+<apex:includeLightning />    
+<div id="LwcId" />
+<script>
+        $Lightning.use("c:quoteAddAssetGroup", function() {
+        $Lightning.createComponent("c:quoteAddAsset",
+        {
+            recordId : '{!$CurrentPage.parameters.Id}'
+        },
+        "LwcId", // the Id of div tag where your component will be rendered
+        function(cmp) {
+            console.log('Calling the LWC Component');
+        });
+    });
+</script>
+</apex:page>

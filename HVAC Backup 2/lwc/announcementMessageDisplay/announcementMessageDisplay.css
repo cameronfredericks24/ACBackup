@@ -1,0 +1,48 @@
+/* announcementMessageDisplay.css */
+.container {
+    padding: 1rem;
+    border: 1px solid #d8dde6;
+    border-radius: 0.25rem;
+    background-color: #f3f6f9;
+}
+.header {
+    padding: 0.5rem 1rem;
+    background-color: #0070d2;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+	align-items: center;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333333;
+}
+
+.message {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color: #666666;
+}
+
+.date {
+    font-size: 1rem;
+    color: #999999;
+}
+
+.no-message {
+    font-size: 1.1rem;
+    color: #999999;
+	 text-align: center;
+}
+.announcement-item {
+    margin-bottom: 20px; /* Adjust the value as needed */
+}

@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "bfe6c965-a9ae-4c57-a57e-cf00db907812",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "323e0abb-b3af-498c-8cb2-c9b19dffbcdb",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Bulk_Ticket_Creation_genericFileUploader_Component",
+  "id" : "8be321bd-c177-4757-80e7-78f420ee97cf",
+  "type" : "experienceVariation"
+}

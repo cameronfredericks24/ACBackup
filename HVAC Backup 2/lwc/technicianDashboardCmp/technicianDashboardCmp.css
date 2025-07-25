@@ -1,0 +1,199 @@
+.container {
+    padding: 20px;
+    background-color: #f4f6f9;
+}
+
+
+.user-container{
+
+
+    background-color: #F0F0F0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+
+
+}
+.user-info {
+    margin-bottom: 20px;
+}
+
+.user-header {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.user-header lightning-icon {
+    margin-right: 5px;
+}
+
+.user-details {
+    font-size: 14px;
+    color: #555;
+}
+
+
+.star-rating {
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    font-size: 24px;
+    color: #ffd055; /* Gold color for stars */
+    position: relative;
+}
+
+.star::before {
+    content: '\2605'; /* Filled star */
+}
+
+.star.empty::before {
+    content: '\2606'; /* Empty star */
+}
+
+.star.half::before {
+    content: '\2605'; /* Filled star */
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    display: inline-block;
+    color: #ffd055;
+}
+
+.star.half::after {
+    content: '\2606'; /* Empty star */
+    position: absolute;
+    overflow: hidden;
+    margin-left: 50%;
+    width: 50%;
+    display: inline-block;
+    color: #ffd055;
+}
+
+
+
+.service-appointments {
+    margin-bottom: 20px;
+
+    background-color: #F0F0F0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+
+
+}
+
+.service-header {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+/* Custom styles for the total ticket number */
+.ticket-number {
+    color: #0070d2; /* Salesforce Blue */
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.service-header lightning-icon {
+    margin-right: 5px;
+}
+
+.card {
+    padding: 5px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+
+
+    height: 120px;
+
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-indicator {
+    width: 80%;
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
+.card-indicator.blue {
+    background-color: #004EA0;
+}
+
+.card-indicator.yellow {
+    background-color: #FFD700;
+}
+
+.card-indicator.green {
+    background-color: #32CD32;
+}
+
+.card-indicator.red {
+    background-color: #FF6347;
+}
+.card-indicator.grey {
+    background-color: grey;
+}
+
+.blue-text{
+    color: #004EA0;
+}
+
+.yellow-text{
+    color: #FFD700;
+}
+
+.green-text{
+    color: #32CD32;
+}
+
+.red-text{
+    color: #FF6347;
+}
+.grey-text{
+    color: grey;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 1.5em; /* Reduced the font size */
+    color: #333;
+    font-weight: bold;
+}
+
+.card p {
+   
+    margin-top: auto;
+    margin-bottom: auto;
+    margin: 0;
+    font-size: 0.7em; /* Reduced the font size */
+    color: #666;
+}
+
+.ticket-type-div{
+    font-size: 0.7em; /* Reduced the font size */
+    color: #666;
+    height: 40px;
+    justify-content: center;
+
+
+}
+
+.slds-text-heading_large {
+    margin-bottom: 20px;
+    color: #0070d2; /* Brand color */
+}
+
+.slds-form-element {
+    margin-bottom: 20px;
+}

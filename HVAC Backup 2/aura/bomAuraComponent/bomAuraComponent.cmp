@@ -1,0 +1,4 @@
+<!-- bomAuraComponent.cmp -->
+<aura:component implements="force:lightningQuickAction,flexipage:availableForAllPageTypes,force:hasRecordId">
+    <c:bOMcomponent recordId="{!v.recordId}" />
+</aura:component>

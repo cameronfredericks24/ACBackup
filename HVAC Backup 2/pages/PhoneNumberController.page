@@ -1,0 +1,37 @@
+<apex:page controller="PhoneNumberController" action="{!redirect}">
+    <style type="text/css">
+        .colHeadr {text-align:center; width:10px;}
+        .centerAlign { text-align: center; margin:10px;}
+    </style>
+    <apex:includeLightning />
+    <div id="lightning" rendered="{!accEmpty}">
+        <script>
+            if ({!accEmpty}) {
+                window.location.href = '/lightning/o/Case/new?defaultFieldValues=TaskId={!taskId}';
+            }
+        </script>
+    </div>
+    
+    <div class="centerAlign">
+        <apex:form >
+            <center>
+                <apex:pageBlock rendered="{!acc != null && acc.size > 1}" >
+                    <apex:pageBlockSection title="Please click on account name you want to open" columns="1" collapsible="false">
+                        <apex:pageBlockTable value="{!acc}" var="account" >
+                            <apex:column headerClass="colHeadr">
+                                <apex:facet name="header">Name</apex:facet> 
+                                <apex:commandLink value="{!account.Name}" action="{!openAccount}"  rerender="none">
+                                    <apex:param name="accountId" value="{!account.Id}" assignTo="{!selectedAccountId}"/>
+                                </apex:commandLink>
+                            </apex:column>
+                            
+                            <apex:column value="{!account.RecordType.DeveloperName}" style="text-align:center" headerClass="colHeadr"/>
+                            <apex:column value="{!account.Phone}" style="text-align:center" headerClass="colHeadr"/>
+                            <apex:column value="{!account.Email__c}" style="text-align:center" headerClass="colHeadr"/>
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+            </center>
+        </apex:form>
+    </div>
+</apex:page>

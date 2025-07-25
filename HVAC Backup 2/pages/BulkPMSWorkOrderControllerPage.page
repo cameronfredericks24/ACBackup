@@ -1,0 +1,590 @@
+<apex:page standardController="WorkOrder" extensions="BulkPMSWorkOrderController" applyHtmlTag="false"
+           showHeader="false"
+           renderAs="pdf">
+    <html>
+        <head>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: Arial, sans-serif;
+                }
+                @page {
+                    size: A4;
+                    margin: 0.5cm;
+                    border:1px solid black;
+                }
+                /* .footer {
+                    display: block;
+                    width: calc(100% - 2cm);
+                    text-align: center;
+                    padding: 10px;
+                    font-size: 12px;
+                    position: fixed;
+                    margin-bottom: 0px;
+                    bottom: 1cm;
+                    left: 1cm;
+                    height: 7cm;
+                } */
+                .pagenumber:before {
+                    content: counter(page);
+                }
+                .pagecount:before {
+                    content: counter(pages);
+                }
+                .custdata-serticket {
+                    width: 100%;
+                }
+                /* Prevent table row splitting */
+                tr, td, th {
+                    page-break-inside: avoid;
+                    break-inside: avoid;
+                }
+                /* Ensure table header and footer repeat on each page */
+                thead { display: table-header-group; }
+                tfoot { display: table-footer-group; }
+                .pdfTable {
+                    width: 98%;
+                    border-collapse: collapse;
+                    table-layout: fixed;
+                    margin: 0 auto;
+                }
+                .pdfTable th,
+                .pdfTable td {
+                    border: 1px solid black;
+                    padding: 5px;
+                    word-wrap: break-word;
+                    white-space: normal;
+                }
+                .pdfTable th {
+                    background-color: #f2f2f2;
+                }
+                .centerText {
+                    text-align: center;
+                }
+                .section-title {
+                    font-size: 18px;
+                    background-color: #336699;
+                    color: #fff;
+                    padding: 5px;
+                    text-align: left;
+                    border-radius: 3px;
+                }
+                .details-table {
+                    width: 100%;
+                    font-size: 12px;
+                    border-collapse: collapse;
+                }
+                .details-table th, .details-table td {
+                    padding: 8px;
+                    word-wrap: break-word;
+                }
+                .details-table th {
+                    font-weight: bold;
+                    text-align: left;
+                    width: 40%;
+                    padding-right: 10px;
+                    position: relative;
+                }
+                /* .details-table th:after {
+                    content: ":";
+                    position: absolute;
+                    right: 0;
+                } */
+                .details-table td {
+                    width: 60%;
+                    text-align: left;
+                }
+                .header-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                .header-table td {
+                    padding: 5px;
+                    vertical-align: middle;
+                }
+                .header-logo {
+                    width: 100px;
+                }
+                .header-title {
+                    font-size: 25px;
+                    text-align: center;
+                    font-weight: bolder;
+                    width: 100%;
+                    color: #314b62;
+                }
+                .ticket-info-table {
+                    font-size: 11px;
+                    table-layout: fixed;
+                    width: 100%;
+                    border-collapse: collapse;
+                    word-wrap: break-word;
+                }
+                .ticket-info-table th, .ticket-info-table td {
+                    border: 1px solid #000;
+                    padding: 5px;
+                    word-wrap: break-word;
+                    word-break: break-all;
+                    overflow: hidden;
+                    white-space: normal;
+                    text-align: left;
+                }
+                .content {
+                    margin-bottom: 7cm; 
+                    
+                    border-collapse: collapse;
+                }
+                .WP-WS-tickets-details{
+                    padding-right: 10px;
+                    padding-left: 10px;
+                }
+                .tech-remarks {
+                    width:calc(100% - 2cm);
+                    border: 1px solid;
+                    padding: 10px;
+                    font-family: Arial, sans-serif;
+                }
+                .tech-remarks p {
+                    margin: 0;
+                    font-size: 12px; 
+                }
+                .tech-remarks p.title {
+                    font-weight: bold;
+                    font-size: 14px; 
+                    margin-bottom: 10px; 
+                }
+                .tech-remarks hr {
+                    border: 0;
+                    border-top: 1px solid;
+                }
+                .customer-signature-service-details {
+                    width: 100%;
+                    border-collapse: collapse;
+                    word-wrap: break-word;
+                    word-break: break-all;
+                    overflow: hidden;
+                    white-space: normal;
+                    text-align: left;
+                }
+
+                .customer-signature-service-details td, .customer-signature-service-details th {
+                    border: 1px solid #000;
+                    vertical-align: top;
+                }
+
+                .section-heading {
+                    width:100%;
+                    font-size: 16px;
+                    font-weight: bold;
+                    background-color: #336699;
+                    color: white;
+                    text-align: left;
+                    padding: 5px;
+                    border-bottom: none; 
+                }
+                .details-section{
+                    width: 100%;
+                }
+
+                .label-text {
+                    font-weight: bold;
+                    margin-right: 5px;
+                }
+
+                .value-text {
+                    font-weight: bold;
+                }
+
+                .value-stars {
+                    display: inline-block;
+                }
+                .signature-image{
+                    text-align:center;
+                }
+                .signature-image img {
+                    width: 100px;
+                    height: 100px;
+                }
+
+                .details-table-content {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                .details-table-content th, .details-table-content td {
+                    padding: 5px;
+                    border: none;
+                    text-align: left;
+                    vertical-align: top;
+                    word-break: break-all;
+                    overflow: hidden;
+                    white-space: normal;
+                    font-size: 12px;
+                }
+                .customer-signature-service-details-container{
+                    padding:10px;
+                    display: block;
+                    width: calc(100% - 2cm);
+                }
+
+                .link-style {
+                    color: #336699;
+                    text-decoration: none;
+                }
+
+                .link-style:hover {
+                    text-decoration: underline;
+                }
+
+                .productFamilyBox {
+                    border: 2px solid #314B62;
+                    padding: 10px;
+                    margin: 10px 0;
+                    background-color: #f2f2f2;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <table class="header-table">
+                    <tr>
+                        <td class="header-logo">
+                            <img src="{!URLFOR($Resource.BSL_Logo)}" alt="Bluestar Logo" width="100" />
+                        </td>
+                        <td class="header-title">
+                            Preventive Maintenance Service Report
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="content">
+                <div class="custdata-serticket">
+                    <table width="100%" style="border: 1px solid black; table-layout: fixed; margin-bottom:10px;">
+                        <tr>
+                            <td style="width: 50%; vertical-align: top; border: none;">
+                                <div class="section-title">Customer Details</div>
+                                <table class="details-table" style="border: none;">
+                                    <apex:repeat value="{!wrapper.account}" var="account">
+                                        <tr>
+                                            <th>SAP Customer ID</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!account.SAP_Customer_Id__c}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Name</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!account.Name}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>SF Customer ID</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!account.Customer_ID__c}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>SOL/Store Id</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!account.SOL_Store_ID__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td><span class="value-text">:&nbsp;</span>
+                                                {!account.BillingStreet}, {!account.BillingCity}, 
+                                                {!account.BillingState}, {!account.BillingPostalCode}, 
+                                                {!account.BillingCountry}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email ID</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!account.Email__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Mobile No</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!account.Phone}</td>
+                                        </tr>
+                                    </apex:repeat>
+                                </table>
+                            </td>
+                            <td style="width: 50%; vertical-align: top; border: none;">
+                                <div class="section-title">Service Ticket Details</div>
+                                <table class="details-table" style="border: none;">
+                                    <tr>
+                                        <th>Checklist No</th>
+                                        <td><span class="value-text">:&nbsp;</span>{!wrapper.checklistNumber}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Channel Partner Type</th>
+                                        <td><span class="value-text">:&nbsp;</span>{!wrapper.channelPartnerType}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Channel Partner No</th>
+                                        <td><span class="value-text">:&nbsp;</span>{!wrapper.serviceProviderNumber}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Channel Partner Name</th>
+                                        <td><span class="value-text">:&nbsp;</span>{!wrapper.serviceProviderName}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>WorkType</th>
+                                        <td><span class="value-text">:&nbsp;</span>{!wrapper.worktype}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Product Family</th>
+                                        <td><span class="value-text">:&nbsp;</span>{!wrapper.productFamily}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Product Sub Family</th>
+                                        <td><span class="value-text">:&nbsp;</span>{!wrapper.productSubFamily}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="child-tickets-details">
+                    <div class="section-title">Service Ticket Details</div>
+                    <table class="ticket-info-table">
+                        <thead>
+                            <tr>
+                                <th style="width:20px;">Line No</th>
+                                <th style="width:60px;">Ticket / Complaint No</th>
+                                <th style="width:60px;">Contract No</th>
+                                <th style="width:60px;">Model No</th>
+                                <th style="width:60px;">Product Serial No</th>
+                                <th style="width:60px;">Component No</th>
+                                <th style="width:60px;">Asset Obligation</th>
+                                <th style="width:60px;">UOM</th>
+                                <th style="width:60px;">Serviceable Division</th>
+                                <th style="width:60px;">Branch</th>
+                                <th style="width:60px;">Service Department</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <apex:repeat value="{!childWorkOrdersTable}" var="childWO">
+                                <tr>
+                                    <td>{!childWO.lineNo}</td>
+                                    <td>{!childWO.ticketComplaintNo}</td>
+                                    <td>{!childWO.contractNo}</td>
+                                    <td>{!childWO.modelNo}</td>
+                                    <td>{!childWO.productSerialNo}</td>
+                                    <td>{!childWO.componentNo}</td>
+                                    <td>{!childWO.assetObligation}</td>
+                                    <td>{!childWO.uom}</td>
+                                    <td>{!childWO.serviceableDivision}</td>
+                                    <td>{!childWO.branch}</td>
+                                    <td>{!childWO.serviceDepartment}</td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </div>
+                <apex:pageBlock >
+    <apex:repeat value="{!groupDisplayWrappers}" var="groupWrapper">
+        <!-- Display the product family box for this group -->
+        <div class="productFamilyBox">
+            <apex:outputText value="{!groupWrapper.uniqueProductFamilies}" />
+        </div>
+
+        <!-- Now display the table for this group -->
+        <table class="pdfTable">
+            <thead>
+                <tr>
+                    <th style="background-color: #314B62; color: white; text-align: center;">-</th>
+                    <apex:repeat value="{!groupWrapper.childGroup}" var="wo">
+                        <th style="background-color: #314B62; color: white; font-size: 14px;">
+                            {!wo.formattedTicketNumber}
+                        </th>
+                    </apex:repeat>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- For each workplan (for this group) -->
+                <apex:repeat value="{!groupWrapper.groupPlanWrappers}" var="planWrapper">
+                    <tr>
+                        <th colspan="{!groupWrapper.childGroup.size + 1}" style="background-color: #808080; color: white;">
+                            {!planWrapper.planName}
+                        </th>
+                    </tr>
+                    <!-- For each step within the plan, display the values (one per child in the group) -->
+                    <apex:repeat value="{!planWrapper.stepWrappers}" var="stepWrapper">
+                        <tr>
+                            <td>{!stepWrapper.stepName}</td>
+                            <apex:repeat value="{!stepWrapper.values}" var="val">
+                                <td class="centerText">{!val}</td>
+                            </apex:repeat>
+                        </tr>
+                    </apex:repeat>
+                </apex:repeat>
+                <!-- Attachments row for the group -->
+                <tr>
+                    <td><strong>Attachments</strong></td>
+                    <apex:repeat value="{!groupWrapper.childGroup}" var="wo">
+                        <td class="centerText">
+                            <apex:outputPanel rendered="{!NOT(ISBLANK(wo.imageUrl))}">
+                                <img src="{!wo.imageUrl}" alt="Work Order Image" style="width: 100%; height: auto;" />
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!ISBLANK(wo.imageUrl)}">
+                                No Image
+                            </apex:outputPanel>
+                        </td>
+                    </apex:repeat>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+    </apex:repeat>
+</apex:pageBlock>
+
+                
+                
+                <div class="customer-signature-service-details-container">
+                    <table class="customer-signature-service-details">
+                        <tr>
+                            <td>
+                                <!-- Customer Signature Section -->
+                                <div class="section-heading">Customer Signature</div>
+                                <div class="details-section" >
+                                    <table class="details-table-content">
+                                        <tr>
+                                            <td>
+                                                <div class="signature-image">
+                                                    <apex:image url="{!customerSignature}" width="100px" height="100px" />
+                            
+                                                     <!-- <img src="{!parentWorkOrder.Image_Link__c}" style="Width:100px; height:100px;"></img> -->
+                                                    <!-- <apex:outputText value="{!parentWorkOrder.Image_Link__c}" escape="false" /> -->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <!-- Service Details Section -->
+                                <div class="section-heading">Service Details</div>
+                                <div class="details-section">
+                                    <table class="details-table-content">
+                                        <tr>
+                                            <th>Report submission date</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!createDate}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Channel Partner Name</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!parentWorkOrder.CP__r.Name}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Channel Partner Mobile No</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!parentWorkOrder.CP__r.Phone}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Service Resource Id</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!serviceResourceId.FSSK__FSK_Assigned_Service_Resource__r.name}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Assigned Resource Id</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!serviceResourceId.FSSK__FSK_Assigned_Service_Resource__r.name}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Service Resource Mobile No</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!serviceResourceMobileNo.RelatedRecord.MobilePhone}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Work Completed Date</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!closedDate}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!-- Customer Data Section -->
+                                <div class="details-section">
+                                    <table class="details-table-content">
+                                        <tr>
+                                            <th>Customer/Site In-charge</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!parentWorkOrder.Account.Name}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Mobile No.</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!parentWorkOrder.Account.Phone}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>OTP sent mobile no.</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!parentWorkOrder.Account.Phone}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email Id</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!parentWorkOrder.Account.Email__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Rating</th>
+                                            <td>
+                                                <span class="value-stars">
+                                                    <span class="value-text">:&nbsp;</span>
+                                                    <apex:outputText escape="false" value="{!parentWorkOrder.Star_Rating__c}" />
+                                                </span>
+                                                
+                                            </td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <th>Customer's Remarks</th>
+                                            <td><span class="value-text">:&nbsp;</span>{!parentWorkOrder.Customer_s_Remark__c}</td>
+                                        </tr> -->
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <!-- Service Site Location Section -->
+                                <div class="details-section">
+                                    <table class="details-table-content">
+                                        <tr>
+                                            <td colspan="2" style="font-weight:normal;">To know your real service site location, please copy &amp; paste latitude and longitude number into Google map: eg. ({!serviceLocation})</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <a href="https://www.google.co.in/maps/place/{!serviceLocation}" target="_blank" class="link-style">
+                                                    https://www.google.co.in/maps/place/
+                                                    {!serviceLocation}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="footer" style="border-top: 2px solid #333; text-align: center;">
+                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                    <!-- Text and Images in One Row -->
+                    <div style="display: table-row; background-color:#314b62; color:white;">
+                        <div style="display: table-cell; text-align: left; font-size: 20px; font-weight: bold; vertical-align: middle;">
+                            Download the Blue Star Customer Care APP
+                        </div>
+                        <div style="display: table-cell; text-align: right; vertical-align: middle; border-radius:5px;">
+                            <img src="{!URLFOR($Resource.Playstore_logo)}" alt="Android App" style="height: 40px; margin-right: 20px; mix-blend-mode: multiply;" />
+                            <img src="{!URLFOR($Resource.Ios_logo)}" alt="iOS App" style="height: 40px; mix-blend-mode: multiply;" />
+                        </div>
+                    </div>
+                </div>
+                <div style="color: #314b62; font-weight: bold; padding: 15px; margin-top: 10px;">
+                    <div style="font-size: 14px; margin-bottom: 5px;">
+                        For any query, please email us at : <a href="mailto:customerservice@bluestarindia.com" style="color: #004080; text-decoration: none;">customerservice@bluestarindia.com</a>
+                    </div>
+                    <div style="font-size: 14px; margin-bottom: 5px;">
+                        24/7 Customer Care No. : +91 8976781177 SMS 'SERVICE' to 57575
+                    </div>
+                    <div style="font-size: 14px; margin-bottom: 5px;">
+                        Visit us at <a href="http://www.bluestarindia.com" target="_blank" style="color: #004080; text-decoration: none;">www.bluestarindia.com</a>
+                    </div>
+                </div>
+                <div style="margin-top: 5px; font-size: 12px; text-align: center;">
+                    <strong style="text-decoration: underline;">Registered Address</strong><br>
+                    Blue Star Ltd. Kasturi Buildings, Mohan T Advani Chowk, Jamshedji Tata Road, Mumbai - 400 020, India.</br>
+                    Tel: +91 22 66654000 Fax: +91 22 66654152 CIN: L28920MH1949PLC006870
+                </div>
+            </div>
+        </body>
+    </html>
+</apex:page>

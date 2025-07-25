@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Promotional_Warranty_Create_Permission</name>
+    </customPermissions>
+    <description>To assign promotional warranty custom permission</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Promotional Warranty create Custom Permission</label>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ApiEnabled</name>
+    </userPermissions>
+</PermissionSet>

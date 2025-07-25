@@ -1,0 +1,82 @@
+<template>
+    <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label">Please select gas leakage part type</label>
+        <lightning-combobox
+            name="partType"
+            label="Part Type"
+            value={partType}
+            placeholder="Select Part Type"
+            options={options}
+            onchange={handleSelectionChange}
+        ></lightning-combobox>
+    </div>
+
+    <template if:true={showIDUData}>
+        <lightning-card title={cardTitle}>
+            <div class="slds-p-around_medium">
+               <a href="https://bluestarlimited--dev--c.sandbox.vf.force.com/resource/1724655190000/IDUGasLeakage?" target="_blank">
+        <img src="https://bluestarlimited--dev--c.sandbox.vf.force.com/resource/1724655190000/IDUGasLeakage?" alt="IDU Image" class="slds-m-bottom_medium"/>
+    </a>
+                <div class="slds-p-horizontal_small">
+                    <c-custom-multi-pick-list
+                        label="Select IDU Joint Codes"
+                        required="true"
+                        showpills="true"
+                        role="idu-picklist"
+                        options={iduParts}
+                        value={selectedIDU}
+                        onselected={handleIDUSelect}
+                    ></c-custom-multi-pick-list>
+                </div>
+            </div>
+            <div class="slds-align_absolute-center slds-m-top_medium">
+                <lightning-button label="Back" onclick={handleBack} class="slds-m-right_small"></lightning-button>
+                <template if:true={showNextButton}>
+                    <lightning-button label="Next" onclick={handleNext} class="slds-m-right_small"></lightning-button>
+                </template>
+                <lightning-button label="Add Codes" onclick={handleSave} disabled={isSaving}></lightning-button>
+                <template if:true={isSaving}>
+                    <lightning-spinner alternative-text="Saving..." size="small"></lightning-spinner>
+                </template>
+                <template if:true={showMessage}>
+                    <div class="slds-m-top_small">
+                        <lightning-formatted-text value={saveMessage}></lightning-formatted-text>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+
+    <template if:true={showODUData}>
+        <lightning-card title={cardTitle}>
+            <div class="slds-p-around_medium">
+              <a href="https://bluestarlimited--dev--c.sandbox.vf.force.com/resource/1724655227000/ODUGasLeakage?" target="_blank">
+    <img src="https://bluestarlimited--dev--c.sandbox.vf.force.com/resource/1724655227000/ODUGasLeakage?" alt="ODU Image" class="slds-m-bottom_medium"/>
+</a>
+                <div class="slds-p-horizontal_small">
+                    <c-custom-multi-pick-list
+                        label="Select ODU Joint Codes"
+                        required="true"
+                        showpills="true"
+                        role="odu-picklist"
+                        options={oduParts}
+                        value={selectedODU}
+                        onselected={handleODUSelect}
+                    ></c-custom-multi-pick-list>
+                </div>
+            </div>
+            <div class="slds-align_absolute-center slds-m-top_medium">
+                <lightning-button label="Back" onclick={handleBack} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="Add Codes" onclick={handleSave} disabled={isSaving}></lightning-button>
+                <template if:true={isSaving}>
+                    <lightning-spinner alternative-text="Saving..." size="small"></lightning-spinner>
+                </template>
+                <template if:true={showMessage}>
+                    <div class="slds-m-top_small">
+                        <lightning-formatted-text value={saveMessage}></lightning-formatted-text>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+</template>

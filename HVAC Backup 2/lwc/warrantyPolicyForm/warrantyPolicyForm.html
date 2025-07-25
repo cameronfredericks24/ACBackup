@@ -1,0 +1,92 @@
+<template>
+   <lightning-card>
+      <template if:true={showParent}>
+         <div class="slds-m-around_large bordered-div" style="display: flex; flex-direction: column; align-items: center;background-color: #f1dd6d;">
+            <h5><b>CREATE WARRANTY</b></h5>
+         </div>
+         <div class="slds-grid slds-wrap" style="margin-left: 100px;">
+            <div class="slds-col slds-large-size_5-of-12 slds-m-around_medium bordered-div">
+               <label>Warranty Term Name</label>
+               <lightning-input type="text" value={policyName} onchange={handleInput} data-modal-id="Name" style="font-weight: bold;"></lightning-input>
+            </div>
+            <div class="slds-col slds-large-size_5-of-12 slds-m-around_medium bordered-div">
+               <label>Enter Duration in Months</label>
+               <lightning-input type="number" value={duration} onchange={handleInput} data-modal-id="Duration" style="font-weight: bold;"></lightning-input>
+            </div>
+            <div class="slds-col slds-large-size_5-of-12 slds-m-around_medium bordered-div">
+               <lightning-combobox 
+                  name="EffectiveStartDate"
+                  label="Select EffectiveStartDate"
+                  value={effectiveStartDate}
+                  options={EffectiveStartDateOptions}
+                  onchange={handlePicklistChange}
+                  style="font-weight: bold;"
+                  ></lightning-combobox>
+            </div>
+            <div class="slds-col slds-large-size_5-of-12 slds-m-around_medium bordered-div">
+               <lightning-combobox 
+                  name="WarrantyType"
+                  label="Select Warranty Type"
+                  value={policyType}
+                  options={WarrantyTypeOptions}
+                  onchange={handlePicklistChange}
+                  style="font-weight: bold;"
+                  ></lightning-combobox>
+            </div>
+            <div class="slds-col slds-large-size_5-of-12 slds-m-around_medium bordered-div">
+               <label>Start Date</label>
+               <lightning-input type="date" value={startDate} onchange={handleInput} data-modal-id="StartDate" style="font-weight: bold;"></lightning-input>
+            </div>
+            <div class="slds-col slds-large-size_5-of-12 slds-m-around_medium bordered-div">
+               <label>End Date</label>
+               <lightning-input type="date" value={endDate} onchange={handleInput} data-modal-id="EndDate" style="font-weight: bold;"></lightning-input>
+            </div>
+         </div>
+        
+         <!-- <div class="slds-col slds-large-size_3-of-12 slds-m-around_medium">
+            <lightning-button  label="Select Region" onclick={openModal} data-modal-id="Region" class="slds-p-around_medium"></lightning-button>
+            </div> -->
+         <template if:true={show}>
+            <div class="slds-modal slds-fade-in-open">
+               <div class="slds-modal__container slds-modal_small">
+                  <header class="slds-modal__header">
+                  </header>
+                  <div class="slds-modal__content slds-p-around_medium">
+                     <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                           <tr class="slds-line-height_reset">
+                              <th scope="col">{modalData.id}</th>
+                              <th scope="col">Select</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <template for:each={modalData.options} for:item="option">
+                              <template if:true={show}>
+                                 <tr key={option.show}>
+                                    <td>{option.label}</td>
+                                    <td>
+                                       <input type="checkbox" value={option.value} checked={option.checked} onchange={handleChange} />
+                                    </td>
+                                 </tr>
+                              </template>
+                           </template>
+                        </tbody>
+                     </table>
+                  </div>
+                  <footer class="slds-modal__footer">
+                     <lightning-button label={SelectAllLabel} onclick={selectAll} data-modal-id={modalData.id} class="slds-p-right_small" variant="brand"></lightning-button>
+                     <lightning-button label="Close" onclick={closeModal} data-modal-id={modalData.id} class="slds-p-right_small" variant="brand"></lightning-button>
+                  </footer>
+               </div>
+            </div>
+            <div  class="slds-backdrop slds-backdrop_open"></div>
+         </template>
+         <div class="slds-m-right_large slds-m-around_medium bordered-div" style="text-align: right; background-color: #f1dd6d;">
+            <lightning-button variant="brand" label="Next" onclick={handleNext} style="font-weight: bold;"></lightning-button>
+         </div>
+      </template>
+      <template if:true={showChild}>
+         <c-part-scope-form onprevious={handlePrevious} start-date={startDate} end-date={endDate} effective-start-date={effectiveStartDate} policy-name={policyName} policy-type={policyType} duration={duration} json-string={jsonString}></c-part-scope-form>
+      </template>
+   </lightning-card>
+</template>

@@ -1,0 +1,68 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "987603c4-3017-4c4b-babd-caf24fb846f2",
+  "label" : "auditInventory",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "a329e498-1019-42a5-b69c-3fba26afa5be",
+          "columns" : [ {
+            "UUID" : "609d58ff-15f3-4565-88f1-e8dfe41e01a5",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "a329e498-1019-42a5-b69c-3fba26afa5be",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:auditInventory",
+          "id" : "23fe442c-bc1d-4d0d-bc96-e1bc551ff88e",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "609d58ff-15f3-4565-88f1-e8dfe41e01a5",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1948cd9a-0223-40fe-bb00-c415d4b1dad7",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "auditInventory"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "90521931-84b5-4ce4-ad3a-6a94eeb70b56",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "902a465b-f6fb-4951-8601-840b319f46f9",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-audit-inventory"
+}

@@ -1,0 +1,106 @@
+<template>
+    <lightning-card title="Capture Failure Information">
+        <!-- Field_Work_Type__c Picklist -->
+        <!-- <lightning-record-edit-form object-api-name="WorkOrder" record-id={recordId} onchange={handleActionChange}
+            onsuccess={handleSuccess} onerror={handleError}>
+            <lightning-messages></lightning-messages>
+            <div class="slds-p-horizontal_medium">
+                <lightning-input-field field-name="Field_Work_Type__c" onchange={handleActionChange} value={fieldworktype}></lightning-input-field>
+            </div>
+        </lightning-record-edit-form> -->
+
+
+        <div class="slds-p-horizontal_medium">
+            <lightning-combobox label="Field Work Type" name="Field_Work_Type__c" value={fieldworktype}
+                options={picklistOptions} onchange={handleActionChange}>
+            </lightning-combobox>
+        </div>
+
+        <template if:true={hasGasCharging}>
+            <div class="slds-p-horizontal_medium slds-p-top_medium">
+                <lightning-input type="number" label="Gas Charging (kg)" value={gasChargingValue}
+                    required></lightning-input>
+            </div>
+        </template>
+
+        <!-- <div class="slds-p-horizontal_medium slds-p-top_medium">
+            <lightning-combobox label="Add Details" value={typeselectedValue} options={addDetailsOptions}
+                required="true" onchange={handleAddDetailsChange}>
+            </lightning-combobox>
+        </div> -->
+
+        <!-- Display button if "Waiting for Parts" is selected -->
+        <template if:true={showUpdateButton}>
+            <div class="slds-p-horizontal_medium slds-p-top_medium">
+                <lightning-button variant="brand" label="Update Awaiting for parts"
+                    onclick={handleAwaitingParts}></lightning-button>
+            </div>
+        </template>
+
+        <!-- Conditionally render the form -->
+        <template if:true={showForm}>
+            <div class="slds-p-horizontal_medium slds-p-top_medium">
+                <!-- Symptom -->
+                <lightning-combobox class="slds-p-top_xxx-small" label="Symptom" value={selectedSymptom}
+                    options={symptomOptions} required="true" onchange={handleSymptomChange}>
+                </lightning-combobox>
+                <lightning-textarea class="slds-p-top_x-small" label="Symptom Comment" value={symptomComt}
+                    required="true" onchange={handleSymptomComtChange}>
+                </lightning-textarea>
+
+                <!-- Defect -->
+                <lightning-combobox class="slds-p-top_x-small" label="Defect" value={selectedDefect}
+                    options={defectOptions} disabled={defectDisabled} required="true" onchange={handleDefectChange}>
+                </lightning-combobox>
+                <lightning-textarea class="slds-p-top_x-small" label="Defect Comment" value={defectComt} required="true"
+                    onchange={handleDefectComtChange}>
+                </lightning-textarea>
+
+                <!-- Action -->
+                <lightning-combobox class="slds-p-top_x-small" label="Action" value={selectedAction}
+                    options={actionOptions} disabled={actionDisabled} required="true" onchange={handleActionComtChange}>
+                </lightning-combobox>
+                <lightning-textarea class="slds-p-top_x-small" label="Action Comment" value={actionComt} required="true"
+                    onchange={handleActionComtChange}>
+                </lightning-textarea>
+
+                <!-- Spinner -->
+                <template if:true={isLoading}>
+                    <div class="slds-m-top_medium slds-align_absolute-center">
+                        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                    </div>
+                </template>
+
+                <div
+                    class="slds-grid slds-grid_vertical slds-wrap slds-gutters slds-p-top_medium slds-align_absolute-center">
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Incoming Voltage (V)" value={incomingVoltage}
+                            onchange={handleIncVol} required="true"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="System Ampere" value={systemAmpere}
+                            onchange={handleSysAmpChange} required="true"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Grille Temperature" value={grilleTemperature}
+                            onchange={handleGrillTemp} required="true"></lightning-input>
+                    </div>
+                </div>
+
+                <div class="slds-grid slds-gutters slds-p-top_medium">
+                    <div class="slds-col">
+                        <lightning-button variant="brand-outline" label="Back"
+                            onclick={handleBackClick}></lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button variant="brand-outline" label="Save"
+                            onclick={handleSaveDraft}></lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="Submit" variant="brand" onclick={handleSave}></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,199 @@
+/* Style for the container holding the component */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+}
+
+.cancellation-reason {
+    margin-bottom: 20px;
+    /* align-items: center; */
+    /* padding-left: 200px; */
+}
+
+.cancellation-reason input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cancellation-reason button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0070d2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancellation-reason button:hover {
+    background-color: #005aa3;
+}
+
+/* Style for the lightning card */
+:host {
+    max-width: 400px; /* Adjust as needed */
+    width: 100%;
+}
+
+/* Style for the title of the lightning card */
+h1 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem;
+}
+
+/* Style for the input fields */
+lightning-input {
+    margin-bottom: 1rem;
+}
+
+/* Style for the buttons */
+lightning-button {
+    margin-right: 1rem;
+}
+
+/* Style for the Strong element */
+strong {
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Style for the success message */
+.success-message {
+    color: green;
+    /* margin-bottom: 1rem;
+    margin-left: 3rem; */
+    text-align: center;
+}
+
+/* Style for the error message */
+.error-message {
+    color: red;
+    margin-bottom: 1rem;
+}
+
+/* Center align the OTP validation form */
+.slds-card__body {
+    text-align: center;
+}
+.myButtonClass {
+    display: flex;
+    justify-content: center;
+    text-align: center
+}
+.otp-container {
+    display: flex;
+    justify-content: center;
+  
+}
+
+.otp-input {
+    width: 30px;
+    height: 40px;
+    text-align: center;
+    margin: 0 1%; /* Adjust the margin to create a 2mm gap */
+    padding: 0;
+    border: 1px solid rgb(8, 8, 8);
+    border-radius: 4px;
+}
+
+.otp-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(7, 7, 8);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.myButtonClass lightning-button {
+    background-color: #54b8eb !important; /* Change this to your desired color */
+    color: white; /* Change this to your desired text color */
+}
+.logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 150px; /* Adjust the width as per your logo size */
+    height: 100px; /* Adjust the height as per your logo size */
+}
+.card-style
+  {
+     
+    background: #fff;
+    padding: 30px 200px;
+    border-radius: 12px;
+    row-gap: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  .container {
+    top:-10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+}
+ 
+.input {
+    
+    width: 40px;
+    border: none;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    margin: 0 10px;
+    text-align: center;
+    font-size: 36px;
+    cursor: not-allowed;
+    pointer-events: none;
+    border-radius: 4px;
+}
+ 
+.input:focus {
+    border: 3px solid #F3A957;
+    outline: none;
+}
+ 
+.input:nth-child(1) {
+    cursor: pointer;
+    pointer-events: all;
+  }.input:nth-child(2) {
+    cursor: pointer;
+    pointer-events: all;
+  }
+  .input:nth-child(3) {
+    cursor: pointer;
+    pointer-events: all;
+  }
+  .input:nth-child(4) {
+    cursor: pointer;
+    pointer-events: all;
+  }
+  .myButtonClass {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 5px; 
+ }
+ .message.work-rejected-successfully {
+    background-color: #32CD32; /* Adjust color as needed */
+    color: #080202; /* Adjust text color as needed */
+   
+}
+.combobox {
+    width: 300px; /* Adjust the width as needed */
+    
+}
+.cancelText{
+    text-align: center;
+    padding: 20px;
+    font-weight: bolder;
+}
+.myPicklistPadding{
+    padding:0% 27% 0% 27%
+}

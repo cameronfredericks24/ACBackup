@@ -1,0 +1,6 @@
+captureFailureInfoDesktop.bold-label .slds-form-element__label {
+    font-weight: bold;
+}
+.hidden-field {
+    display: none;
+}

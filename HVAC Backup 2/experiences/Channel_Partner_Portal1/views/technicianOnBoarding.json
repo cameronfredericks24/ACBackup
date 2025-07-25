@@ -1,0 +1,71 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "75724e38-f5df-4d98-b774-7e65f408d2a9",
+  "label" : "Technician On boarding",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "0a3c4458-4e7f-48e8-a10b-9cab676d2b99",
+          "columns" : [ {
+            "UUID" : "62e4bf4f-8f13-45eb-96fe-59185e141703",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "0a3c4458-4e7f-48e8-a10b-9cab676d2b99",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "flowArguments" : "[]",
+            "flowName" : "Technician_Onboarding_Screen"
+          },
+          "componentName" : "forceCommunity:flowCommunity",
+          "id" : "bd8f0319-9de7-4169-9b1f-9232170727c0",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "62e4bf4f-8f13-45eb-96fe-59185e141703",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5bfc566f-802a-4d29-b2e3-20329e5176d9",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Technician On boarding"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "34d93af2-9bdf-4381-8607-96aeeef10674",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "50767d93-c40f-4873-a36d-ee8b3a905ab2",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-technician-on-boarding"
+}

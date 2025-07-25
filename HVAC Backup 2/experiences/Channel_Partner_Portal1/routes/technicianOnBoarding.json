@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "75724e38-f5df-4d98-b774-7e65f408d2a9",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "e2e0fbdd-861e-4a13-90ff-8573358daa73",
+  "label" : "Technician On boarding",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-technician-on-boarding",
+  "type" : "route",
+  "urlPrefix" : "technician-on-boarding"
+}

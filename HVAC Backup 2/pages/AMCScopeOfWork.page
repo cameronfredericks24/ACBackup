@@ -1,0 +1,211 @@
+<apex:page contentType="text/xml" showHeader="false" sidebar="false" controller="AMCTemplateController">
+    <apex:variable var="rowNumForAnnexure" value="{!1}"/>
+    
+    <apex:outputPanel layout="none" rendered="{!defaultSOWPresent == true}">
+        &ensp;
+       <block text-align="justify"  font-family="sans-serif" font-size="10"  font-weight="bold"  >
+            <apex:outputText > ANNEXURE {!rowNumForAnnexure + 1} - SCOPE OF WORK - MANPOWER </apex:outputText>
+        </block>
+        &ensp;
+        <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <SBQQ:richText value="{!defaultSOW}"></SBQQ:richText>
+            </block>
+        &ensp;
+        <apex:variable var="rowNumForAnnexure" value="{!rowNumForAnnexure + 1}"/>
+    </apex:outputPanel>    
+    <apex:outputPanel layout="none" rendered="{!sowPresent == True}"> 
+        
+        <apex:repeat value="{!sow}" var="scope">
+            &ensp;
+            <block text-align="justify"  font-family="sans-serif" font-size="10"  font-weight="bold"  >
+            <apex:outputText > ANNEXURE {!rowNumForAnnexure + 1} - {!scope.Name} </apex:outputText>
+        </block>
+            <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+
+                <SBQQ:richText value="{!Scope.Scope__c}" ></SBQQ:richText>
+            </block>
+            
+            &ensp;
+            <apex:variable var="rowNumForAnnexure" value="{!rowNumForAnnexure + 1}"/>
+        </apex:repeat>
+    </apex:outputPanel> 
+    &ensp;
+    <block text-align="justify"  font-size="12"  font-weight="bold">&nbsp;</block>
+     <block text-align="justify"  font-size="12"  font-weight="bold">&nbsp;</block>
+     <block text-align="justify"  font-size="12"  font-weight="bold">&nbsp;</block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  font-weight="bold"  >
+        <apex:outputText > ANNEXURE {!rowNumForAnnexure + 1} - TERMS AND CONDITIONS</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  font-weight="bold"  >
+        <apex:outputText >1. Water Quality </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"   >
+        <apex:outputText >Please refer to the Blue Star/manufacturer manual for water quality specification if
+            supplied along with the equipment. Descaling of heat exchangers will not be required if water supplied 
+            is as per Blue Star specification. If need be, descaling will be done once a year free of charge. Subsequent descaling in a
+            year is not only detrimental to the health of the equipment but will also be done at additional price.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText >2. Preventive and Breakdown Maintenance </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText >Customer will be responsible for facilitating necessary shutdown for Preventive Maintenance and 
+            Breakdown maintenance as required. </apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 3. Lubrication </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText >With the advent of self lubricated parts and assemblies, lubrication will be done based on need and not 
+            as a matter of routine.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 4. Operating Contract </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText > In case of operating contract, normal working hours for an operator shall be 8 hours a day, 6 days a 
+            week. If required to work beyond 8 hours in a day or on Sundays/holidays, the same should be 
+            supported with sufficient intervals and at overtime charges as applicable</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 5. Power Supply</apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"   >
+        <apex:outputText > Blue Star takes responsibility of performance of the system or product only if the voltage range is 
+            between 210 V to 230 V for single phase and 400V to 440 V for three-phase power supply. The AC 
+            frequency range will be between 49.5 Hz to 50.5 Hz. Not withstanding this, specific instructions in the 
+            equipment manual will be the guiding/limiting values.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 6. Abnormal Usage/Misuse/Unauthorized Attendance  </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText >Misuse or usage of equipment other than what the system or product is originally designed for. 
+            Contract will be null and void if the unit is tampered or repaired by anyone other than our authorized 
+            representative, at any time. 
+            Danger to life and usage of equipment close to direct or indirect heat sources, acidic fumes, reactive 
+            chemicals and powders and non-ventilated areas. Under these circumstances, there will be no refund of 
+            money for the balance duration of the contract. Atmospheric conditions or hard/contaminated water 
+            causing rusting, corrosion or scaling</apex:outputText>    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  font-weight="bold"  >
+        <apex:outputText > 7. Taxes And Duties </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"   >
+        <apex:outputText >The customer will pay all such taxes/duties/levies at the rates as may be imposed or revised by State 
+            or Central government or local authority from time to time on various components/raw material or 
+            installation or service as a whole or part used to fulfill the contract obligation, as applicable during the 
+            currency of the contract. These taxes/duties/levies shall be payable extra even if they were not 
+            applicable at the time of entering into the contract.</apex:outputText></block>
+    &ensp;
+    
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  font-weight="bold"  >
+        <apex:outputText >8. Change In Ownership/Location</apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText > This contract is non-transferable; Blue Star reserves the right to terminate the contract/Renegotiate 
+            the terms of the contract, in case of change of ownership or location of equipment.</apex:outputText></block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  font-weight="bold"  >
+        <apex:outputText > 9. Limitation To Liability/Force Majeure
+        </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"   >
+        <apex:outputText >In no event shall Blue Star be liable for any consequential loss or damage arising out of or connected 
+            with or caused due to the non/short performance of contract in any way, whatsoever. Blue Star will 
+            not be liable for any damage or destruction of any part or parts of the equipment that may occur 
+            during the process of handling. No liability shall be attached to Blue Star for non-performance or 
+            delayed execution of this contract as a result of force majeure conditions.
+            In any case, Blue Star's liability shall be limited to and not exceeding the contract value agreed 
+            between Blue Star Ltd and the customer.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 10. Arbitration </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText > Any dispute or difference between the parties with regard to this document and all connected and 
+            related matters whatsoever shall be discussed and settled amicably. In the event of any failure to 
+            resolve the disputes and differences amicably, all such disputes or differences whatsoever shall be 
+            referred to Arbitration. The Arbitration proceedings shall be conducted in English and in accordance 
+            with the provisions of Indian Arbitration and Conciliation Act, 1996 or any statutory modification or 
+            enactment thereof. The venue of Arbitration shall be Mumbai</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 11. Jurisdiction </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText > All disputes and differences arising out of, or connected with the contract shall be subject to the 
+            jurisdiction of the courts located at the place of Blue Star's office, from where this quotation is 
+            submitted</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 12. Applicability of scope of work and terms and conditions
+        </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"   >
+        <apex:outputText > The scope of work enclosed in Annexure II is of generalized nature and is applicable for the family of 
+            the equipment mentioned in the list of equipment (Annexure I). All other equipment available at site 
+            but not listed under our coverage are excluded from any obligation of Blue Star.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  font-weight="bold"  >
+        <apex:outputText > 13. Terms Of Payment </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText > The contract shall be effective from the date of receipt of term of payment aggreedl or from the date of expiry of 
+            the previous contract, whichever is later.The comprehensive coverage (wherever applicable) would 
+            lapse in case the payments is not received in time</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 14. Short Closure of contract
+        </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText > Minimum 2 months advance notice is required for short closure of any contract.
+        </apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 15. Timings </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"   >
+        <apex:outputText > Unless and otherwise specifically agreed in writing by Blue Star Ltd, the services covered under the 
+            contract shall be rendered from Monday to Saturday during normal working hours of 9 A.M. to 5.30 
+            P.M. No services shall be rendered on Sundays and public holidays. Services requirements shall be 
+            charged extra on all Sundays and holidays.
+            Technicians/BSL service executives working after office hours from 6.00 pm to 12AM (night) at site will 
+            be with prior approval in authorization form with one day notice from a central team and should not work 
+            in night from 12.00AM to 6.00AM at customer sites.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 16. Validity </apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText >The price quoted is applicable only if the equipment to be covered under contract is already under Blue 
+            star's warranty or annual maintenance contract. Otherwise, the equipment shall be inspected and
+            repaired on chargeable basis before covering the same under the contract.
+            This offer is valid for one month from its date of issue or till the date of expiry of previous contract / 
+            warranty, whichever is later.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify"  font-family="sans-serif" font-size="10" font-weight="bold"  >
+        <apex:outputText > 17. Not In Contract Services</apex:outputText>
+    </block>
+    <block text-align="justify"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText > During the interim period (Warranty expired and under conversion to AMC or AMC renewal), we 
+            provide services as per your request as a special case and considering our long-term relationship. 
+            However, if the AMC not awarded or renewed within 60 days of expiry we will charge for the services 
+            (material and labor cost).</apex:outputText>
+    </block>
+</apex:page>

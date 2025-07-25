@@ -1,0 +1,8 @@
+.dummy{
+	color : black;
+}
+
+.message.work-started {
+    background-color: #FF6347; /* Adjust color as needed */
+    color: #fff; /* Adjust text color as needed */
+}

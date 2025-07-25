@@ -1,0 +1,94 @@
+.spinner-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000; /* higher than modal */
+}
+
+
+:host {
+    display: block;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-list,
+.selected-products {
+    margin-top: 1rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+.product-item,
+.selected-product {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between; /* Ensure space between items */
+}
+
+.product-item:last-child,
+.selected-product:last-child {
+    border-bottom: none;
+}
+
+.product-item p,
+.selected-product p {
+    margin: 0;
+    flex-grow: 1; /* Allow text to take up available space */
+    font-size: 1rem;
+    color: #333;
+    text-align: center; /* Center text */
+}
+
+.product-info {
+    flex-grow: 1; /* Allow text to take up available space */
+    display: flex;
+    flex-direction: column; /* Stack product code and name */
+    align-items: center; /* Center items */
+}
+
+.selected-product {
+    justify-content: space-between; /* Space between product info and button */
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+    text-align: center; /* Center the header */
+}
+
+.remove-button {
+    background-color: #0070d2;
+    color: white;
+}
+
+.remove-button:hover {
+    background-color: #0056a1;
+}
+
+@media (max-width: 600px) {
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .product-item p,
+    .selected-product p {
+        font-size: 0.9rem;
+    }
+
+    .product-list,
+    .selected-products {
+        margin-top: 0.5rem;
+    }
+}

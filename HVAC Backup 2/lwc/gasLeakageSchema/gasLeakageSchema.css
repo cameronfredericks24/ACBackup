@@ -1,0 +1,11 @@
+.medium-image {
+    width: 100%; /* Adjust width as needed, or set a fixed width */
+    max-width: 600px; /* Set a maximum width for medium size */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.part-details {
+    margin-bottom: 16px;
+}

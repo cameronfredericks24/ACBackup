@@ -1,0 +1,18 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_medium">
+            <!-- Data Table -->
+            <lightning-datatable
+                data={outstandingData}
+                columns={columns}
+                hide-checkbox-column="true"
+                key-field="customerId">
+            </lightning-datatable>
+
+            <!-- Display Total Outstanding Sum -->
+            <div class="slds-m-top_medium">
+                <strong>Total Outstanding: {totalOutstandingSum}</strong>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,20 @@
+<apex:page controller="ServiceApptReassignCtrl" lightningStylesheets="true"> 
+
+	*DO NOT USE--*
+    <apex:form >
+        <apex:pageMessages />
+        
+        <!-- Dropdown for selecting the Service Resource -->
+        <apex:pageBlock title="Assign Service Appointments">
+            <apex:pageBlockSection title="Select Service Resource">
+                <apex:selectList value="{!serviceResourceId}" size="1">
+                    <apex:selectOptions value="{!$ObjectType.ServiceResource.fields.Id.picklistValues}" />
+                </apex:selectList>
+            </apex:pageBlockSection>
+
+
+            <!-- Button to submit and assign -->
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

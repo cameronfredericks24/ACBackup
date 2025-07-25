@@ -1,0 +1,23 @@
+.custom-datatable .slds-table {
+        border: 1px solid #d8dde6;
+        border-radius: 0.25rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .custom-datatable .slds-table thead th {
+        background-color: #f3f2f2;
+        color: #005fb2;
+    }
+
+    .custom-datatable .slds-table tbody tr:hover {
+        background-color: #e0f3ff;
+    }
+
+    .custom-button {
+        background-color: #005fb2;
+        color: #ffffff;
+    }
+
+    .custom-button:hover {
+        background-color: #004494;
+    }

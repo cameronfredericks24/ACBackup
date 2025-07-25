@@ -1,0 +1,10 @@
+{
+  "activeViewId" : "e52d4d9c-bf5e-4a75-9354-23dc9fdf7db6",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "abe2c486-f1e5-45d9-844f-a55e466e5cfd",
+  "label" : "Service Ticket Related List",
+  "routeType" : "relatedlist-0WO",
+  "type" : "route",
+  "urlPrefix" : "workorder"
+}

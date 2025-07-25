@@ -1,0 +1,195 @@
+<apex:page standardController="GRN__c" extensions="GRNPdfController" renderAs="pdf" applyBodyTag="false">
+    <head>
+        <style type="text/css">
+            @page {
+                font-family: sans-serif;
+                font-size: 11px;
+            }
+            table td { word-wrap: break-word; }
+            .column { float: left; width: 50%; }
+            .margin-style { margin-left: 5px; margin-right: 10px; margin-top: 25px; }
+            @bottom-right { content: "Page: " counter(page) " / " counter(pages); }
+        </style>
+    </head>
+
+    <apex:pageBlock >
+        <!-- Check if defective products exist -->
+        <apex:outputPanel rendered="{!NOT(showDefectiveProducts)}">
+            <div style="text-align: center; font-size: 14px; font-weight: bold; color: red;">
+                <p>Challan is only applicable for defective products. Please proceed with part claim tagging for defective product challan.</p>
+            </div>
+        </apex:outputPanel>
+
+        <!-- Check if GRN is approved when defective products exist -->
+        <apex:outputPanel rendered="{!showDefectiveProducts}">
+            <apex:outputPanel rendered="{!isApproved}">
+                <!-- Render content if GRN is approved -->
+                <div style="font-family: sans-serif;">
+                    <table width="100%" cellpadding="1" style="border-collapse: collapse; font-size: 11px;">
+                        <tr>
+                            <td align="center" width="100%">
+                                <div>
+                                    <div style="text-align: right; margin-top: 10px; margin-right: 9px;">
+                                        <br/><br/><br/><br/><br/><br/><br/>
+                                    </div>
+                                    <div>
+                                        <h2 style="margin-top: -33px;">
+                                            Delivery Challan
+                                            <apex:outputPanel rendered="{!showDefectiveProducts}">&nbsp;(Defective)</apex:outputPanel>
+                                        </h2>
+                                        <div class="section">
+                                            <div class="section-header">GRN Details</div>
+                                        </div>
+                                    </div>
+                                    <table width="100%" cellpadding="1" style="border-collapse: collapse;" border="1">
+                                        <tr style="font-size: 90%;">
+                                            <td align="left" width="50%" style="border: 2px solid black">
+                                                <apex:outputPanel >
+                                                    <div style="margin-left: 5px; margin-right: 10px; margin-top: 1%;">
+                                                        <div class="column">FROM :</div>
+                                                    </div>
+                                                    <div class="column">
+                                                        <apex:outputText value="{!grn.Channel_Partner__r.Name}" /><br/>
+                                                        <apex:outputText value="{!grn.Channel_Partner_Code__c}" /><br/>
+                                                        <apex:outputText value="{!grn.CP_Address__c}" /><br/>
+                                                    </div>
+                                                </apex:outputPanel>
+                                                <br/><br/>
+                                                <apex:outputPanel >
+                                                    <div style="margin-left: 5px; margin-right: 10px; margin-top: 40px;">
+                                                        <div class="column">TO:</div>
+                                                    </div>
+                                                    <div class="column">
+                                                        <apex:outputText value="BSL WareHouse" /><br/>
+                                                        <apex:outputText value="NPC Bhiwandi Center" /><br/><br/>
+                                                    </div>
+                                                </apex:outputPanel>
+                                            </td>
+                                            <td align="left" width="50%" style="border: 2px solid black">
+                                                <apex:outputPanel >
+                                                    <div style="margin-left: 5px; margin-right: 10px; margin-top: 25px;">
+                                                        <div class="column">Challan No:</div>
+                                                        <div class="column">
+                                                            <apex:outputText value="{!challanNumber}" /><br/><br/>
+                                                        </div>
+                                                    </div>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel >
+                                                    <div style="margin-left: 5px; margin-right: 10px; margin-top: 25px;">
+                                                        <div class="column">Docket No:</div>
+                                                        <div class="column">
+                                                            <apex:outputText value="{!grn.Docket_No__c}" /><br/><br/>
+                                                        </div>
+                                                    </div>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel >
+                                                    <div class="margin-style">
+                                                        <div class="column">Date</div>
+                                                        <div class="column">
+                                                            <apex:outputText value="{!dtIST}" /><br/><br/>
+                                                        </div>
+                                                    </div>
+                                                </apex:outputPanel>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br/><br/>
+                                    <apex:outputPanel >
+                                        <div>
+                                            <h4>DEFECTIVE MATERIALS</h4>
+                                        </div>
+                                    </apex:outputPanel>
+                                    <br/><br/>
+                                    <apex:outputPanel rendered="{!showDefectiveProducts}">
+                                        <!-- First table -->
+                                        <apex:outputPanel style="margin-left: 5px; margin-top: 25px; margin-right: 5px; padding: 10px" rendered="{!!showRMR}">
+                                            <table width="100%" style="border-collapse: collapse; border: 1px solid black; border-bottom: 2px solid black;" border="1">
+                                                <thead style="border: 1px solid black">
+                                                    <tr style="font-size: 80%; border: 2px solid black;">
+                                                        <th style="border: 1px solid black;" rowspan="2">Sr. No</th>
+                                                        <th style="border: 1px solid black;" rowspan="2">Name Of Product</th>
+                                                        <th style="border: 1px solid black;" rowspan="2">Model Number</th>
+                                                        <th style="border: 1px solid black;" rowspan="2">Qty</th>
+                                                        <th style="border: 1px solid black;" rowspan="2">UnitPrice</th>
+                                                        <th style="border:1px solid black" rowspan="2">PartAmount</th>
+                                                        <th style="border:1px solid black" colspan="3">Taxable Amt</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="border:1px solid black">CGST</th>
+                                                        <th style="border:1px solid black">SGST</th>
+                                                        <th style="border:1px solid black">IGST</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody style="border: 1px solid black;">
+                                                    <apex:variable value="{!1}" var="count" />
+                                                    <apex:repeat value="{!defectiveProducts}" var="defectiveProduct">
+                                                        <tr style="font-size: 80%; border: 2px solid black;">
+                                                            <td style="border: 1px solid black">{!count}
+                                                                <apex:variable value="{!count+1}" var="count" />
+                                                            </td>
+                                                            <td style="border: 1px solid black">{!defectiveProduct.Product_Name_Text__c}</td>
+                                                            <td style="border: 1px solid black">{!defectiveProduct.Product_Model__c}</td>
+                                                            <td style="border: 1px solid black">{!defectiveProduct.Quantity_On_Hand__c}</td>
+                                                            <td style="border: 1px solid black">{!defectiveProduct.Part_Amount__c}</td>
+                                                            <td style="border: 1px solid black">
+                                                                <apex:outputText value="{!defectiveProduct.Quantity_On_Hand__c * defectiveProduct.Part_Amount__c}"/>
+                                                            </td>
+                                                            <td style="border: 1px solid black">{!defectiveProduct.CGST__c}</td>
+                                                            <td style="border: 1px solid black">{!defectiveProduct.SGST__c}</td>
+                                                            <td style="border: 1px solid black">{!defectiveProduct.IGST__c}</td>
+                                                        </tr>
+                                                    </apex:repeat>
+                                                </tbody>
+                                            </table>
+                                        </apex:outputPanel>
+                                        <!-- Second table -->
+                                        <apex:outputPanel style="margin-left: 5px; margin-top: 25px; margin-right: 5px; padding: 10px" rendered="{!showRMR}">
+                                            <table width="100%" style="border-collapse: collapse; border: 1px solid black; border-bottom: 2px solid black;" border="1">
+                                                <thead style="border: 1px solid black">
+                                                    <tr style="font-size: 80%; border: 2px solid black;">
+                                                    <th style="border: 1px solid black;" rowspan="2">Sr. No</th>
+                                                    <th style="border: 1px solid black;" rowspan="2">Service Ticket</th>
+                                                    <th style="border: 1px solid black;" rowspan="2">Material Code</th>
+                                                    <th style="border: 1px solid black;" rowspan="2">Defective Part SN0:</th>
+                                                    <th style="border: 1px solid black;" rowspan="2">Qty</th>
+                                                    <th style="border: 1px solid black;" rowspan="2">Customer Name</th>
+                                                    <th style="border: 1px solid black;" rowspan="2">MR NO:</th>
+                                                    <th style="border: 1px solid black;" rowspan="2">RMR NO:</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody style="border: 1px solid black;">
+                                                <apex:variable value="{!1}" var="count" />
+                                                <apex:repeat value="{!defectiveProducts}" var="defectiveProduct">
+                                                    <tr style="font-size: 80%; border: 2px solid black;">
+                                                        <td style="border: 1px solid black">{!count}
+                                                            <apex:variable value="{!count+1}" var="count" />
+                                                        </td>
+                                                        <td style="border: 1px solid black">{!defectiveProduct.Service_Ticket__c}</td>
+                                                        <td style="border: 1px solid black">{!defectiveProduct.Product_Model__c}</td>
+                                                        <td style="border: 1px solid black">{!defectiveProduct.Defective_Part_Serial_Number__c}</td>
+                                                        <td style="border: 1px solid black">{!defectiveProduct.Part_Request__r.Quantity__c}</td>
+                                                        <td style="border: 1px solid black">{!defectiveProduct.Part_Request__r.AccountId}</td>
+                                                        <td style="border: 1px solid black">{!defectiveProduct.Part_Request__r.ProductRequestNumber}</td>
+                                                        <td style="border: 1px solid black">{!defectiveProduct.Part_Request__r.RMR_No__c}</td>
+                                                    </tr>
+                                                </apex:repeat>
+                                            </tbody>
+                                            </table>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </apex:outputPanel>
+
+            <!-- Show error message if GRN is not approved -->
+            <apex:outputPanel rendered="{!NOT(isApproved)}">
+                <div style="text-align: center; font-size: 14px; font-weight: bold; color: red;">
+                    <p>{!errorMessage}</p>
+                </div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:pageBlock>
+</apex:page>

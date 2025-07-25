@@ -1,0 +1,21 @@
+.message {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Style for "Work already started" message */
+.message.work-started {
+    background-color: #FF6347; /* Adjust color as needed */
+    color: #fff; /* Adjust text color as needed */
+}
+
+/* Style for "Work started successfully" message */
+.message.work-started-successfully {
+    background-color: #32CD32; /* Adjust color as needed */
+    color: #fff; /* Adjust text color as needed */
+}

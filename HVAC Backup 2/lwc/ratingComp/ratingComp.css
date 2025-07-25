@@ -1,0 +1,33 @@
+.average-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .star-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80px; /* Adjust width as needed */
+  }
+  
+  .star {
+    font-size: 24px;
+    cursor: default;
+  }
+  
+  .filled {
+    color: gold;
+  }
+  
+  .half-filled {
+    /* Use a CSS gradient or other technique for a half-filled star effect */
+    /* Example using a linear gradient: */
+    background-image: linear-gradient(to right, gold 50%, #ccc 50%);
+    background-size: 200% 100%;
+    background-position: 0 0;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+  
+  .empty {
+    color: #ccc;
+  }

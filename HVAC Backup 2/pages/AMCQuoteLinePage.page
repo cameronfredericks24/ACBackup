@@ -1,0 +1,154 @@
+<apex:page contentType="text/xml" showHeader="false" sidebar="false" controller="AMCTemplateController" >
+    
+    <block font-weight="bold" text-align="center"  font-family="sans-serif" font-size="10"  >
+        <apex:outputText >ANNEXURE 1: INSTALLATION / EQUIPMENT DETAILS</apex:outputText>
+    </block>
+    &ensp;
+    <block font-weight="bold" text-align="center"  font-family="sans-serif" font-size="10" margin-left="25pt">
+        <apex:outputText > BSL Service Contract, SAC no: {!HTMLENCODE(HSNCode)} Covered For</apex:outputText>
+    </block>
+    &ensp;
+    <apex:variable var="rowNum" value="{!0}"/>
+    <table  width="100%" border="1pt solid  #000000">
+        <table-body> 
+            <apex:repeat value="{!accountList}" var="acc">
+                <table-row >
+                    <table-cell display-align="center"  number-columns-spanned="5"  padding="2pt">
+                        <block text-align="left"  font-family="sans-serif" font-size="10"  >
+                            <apex:outputText >Customer ID </apex:outputText>
+                        </block>
+                    </table-cell>
+                    <table-cell display-align="center"  number-columns-spanned="15" border="1pt solid  #000000" padding="2pt" >
+                        <block text-align="left"  font-family="sans-serif" font-size="10"  >
+                            <apex:outputText >Site Address </apex:outputText>
+                        </block>
+                    </table-cell>
+                    <!-- <table-cell display-align="left" number-columns-spanned="5" border="1pt solid  #000000">
+<block font-weight="bold" text-align="left"  font-family="sans-serif" font-size="10"  >
+<apex:outputText >Site Address</apex:outputText>
+</block>
+</table-cell> -->
+                </table-row>
+                
+                <table-row >
+                    <table-cell display-align="center"  number-columns-spanned="5" border="1pt solid  #000000" padding="3pt" >
+                        <block text-align="left"  font-family="sans-serif" font-size="10"  >
+                            <!-- <apex:outputText >{!HTMLENCODE(acc.Customer_Code__c)}</apex:outputText>-->
+                            <block  text-align="left"  font-family="sans-serif" font-size="8"  >{!HTMLENCODE(acc.Customer_Code__c)}</block>                            
+                        </block>
+                    </table-cell>
+                    <table-cell display-align="center"  number-columns-spanned="15" border="1pt solid  #000000" padding="3pt">
+                        <block text-align="left"  font-family="sans-serif" font-size="8"  >
+                            <apex:outputText >{!HTMLENCODE(acc.ShippingStreet)}</apex:outputText>&ensp;
+                            
+                        </block>
+                        <block text-align="left"  font-family="sans-serif" font-size="8"  >
+                            <apex:outputText >{!HTMLENCODE(acc.ShippingCity)}</apex:outputText>&ensp;
+                        </block>
+                        <block text-align="left"  font-family="sans-serif" font-size="8"  >
+                        </block>
+                        <apex:outputText >{!HTMLENCODE(acc.ShippingState)}</apex:outputText>&ensp;
+                        <block text-align="left"  font-family="sans-serif" font-size="8"  >
+                            <apex:outputText >{!HTMLENCODE(acc.ShippingCountry)}</apex:outputText>&ensp;
+                        </block>
+                        <block text-align="left"  font-family="sans-serif" font-size="8"  >
+                            <apex:outputText >{!HTMLENCODE(acc.ShippingPostalCode)}</apex:outputText>
+                        </block>
+                    </table-cell>
+                    
+                </table-row>
+                
+                <table-row >
+                    <table-cell display-align="center"  number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+                        <block  text-align="left"  font-family="sans-serif" font-size="8"  >
+                            <apex:outputText > Sr.No.</apex:outputText>
+                        </block>
+                    </table-cell>
+                    <table-cell display-align="center" number-columns-spanned="4" border="1pt solid  #000000" padding="3pt">
+                        <block text-align="left"  font-family="sans-serif" font-size="8" >
+                            <apex:outputText >Model</apex:outputText>
+                        </block>
+                    </table-cell>
+                    <table-cell display-align="center"  number-columns-spanned="4" border="1pt solid  #000000" padding="3pt" >
+                        <block text-align="left"  font-family="sans-serif" font-size="8" >
+                            <apex:outputText >Description</apex:outputText>
+                        </block>
+                    </table-cell>
+                    <table-cell display-align="center"  number-columns-spanned="4" border="1pt solid  #000000" padding="3pt" >
+                        <block text-align="left"  font-family="sans-serif" font-size="8" >
+                            <apex:outputText >Product Serial No</apex:outputText>
+                        </block>
+                    </table-cell>
+                    <table-cell display-align="center"  number-columns-spanned="3" border="1pt solid  #000000" padding="3pt">
+                        <block text-align="left"  font-family="sans-serif" font-size="8" >
+                            <apex:outputText >Capacity </apex:outputText>
+                        </block>
+                    </table-cell>
+                    <table-cell display-align="center"  number-columns-spanned="2" border="1pt solid  #000000" padding="3pt" >
+                        <block text-align="left"  font-family="sans-serif" font-size="8" >
+                            <apex:outputText >Rate </apex:outputText>
+                        </block>
+                    </table-cell>
+                    <table-cell display-align="center"  number-columns-spanned="2" border="1pt solid  #000000" padding="3pt">
+                        <block text-align="left"  font-family="sans-serif" font-size="8" >
+                            <apex:outputText > Prev. Oblign Expiry Date</apex:outputText>
+                        </block>
+                    </table-cell>
+                </table-row>
+                
+                <apex:repeat value="{!accountVsQuoteLineMap[acc.Id]}" var="quoteLine">
+                    <table-row >
+                        <table-cell display-align="center"  number-columns-spanned="1" border="1pt solid  #000000" padding="3pt">
+                            <block text-align="left"  font-family="sans-serif" font-size="8" >
+                                <apex:outputText >{!rowNum + 1}</apex:outputText>
+                            </block>
+                        </table-cell>
+                        <table-cell display-align="center" number-columns-spanned="4" border="1pt solid  #000000" padding="3pt">
+                            <block  text-align="left"  font-family="sans-serif" font-size="8" >
+                                <apex:outputText >{!HTMLENCODE(quoteLine.Asset__r.Product2.ProductCode)}</apex:outputText>
+                            </block>
+                        </table-cell>
+                        <table-cell display-align="center"  number-columns-spanned="4" border="1pt solid  #000000" padding="3pt">
+                            <block text-align="left"  font-family="sans-serif" font-size="8" >
+                                <apex:outputText >{!HTMLENCODE(quoteLine.Asset__r.Product2.Name)}</apex:outputText>
+                            </block>
+                        </table-cell>
+                        <table-cell display-align="center"  number-columns-spanned="4" border="1pt solid  #000000" padding="3pt">
+                            <block text-align="left"  font-family="sans-serif" font-size="8" >
+                                <apex:outputText >{!HTMLENCODE(quoteLine.Asset__r.SerialNumber)}</apex:outputText>
+                            </block>
+                        </table-cell>
+                        <table-cell display-align="center" number-columns-spanned="3" border="1pt solid  #000000"   padding="3pt">
+                            <block text-align="left"  font-family="sans-serif" font-size="8">
+                                <!-- Conditional Output for Capacity or Quantity -->
+                                <apex:outputText rendered="{!quoteLine.Asset__r.Product2.Name == 'OPERATING MAINTENANCE CONTRACT COMPONENT'}" value="{0,number,##0.00}">
+                                    <apex:param value="{!quoteLine.SBQQ__Quantity__c}" />
+                                </apex:outputText>
+                                <apex:outputText rendered="{!quoteLine.Asset__r.Product2.Name != 'OPERATING MAINTENANCE CONTRACT COMPONENT'}" value="{0,number,##0.00}">
+                                    <apex:param value="{!quoteLine.Asset__r.Product2.Capacity__c}" />
+                                </apex:outputText>
+                                <apex:outputText > {!HTMLENCODE(quoteLine.Asset__r.Product2.Capacity_UOM__c)}</apex:outputText>
+                            </block>
+                        </table-cell>
+                        
+                        <table-cell display-align="center"  number-columns-spanned="2" border="1pt solid  #000000"  padding="3pt">
+                            <block text-align="left"  font-family="sans-serif" font-size="8" >
+                                <apex:outputText >{!quoteLine.SBQQ__NetTotal__c}</apex:outputText>
+                            </block>
+                        </table-cell>
+                        <table-cell display-align="center" number-columns-spanned="2" border="1pt solid  #000000" padding="3pt">
+                            <block text-align="left"  font-family="sans-serif" font-size="8" >
+                                <apex:outputText value="{0,date,dd/MM/yyyy}">
+                                    <apex:param value="{!quoteLine.Asset__r.Prev_Obligation_Expiry_Date__c}" />
+                                </apex:outputText>
+                            </block>
+                        </table-cell>
+                    </table-row>
+                    <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                </apex:repeat>
+                
+            </apex:repeat>
+        </table-body>     
+    </table>
+    &ensp;
+</apex:page>

@@ -1,0 +1,264 @@
+<apex:page standardController="ServiceContract" extensions="ServiceContractController" standardStylesheets="false" id="pge" renderAs="pdf">
+      <!-- First Page Header -->
+    <c:QuoteTemplateCmp type="header">
+        <table style="width: 100%; margin-top:10px" >
+            <tr>
+                <td>
+                    <apex:image style="max-width: 100%; display: block;" url="{!$Resource.BlueStarLogo}" width="200" height="auto" />
+                </td>
+                
+                <td >
+                    <apex:image style="max-width: 100%;  display: block;" url="{!$Resource.ISOLogoBSL}" width="200" height="auto" />
+                </td>
+                
+                <td style="width: 25%;"><br/> 
+                    <p style="font-family: sans-serif; font-size: 9pt; " >
+                        <strong style="font-size: 9pt;">Blue Star Limited,</strong><br/>
+                       2nd Pokhran Road, Majiwada,<br/>
+                        Thane (West) 400 601, India.<br/>
+                        Tel : +91 2267154525<br/>
+                        Fax : +91 2267154501<br/>
+                        www.bluestarindia.com 
+                        <!--apex:outputLink value="">www.bluestarindia.com</apex:outputLink-->
+                    </p>
+                </td>
+            </tr>
+        </table>   
+        
+      </c:QuoteTemplateCmp>
+      <!-- First Page Footer -->
+    <c:QuoteTemplateCmp type="footer">
+        <div style="height: 30px;   padding: 5px; box-sizing: border-box;text-align: center; font-size: 6px;">
+             Registered Office: Kasturi Buildings, Mohan T Advani chowk, Jamshedji Tata Road, Mumbai - 400 020, India,Tel:+91 22 66654000 Fax: +91 22 66654152 CIN: L28920MH1949PLC006870
+   
+            
+        </div>
+    </c:QuoteTemplateCmp>
+     <!-- Content of the First Page -->
+    <div class="content" style="padding: 20px; margin-top: 0px;font-family: sans-serif; font-size: 10pt;"> <!-- Adjust margin-top to be greater than header height -->
+        <p> <apex:form >        
+        <table style="width: 100%;font-size: 12px;">
+            <caption style="font-size: 20px;">CONTRACT ACTIVATION REPORT</caption>
+            <tr>              
+                <td colspan="2">
+                    <b>{!ServiceContract.Account.Name}</b>
+                    <apex:outputText value="{!IF(NOT(ISNULL(ServiceContract.Account.Shipping_House_Flat_BlockNo__c)), '<br/>', '')}" escape="false"/>                    
+                    <apex:outputText value="{!ServiceContract.Account.Shipping_House_Flat_BlockNo__c}" rendered="{!NOT(ISNULL(ServiceContract.Account.Shipping_House_Flat_BlockNo__c))}"/>
+                    <apex:outputText value="{!IF(NOT(ISNULL(ServiceContract.Account.Shipping_Sector__c)), '<br/>', '')}" escape="false"/>                
+                    <apex:outputText value="{!ServiceContract.Account.Shipping_Sector__c}" rendered="{!NOT(ISNULL(ServiceContract.Account.Shipping_Sector__c))}"/>
+                    <apex:outputText value="{!IF(NOT(ISNULL(ServiceContract.Account.ShippingStreet)), '<br/>', '')}" escape="false"/>
+                    <apex:outputText value="{!ServiceContract.Account.ShippingStreet}" rendered="{!NOT(ISNULL(ServiceContract.Account.ShippingStreet))}"/>
+                    <apex:outputText value="{!IF(NOT(ISNULL(ServiceContract.Account.Shipping_Area__c)), '<br/>', '')}" escape="false"/>
+                    <apex:outputText value="{!ServiceContract.Account.Shipping_Area__c}" rendered="{!NOT(ISNULL(ServiceContract.Account.Shipping_Area__c))}"/>
+                    <apex:outputText value="{!IF(NOT(ISNULL(ServiceContract.Account.ShippingCity)), '<br/>', '')}" escape="false"/>
+                    <apex:outputText value="{!ServiceContract.Account.ShippingCity}, {!ServiceContract.Account.ShippingState}, {!ServiceContract.Account.ShippingPostalCode}" rendered="{!NOT(ISNULL(ServiceContract.Account.ShippingCity))}"/>
+                    <apex:outputText value="{!IF(NOT(ISNULL(ServiceContract.Account.ShippingCountry)), '<br/>', '')}" escape="false"/>
+                    <apex:outputText value="{!ServiceContract.Account.ShippingCountry}" rendered="{!NOT(ISNULL(ServiceContract.Account.ShippingState))}"/>               
+                    <br/><br/>
+                    Customer PO No:&nbsp; <apex:outputText value="{!ServiceContract.PO_Number__c}">
+                    
+                    </apex:outputText><br/>
+                    Customer PO Date:&nbsp; <apex:outputText value="{0,date,MM-dd-yyyy}">
+                    <apex:param value="{!ServiceContract.PO_Date__c}" />
+                    </apex:outputText>
+                    
+                </td>
+            </tr>
+            <br/>
+            <tr>
+                <td colspan="2">
+                    <b>Dear {!ServiceContract.Contact.Salutation} {!ServiceContract.Contact.Name}</b>, <b>{!ServiceContract.Contact.Title__c}</b>.<br/>
+                    We thank you for choosing Bluestar for Annual Maintenance Contract.  
+                </td>
+            </tr>
+            <br/>
+            <tr>
+                <td colspan="2">
+                    Your Annual Maintenance Contract No:<b>{!ServiceContract.ContractNumber}</b> has been activated on
+                    <b>
+                        <apex:outputText value="{0,date,MM-dd-yyyy}">
+                            <apex:param value="{!ServiceContract.ActivationDate}" />
+                        </apex:outputText>
+                    </b>
+                    for the period of
+                    <b>
+                        <apex:outputText value="{0,date,MM-dd-yyyy}">
+                            <apex:param value="{!startDate}" />
+                        </apex:outputText>
+                    </b> to 
+                    <b>
+                        <apex:outputText value="{0,date,MM-dd-yyyy}">
+                            <apex:param value="{!endDate}" />
+                        </apex:outputText>
+                    </b> for below product/s.
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <br/>
+        <div style="text-align: center ">  
+            <b>ANNEXURE I: INSTALLATION / EQUIPMENT DETAILS<br/>
+                BSL Service Contract, SAC No: {!ServiceContract.HSN_SAC_code__c} Covered For</b>
+        </div>
+        <apex:variable var="rowNum" value="{!0}"/>       
+        <apex:repeat value="{!accountIds}" var="acc">
+             
+        <table  style=" border: 1px solid black; width: 100%; border-collapse: collapse;font-family: sans-serif; ">
+            <thead>
+                <tr>
+                    <th colspan="2"   style="width: 15%; border-collapse: collapse; border: 1px solid black; padding: 8px;">Customer Id</th>
+                        <th  colspan="5"  style="width: 85%; border-collapse: collapse; border: 1px solid black; padding: 8px;"  >Shipping Address</th>
+                    </tr>
+                    <tr style="border-collapse: collapse; border: 1px solid black; padding: 8px;">
+                        <td  colspan="2"  style="border-collapse: collapse; border: 1px solid black; padding: 8px;">{!acc.Customer_ID__c}</td>
+                        <td  colspan="5"  style="border-collapse: collapse; border: 1px solid black; padding: 8px;"  >
+                            <apex:outputText value="{!acc.Shipping_House_Flat_BlockNo__c}" rendered="{!NOT(ISNULL(acc.Shipping_House_Flat_BlockNo__c))}"/>
+                            <apex:outputText value="{!IF(NOT(ISNULL(acc.Shipping_House_Flat_BlockNo__c)), '<br/>', '')}" escape="false" rendered="{!NOT(ISNULL(acc.Shipping_House_Flat_BlockNo__c))}"/>
+                            <apex:outputText value="{!acc.Shipping_Sector__c}" rendered="{!NOT(ISNULL(acc.Shipping_Sector__c))}"/>
+                            <apex:outputText value="{!IF(NOT(ISNULL(acc.Shipping_Sector__c)), '<br/>', '')}" escape="false" rendered="{!NOT(ISNULL(acc.Shipping_Sector__c))}"/>
+                            <apex:outputText value="{!SUBSTITUTE(
+                                            LEFT(acc.ShippingStreet, LEN(acc.ShippingStreet) - 2),'\r', ' ') & 
+                                            SUBSTITUTE(RIGHT(acc.ShippingStreet, 2), '\r', ' ')
+                                            }" rendered="{!NOT(ISNULL(acc.ShippingStreet))}"/>
+                            <apex:outputText value="{!IF(NOT(ISNULL(acc.ShippingStreet)), '<br/>', '')}" escape="false" rendered="{!NOT(ISNULL(acc.ShippingStreet))}"/>
+                            <apex:outputText value="{!acc.Shipping_Area__c}" rendered="{!NOT(ISNULL(acc.Shipping_Area__c))}"/>
+                            <apex:outputText value="{!IF(NOT(ISNULL(acc.Shipping_Area__c)), '<br/>', '')}" escape="false" rendered="{!NOT(ISNULL(acc.Shipping_Area__c))}"/>
+                             <apex:outputText value="{!acc.ShippingCity}" rendered="{!NOT(ISNULL(acc.ShippingCity))}"/>
+                            <apex:outputText value="{!IF(NOT(ISNULL(acc.ShippingCity)), '<br/>', '')}" escape="false" rendered="{!NOT(ISNULL(acc.ShippingCity))}"/>
+                            
+                            <apex:outputText value="{!acc.ShippingState}" rendered="{!NOT(ISNULL(acc.ShippingState))}"/>
+                            <apex:outputText value="{!IF(NOT(ISNULL(acc.ShippingState)), '<br/>', '')}" escape="false" rendered="{!NOT(ISNULL(acc.ShippingState))}"/>
+                            
+                            <apex:outputText value="{!acc.ShippingPostalCode}" rendered="{!NOT(ISNULL(acc.ShippingPostalCode))}"/>
+                            <apex:outputText value="{!IF(NOT(ISNULL(acc.ShippingPostalCode)), '<br/>', '')}" escape="false" rendered="{!NOT(ISNULL(acc.ShippingPostalCode))}"/>
+                            
+                            <apex:outputText value="{!acc.ShippingCountry}" rendered="{!NOT(ISNULL(acc.ShippingCountry))}"/>
+                            <apex:outputText value="{!IF(NOT(ISNULL(acc.ShippingCountry)), '<br/>', '')}" escape="false" rendered="{!NOT(ISNULL(acc.ShippingCountry))}"/>
+                            
+                            
+                        </td>
+                    </tr>
+          
+                          
+                       <tr style="border-collapse: collapse; border: 1px solid black; padding: 8px;">
+                            <th style="width: 5%; border-collapse: collapse; border: 1px solid black; padding: 8px;">Sr. No.</th>
+                            <th style="width: 10.39%; border-collapse: collapse; border: 1px solid black; padding: 8px;">Model</th>
+                            <th style="width: 34.61%; border-collapse: collapse; border: 1px solid black; padding: 8px;">Description</th>
+                            <th style="width: 20%; border-collapse: collapse; border: 1px solid black; padding: 8px;">Product Serial No</th>
+                            <th style="width: 10%; border-collapse: collapse; border: 1px solid black; padding: 8px;">Rate</th>
+                            <th style="width: 10%; border-collapse: collapse; border: 1px solid black; padding: 8px;">Capacity</th>
+                            <th style="width: 10%; border-collapse: collapse; border: 1px solid black; padding: 8px;">Prev. Obligation Expiry Date</th>
+                        </tr>
+                        <apex:repeat value="{!accountIdToCLImap[acc.Id]}" var="CLI">
+                            <tr style="border-collapse: collapse; border: 1px solid black; padding: 8px;">
+                                <td style="border-collapse: collapse; border: 1px solid black; padding: 8px;">{!rowNum + 1}</td>
+                                <td style="border-collapse: collapse; border: 1px solid black; padding: 8px;">{!CLI.asset.Model_Number__c}</td>
+                                <td style="border-collapse: collapse; border: 1px solid black; padding: 8px;">{!CLI.asset.Name}</td>
+                                <td style="border-collapse: collapse; border: 1px solid black; padding: 8px;">{!CLI.asset.SerialNumber}</td>
+                                <td style="border-collapse: collapse; border: 1px solid black; padding: 8px;">{!CLI.UnitPrice}</td>
+                                <td style="border-collapse: collapse; border: 1px solid black; padding: 8px;">{!CLI.asset.Capacity__c}</td>
+                                <td style="border-collapse: collapse; border: 1px solid black; padding: 8px;">
+                                    <apex:outputText value="{0,date,MM-dd-yyyy}">
+                                        <apex:param value="{!CLI.asset.Prev_Obligation_Expiry_Date__c}" />
+                                    </apex:outputText>
+                                </td>
+                            </tr>
+                            <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                        </apex:repeat>
+                     </thead>
+              
+                
+            </table>    
+            </apex:repeat></apex:form></p></div>
+        <br/>
+        <!-- Second Page Header -->
+    <c:QuoteTemplateCmp type="header">
+        <table style="width: 100%; margin-top:10px" >
+            <tr>
+                <td>
+                    <apex:image style="max-width: 100%; display: block;" url="{!$Resource.BlueStarLogo}" width="200" height="auto" />
+                </td>
+                
+                <td >
+                    <apex:image style="max-width: 100%;  display: block;" url="{!$Resource.ISOLogoBSL}" width="200" height="auto" />
+                </td>
+                
+                <td style="width: 25%;"><br/><br/> 
+                     <p style="font-size: 11px;">
+                        <strong style="font-size: 12px;">Blue Star Limited,</strong><br/>
+                            <apex:outputPanel layout="none">
+                                <apex:outputText value="{!ServiceContract.Branch__r.Warehouse__r.Address__Street__s}" rendered="{!NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__Street__s))}" />
+                                <apex:outputText value="{!IF(NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__Street__s)), '<br/>', '')}" escape="false"/>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="none">
+                                <apex:outputText value="{!ServiceContract.Branch__r.Warehouse__r.Address__City__s}" rendered="{!NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__City__s))}" />
+                                <apex:outputText value="{!IF(NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__City__s)) && NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__StateCode__s)), ', ', '')}" escape="false" />
+                                <apex:outputText value="{!ServiceContract.Branch__r.Warehouse__r.Address__StateCode__s}" rendered="{!NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__StateCode__s))}" />
+                                <apex:outputText value="{!IF(NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__StateCode__s)) && NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__PostalCode__s)), ', ', '')}" escape="false" />
+                                <apex:outputText value="{!ServiceContract.Branch__r.Warehouse__r.Address__PostalCode__s}" rendered="{!NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__PostalCode__s))}" /><br/>
+                            </apex:outputPanel>
+                            <apex:outputText value="{!ServiceContract.Branch__r.Warehouse__r.Address__CountryCode__s}" rendered="{!NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.Address__CountryCode__s))}" /><br/>
+                            <apex:outputPanel layout="none">
+                                <apex:outputText value="GSTIN ID: {!ServiceContract.Branch__r.Warehouse__r.GST_Number__c}" rendered="{!NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.GST_Number__c))}" />
+                                <apex:outputText value="{!IF(NOT(ISBLANK(ServiceContract.Branch__r.Warehouse__r.GST_Number__c)), '<br/>', '')}" escape="false"/>
+                                <apex:outputText value="Tel No:18602666666" />
+                            </apex:outputPanel>
+                            <br/>
+                            <apex:outputText style="font-family: Calibri; font-size: 8px;" value="Email:customerservice@bluestarindia.com"></apex:outputText>
+                          </p>
+                </td>
+            </tr>
+        </table>     
+   </c:QuoteTemplateCmp>
+      <!-- Second Page Footer -->
+    <c:QuoteTemplateCmp type="footer">
+        <div style="height: 30px;   padding: 5px; box-sizing: border-box;text-align: center; font-size: 6px;">
+             Registered Office: Kasturi Buildings, Mohan T Advani chowk, Jamshedji Tata Road, Mumbai - 400 020, India,Tel:+91 22 66654000 Fax: +91 22 66654152 CIN: L28920MH1949PLC006870
+   
+            
+        </div>
+    </c:QuoteTemplateCmp>
+     <!-- Content of the Second Page -->
+     <div class="content" style="padding: 20px; margin-top: 0px;font-family: sans-serif; font-size: 10pt;"> <!-- Adjust margin-top to be greater than header height -->
+       <p> 
+            <h3>
+            Your Preventive Maintenance Service schedule for products are as per below
+        </h3>
+        <apex:variable var="rowNum1" value="{!0}"/>
+        
+        <apex:repeat value="{!PmsEventsDate}" var="events">
+            <table style="width: 100%; border-collapse: collapse; border: 1px solid black; padding: 8px; page-break-inside: avoid;">
+                <tbody style="border-collapse: collapse; border: 1px solid black; padding: 8px;">
+                    <tr style="border-collapse: collapse; border: 1px solid black; padding: 8px;">
+                        <td style="width: 60%;border-collapse: collapse; border: 1px solid black; padding: 8px;">
+                             {!IF(rowNum1 == 0, '1st', IF(rowNum1 == 1, '2nd', IF(rowNum1 == 2, '3rd', IF(rowNum1 == 3, '4th', TEXT(rowNum1 + 1) + 'th'))))} Service
+                </td>
+                        <td style="width: 40%;border-collapse: collapse; border: 1px solid black; padding: 8px;">
+                          {!events}  <!--apex:outputText value="{0,date,MMM-yy}">
+                                <apex:param value="{!events}" />
+                            </apex:outputText--> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <apex:variable var="rowNum1" value="{!rowNum1 + 1}"/>
+        </apex:repeat>
+        
+        <br/>
+        <p style="font-size: 12px;">
+            <b>Channel Partner: </b> {!ServiceContract.CP__r.Name}
+        </p>
+        
+        <p style="font-size: 12px;">
+            We look forward to serving you better. Thank you.<br/>
+            In case you need any details or have some special or specific requirements, please call us.
+        </p><br/>
+        
+        <div style="text-align: center ">
+            For any query, please email us at : customerservice@bluestarindia.com<br/>
+            24/7 Customer Care No. : 1800 209 1177 SMS 'SERVICE to 57575<br/>          
+            Visit us at www.bluestarindia.com<br/>
+            </div>
+        </p>  </div>
+
+</apex:page>

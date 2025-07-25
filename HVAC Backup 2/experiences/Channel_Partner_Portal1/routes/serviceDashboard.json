@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "294b16ee-28b2-4cab-abd2-53775e29e483",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "51ffd41e-e0d5-4741-9903-a158eee58f4f",
+  "label" : "Service Dashboard",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-service-dashboard",
+  "type" : "route",
+  "urlPrefix" : "service-dashboard"
+}

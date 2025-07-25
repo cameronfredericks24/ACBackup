@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <choices>
+        <name>Approved</name>
+        <choiceText>&lt;span style=&quot;background-color: rgb(227, 243, 255); font-size: 11.36px; font-family: Helvetica; color: rgb(0, 0, 0);&quot;&gt;Accept&lt;/span&gt;</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Accept</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Compressor dismantled</description>
+        <name>Compressordismantled</name>
+        <choiceText>Compressor dismantled</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Compressor dismantled</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Compressor/Part in working condition</description>
+        <name>CompressorPartinworkingcondition</name>
+        <choiceText>Compressor/Part in working condition</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Compressor/Part in working condition</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>HP/LP or Safety device Bypass</description>
+        <name>HPLPorSafetydeviceBypass</name>
+        <choiceText>HP/LP or Safety device Bypass</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>HP/LP or Safety device Bypass</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Pending</name>
+        <choiceText>Pending</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Pending</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Product Mismatch</description>
+        <name>ProductMismatch</name>
+        <choiceText>Product Mismatch</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Product Mismatch</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Rejected</name>
+        <choiceText>Reject</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Reject</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Safety Practices not followed</description>
+        <name>SafetyPracticesnotfollowed</name>
+        <choiceText>Safety Practices not followed</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Safety Practices not followed</stringValue>
+        </value>
+    </choices>
+    <environments>Default</environments>
+    <interviewLabel>VRA Approval {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>VRA Approval</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_the_st_details</name>
+        <label>Update the st details</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>VRA_Approval_Comment__c</field>
+            <value>
+                <elementReference>Approval_Comments</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>VRA_Approval_Status__c</field>
+            <value>
+                <elementReference>Approval_Status</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>VRA_Reason__c</field>
+            <value>
+                <elementReference>Rejected_Reason2</elementReference>
+            </value>
+        </inputAssignments>
+        <object>WorkOrder</object>
+    </recordUpdates>
+    <screens>
+        <name>Approval_Status_Screen</name>
+        <label>Approval Status Screen</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <backButtonLabel>Back</backButtonLabel>
+        <connector>
+            <targetReference>Update_the_st_details</targetReference>
+        </connector>
+        <fields>
+            <name>Approval_Status</name>
+            <choiceReferences>Approved</choiceReferences>
+            <choiceReferences>Rejected</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Approval Status</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Rejected_Reason2</name>
+            <choiceReferences>CompressorPartinworkingcondition</choiceReferences>
+            <choiceReferences>SafetyPracticesnotfollowed</choiceReferences>
+            <choiceReferences>Compressordismantled</choiceReferences>
+            <choiceReferences>HPLPorSafetydeviceBypass</choiceReferences>
+            <choiceReferences>ProductMismatch</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Rejected Reason</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Approval_Status</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>Rejected</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Approval_Comments</name>
+            <fieldText>Approval Comment</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Approval_Status_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

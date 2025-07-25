@@ -1,0 +1,69 @@
+<template>
+    <lightning-card title="Defective Part Items Tagging">
+<template if:false={showFlow}>
+
+<div style="margin: 50px; width: auto;">
+    <lightning-combobox 
+    name="recordTypeFilter"
+    label="Filter by Record Type"
+    value={selectedRecordType}
+    placeholder="Select a record type"
+    options={recordTypeOptions}
+    onchange={handleRecordTypeChange}
+    required>
+</lightning-combobox>
+</div>
+       
+        <div>
+
+
+           
+            <div class="slds-m-around_medium">
+                <div>
+                    <lightning-datatable data-id="datatable" key-field="Id" data={data} columns={columns} selected-rows={selectedRows} onrowselection={handleRowSelection}></lightning-datatable>
+                </div>
+            </div>
+            <div class="slds-align_absolute-center">
+                <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler} disabled={isPreviousDisabled}></lightning-button>
+                <span class="slds-badge slds-badge_lightest" style="margin-right: 10px;margin-left: 10px;">
+                    Displaying {startingRecord} to {endingRecord} of {totalRecountCount} records. Page {page} of {totalPage}.
+                </span>
+                <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right" onclick={nextHandler} disabled={isNextDisabled}></lightning-button>
+            </div>
+        </div>
+        <br/><br/>
+
+        <div if:true={enablePartClaim} class="slds-align_absolute-center">
+            <lightning-button label="Part Claim Tag" onclick={handlePartClaimClick} variant="brand"></lightning-button>
+        </div>
+   
+
+       
+        <template if:true={showImageUpload}>
+            <lightning-card title="Upload Images For Defective Items" icon-name="custom:custom63">
+              <div class="slds-grid slds-wrap">
+                <template for:each={selectedRowData} for:item="row">
+                    <div key={row.Id} class="slds-col slds-size_1-of-2 slds-p-around_medium">
+                        <span style="font-weight:bold"> {row.Product_Name_Text__c}</span>
+                        <c-image-uploadfordefective-items row-id={row.Id} part-name={row.Product_Name_Text__c}></c-image-uploadfordefective-items>
+                    </div>
+                </template>
+            </div>
+            <div class="slds-align_absolute-center">
+
+               
+               
+                <lightning-button label="Submit" onclick={handleContinueToFlowClick} variant="brand"></lightning-button>
+                
+            </div>
+            </lightning-card>
+           
+        </template>
+        </template>
+        <template if:true={showFlow}>
+            <lightning-flow flow-api-name={flowApiName} flow-input-variables={flowInputVariable} onstatuschange={handleStatusChange}></lightning-flow>
+        </template>
+
+       
+    </lightning-card>
+</template>

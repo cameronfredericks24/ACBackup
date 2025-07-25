@@ -1,0 +1,51 @@
+<template>
+    <div class="form-container">
+       <div>
+        <div if:true={captureSerialNumber}>
+            <div  if:true={calledFromStartWork}>
+                Please add the asset details to start work.
+                <br/><br/>
+            </div>   
+            <lightning-button label="Scan Barcode" onclick={handleBarcodeClick}></lightning-button>
+            <br/><br/>
+            <lightning-button class="" label="Enter serial Number" onclick={showSerialNumber}></lightning-button>
+            <br/><br/>
+            <!--<lightning-button class="slds-m-top_medium" label="No Serial Number" onclick={nonBslClick}></lightning-button>-->
+        </div>
+       
+        <div if:false={captureSerialNumber}>
+            <lightning-input if:true={showSerial} label="Enter Serial Number" value={serialNumber} onchange={assignSerialNumber} required></lightning-input>
+            <br/>
+            <lightning-button if:true={showSerial} class="" label="Save" onclick={fetchAsset}></lightning-button>
+            <lightning-button if:true={showSerial} class="slds-m-left_small" label="Back" onclick={handleBack}></lightning-button>
+        </div>     
+    </div>
+
+    <div if:true={nonBsl}>
+            <lightning-input label="Non BSL Make" onchange={handleNonBSLMakeChange} required></lightning-input>
+            <br/>
+            <lightning-input label="Non BSL Model" onchange={handleNonBSLModelChange} required></lightning-input>
+            <br/>
+            <lightning-combobox
+                name="type"
+                label="Type"
+                placeholder="Select Type"
+                options={options}
+                onchange={handleChange} required ></lightning-combobox>
+            <br/><br/>
+            <lightning-button class="" label="Save" onclick={fetchAsset}></lightning-button>
+            <lightning-button if:true={showSerial} class="slds-m-left_small" label="Back" onclick={handleBack}></lightning-button>
+        
+    </div>
+
+    <div style="margin-top: 20%; text-align: center;" if:true={showSuccess} class="slds-align_absolute-center slds-p-around_large slds-text-color_success">
+        {showSuccessMessage}
+    </div>
+
+    <div style="margin-top: 20%; text-align: center;" if:true={showError} class="slds-align_absolute-center slds-p-around_large slds-text-color_error">
+        {showErrorMessage}
+    </div>
+    
+</div>
+  
+</template>

@@ -1,0 +1,252 @@
+<template>
+       <template if:true={showSpinner}>
+        <div class="spinner-backdrop">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+    
+    <lightning-card title="Non-BOM Component" icon-name="custom:custom63">
+        <div class="slds-p-around_medium centered-content">
+               <!-- Show the search input only if material request is allowed -->
+            <template if:true={isMaterialRequestAllowed}>
+                <template if:true={bomProducts}>
+                    <lightning-input type="text" label="Search Products" value={searchTerm}
+                        onchange={handleSearchTermChange}>
+                    </lightning-input>
+                </template>
+                <template if:false={bomProducts}>
+                    <p> Please Continue with BOM </p>
+                </template>
+            </template>
+
+            <!-- Show message if material request is not allowed -->
+            <template if:false={isMaterialRequestAllowed}>
+                <div if:true={nonNamoBom}>
+                     <p>Material request cannot be raised for a Non-Namo account with an NIC obligation asset belonging to the CPSD division.</p>
+
+                </div>
+
+
+                <div if:true={assetNotRegistered}>
+
+                    <p>Asset not registered!!</p>
+
+             
+                </div>
+                <div if:true={upsdlock}>
+
+                    <p>NON BOM is Locked for CPAG/CBRG, Please proceed with BOM!!</p>
+
+             
+                </div>
+            </template>
+
+            <template if:true={filteredProducts.length}>
+                <template for:each={filteredProducts} for:item="product">
+                    <div key={product.Id} class="product-item">
+                        <p>{product.Name} ({product.ProductCode})</p>
+                        <lightning-button variant="brand" label="Add" data-id={product.Id}
+                            onclick={addProductToSelection}>
+                        </lightning-button>
+
+                        <!-- Modal for this specific product -->
+                        <template if:true={product.modalOpen}>
+                            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                                <div class="slds-modal__container centered-modal">
+                                    <!-- Modal Header -->
+                                    <div class="slds-modal__header">
+                                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                                title="Close"
+                                                data-id={product.Id}
+                                                onclick={handleClosePopup}>
+                                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                                            <span class="slds-assistive-text">Close</span>
+                                        </button>
+                                        <h2 class="slds-text-heading_medium">Confirm Spare Selection</h2>
+                                    </div>
+
+                                    <!-- Modal Body -->
+                                    <div class="slds-modal__content slds-p-around_medium">
+                                        <p>Are you sure you want to proceed with the following Spare?</p>
+                                        <p>{product.Name} ({product.ProductCode})</p>
+
+                                        <template if:true={showReturnableMessage}>
+                                            <div style="color: green; text-align: center; font-weight: bold;">This is
+                                                returnable material</div>
+                                        </template>
+                                        <lightning-button variant="neutral" label="Check Spare Item"
+                                            style="display: flex; justify-content: center; margin-top: 10px;"
+                                            onclick={checkProductItemId} disabled={checkSpareDisabled}>
+                                        </lightning-button>
+                                        <!-- Returnable Material Message -->
+
+
+                                        <!-- Stock Available Message -->
+                                        <template if:true={showStockAvailableMessage}>
+                                            <div style="color: green; text-align: center; font-weight: bold;">Stock
+                                                Available</div>
+                                            <div class="slds-m-top_medium">
+                                                <!-- <h3 class="slds-text-heading_small">Product Item ID: {productItemId}</h3>-->
+                                                <p>Scope:{scope} </p>
+                                                <p>Obligation:{obligationValue} </p>
+                                                <p>Material Group: {materialGroup}</p>
+                                                <h3 class="slds-text-heading_small">Quantity On Hand: {quantityOnHand}
+                                                </h3>
+                                                <template if:true={errorMessage}>
+                                                    <div class="error-message">{errorMessage}</div>
+                                                </template>
+
+                                                <!-- Quantity Input -->
+                                                <lightning-input type="number" label="Add Quantity"
+                                                    value={quantityToConsume}
+                                                    style="display: flex; justify-content: center; margin-top: 10px;"
+                                                    onchange={handleQuantityChange}>
+                                                </lightning-input>
+
+                                                <!-- Serial number fields based on quantity -->
+                                                <template if:true={quantityToConsume}>
+                                                    <h4>Enter Serial Numbers</h4>
+                                                    <template for:each={serialNumbers} for:item="serial"
+                                                        for:index="index">
+                                                        <div key={serial.id}
+                                                            style="display: flex; justify-content: center; margin-top: 10px;">
+                                                            <div
+                                                                style="display: flex; justify-content: center; margin-top: 10px;">
+                                                                <c-barcode-scanner-container
+                                                                    input-label-value='Scan Defective Part Serial Number'
+                                                                    data-index={index}
+                                                                    onscanfinish={handleDefectivePartNumber}
+                                                                    onselectedserial={handleDefectivePartNumber}>
+                                                                </c-barcode-scanner-container>
+                                                            </div>
+                                                            <lightning-button
+                                                                style="display: flex; justify-content: center; margin-top: 10px;"
+                                                                variant="Base" label="Scan Defective Part Serial Number"
+                                                                onclick={handleBarcodeClickUnitary} data-index={index}>
+                                                            </lightning-button>
+                                                            <div
+                                                                style="display: flex; justify-content: center; margin-top: 10px;">
+                                                                <c-barcode-scanner-container
+                                                                    input-label-value='Scan New Part Serial Number'
+                                                                    data-index={index}
+                                                                    onscanfinish={handleNewPartNumber}>
+                                                                </c-barcode-scanner-container>
+                                                            </div>
+                                                            <lightning-button
+                                                                style="display: flex; justify-content: center; margin-top: 10px;"
+                                                                variant="Base" label="Scan New Part Serial Number"
+                                                                onclick={handleBarcodeClickUnitary} data-index={index}>
+                                                            </lightning-button>
+                                                        </div>
+                                                    </template>
+                                                </template>
+
+                                                <lightning-button variant="brand" label="Consume Product"
+                                                    style="display: flex; justify-content: center; margin-top: 10px;"
+                                                    onclick={handleConsumeProduct} disabled={isButtonDisabled}>
+                                                </lightning-button>
+                                                <template if:true={showReturnableMessage}>
+                                                    <div style="color: green; text-align: center; font-weight: bold;">
+                                                        Note: Please return this material to CP</div>
+                                                </template>
+                                                <template if:true={showSuccessMessage}>
+                                                    <div class="success-message">{successMessage}</div>
+                                                </template>
+
+                                            </div>
+                                        </template>
+
+                                        <template if:true={showStockNotAvailableMessage}>
+                                            <div style="color: red; text-align: center; font-weight: bold;">Stock Not
+                                                Available</div>
+                                            <p>Scope: {scope}</p>
+                                            <p>Obligation: {obligationValue}</p>
+                                            <p>Material Group: {materialGroup}</p>
+
+                                            <lightning-input label="Quantity" type="number" value={quantity}
+                                                style="display: flex; justify-content: center; margin-top: 10px;"
+                                                onchange={handleQuantityChange}>
+                                            </lightning-input>
+
+                                            <!-- Generate scanner and button for each serial number based on quantity -->
+                                            <div key={serial.id}
+                                                style="display: flex; justify-content: center; margin-top: 10px;">
+                                                <!-- Defective Part Scanner -->
+                                                <c-barcode-scanner-container
+                                                    input-label-value="Enter Defective Part Serial Number"
+                                                    onscanfinish={handleDefectivePartNumberSingle}
+                                                    onselectedserial={handleDefectivePartNumberSingle}>
+                                                </c-barcode-scanner-container>
+                                            </div>
+
+                                            <!-- Defective Part Scan Button -->
+                                            <lightning-button key={serial.id}
+                                                style="display: flex; justify-content: center; margin-top: 10px;"
+                                                variant="Base" label="Scan Defective Part Serial Number"
+                                                onclick={handleBarcodeClickUnitary}>
+                                            </lightning-button>
+
+
+                                            <lightning-button variant="brand" label="Raise MR"
+                                                style="display: flex; justify-content: center; margin-top: 10px;"
+                                                onclick={handleCreateProductRequest} disabled={disableRaiseMRButton}>
+                                            </lightning-button>
+                                            <template if:true={showReturnableMessage}>
+                                                <div style="color: green; text-align: center; font-weight: bold;">Note:
+                                                    Please return this material to CP</div>
+                                            </template>
+
+                                            <template if:true={showSuccessMessage}>
+                                                <div class="slds-text-color_success">
+                                                    {successMessage}
+                                                </div>
+                                            </template>
+
+                                            <template if:true={errorMessage}>
+                                                <div class="slds-text-color_error">
+                                                    {errorMessage}
+                                                </div>
+                                            </template>
+                                        </template>
+
+
+                                    </div>
+                                    <!-- Modal Footer -->
+                                    <div class="slds-modal__footer">
+                                        <lightning-button variant="neutral" label="Cancel" data-id={product.Id}
+                                            onclick={handleClosePopup}>
+                                        </lightning-button>
+                                        <lightning-button variant="brand" label="Refresh"
+                                            onclick={handleConfirmSelection}>
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="slds-backdrop slds-backdrop_open"></div>
+                        </template>
+                    </div>
+                </template>
+            </template>
+        </div>
+
+        <!-- Selected Products Section -->
+        <template if:true={selectedProducts.length}>
+            <div class="slds-m-top_medium">
+                <h3 class="slds-text-heading_small">Selected Products</h3>
+                <template for:each={selectedProducts} for:item="selectedProduct">
+                    <div key={selectedProduct.Id} class="selected-product">
+                        <p>{selectedProduct.Name} ({selectedProduct.ProductCode})</p>
+                        <lightning-button variant="destructive" label="x" data-id={selectedProduct.Id}
+                            onclick={removeProductFromSelection}>
+                        </lightning-button>
+
+                        <!-- Open Modal Button (Reopen Modal for Selected Product) -->
+                        <lightning-button variant="brand" label="+" data-id={selectedProduct.Id}
+                            onclick={handleOpenModal}>
+                        </lightning-button>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+</template>

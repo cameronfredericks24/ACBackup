@@ -1,0 +1,23 @@
+.spinner{
+    position: static;
+    display: inline-block;
+}
+
+.slds-modal__content{
+    overflow-y: hidden;
+}
+.inner1 {
+    float:left; 
+ }
+ 
+ .inner2{
+    float:left; 
+    clear: left;
+    color: blue;
+ }
+  .slds-align--absolute-center {
+    display: flex;
+    justify-content: center;
+    /* align-content: center; */
+    align-items: center;
+}

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "6bbfd01d-cdad-4368-b8b1-2eebb9033f4c",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "a642586a-5f9f-4f05-806e-965f12980df9",
+  "label" : "TechnicianTermination",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-techniciantermination",
+  "type" : "route",
+  "urlPrefix" : "techniciantermination"
+}

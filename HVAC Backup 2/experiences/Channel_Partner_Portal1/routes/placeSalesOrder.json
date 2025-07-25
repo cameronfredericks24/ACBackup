@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "3d179311-bb82-444c-9fc1-643758b24018",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "2ce20489-ec3b-427f-bdc1-61af0553bd5e",
+  "label" : "PlaceSalesOrder",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-placesalesorder",
+  "type" : "route",
+  "urlPrefix" : "placesalesorder"
+}

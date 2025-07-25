@@ -1,0 +1,304 @@
+<template>
+    <lightning-card class="slds-p-around_large">
+        <template if:true={showTransferSelection} >
+            <div class="slds-m-left_large " >
+                <lightning-radio-group if:true={showSobject} name="radioGroup" label="Select Record" options={options}
+                    value={selectedSobject} type="radio" onchange={handleRecordChange}
+                    class="slds-m-bottom_medium test"></lightning-radio-group>
+    
+                <lightning-button if:true={showSobject} variant="brand" label="Next" onclick={handleNext}>
+                </lightning-button>
+    
+                <lightning-radio-group if:true={showTransfer} name="radioGroup" label="Select Transfer"
+                    options={transferOptions} value={transferValue} type="radio" onchange={handleTransferChange}
+                    class="slds-m-bottom_large"></lightning-radio-group>
+    
+                <div if:true={showCp} style="width: 50%;" class="slds-p-bottom_large">
+                    <div class="slds-p-bottom_small">
+                        <lightning-record-picker class="slds-m-bottom_medium" label="From Channel Partner"
+                            placeholder="Search Channel Partner..." object-api-name="Account"
+                            onchange={setFrom} filter={cpfilter} display-info={displayInfo} matching-info={matchingInfo}></lightning-record-picker>
+                    </div>
+                    <div class="slds-p-bottom_large">
+                        <lightning-record-picker class="slds-m-bottom_medium" label="To Channel Partner"
+                            placeholder="Search Channel Partner..." object-api-name="Account"
+                            onchange={setTo} filter={cpfilter} display-info={displayInfo} matching-info={matchingInfo}></lightning-record-picker>
+                    </div>
+    
+                    <lightning-button class="slds-m-top_medium slds-m-bottom_large " variant="brand" label="Next"
+                        onclick={handleTransfer}>
+                    </lightning-button>
+                    
+                </div>
+    
+                <div if:true={showSde} style="width: 50%;" class="slds-p-bottom_large">
+                    <!-- <div class="slds-p-bottom_small">
+                        <lightning-record-picker class="slds-m-bottom_medium" label="From SDE" placeholder="Search SDE..."
+                            object-api-name="User" onchange={setFrom} filter={sdefilter}></lightning-record-picker>
+                    </div> -->
+
+                     <div class="slds-p-bottom_small">
+                        <c-record-transfer-child onuserselect={handleUserSelected}></c-record-transfer-child>
+                     </div>
+    
+                    <div class="slds-p-bottom_large">
+                        <lightning-record-picker class="slds-m-top_medium slds-m-bottom_large" label="To SDE"
+                            placeholder="Search SDE..." object-api-name="User" onchange={setTo} filter={sdefilter}></lightning-record-picker>
+                    </div>
+    
+                    <lightning-button class="slds-m-top_medium " variant="brand" label="Next" onclick={handleTransfer}>
+                    </lightning-button>
+                </div>
+    
+                <div if:true={showBranch} style="width: 50%;" class="slds-p-bottom_large">
+                    <div class="slds-p-bottom_small">
+                        <lightning-record-picker class="slds-m-bottom_medium" label="From Branch"
+                            placeholder="Search Branch..." object-api-name="Branch__c"
+                            onchange={setFrom}></lightning-record-picker>
+                    </div>
+    
+                    <div class="slds-p-bottom_large">
+                        <lightning-record-picker class="slds-m-top_medium slds-m-bottom_large" label="To Branch"
+                            placeholder="Search Branch..." object-api-name="Branch__c"
+                            onchange={setTo}></lightning-record-picker>
+                        <lightning-record-picker class="slds-m-top_medium slds-m-bottom_large" label="Select CP for Branch"
+                            placeholder="Search CP..." object-api-name="Account"
+                            onchange={handleMandateFieldChange} filter={cpfilter} display-info={displayInfo} matching-info={matchingInfo} data-id="cpRecordPicker" required></lightning-record-picker>
+                        <lightning-record-picker class="slds-m-top_medium slds-m-bottom_large" label="Select SDE for Branch"
+                            placeholder="Search SDE..." object-api-name="User"
+                            onchange={handleMandateFieldChange} filter={sdefilter} data-id="sdeRecordPicker" required></lightning-record-picker>    
+                    </div>
+    
+                    <lightning-button class="slds-m-top_medium " variant="brand" label="Next" onclick={handleTransfer}>
+                    </lightning-button>
+                </div>
+    
+                <div if:true={showDivision} style="width: 50%;" class="slds-p-bottom_large">
+    
+                     <div class="slds-p-bottom_small">
+                        <lightning-record-picker class="slds-m-bottom_medium" label="From Division" placeholder="Search Division..."
+                            object-api-name="Division__c" onchange={setFrom} ></lightning-record-picker>
+                    </div>
+    
+                    <div class="slds-p-bottom_large">
+                        <lightning-record-picker class="slds-m-top_medium slds-m-bottom_large" label="To Division"
+                            placeholder="Search Division..." object-api-name="Division__c" onchange={setTo} ></lightning-record-picker>
+                    </div>
+    
+                    <lightning-button class="slds-m-top_medium " variant="brand" label="Next" onclick={handleTransfer}>
+                    </lightning-button>
+                </div>
+
+                <div if:true={showDepartment} style="width: 50%;" class="slds-p-bottom_large">
+                    <div class="slds-p-bottom_small">
+                        <lightning-record-picker class="slds-m-bottom_medium" label="From Department"
+                            placeholder="Search Department..." object-api-name="Department__c"
+                            onchange={setFrom}></lightning-record-picker>
+                    </div>
+    
+                    <div class="slds-p-bottom_large">
+                        <lightning-record-picker class="slds-m-top_medium slds-m-bottom_large" label="To Department"
+                            placeholder="Search Department..." object-api-name="Department__c"
+                            onchange={setTo}></lightning-record-picker>
+                    </div>
+    
+                    <lightning-button class="slds-m-top_medium " variant="brand" label="Next" onclick={handleTransfer}>
+                    </lightning-button>
+                </div>
+
+                <div if:true={showAccount} style="width: 50%;" class="slds-p-bottom_large">
+                    <div class="slds-p-bottom_small">
+                        <lightning-record-picker class="slds-m-bottom_medium" label="From Account"
+                            placeholder="Search Account..." object-api-name="Account"
+                            onchange={setFrom}></lightning-record-picker>
+                    </div>
+    
+                    <div class="slds-p-bottom_large">
+                        <lightning-record-picker class="slds-m-top_medium slds-m-bottom_large" label="To Account"
+                            placeholder="Search Account..." object-api-name="Account"
+                            onchange={setTo} filter={accfilter}></lightning-record-picker>
+                    </div>
+    
+                    <lightning-button class="slds-m-top_medium " variant="brand" label="Next" onclick={handleTransfer}>
+                    </lightning-button>
+                </div>
+                <div if:true={showJobStatus} class="slds-p-around_large slds-align_absolute-center slds-text-heading_small">
+                    {displayMsg}
+                </div>
+            </div>
+        </template>
+            
+        <template  if:false={showTransferSelection} >
+            <div class="slds-m-left_large ">
+                <span class="slds-text-heading_medium"><strong>Add Additional Filters</strong></span>
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <!-- CP -->
+                    <template if:false={showCp}>
+                        <div class="slds-col slds-size_1-of-8 slds-grid slds-grid_align-spread">
+                            <lightning-input 
+                                class="slds-m-top_medium slds-m-bottom_large"
+                                label="CP"
+                                placeholder="Enter CP..."
+                                name="cp"
+                                type="text"
+                                onchange={handleFilterChange}>
+                            </lightning-input>
+                            <lightning-helptext content="Provide multiple CP code/name separated by ',' ." class="slds-align-middle slds-m-top_xx"></lightning-helptext>
+                        </div>
+                    </template>
+                    
+                    <!-- Department -->
+                    <template if:false={showDepartment}>
+                        <div class="slds-col slds-size_1-of-8 slds-grid slds-grid_align-spread">
+                            <lightning-input 
+                                class="slds-m-top_medium slds-m-bottom_large"
+                                label="Department"
+                                placeholder="Enter Department..."
+                                name="department"
+                                type="text"
+                                onchange={handleFilterChange}>
+                            </lightning-input>
+                            <lightning-helptext content="Provide multiple Department Number separated by ',' ." class="slds-align-middle slds-m-top_xx"></lightning-helptext>
+                        </div>
+                    </template>
+                    <!-- SDE -->
+                    <template if:false={showSde}>
+                        <div class="slds-col slds-size_1-of-8 slds-grid slds-grid_align-spread">
+                            <lightning-input 
+                                class="slds-m-top_medium slds-m-bottom_large"
+                                label="SDE"
+                                placeholder="Enter SDE..."
+                                name="sde"
+                                type="text"
+                                onchange={handleFilterChange}>
+                            </lightning-input>
+                            <lightning-helptext content="Provide multiple SDE Employee Number/Name separated by ','." class="slds-align-middle slds-m-top_xx"></lightning-helptext>
+                        </div>
+                    </template>
+                
+                    <!-- Branch -->
+                    <template if:false={showBranch}>
+                        <div class="slds-col slds-size_1-of-8 slds-grid slds-grid_align-spread">
+                            <lightning-input 
+                                class="slds-m-top_medium slds-m-bottom_large"
+                                label="Branch"
+                                placeholder="Enter Branch..."
+                                name="branch"
+                                type="text"
+                                onchange={handleFilterChange}>
+                            </lightning-input>
+                            <lightning-helptext content="Provide multiple Branch Name/Code separated by ','." class="slds-align-middle slds-m-top_xx"></lightning-helptext>
+                        </div>
+                    </template>
+                
+                    <!-- Account -->
+                    <template if:false={showAccount}>
+                        <div class="slds-col slds-size_1-of-8 slds-grid slds-grid_align-spread">
+                            <lightning-input 
+                                class="slds-m-top_medium slds-m-bottom_large"
+                                label="Account"
+                                placeholder="Enter Account..."
+                                name="account"
+                                type="text"
+                                onchange={handleFilterChange}>
+                            </lightning-input>
+                            <lightning-helptext content="Provide multiple Account Name/Customer Code/SAP Code separated by ','." class="slds-align-middle slds-m-top_xx"></lightning-helptext>
+                        </div>
+                    </template>
+                
+                    <!-- Division -->
+                    <template if:false={showDivision}>
+                        <div class="slds-col slds-size_1-of-8 slds-grid slds-grid_align-spread">
+                            <lightning-input 
+                                class="slds-m-top_medium slds-m-bottom_large"
+                                label="Division"
+                                placeholder="Enter Division..."
+                                name="division"
+                                type="text"
+                                onchange={handleFilterChange}>
+                            </lightning-input>
+                            <lightning-helptext content="Provide multiple Division Name like 'CPSD', 'CPAG' etc. separated by ','" class="slds-align-middle slds-m-top_xx"></lightning-helptext>
+                        </div>
+                    </template>
+
+                    <div class="slds-col slds-size_1-of-8 slds-grid slds-grid_align-spread">
+                        <lightning-input 
+                            class="slds-m-top_medium slds-m-bottom_large"
+                            label="Obligation"
+                            placeholder="Enter Obligation..."
+                            name="obligation"
+                            type="text"
+                            onchange={handleFilterChange}>
+                        </lightning-input>
+                        <lightning-helptext content="Provide multiple Obligation filter like 'NIC', 'Warranty' etc. separated by ','" class="slds-align-middle slds-m-top_xx"></lightning-helptext>
+                    </div>
+                    <div class="slds-col slds-size_1-of-8 slds-grid slds-grid_align-spread">
+                        <lightning-input 
+                            class="slds-m-top_medium slds-m-bottom_large"
+                            label="Asset Component"
+                            placeholder="Enter Component Id..."
+                            name="component"
+                            type="text"
+                            onchange={handleFilterChange}>
+                        </lightning-input>
+                        <lightning-helptext content="Provide multiple Component Id separated by ','" class="slds-align-middle slds-m-top_xx"></lightning-helptext>
+                    </div>
+                    <div class="slds-col slds-size_1-of-8 slds-grid slds-grid_align-spread">
+                        <lightning-input 
+                            class="slds-m-top_medium slds-m-bottom_large"
+                            label="Pincode"
+                            placeholder="Enter Pincode..."
+                            name="pincode"
+                            type="text"
+                            onchange={handleFilterChange}>
+                        </lightning-input>
+                        <lightning-helptext content="Provide multiple Pincode separated by ','" class="slds-align-middle slds-m-top_xx"></lightning-helptext>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-p-bottom_large slds-grid slds-grid_vertical-align-center">
+                    <div class="slds-m-top_medium slds-m-left_medium">
+                        <span><strong>Selected Counts - {selectedRecordsCount}</strong></span>
+                    </div>
+                    <lightning-spinner if:true={isLoading} alternative-text="Loading Assets" size="medium"></lightning-spinner>
+                    <lightning-button class="slds-m-top_medium slds-m-left_medium " variant="brand" label="Fetch Assets" onclick={handleFilter}>
+                    </lightning-button>
+                </div>
+            
+                <lightning-datatable
+                    key-field="Id"
+                    data={assetList}
+                    columns={columns}
+                    onrowselection={handleRowSelection}
+                    selected-rows={selectedRowsIds}>
+                </lightning-datatable>
+            
+                <!-- Pagination Controls -->
+                <div class="pagination">
+                    <lightning-button label="Previous" disabled={isPreviousDisabled} onclick={handlePreviousPage}></lightning-button>
+                    <span>Page {currentPage} of {totalPages}</span>
+                    <lightning-button label="Next" disabled={isNextDisabled} onclick={handleNextPage}></lightning-button>
+                </div>
+            
+            </div>
+            
+            <div class="button-container">
+                <lightning-button 
+                    class="slds-m-around_small" 
+                    variant="brand" 
+                    label="Back" 
+                    onclick={handleBack}>
+                </lightning-button>
+                <lightning-button 
+                    class="slds-m-around_small" 
+                    variant="brand" 
+                    label="Transfer" 
+                    onclick={handleTransferRecord}>
+                </lightning-button>
+            </div>
+
+           
+        </template>
+    </lightning-card>
+
+</template>

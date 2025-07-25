@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "987603c4-3017-4c4b-babd-caf24fb846f2",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "6246870d-eabd-4dc9-9ed3-fe47d040f4e0",
+  "label" : "auditInventory",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-audit-inventory",
+  "type" : "route",
+  "urlPrefix" : "auditInventory"
+}

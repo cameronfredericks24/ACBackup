@@ -1,0 +1,77 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "b66749d2-a503-4f77-b909-cf9c2969bc5f",
+  "label" : "Non SSD Home Page",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "bannerText" : "",
+        "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "pageType" : "",
+        "showSubTopics" : true,
+        "title" : "Welcome to BlueStar Dealer Portal! non ssd",
+        "uniqueNameOrId" : ""
+      },
+      "componentName" : "forceCommunity:headline",
+      "id" : "0b21c2bd-8999-4c80-bed2-f391f5837c0c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "33c62a1a-1ca0-4127-93da-6ac1e63dc331",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "485",
+        "recordId" : "01ZBi000000djrhMAA"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "04f74225-2045-4aef-ab3a-fb0f7bfa6757",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "973b548d-5010-4cda-a7e4-45c1028b95bf",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:announcementMessageDisplay",
+      "id" : "c0df03c7-82bf-4d54-9eef-435ea40d8465",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e8c6078b-494b-4eed-a162-16132f3082f3",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "10b8da43-b006-43e8-9ed8-2c8f066cd551",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ef44b096-7f86-460e-9348-0ecb4b7eadc5",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "70c7b175-72d8-4d43-9f52-b3679861aeb7",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Home",
+  "type" : "view",
+  "viewType" : "home"
+}

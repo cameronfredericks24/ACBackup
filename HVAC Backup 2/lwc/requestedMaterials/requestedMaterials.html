@@ -1,0 +1,90 @@
+<template>
+    <lightning-card title="Requested Materials" icon-name="custom:custom63">
+        <template if:true={productRequests}>
+            <template if:true={productRequests.length}>
+                <template for:each={productRequests} for:item="item" for:index="index">
+                    <div key={item.Id} class="slds-m-bottom_small">
+                        <lightning-card>
+                            <lightning-layout horizontal-align="spread">
+                                <lightning-layout-item padding="around-small">
+                                    <div>
+                                        <span style="font-weight: bold;">Material Req Number:</span> {item.ProductRequestNumber} <br/>
+                                        <span style="font-weight: bold;">Material Code:</span> {item.Material_Code__c} <br/>
+                                        <span style="font-weight: bold;">Quantity:</span> {item.Quantity__c} <br/>
+                                        <span style="font-weight: bold;">Status:</span> {item.Status} <br/>
+                                        <span style="font-weight: bold;">Material Name:</span> {item.Product__r.Name} <br/>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small">
+                                    <div>
+                                        <lightning-button label="+" data-custom-index={index} onclick={handleAddProduct} disabled={item.disabled}></lightning-button>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-card>
+                    </div>
+                </template>
+            </template>
+            <template if:false={productRequests.length}>
+                <p>No Product Requests found for this Work Order.</p>
+            </template>
+        </template>
+        <template if:true={productRequests.error}>
+            <p>Error loading Product Requests: {productRequests.error}</p>
+        </template>
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </template>
+    </lightning-card>
+
+    <div>
+        <template if:true={showpopup}>
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-grid" style='width:100vw; z-index:99999; display:flex; align-items:center; justify-content:center;'>
+                <div class="slds-modal__container slds-modal_medium slds-c-modal-shadow slds-col slds-size_6-of-12">
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="slds-col slds-m-bottom_small">
+                            </br> </br> </br> </br>
+                            <c-defective-part-upload record-id={recordId} onfileuploaded={showFileUpload}></c-defective-part-upload>
+                        </div>
+                        <div style="display: flex; justify-content: center;">
+                            <lightning-input type="text" label="Defective Part Serial Number" value={currentPartRequests.Defective_Part_Serial_Number__c} disabled></lightning-input>
+                        </div>
+                        <div style="display: flex; justify-content: center; margin-top: 10px;">
+                            <c-barcode-scanner-container input-label-value='Scan New Part Serial Number' onscanfinish={handleNewSerialNumber}></c-barcode-scanner-container>
+                        </div>
+                        <div style="display: flex; justify-content: center; margin-top: 10px;">
+                            <!--  <c-barcode-scanner-container input-label-value='Scan Defective Part Serial Number' onscanfinish={handleDefectivePartNumber}></c-barcode-scanner-container> -->
+                        </div>
+
+                        <div style="text-align: center; margin-top: 10px;">
+                            <div style="margin-bottom: 10px;">
+                                <!-- <label for="comments" style="display: block; margin-bottom: 5px;"> Defective material Comments</label>
+                                <textarea id="comments" placeholder="Leave your comments here" style="width: 100%;" oninput={handleCommentsInput}></textarea> -->
+                            </div>
+                            <!-- <lightning-combobox
+                                name="make"
+                                label="Select material make"
+                                value={makeReason}
+                                placeholder="Select a make"
+                                options={makeOptions}
+                                onchange={handleComboBoxChange}
+                                style="margin: 10px auto; display: block; width: 100%;">
+                            </lightning-combobox> -->
+
+                            <lightning-button style="text-align: center; margin-top: 10px;" label="Replace Material" variant="brand" onclick={handleConsumeProduct}></lightning-button>
+                        </div>
+
+                        <template if:true={message}>
+                            <p>{message}</p>
+                        </template>
+                    </div> <!-- Closing div for slds-modal__content -->
+                    <div class="slds-modal__footer">
+                       <!-- <lightning-button label="Back" variant="brand" onclick={handleClosePopup} class="slds-var-m-left_x-small slds-float_left"></lightning-button> -->
+                        <lightning-button label="Cancel" variant="brand" onclick={handleClosePopup}></lightning-button>
+                    </div>
+                </div> <!-- Closing div for slds-modal__container -->
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </template>
+    </div>
+</template>

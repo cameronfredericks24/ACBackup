@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <environments>Default</environments>
+    <formulas>
+        <name>TicketNumber</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    {!$Record.RecordType.DeveloperName} = &quot;this condition not needed&quot;, 
+    &quot;S&quot; &amp; 
+    RIGHT(TEXT(MOD(YEAR(DATEVALUE({!$Record.CreatedDate})), 100)), 2) &amp; 
+    &quot;&quot; &amp; 
+    IF(MONTH(DATEVALUE({!$Record.CreatedDate})) &lt; 10, 
+        &quot;0&quot; &amp; TEXT(MONTH(DATEVALUE({!$Record.CreatedDate}))), 
+        TEXT(MONTH(DATEVALUE({!$Record.CreatedDate})))
+    ) &amp; 
+    &quot;&quot; &amp; 
+    IF(DAY(DATEVALUE({!$Record.CreatedDate})) &lt; 10, 
+        &quot;0&quot; &amp; TEXT(DAY(DATEVALUE({!$Record.CreatedDate}))), 
+        TEXT(DAY(DATEVALUE({!$Record.CreatedDate})))
+    ) &amp; 
+    {!$Record.WorkOrderNumber},
+    
+    IF(
+        TEXT({!$Record.WorkType.Work_Type_Code__c}) != null, 
+        TEXT({!$Record.WorkType.Work_Type_Code__c}) &amp; 
+        RIGHT(TEXT(MOD(YEAR(DATEVALUE({!$Record.CreatedDate})), 100)), 2) &amp; 
+        &quot;&quot; &amp; 
+        IF(MONTH(DATEVALUE({!$Record.CreatedDate})) &lt; 10, 
+            &quot;0&quot; &amp; TEXT(MONTH(DATEVALUE({!$Record.CreatedDate}))), 
+            TEXT(MONTH(DATEVALUE({!$Record.CreatedDate})))
+        ) &amp; 
+        &quot;&quot; &amp; 
+        IF(DAY(DATEVALUE({!$Record.CreatedDate})) &lt; 10, 
+            &quot;0&quot; &amp; TEXT(DAY(DATEVALUE({!$Record.CreatedDate}))), 
+            TEXT(DAY(DATEVALUE({!$Record.CreatedDate})))
+        ) &amp; 
+        {!$Record.WorkOrderNumber},
+        
+        RIGHT(TEXT(MOD(YEAR(DATEVALUE({!$Record.CreatedDate})), 100)), 2) &amp; 
+        &quot;&quot; &amp; 
+        IF(MONTH(DATEVALUE({!$Record.CreatedDate})) &lt; 10, 
+            &quot;0&quot; &amp; TEXT(MONTH(DATEVALUE({!$Record.CreatedDate}))), 
+            TEXT(MONTH(DATEVALUE({!$Record.CreatedDate})))
+        ) &amp; 
+        &quot;&quot; &amp; 
+        IF(DAY(DATEVALUE({!$Record.CreatedDate})) &lt; 10, 
+            &quot;0&quot; &amp; TEXT(DAY(DATEVALUE({!$Record.CreatedDate}))), 
+            TEXT(DAY(DATEVALUE({!$Record.CreatedDate})))
+        ) &amp; 
+        {!$Record.WorkOrderNumber}
+    )
+)</expression>
+    </formulas>
+    <interviewLabel>Update Ticket Number Read Only After Insert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Ticket Number Read Only After Insert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Ticket_Number_Read_Only_Field</name>
+        <label>Update Ticket Number Read Only Field</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Ticket_Number_Read_Only__c</field>
+            <value>
+                <elementReference>TicketNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Ticket_Number_Read_Only_Field</targetReference>
+        </connector>
+        <filterFormula>ISNEW() || ISCHANGED({!$Record.WorkTypeId})</filterFormula>
+        <object>WorkOrder</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>1200</triggerOrder>
+</Flow>

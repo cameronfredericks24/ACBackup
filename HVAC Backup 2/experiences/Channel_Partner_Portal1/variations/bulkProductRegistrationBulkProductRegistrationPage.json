@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "9a731141-abba-434f-81a1-ed493f2a4004",
+    "propertyOverrides" : {
+      "activeViewId" : "52a9aba0-bbd6-43bb-983a-6a544644c7a2"
+    },
+    "targetId" : "b1bd2341-1646-4a18-87ee-b2176be81718",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Bulk_Product_Registration_Bulk_Product_Registration_Page",
+  "id" : "884b6d8b-8bc8-4018-a733-4910fe42c0e2",
+  "type" : "experienceVariation"
+}

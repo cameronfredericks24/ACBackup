@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <assignments>
+        <name>Assign_CP</name>
+        <label>Assign CP</label>
+        <locationX>50</locationX>
+        <locationY>995</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CP__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.CreatedBy.Contact.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_service_ticket_account_to_asset</name>
+        <label>Assign service ticket account to asset</label>
+        <locationX>94</locationX>
+        <locationY>503</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Service_Ticket__r.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_if_created_by_technician</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_if_account_is_not_there</name>
+        <label>Check if account is not there</label>
+        <locationX>226</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>Check_if_created_by_technician</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>no_account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Service_Ticket__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_service_ticket_account_to_asset</targetReference>
+            </connector>
+            <label>no account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_if_CP_is_blank</name>
+        <label>check if CP is blank</label>
+        <locationX>182</locationX>
+        <locationY>887</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>blank_CP</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CP__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_CP</targetReference>
+            </connector>
+            <label>blank CP</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_created_by_technician</name>
+        <label>Check if created by technician</label>
+        <locationX>380</locationX>
+        <locationY>779</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>by_technician</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Profile.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BSL Technician</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>check_if_CP_is_blank</targetReference>
+            </connector>
+            <label>by technician</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_record_type</name>
+        <label>Check record type</label>
+        <locationX>380</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Check_if_created_by_technician</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Asset</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Asset</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_account_is_not_there</targetReference>
+            </connector>
+            <label>Asset</label>
+        </rules>
+    </decisions>
+    <description>added CP population if created by technician</description>
+    <environments>Default</environments>
+    <interviewLabel>Populate Account on Asset if null {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Populate Account on Asset if null</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_record_type</targetReference>
+        </connector>
+        <object>Asset</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

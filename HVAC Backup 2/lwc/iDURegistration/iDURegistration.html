@@ -1,0 +1,402 @@
+<template>
+    
+    
+    <template if:false={fromFSL}>
+        <div >
+            <lightning-card >
+
+                <template if:true={showSpinner}>
+                    <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                </template>
+                
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item padding="around-small" size="12">
+                    
+                        <div if:true={parentNotpresent}>
+                            <div class="button-container" style="display: flex; justify-content: center; gap: 10px;"> 
+                            {errorMessage}
+                            </div>
+                        </div>
+                        <div if:false={parentNotpresent} style="box-shadow: #0606062b 1px 1px 1px 1px; ">
+                            <div class="button-container" style="display: flex; justify-content: center; gap: 10px;"> 
+                                <!--<Strong>TAG IDU/ODU Asset</Strong>-->
+                            </div>
+                            <lightning-layout multiple-rows class="slds-p-around_medium">
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div class="button-container"  style="display: flex; justify-content: center; gap: 10px;">
+                                        <strong>Parent Asset Information</strong><br>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" padding="around-small">
+                                    <div class="button-container" >
+                                        <span><strong>Serial Number :</strong> {parentSerialNumber}</span><br>
+                                        <span><strong>Model Number : </strong>{modelNumber}</span><br>
+                                        <span><strong>Product Make : </strong>{productMake}</span>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" padding="around-small">
+                                    <div class="button-container" >
+                                        <span><strong>Product Sub Family : </strong>{productSubFamilyName}</span><br>
+                                        <span><strong>Service Department : </strong>{department}</span><br>
+                                    </div>
+                                </lightning-layout-item>
+                                
+                            
+                            </lightning-layout>
+            
+                            <div class="slds-p-around_medium">
+                                <lightning-layout multiple-rows if:true={showInput} style="width:50%;display: flex; justify-content: center; margin:auto;">
+                                
+                                    
+                                    <lightning-layout-item size="12" padding="around-small">
+                                        <lightning-combobox
+                                            label="Select Asset Type"
+                                            value={assetType}
+                                            options={assetTypeOptions}
+                                            onchange={handleAssetTypeChange}
+                                            required>
+                                        </lightning-combobox>
+                                    </lightning-layout-item>
+        
+                                    <lightning-layout-item if:true={showInputBox} size="12" padding="around-small">
+                                        <lightning-input if:true={showInputBox} type="number" label={numberLabel} onchange={handleIDUNumberChange}
+                                        value={totalIDU} required></lightning-input>
+                                    </lightning-layout-item>
+
+                                <lightning-layout-item size="12" padding="around-small">
+                                        <div style="display: flex; justify-content: center;">
+                                            <lightning-button label="Next" onclick={handleNext} class="slds-m-top_medium"
+                                                disabled={disableButton} variant="brand">
+                                            </lightning-button>
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+
+                                <lightning-layout multiple-rows  if:true={showDetails}>
+                                
+                                    <lightning-layout-item size="12" padding="around-small">
+                                        <div class="button-container"  style="display: flex; justify-content: center; gap: 10px;">
+                                            <strong>{assetType} Information {totalAssetCreated} </strong><br>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                        <lightning-layout-item size="6" padding="around-small">
+                                            <lightning-combobox
+                                                label="Select Product Make"
+                                                value={modelMake}
+                                                options={modelMakeOption}
+                                                onchange={handleModelMakeChange}
+                                                required>
+                                            </lightning-combobox>
+                                        </lightning-layout-item>
+
+
+                                    <lightning-layout-item size="6" padding="around-small">
+                                        <div class="custom-lookup" style="position: relative;">
+                                            <lightning-input type="search" label="Model Number"
+                                                onchange={handleOnChangeCustomLookupProductCode}
+                                                onclick={handleOnClickCustomLookupProductCode}
+                                                onfocus={handleOnFocusCustomLookupProductCode}
+                                                onblur={handleOnBlurCustomLookupProductCode} value={model} required>
+                                            </lightning-input>
+                                            <template if:true={showAvailableCodes}>
+                                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                    role="listbox">
+                                                    <template for:each={filteredOptionsProductCode} for:item="option">
+                                                        <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                            <div role="option" tabindex="0"
+                                                                class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                                onclick={handleModelNumberChangeCustomLookup}
+                                                                data-value={option.label} data-index={index}>
+                                                                <span class="slds-media__figure">
+                                                                    <!-- Location Icon -->
+                                                                    <lightning-icon icon-name="standard:product"
+                                                                        size="small"></lightning-icon>
+                                                                </span>
+                                                                <span class="slds-media__body">
+                                                                    <span class="slds-truncate">{option.label}</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </template>
+                                        </div>
+
+                                    
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item size="6" padding="around-small">
+                                        <lightning-input label="Serial" value={serial} onchange={handleSerialChange}
+                                            required="true">
+                                        </lightning-input>
+                                        <lightning-button if:true={fromFSL} variant="Base" label="Scan Barcode/QR Code"
+                                                onclick={handleBarcodeClickUnitary} index={index}></lightning-button>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item size="6" padding="around-small" class="slds-m-top_large" if:true={showSTLICheckBox}>
+                                        <lightning-input type="checkbox" label="Do you want to service this asset?" checked={createLineItem}
+                                        onchange={handleCheckboxChange}>
+                                            </lightning-input>
+                                                                                
+                                    </lightning-layout-item> 
+
+                                    <lightning-layout-item size="6" padding="around-small">
+                                        <lightning-file-upload label="Images" accept=".png, .jpg, .jpeg" multiple
+                                            onuploadfinished={handleUploadFinished} required="true">
+                                        </lightning-file-upload> 
+                                                
+                                    </lightning-layout-item> 
+
+                                
+                                    
+                                    <lightning-layout-item size="12" padding="around-small">
+                                        <template if:true={isFileUploaded}>
+                                            <div class="slds-m-top_medium">
+                                                <p class="slds-m-bottom_x-small">Uploaded Files:</p>
+                                                <div class="slds-box slds-box_x-small slds-theme_default">
+                                                    <ul class="slds-list_dotted slds-p-around_small">
+                                                        <template for:each={uploadedFileNames} for:item="file">
+                                                            <li key={file.name} class="slds-item slds-p-vertical_x-small">
+                                                                <a href="javascript:void(0);" onclick={handleFileClick}
+                                                                    data-id={file.id}>{file.name}</a>
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </lightning-layout-item>                      
+
+                                    <lightning-layout-item size="12" padding="around-small">
+                                        <div style="display: flex; justify-content: center;">
+                                            <lightning-button label="Add" onclick={handleSubmit} class="slds-m-top_medium"
+                                                disabled={disableButton} variant="brand">
+                                            </lightning-button>
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+                        
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-card>
+
+            <template for:each={assetCreatedList} for:item="asset" >
+                <lightning-card key={asset.serialNumber}>
+                <div key={asset.serialNumber} style="box-shadow: #0606062b 1px 1px 1px 1px; margin:2%; padding: 20px; " class="slds-p-around_medium">
+                    <div key={asset.serialNumber}>
+                        <h2 class="box-title" style="display: flex; justify-content: center; gap: 10px;"><strong>Asset Information {asset.index}</strong></h2>
+                        <p><strong>Serial Number:</strong> {asset.serialNumber}</p>
+                        <p><strong>Model Number:</strong> {asset.Model_Number__c}</p>
+                        <p><strong>Make:</strong> {asset.make}</p>
+                        <p><strong>Number of Files:</strong> {asset.noOfFiles}</p>
+                        <p><strong>Type:</strong> {asset.type}</p>
+                        <p><strong>Service Ticket Line Item Created:</strong> {asset.STLICreated}</p>
+                    </div>
+                </div>
+                </lightning-card>
+            </template>
+        
+            <template if:false={fromFSL}>
+               
+                    <lightning-layout if:true={assetCreated}>
+                    <lightning-layout-item size="12" padding="around-small">
+                        <div style="display: flex; justify-content: center;" class="slds-p-around_medium">
+                            <lightning-button label="Close" onclick={handleClose} class="slds-m-top_medium"
+                                disabled={disableButton} variant="brand">
+                            </lightning-button>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                
+        </template>
+        </div>
+    </template>
+    <template if:true={fromFSL}>
+       
+        <lightning-card>
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+            </template>
+
+            <lightning-layout multiple-rows>
+                <lightning-layout-item padding="around-small" size="12">
+                   
+                    <div if:true={parentNotpresent}>
+                        <div class="button-container" style="display: flex; justify-content: center; gap: 10px;"> 
+                           {errorMessage}
+                        </div>
+                    </div>
+                    <div if:false={parentNotpresent}>
+                        <div class="button-container" style="display: flex; justify-content: center; gap: 10px;"> 
+                            <!--<Strong>TAG IDU/ODU Asset</Strong>-->
+                         </div>
+                        <div class="button-container" > 
+                            <lightning-layout multiple-rows class="slds-p-around_medium" >
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div class="button-container"  style="display:flex; justify-content: center; display: flex; gap: 10px;">
+                                        <strong>Parent Asset Information</strong><br>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div class="button-container"  style="display: flex;  gap: 10px;">                                      
+                                        <span><strong>Serial Number :</strong> {parentSerialNumber}</span><br>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div class="button-container"  style="display: flex; gap: 10px;">                                
+                                        <span><strong>Model Number : </strong>{modelNumber}</span><br>
+                                    </div>
+                                </lightning-layout-item>
+                               
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div class="button-container"  style="display: flex;  gap: 10px;">                                   
+                                        <span><strong>Product Sub Family : </strong>{productSubFamilyName}</span><br>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div class="button-container" style="display: flex; gap: 10px;">
+                                        <span><strong>Service Department : </strong>{department}</span><br>
+                                    </div>
+                                </lightning-layout-item> 
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div class="button-container"  style="display: flex; gap: 10px;">                                
+                                        <span><strong>Product Make : </strong>{productMake}</span><br>
+                                    </div>
+                                </lightning-layout-item>                            
+                            </lightning-layout>
+                         </div>
+
+                        <div  class="slds-p-around_medium">
+                            <div >
+                            <lightning-layout multiple-rows if:true={showInput} >
+                              
+                                
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <lightning-combobox
+                                        label="Select Asset Type"
+                                        value={assetType}
+                                        options={assetTypeOptions}
+                                        onchange={handleAssetTypeChange}
+                                        required>
+                                    </lightning-combobox>
+                                </lightning-layout-item>
+    
+                                <lightning-layout-item if:true={showInputBox} size="12" padding="around-small">
+                                    <lightning-input  type="number" label={numberLabel} onchange={handleIDUNumberChange}
+                                    value={totalIDU} required></lightning-input>
+                                </lightning-layout-item>
+
+                               <lightning-layout-item size="12" padding="around-small">
+                                    <div style="display: flex; justify-content: center;">
+                                        <lightning-button label="Next" onclick={handleNext} class="slds-m-top_medium"
+                                            disabled={disableButton} variant="brand">
+                                        </lightning-button>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+
+                            <lightning-layout multiple-rows if:true={showDetails}>
+                            
+                              
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div class="button-container"  style="display: flex; justify-content: center; gap: 10px;">
+                                        <strong>{assetType} Information {totalAssetCreated} </strong><br>
+                                    </div>
+                                </lightning-layout-item>
+
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <lightning-combobox
+                                        label="Select Product Make"
+                                        value={modelMake}
+                                        options={modelMakeOption}
+                                        onchange={handleModelMakeChange}
+                                        required>
+                                    </lightning-combobox>
+                                </lightning-layout-item>
+
+
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div class="custom-lookup" style="position: relative;">
+                                        <lightning-input type="search" label="Model Number"
+                                            onchange={handleOnChangeCustomLookupProductCode}
+                                            onclick={handleOnClickCustomLookupProductCode}
+                                            onfocus={handleOnFocusCustomLookupProductCode}
+                                            onblur={handleOnBlurCustomLookupProductCode} value={model} required>
+                                        </lightning-input>
+                                        <template if:true={showAvailableCodes}>
+                                            <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                role="listbox">
+                                                <template for:each={filteredOptionsProductCode} for:item="option">
+                                                    <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                        <div role="option" tabindex="0"
+                                                            class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                            onclick={handleModelNumberChangeCustomLookup}
+                                                            data-value={option.label} data-index={index}>
+                                                            <span class="slds-media__figure">
+                                                                <!-- Location Icon -->
+                                                                <lightning-icon icon-name="standard:product"
+                                                                    size="small"></lightning-icon>
+                                                            </span>
+                                                            <span class="slds-media__body">
+                                                                <span class="slds-truncate">{option.label}</span>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </template>
+                                    </div>
+
+                                   
+                                </lightning-layout-item>
+
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <lightning-input label="Serial" value={serial} onchange={handleSerialChange}
+                                        required="true">
+                                    </lightning-input>
+                                    <lightning-button if:true={fromFSL} variant="Base" label="Scan Barcode/QR Code"
+                                            onclick={handleBarcodeClickUnitary} index={index}></lightning-button>
+                                </lightning-layout-item>
+
+                                <lightning-layout-item size="12" padding="around-small" class="slds-m-top_small" if:true={showSTLICheckBox}>
+                                    <lightning-input type="checkbox" label="Do you want to service this asset?" checked={createLineItem}
+                                    onchange={handleCheckboxChange}>
+                                        </lightning-input>
+                                                                            
+                                </lightning-layout-item> 
+
+                                <lightning-layout-item class="slds-m-top_small" size="12" padding="around-small">
+                                    <!--<lightning-file-upload if:false={isMobileDevice} label="Images" accept=".png, .jpg, .jpeg" multiple
+                                        onuploadfinished={handleUploadFinished} required="true">
+                                    </lightning-file-upload> --> 
+                                    <div class="slds-m-top_small">
+                                    <c-image-capture  record-id={recordId}  disable-edit-image=true onfileuploaded={handleFileUpload} ongetfile={getFiles} ></c-image-capture>
+                                </div>                        
+                                </lightning-layout-item> 
+                                
+                                                    
+
+                                <lightning-layout-item size="12" padding="around-small">
+                                    <div style="display: flex; justify-content: center;">
+                                        <lightning-button label="Add" onclick={handleSubmit} class="slds-m-top_medium"
+                                            disabled={disableButton} variant="brand">
+                                        </lightning-button>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                       
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+       
+    </template>
+
+    
+ 
+</template>

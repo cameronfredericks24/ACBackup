@@ -1,0 +1,43 @@
+<template>
+    <div class="container">
+        <lightning-card>
+            <div class="slds-m-around_medium">
+                <div class="slds-p-bottom_x-small"><b>{currentUserName}</b></div>
+                    <span style="font-size: x-larger; color: blue;" class="slds-p-right_xx-small"><b>{averageRating}</b></span>
+                        <template if:true={showzeroStar}>
+                            <img src={zeroStarImg} />
+                        </template>
+                        <template if:true={showhalfStar}>
+                            <img src={halfStarImg} />
+                        </template>
+                        <template if:true={showoneStar}>
+                            <img src={oneStarImg} />
+                        </template>
+                        <template if:true={showoneAndHalfStar}>
+                            <img src={oneAndHalfStarImg} />
+                        </template>
+                        <template if:true={showtwoStar}>
+                            <img src={twoStarImg} />
+                        </template>
+                        <template if:true={showtwoAndHalfStar}>
+                            <img src={twoAndHalfStarImg} />
+                        </template>
+                        <template if:true={showthreeStar}>
+                            <img src={threeStarImg} />
+                        </template>
+                        <template if:true={showthreeAndHalfStar}>
+                            <img src={starThreeandHalfImg} />
+                        </template>
+                        <template if:true={showfourStar}>
+                            <img src={fourStarImg} />
+                        </template>
+                        <template if:true={showfourAndHalfStar}>
+                            <img src={fourAndHalfStarImg} />
+                        </template>
+                        <template if:true={showfiveStar}>
+                            <img src={fiveStarImg} />
+                        </template> 
+            </div>
+        </lightning-card>
+    </div>
+</template>

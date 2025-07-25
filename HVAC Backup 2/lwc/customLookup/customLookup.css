@@ -1,0 +1,44 @@
+.custom-lookup {
+    position: relative;
+    width: 115%;
+}
+
+
+.slds-dropdown {
+   
+    max-height: 150px; /* Adjust as needed */
+    overflow-y: auto; /* Enable vertical scrolling */}
+
+
+.slds-listbox__item {
+    cursor: pointer;
+}
+
+.slds-listbox__item:hover {
+    background-color: #f4f6f9;
+}
+
+.slds-listbox__option {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+.customer-details p {
+    margin-bottom: 4px;
+}

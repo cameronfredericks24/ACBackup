@@ -1,0 +1,50 @@
+<template>
+    
+    <lightning-modal-header label="Create Product Transfer"></lightning-modal-header>
+        <div class="spinner">
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                </lightning-spinner>
+            </template>   
+        </div>
+        <lightning-modal-body>
+            <lightning-card title="Product Item">
+                <template if:true={productItemWrapper}>
+                <!--LIGHTNING DATATABLE-->
+                    <div class="myTable">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={productItemWrapper}
+                            columns={columns}
+                            onrowaction={handleRowAction} 
+                            hide-checkbox-column="true">
+                        </lightning-datatable>
+                    </div>
+
+                    <lightning-layout horizontal-align="space" vertical-align="center">
+                        <lightning-layout-item size="4" class="slds-m-top_medium" padding="around-medium">
+                            <lightning-input type="number" name="QuantityInput" label="Enter Transfer Quantity" maxlength={maxTransferQuan} onchange={handleQuanChange} required></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4" class="slds-m-top_medium" padding="around-medium">
+                            <lightning-input type="checkbox" label="Is Received" name="checkbox" onchange={handleReceiveChange}></lightning-input>
+                        </lightning-layout-item>
+                    </lightning-layout>
+
+                </template>
+                <template if:false={productItemWrapper}>
+                    <div class="slds-align_absolute-center">
+                        <lightning-card>
+                            <div class="slds-m-around_medium">Product Item Not Available</div>
+                        </lightning-card>
+                    </div>
+                </template>
+            </lightning-card>
+
+        </lightning-modal-body>
+        
+        <lightning-modal-footer>
+            <lightning-button label="Cancel" title="Cancel" onclick={onCancelHandler}></lightning-button>
+            <lightning-button label="Submit" onclick={onSubmitHandler}></lightning-button>
+        </lightning-modal-footer>
+    
+</template>

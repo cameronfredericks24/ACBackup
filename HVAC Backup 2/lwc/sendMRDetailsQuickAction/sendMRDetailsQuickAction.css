@@ -1,0 +1,5 @@
+.noLocationDiv p {
+    margin: 0; /* Remove default paragraph margin */
+    font-size: 16px; /* Font size */
+    line-height: 1.5; /* Line height for readability */
+}

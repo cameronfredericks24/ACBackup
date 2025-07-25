@@ -1,0 +1,70 @@
+<apex:page controller="AssessmentController">
+    <style>
+        .question-section {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .thank-you {
+            text-align: center;
+            font-size: 24px;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+        .already-submitted {
+            text-align: center;
+            font-size: 24px;
+            color: #FF0000;
+            margin-top: 20px;
+        }
+    </style>
+
+    <apex:form id="assessmentForm">
+        <apex:pageBlock title="Blue Star Technician Assessment">
+            <apex:pageMessages id="messages" />
+
+            <!-- Thank you message -->
+            <apex:outputPanel rendered="{!isSubmitted}">
+                <div class="thank-you">
+                    <p>Thank you for completing the assessment!</p>
+                </div>
+            </apex:outputPanel>
+
+            <!-- Already submitted message -->
+            <apex:outputPanel rendered="{!alreadySubmitted}">
+                <div class="already-submitted">
+                    <p>Your assessment has already been submitted!</p>
+                </div>
+            </apex:outputPanel>
+
+            <!-- Render the questions if form is not submitted -->
+            <apex:outputPanel rendered="{! NOT(alreadySubmitted)}">
+                <apex:outputPanel rendered="{! NOT(isSubmitted)}">
+                <apex:repeat value="{!questions}" var="wrapper">
+                    <div class="question-section">
+                        <apex:pageBlockSection title="{!wrapper.question.Question_Text__c}">
+                            <apex:selectRadio value="{!selectedAnswers[wrapper.question.Id]}">
+                                <apex:selectOptions value="{!wrapper.options}"/>
+                            </apex:selectRadio>
+                        </apex:pageBlockSection>
+                    </div>
+                </apex:repeat>
+
+                <!-- Submit button with rerender to avoid page reload -->
+                <apex:commandButton value="Submit" 
+                    action="{!submitAnswers}" 
+                    
+                    
+                    onclick="disableSubmitButton();" 
+                    id="submitBtn" />
+                     </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+
+    <script>
+        function disableSubmitButton() {
+            document.getElementById('{!$Component.submitBtn}').disabled = true;
+        }
+    </script>
+</apex:page>

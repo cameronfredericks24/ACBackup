@@ -1,0 +1,40 @@
+<aura:component implements="lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global" >
+    <aura:attribute name="recordId" type="String" />   
+    <aura:html tag="style">
+        .cuf-content{
+            padding: 0rem !important;
+        }
+        .slds-modal__container{
+            max-width:90rem !important;
+            width: 90% !important;
+        }
+        .slds-modal__content{
+            overflow: hidden !important;
+            height: fit-content !important;
+            max-height: fit-content !important;
+            <!--padding: 0rem !important;-->
+        }
+        .slds-textarea[disabled]{
+            background-color: #eae9e9 !important;
+        }
+        .slds-form-element__label{
+            font-size: 0.90rem !important;  
+            font-weight : bold;     
+        }
+        .slds-input{
+            font-size: 0.90rem !important; 
+        }
+        .slds-form-element__control{
+            font-size: 0.90rem !important;
+        }
+        .slds-th__action_form{
+            visibility:hidden; !important;
+        }
+        body{
+            font-size: 0.90rem !important; 
+        }
+        
+
+    </aura:html>
+    <c:createCaseForm aura:id="createCaseForm" recordId="{!v.recordId}"></c:createCaseForm>
+</aura:component>

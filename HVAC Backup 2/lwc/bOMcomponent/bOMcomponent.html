@@ -1,0 +1,277 @@
+<template>
+    <template if:true={showSpinner}>
+        <div class="spinner-backdrop">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+
+
+
+
+    <div class="custom-row">
+        <template if:true={bomItems}>
+            <lightning-card>
+                <template if:true={hasBomItems}>
+                    <div class="custom-column">
+                        <template if:true={bomDocumentUrl}>
+                            <img src={bomDocumentUrl} alt="BOM Document" style="width: 100%;" />
+                        </template>
+                        <template if:false={bomDocumentUrl}>
+                            <p>Image not available.</p>
+                        </template>
+                    </div>
+                </template>
+                <template for:each={bomItems} for:item="item" for:index="index">
+                    <div key={item.bompathid} class="slds-m-bottom_small">
+                        <lightning-card>
+                            <lightning-layout horizontal-align="spread">
+                                <lightning-layout-item padding="around-small">
+                                    <div>
+                                        <span style="font-weight: bold;">Part Code:</span> {item.Part} <br />
+                                        <span style="font-weight: bold;">Description:</span> {item.Description}
+                                        <br />
+                                        <span style="font-weight: bold;">Ref WRT Img:</span> {item.RefWRTImg}<br />
+                                        <span style="font-weight: bold;">Qty:</span> {item.Quantity}<br />
+                                        <span style="font-weight: bold;">Unit Price:</span> On Req
+                                        <!--{item.UnitPrice}-->
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small">
+                                    <div>
+                                        <lightning-button label="+" data-custom-index={index} slot="actions"
+                                            onclick={handleAddProduct}></lightning-button>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-card>
+                    </div>
+                </template>
+            </lightning-card>
+        </template> </br>
+        <template if:false={hasBomItems}>
+            <div class="slds-text-align_center">
+                <p style="color: red; font-weight: bold; text-align: center;">{error}</p>
+            </div>
+        </template>
+    </div>
+
+    <!-- Testing Popup -->
+
+    <template if:true={addProduct}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+            class="slds-modal slds-fade-in-open slds-grid "
+            style='width:100vw; z-index:99999; display:flex align-items:center; justify-content:center;'>
+            <div class="slds-modal__container slds-modal_medium slds-c-modal-shadow slds-col slds-size_6-of-12">
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <template if:false={addManually}>
+                        <!-- <lightning-button label="Scan Defective Part Serial Number" onclick={handleBarcodeClick}></lightning-button> -->
+                    </template>
+                    <div class="slds-m-vertical_small">
+                        <div class="slds-p-top_x-small">
+                            <label>
+                                <!-- <input type="checkbox" onchange={handleAddManually}> Add Manually -->
+                            </label>
+                        </div>
+                    </div>
+                    <template if:true={addManually}>
+                        <div class="slds-col slds-m-bottom_small">
+                            <!-- <lightning-input label="Defective Serial Number" onchange={serialNumberChangeHandler} value={currentBomItemDetails.serialNumber}></lightning-input> -->
+                        </div>
+                    </template>
+                    <div class="slds-col slds-m-bottom_small">
+                        <lightning-input label="Part Number" disabled value={currentBomItemDetails.Part}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-m-bottom_small">
+                        <lightning-input label="BOM Item Qty" disabled value={currentBomItemDetails.Quantity}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-m-bottom_small">
+                        <lightning-input label="Qty To Change" onchange={HandleQuantityChange} value={Quantity}>
+                        </lightning-input>
+                        <template if:true={quantityErrorMessage}>
+                            <div style="color: red;">{quantityErrorMessage}</div>
+                        </template>
+                    </div>
+
+                    <div style="display:flex; flex-direction:column;">
+                        <div style="display: flex; justify-content: center;">
+                            <lightning-button disabled={hideall} label="Check Stock" variant="brand"
+                                onclick={handlecheckstock}></lightning-button>
+                        </div>
+                        <hr />
+                        <br />
+                        <template if:true={hideall}>
+                            <div style="color: red; text-align: center; font-weight: bold;">Material Already
+                                Requested
+                            </div>
+                        </template>
+                        <div>
+                            <template if:false={hideall}>
+                                <template if:true={showSection}>
+                                    <template if:false={isStockAvailable}>
+                                        <template if:false={isFocso}>
+                                            <div style="color: red; text-align: center; font-weight: bold;">Stock Not
+                                                Available</div>
+                                        </template>
+                                        <template if:true={isFocso}>
+                                            <div style="color: red; text-align: center; font-weight: bold;">Stock is
+                                                Available at Stockiest Inventory
+                                                </div>
+                                        </template>
+                                    </template>
+                                    <template if:true={isStockAvailable}>
+                                        <div style="color: green; text-align: center; font-weight: bold;">Stock
+                                            Available</div>
+                                    </template>
+                                    <template if:true={errorMessage}>
+    <p class="slds-text-color_error">{errorMessage}</p>
+</template>
+                                    <hr /> <br />
+
+                                    <template if:true={showDefectivepartscanner}>
+                                        <div class="slds-col slds-m-bottom_small" style="z-index:9999">
+                                            </br>
+                                            <c-defective-part-upload record-id={recordId}
+                                                onfileuploaded={showFileUpload}></c-defective-part-upload>
+                                        </div>
+                                    </template>
+                                    <template if:true={showDefectivepartscanner}>
+                                        <!-- <lightning-button label="Scan Defective Part Serial Number" data-scan-type="defective" onclick={handleBarcodeClick}></lightning-button></br></br>
+    <lightning-button label="Scan New Part Serial Number" data-scan-type="new" onclick={handleBarcodeClick}></lightning-button> -->
+                                        <div style="display: flex; justify-content: center; margin-top: 10px;">
+                                            <c-barcode-scanner-container
+                                                input-label-value='Scan Defective Part Serial Number'
+                                                onscanfinish={handleDefectivePartNumber}
+                                                onselectedserial={handleDefectivePartNumber}>
+                                            </c-barcode-scanner-container>
+                                        </div>
+                                        <lightning-button
+                                            style="display: flex; justify-content: center; margin-top: 10px;"
+                                            variant="Base" label="Scan Defective Part Serial Number"
+                                            onclick={handleBarcodeClickUnitary} index={index}>
+                                        </lightning-button>
+                                    </template>
+                                    <template if:true={shownewpartscanner}>
+                                        <div style="display: flex; justify-content: center; margin-top: 10px;">
+                                            <c-barcode-scanner-container input-label-value='Scan New Part Serial Number'
+                                                onscanfinish={handleNewPartNumber}
+                                                onselectedserial={handleNewPartNumber}></c-barcode-scanner-container>
+                                        </div>
+                                        <lightning-button
+                                            style="display: flex; justify-content: center; margin-top: 10px;"
+                                            variant="Base" label="Scan New Part Serial Number"
+                                            onclick={handleBarcodeClickUnitary} index={index}>
+                                        </lightning-button>
+                                    </template></br>
+                                    <template if:true={showDefectivepartscanner}>
+                                        <div style="text-align: center; margin-top: 10px;">
+                                            <div style="margin-bottom: 10px;">
+                                                <label for="comments" style="display: block; margin-bottom: 5px;">
+                                                    Add
+                                                    Comments</label>
+                                                <textarea id="comments" placeholder="Leave your comments here"
+                                                    style="width: 100%;" oninput={handleCommentsInput}></textarea>
+                                            </div>
+
+                                            <lightning-combobox name="make" label="Select a make" value={makeReason}
+                                                placeholder="Select a make" options={makeOptions}
+                                                onchange={handleComboBoxChange}
+                                                style="margin: 10px auto; display: block; width: 100%;">
+                                            </lightning-combobox>
+                                        </div>
+                                    </template>
+                                    <template if:true={rmrSectionProductConsumed}>
+                                        <div style="display: flex; justify-content: center; margin-top: 10px;">
+                                            <lightning-button label="Consume Material" variant="brand"
+                                                onclick={handleConsumeProduct} disabled={showButton}></lightning-button>
+                                        </div>
+                                    </template>
+                                    <template if:true={isStockAvailable}>
+                                        <template if:false={rmrSectionProductConsumed}>
+                                            <div style="display: flex; justify-content: center; margin-top: 10px;">
+                                                <lightning-button label="Consume Material" variant="brand"
+                                                    onclick={handleConsumeProductNoRMR} disabled={showButton}>
+                                                </lightning-button>
+                                            </div>
+                                        </template>
+                                    </template>
+                                    <template if:false={isStockAvailable}>
+                                        <template if:false={hidecomboBox}>
+                                            <div style="text-align: center; margin-top: 10px;">
+                                                <lightning-combobox name="MRLocation" label="Destination Location"
+                                                    placeholder="Select Destination Location"
+                                                    options={mrLocationOptions} value={selectedMRLocation}
+                                                    onchange={handleMRLocationChange}
+                                                    style="margin: 10px auto; display: block; width: 100%;">
+                                                </lightning-combobox>
+                                            </div> <br />
+                                            <template if:true={materialGroupMessage}>
+    <div style="color: red; text-align: center; font-weight: bold;">
+        {materialGroupMessage}
+    </div>
+</template>
+<template if:true={errorMessage}>
+    <p class="slds-text-color_error">{errorMessage}</p>
+</template>
+                                            <template if:true={isRMRProduct}>
+                                                <div style="color: green; text-align: center; font-weight: bold;">
+                                                    Please
+                                                    take material for return</div> <br />
+                                                <div style="display: flex; justify-content: center;">
+                                                    <!-- Show a different button when isRMRProduct is true -->
+
+                                                    <div>
+                                                        <lightning-button label="Raise MR" variant="brand"
+                                                            onclick={handleRaiseMRandDPI} disabled={showButton}>
+                                                        </lightning-button>
+                                                    </div>
+
+                                                </div>
+                                            </template>
+                                            <template if:false={isRMRProduct}>
+                                                <!-- Show the Raise MR button when isRMRProduct is false -->
+                                                <div style="display: flex; justify-content: center;">
+                                                    <lightning-button label="Raise MR" variant="brand"
+                                                        onclick={handleRaiseMRandDPI} disabled={showButton}>
+                                                    </lightning-button>
+                                                </div>
+                                            </template>
+                                        </template>
+                                    </template>
+                                    <template if:true={showCreatePartReplaceButton}>
+                                        <div style="text-align: center;">
+                                            <p>Material already requested</p>
+                                            <!-- <lightning-button label="Confirm & Replace" variant="brand" onclick={handlePartReplace}></lightning-button> </br> -->
+                                        </div>
+                                    </template>
+                                    <template if:true={showCreatePartReplaceButtonwithcp}>
+                                        <div style="text-align: center;">
+                                            <p>Material already requested</p>
+                                            <!-- <lightning-button label="Confirm & Replace" variant="brand" onclick={handlePartReplaceForCPLocation}></lightning-button> -->
+                                        </div>
+                                    </template>
+                                </template>
+                            </template>
+                        </div>
+                        <template if:true={message}>
+                            <div class={messageClass}>
+                                <div class="slds-align_absolute-center slds-m-top_small">{message}</div>
+                            </div>
+                        </template>
+                        <!-- PR-customer - {showCreatePartReplaceButton} </br>
+    RMR - {isRMRProduct} </br>
+    PR-CP- {showCreatePartReplaceButtonwithcp} -->
+                    </div>
+                </div>
+                <div class="slds-modal__footer">
+                    <!-- <lightning-button label="Back" variant="brand" onclick={handleClosePopup} class="slds-var-m-left_x-small slds-float_left"></lightning-button> -->
+                    <lightning-button label="Close" variant="brand" onclick={handleClosePopup}></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+    </template>
+
+</template>

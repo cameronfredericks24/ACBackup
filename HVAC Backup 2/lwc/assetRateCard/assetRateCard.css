@@ -1,0 +1,34 @@
+.table-container {
+    text-align: center; /* Center align the table */
+    margin: auto; /* Center the table horizontally */
+}
+
+.center-aligned {
+    border-collapse: collapse; /* Collapse borders */
+}
+
+.center-aligned th,
+.center-aligned td {
+    border: 1px solid #000; /* Add border to table cells */
+    padding: 8px; /* Add padding to table cells */
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0; /* Adjust padding as needed */
+}
+
+.search-input {
+    width: 70%; /* 50% width of the parent container */
+}
+
+.center-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    lightning-input {
+        width: 200px; /* Adjust the width as needed */
+    }

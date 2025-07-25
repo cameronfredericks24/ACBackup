@@ -1,0 +1,170 @@
+<apex:page contentType="text/xml" showHeader="false" sidebar="false" controller="AMCTemplateController">
+    
+    <table table-layout="fixed" width="100%">
+        <table-body> 
+            <table-row>
+                <!-- First cell with image, spanning 2 columns and vertically aligned to top -->
+                <table-cell vertical-align="top" >
+                    <block >
+                        <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(firstPageImage1))}">
+                            <external-graphic src="{!firstPageImage1}" scaling="non-uniform" height="1.25in" content-width="2.10in"/>
+                        </apex:outputPanel>
+                    </block>
+                </table-cell>
+                <table-cell vertical-align="top" padding-left="18pt" >
+                    <block >
+                        <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(firstPageImage1))}">
+                            <external-graphic src="{!firstPageISO}" scaling="non-uniform" height="1.25in" content-width="2.0in"/>
+                        </apex:outputPanel>
+                    </block>
+                </table-cell>
+                
+                <!-- Second cell with address text, vertically aligned to top -->
+                <table-cell text-align="justify" font-family="sans-serif"  font-size="9" vertical-align="top"   padding-left="60pt">
+                    <block>&nbsp;</block>
+                    <block font-weight="bold" text-align="justify"  font-size="9">Blue Star Limited,</block>
+                    <block>Blue Star Innovation Centre,</block>
+                    <block>Next to Vihang’s Inn Hotel,</block>
+                    <block>Kapurbawadi, Ghodbunder</block>
+                    <block>Road, Thane West – 400 607.</block>
+                    <block>www.bluestarindia.com</block>
+                </table-cell>
+            </table-row>
+            <table-row>
+                <!-- First cell with image, spanning 2 columns and vertically aligned to top -->
+                <table-cell vertical-align="top" number-columns-spanned="2">
+                    <block>&nbsp;</block>
+                    <block text-align="left" font-family="sans-serif" font-size="9" >
+                        <apex:outputText >Proposal No: {!HTMLENCODE(proposalName)}  </apex:outputText>
+                    </block>
+                    <block text-align="left" font-family="sans-serif" font-size="9"  >
+                        <apex:outputText >Dated: {!HTMLENCODE(todayDateString)}  </apex:outputText>
+                        
+                    </block> 
+                </table-cell>
+            </table-row>
+        </table-body>
+        
+    </table>
+    <block>&nbsp;</block>
+    <block>&nbsp;</block>
+    
+    <block text-align="left" font-weight="bold" font-family="sans-serif" font-size="9" >
+        <apex:outputText >{!HTMLENCODE(accountName)}  </apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9" width="10" >
+        <apex:outputText >{!HTMLENCODE(accountStreet)} </apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9" width="10" >
+        <apex:outputText >{!HTMLENCODE(accountAddress)}  </apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="left" font-weight="bold" font-family="sans-serif" font-size="9" padding-bottom ="3pt" >
+        <apex:outputText >Dear {!HTMLENCODE(contactName)}, {!HTMLENCODE(contactDesignation)}  </apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >Phone No. : {!HTMLENCODE(contactPhone)}  </apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify" font-family="sans-serif" font-size="9">
+        <apex:outputText >It has been wonderful working with you to maintain the air conditioning/refrigeration facilities at your site,
+            details as stated in the Annexure below. I am sure you must be satisfied with the working of your AC
+            equipment and the services rendered by us. </apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify" font-family="sans-serif" font-size="9">
+        <apex:outputText > Air conditioning and refrigeration systems, like all mechanical equipment are subject to wear and tear.
+            They lose efficiency and consume more power over time, unless you monitor and maintain them regularly.
+            Studies reveal that with regular tune-ups, a system will deliver up to 95% of original efficiency which helps
+            reduce running and repair costs. What’s more you also save a lot of power. It is our endeavor and
+            commitment to maintain your air conditioning/refrigeration system at its optimal efficiency and ensure high
+            uptime of your equipment.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify" font-family="sans-serif" font-size="9">
+        <apex:outputText >I wish to inform you that the current Service expires and it will become due for renewal then. My team and
+            I will be delighted to continue our services and ensure that you put your AC equipment to effective use. I
+            am enclosing our Service Contract renewal offer, which on acceptance will facilitate the planning and
+            execution of services after the expiry of the current contract.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="justify" font-family="sans-serif" font-size="9">
+        <apex:outputText >As you go through this offer you will find that you will continue to have the convenience and benefits of a
+            BLUE STAR Service (Subject to SOW) that include:</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText><apex:outputText >* Service Call Desk</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText><apex:outputText >* Trained Personnel</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText><apex:outputText >* Exclusive Service Delivery Team</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText><apex:outputText >* Expert Advice through the Service Specialist Group (SSG)</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText><apex:outputText >* Expert monitoring by the Service Quality Assurance Team</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText><apex:outputText >* Genuine Spare parts</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9" >
+        <apex:outputText >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText><apex:outputText >* Priority Service</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText><apex:outputText >* Preventive Checks and many more</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText > The enclosed offer contains the details of a Service Solution in line with your equipment needs and other necessary information. Kindly go through them. Please let us know when would you like our Executive to visit you to collect the signed agreement.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >In case you need any details or have some special or specific requirements, please call us.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText > We look forward to serving you better.</apex:outputText>
+    </block>
+    &ensp;
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText > Thank you. With best regards</apex:outputText>
+    </block>
+    &ensp;
+    <block>&nbsp;</block>
+    <block>&nbsp;</block>
+    
+    
+    <block font-weight="bold" text-align="left" font-family="sans-serif" font-size="9">For {!HTMLENCODE(organizationName)}</block>    
+    <block text-align="left" font-family="Roboto" font-size="9"   >
+        <apex:outputText >{!HTMLENCODE(divisionHeadName)}  </apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9" >
+        <apex:outputText >Division Head </apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >{!HTMLENCODE(divisonName)}</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9">
+        <apex:outputText >Contact: 022-67154500</apex:outputText>
+    </block>
+    <block text-align="left" font-family="sans-serif" font-size="9" >&nbsp;</block>
+    <block text-align="left" font-family="sans-serif" font-size="9" >&nbsp;</block>
+    <block text-align="left" font-family="sans-serif" font-size="9" >&nbsp;</block>
+    <block text-align="left" font-family="sans-serif" font-size="9" >&nbsp;</block>
+    
+    
+    
+    <block  text-align="center" font-family="sans-serif" font-size="6.5" >
+        <apex:outputPanel layout="none" >
+            Note: Computer Generated document and hence does not need Signature.
+        </apex:outputPanel>
+    </block>
+    <block  text-align="center" font-family="Calibri" font-size="6"  padding-bottom="70pt">
+        <apex:outputPanel layout="none">
+            Registered Office: Kasturi Buildings, Mohan T Advani chowk, Jamshedji Tata Road, Mumbai - 400 020, India,Tel:+91 22 66654000 Fax: +91 22 66654152 CIN: L28920MH1949PLC006870
+        </apex:outputPanel>
+    </block>
+</apex:page>

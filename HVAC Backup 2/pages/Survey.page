@@ -1,0 +1,21 @@
+<apex:page showHeader="false" sidebar="false">
+    <apex:includeLightning />
+    <div id="lightning" />
+    <script>
+    $Lightning.use("c:SurveyApplication", function () {
+        $Lightning.createComponent(
+            "c:surveyForm",
+            {
+                surveyInvitationNum: '{!$CurrentPage.parameters.surveyinvitationid}'
+            },
+            "lightning",
+            function (component) {}
+        );
+    });
+    </script>
+     <style>
+        body {
+            background-color:#0f415b; 
+        }
+    </style>
+</apex:page>

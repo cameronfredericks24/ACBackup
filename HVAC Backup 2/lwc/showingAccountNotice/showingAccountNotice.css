@@ -1,0 +1,8 @@
+.dummy{
+	color : black;
+}
+.slds-p-around_small, .slds-p-around--small {
+    padding: var(--lwc-spacingSmall, 0.75rem);
+    padding-top: 0px;
+    padding-bottom: 0px;
+}

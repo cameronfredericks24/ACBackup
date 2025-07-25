@@ -1,0 +1,12 @@
+<template>
+    <div class="container">
+        <!-- Add your action buttons here -->
+        <lightning-button-group>
+            
+            <lightning-button label="Start" onclick={handleStart} disabled={disableStart}></lightning-button>
+            <lightning-button label="Reject" onclick={handleReject} disabled={disableReject}></lightning-button>
+            <lightning-button label="Cancel" onclick={handleCancel} disabled={disableCancel}></lightning-button>
+            <!-- Add more buttons as needed -->
+        </lightning-button-group>
+    </div>
+</template>

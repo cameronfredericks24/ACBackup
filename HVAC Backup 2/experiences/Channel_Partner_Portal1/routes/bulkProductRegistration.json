@@ -1,0 +1,11 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "b1bd2341-1646-4a18-87ee-b2176be81718",
+  "label" : "Bulk Product Registration",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-bulk-product-registration",
+  "type" : "route",
+  "urlPrefix" : "bulk-product-registration"
+}

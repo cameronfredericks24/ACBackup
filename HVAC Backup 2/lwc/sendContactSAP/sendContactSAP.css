@@ -1,0 +1,13 @@
+:host {
+    display: block;
+    max-width: 300px; /* Set to fit content */
+    margin: 0 auto;
+}
+
+.customQuickAction {
+    padding: 10px;
+}
+
+.noLocationDiv {
+    display: inline-block;
+}

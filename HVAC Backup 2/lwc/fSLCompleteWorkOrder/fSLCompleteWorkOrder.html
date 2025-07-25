@@ -1,0 +1,45 @@
+<template>
+
+    <div>
+        <!-- <template if:false={islocationavailable}>
+            <c-location-status 
+                record-id={recordId} onsubmitparent ={handleLocationService}>
+            </c-location-status>
+        </template> -->
+        <template if:true={showErrorMessage}>
+            <div class="message work-started">{errorMessage}</div>
+        </template>
+        <!-- File upload component -->
+        <template if:true={showFileUpload}>
+            <!--c-image-upload-container record-id={recordId} onfileuploaded={showFailureFormMethod}>
+            </c-image-upload-container-->
+            <!--c-image-upload-container record-id={recordId} onfileuploaded={showOtpFormMethod}>
+            </c-image-upload-container-->
+            <!--c-file-upload 
+                record-id={recordId}
+                onfileuploaded={handleFileUploaded} onsubmitfileparent={showFailureFormMethod}>
+            </c-file-upload-->
+        </template>
+
+        <!-- Capture Failure Details -->
+        <!-- <template if:true={isBreakdown}>
+            <c-capture-failure-info 
+                record-id={recordId} 
+                onsubmit={handleChildSubmit}>
+            </c-capture-failure-info>
+        </template> -->
+        <!--template if:true={showFailureForm}>
+            <c-capture-failure-info record-id={recordId} onsubmitsda={showOtpFormMethod}></c-capture-failure-info>
+        </template-->
+
+        <!-- OTP validation form component -->
+        <template if:true={showOTPForm}>
+            <c-otp-validation-form record-id={recordId} onotpsuccess={handleOTPVerification}>
+            </c-otp-validation-form>
+        </template>
+
+        <div  style="position: fixed; bottom: 20px; left: 20px;">
+            <lightning-button variant="brand-outline" label="Back" onclick={handleBackClick}></lightning-button>
+        </div>
+    </div>
+</template>

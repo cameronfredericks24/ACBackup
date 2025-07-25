@@ -1,0 +1,92 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "6c91e5f6-2ede-4b31-a731-c5646b20dfc9",
+  "label" : "Register Product",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "da8dff3d-d74d-4f7c-ba38-16dd3d846b24",
+          "columns" : [ {
+            "UUID" : "9544fff1-a243-4af4-8391-d8887122ca0c",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "4",
+            "seedComponents" : [ ]
+          }, {
+            "UUID" : "ae1a81dc-ddc3-4483-bf28-24321b863d61",
+            "columnKey" : "5a9b8",
+            "columnName" : "Column 2",
+            "columnWidth" : "4",
+            "seedComponents" : [ ]
+          }, {
+            "UUID" : "a8aa4914-0689-43f5-b78c-907c5d415d89",
+            "columnKey" : "d16f1",
+            "columnName" : "Column 3",
+            "columnWidth" : "4",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "da8dff3d-d74d-4f7c-ba38-16dd3d846b24",
+      "regions" : [ {
+        "id" : "9544fff1-a243-4af4-8391-d8887122ca0c",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:assetRegistrationDealerPortal",
+          "id" : "f3e6dedb-52a4-4714-8ffb-16a40f4be69a",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "ae1a81dc-ddc3-4483-bf28-24321b863d61",
+        "regionLabel" : "Column 2",
+        "regionName" : "5a9b8",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "id" : "a8aa4914-0689-43f5-b78c-907c5d415d89",
+        "regionLabel" : "Column 3",
+        "regionName" : "d16f1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bf93d7e0-d9b9-47ad-bc36-f5043ffaa4ce",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Register Product"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "e4d9448b-6351-4048-a1f0-b6d45cf5bb67",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "cce252cb-1195-48ff-85d2-9f4632f36243",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-register-product"
+}

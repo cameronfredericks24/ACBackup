@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>LightningInstrumentation</label>
+    <navType>Standard</navType>
+    <tabs>standard-LightningInstrumentation</tabs>
+    <tabs>MobileLanding</tabs>
+    <tabs>Daily_Job_Documents__c</tabs>
+    <tabs>Audit_Inventory__c</tabs>
+    <tabs>BS360__c</tabs>
+    <tabs>Attendance__c</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

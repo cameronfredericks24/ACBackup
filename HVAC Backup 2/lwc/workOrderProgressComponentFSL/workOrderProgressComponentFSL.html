@@ -1,0 +1,431 @@
+<template>
+    <lightning-card if:true={mainScreenVisibility} class="full-height">
+        <div if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+
+        <div if:true={startWOSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+
+        <div class="noLocationDiv" if:true={showLocationModal}>
+            <p>Please turn on the location to continue</p>
+        </div>
+
+        <div class="noLocationDiv" if:true={showWorkCompleted}>
+            <p style="color: green;">The Work has been completed</p>
+        </div>
+         <div class="noLocationDiv" if:true={showWorkCompletedbundle}>
+            <p style="color: green;">This Service Ticket has been bundled, Please Continue with Bundled Ticket.</p>
+        </div>
+
+        <div class="slds-clearfix" if:true={showProgressList}>
+
+            <div if:true={NotInstallation}>
+                <div class="slds-float_left">
+                    <div class="progress-container">
+                        <div class="slds-progress slds-progress_vertical slds-p-bottom_small progress-list">
+                            <ol class="slds-progress__list" style="height: 100%;">
+                                <li class={startTicketClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step1">
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col">
+                                                <lightning-button variant="Base" label="Start Ticket"
+                                                    onclick={handleStartTicket}
+                                                    disabled={isStepStartTicketDisabled}></lightning-button>
+                                            </div>
+                                            <div class="slds-col">
+                                                <lightning-button variant="Base" label="Reject Ticket"
+                                                    onclick={handleRejectTicket}
+                                                    disabled={isStepStartTicketDisabled}></lightning-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class={scanAssetClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step2">
+                                        <lightning-button variant="Base" label="Scan Asset" onclick={handleScanAsset}
+                                            disabled={isStepScanAssetDisabled}></lightning-button>
+                                    </div>
+                                </li>
+
+                                <li class={uploadImageClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step3">
+                                        <lightning-button variant="Base" label="Upload Images/Videos"
+                                            onclick={handleUploadFiles}
+                                            disabled={isStepUploadImageDisabled}></lightning-button>
+                                    </div>
+                                </li>
+                                <li class={captureSDAClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step4">
+                                        <lightning-button variant="Base" label="Add Details" onclick={handleCaptureSDA}
+                                            disabled={isStepCaptureSDADisabled}></lightning-button>
+                                    </div>
+                                </li>
+
+                                <li class={captureFeedbackClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step5">
+                                        <lightning-button variant="Base" label="Capture Feedback"
+                                            onclick={handleCaptureFeedback}
+                                            disabled={isStepCaptureFeedbackDisabled}></lightning-button>
+                                    </div>
+                                </li>
+                                <li class={completeTicketClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step6">
+                                        <lightning-button variant="Base" label="Complete Ticket"
+                                            onclick={handleCompleteTicket}
+                                            disabled={isStepCompleteTicketDisabled}></lightning-button>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div if:true={Installation}>
+
+                <div class="slds-float_left">
+                    <div class="progress-container">
+                        <div class="slds-progress slds-progress_vertical slds-p-bottom_small progress-list">
+                            <ol class="slds-progress__list" style="height: 100%;">
+                                <li class={startTicketClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step1">
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col">
+                                                <lightning-button variant="Base" label="Start Ticket"
+                                                    onclick={handleStartTicket}
+                                                    disabled={isStepStartTicketDisabled}></lightning-button>
+                                            </div>
+                                            <div class="slds-col">
+                                                <lightning-button variant="Base" label="Reject Ticket"
+                                                    onclick={handleRejectTicket}
+                                                    disabled={isStepStartTicketDisabled}></lightning-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class={productRegistrationClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step2">
+                                        <lightning-button variant="Base" label="Register Product"
+                                            onclick={handleRegisterProduct}
+                                            disabled={isRegisterProductDisabled}></lightning-button>
+                                    </div>
+                                </li>
+
+                                <li class={uploadImageClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step3">
+                                        <lightning-button variant="Base" label="Upload Images/Files"
+                                            onclick={handleUploadFiles}
+                                            disabled={isStepUploadImageDisabled}></lightning-button>
+                                    </div>
+                                </li>
+                                <li class={captureSDAClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step4">
+                                        <lightning-button variant="Base" label="Add Details" onclick={handleCaptureSDA}
+                                            disabled={isStepCaptureSDADisabled}></lightning-button>
+                                    </div>
+                                </li>
+
+
+                                <li class={captureFeedbackClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step5">
+                                        <lightning-button variant="Base" label="Capture Feedback"
+                                            onclick={handleCaptureFeedback}
+                                            disabled={isStepCaptureFeedbackDisabled}></lightning-button>
+                                    </div>
+                                </li>
+                                <li class={completeTicketClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step6">
+                                        <lightning-button variant="Base" label="Complete Ticket"
+                                            onclick={handleCompleteTicket}
+                                            disabled={isStepCompleteTicketDisabled}></lightning-button>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div if:true={isPMS}>
+
+                <div class="slds-float_left">
+                    <div class="progress-container">
+                        <div class="slds-progress slds-progress_vertical slds-p-bottom_small progress-list">
+                            <ol class="slds-progress__list" style="height: 100%;">
+                                <li class={startTicketClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step1">
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col">
+                                                <lightning-button variant="Base" label="Start Ticket"
+                                                    onclick={handleStartTicket}
+                                                    disabled={isStepStartTicketDisabled}></lightning-button>
+                                            </div>
+                                            <div class="slds-col">
+                                                <lightning-button variant="Base" label="Reject Ticket"
+                                                    onclick={handleRejectTicket}
+                                                    disabled={isStepStartTicketDisabled}></lightning-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+
+                                <li class={uploadImageClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step3">
+                                        <lightning-button variant="Base" label="Upload Images/Videos"
+                                            onclick={handleUploadFiles}
+                                            disabled={isStepUploadImageDisabled}></lightning-button>
+                                    </div>
+                                </li>
+
+
+                                <li class={PMSindividualTicketCompletionClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step4">
+                                        <lightning-button variant="Base" label="Complete Individual Ticket"
+                                            onclick={handleSingleTicketCompletionPMS}
+                                            disabled={isIndividualTicketDisabled}></lightning-button>
+                                    </div>
+                                </li>
+
+                                <li class={PMSbulkTicketCompletionClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step5">
+                                        <lightning-button variant="Base" label="Complete PMS Bundle"
+                                            onclick={handleBulkTicketCompletionPMS}
+                                            disabled={isBulkTicketDisabled}></lightning-button>
+                                    </div>
+                                </li>
+
+
+                                <li class={captureFeedbackClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step6">
+                                        <lightning-button variant="Base" label="Capture Feedback"
+                                            onclick={handleCaptureFeedback}
+                                            disabled={isStepCaptureFeedbackDisabled}></lightning-button>
+                                    </div>
+                                </li>
+
+                                <li class={completeTicketClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step7">
+                                        <lightning-button variant="Base" label="Complete Ticket"
+                                            onclick={handleCompleteTicket}
+                                            disabled={isStepCompleteTicketDisabled}></lightning-button>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div if:true={isBulkPMS}>
+                <div class="slds-float_left">
+                    <div class="progress-container">
+                        <div class="slds-progress slds-progress_vertical slds-p-bottom_small progress-list">
+                            <ol class="slds-progress__list" style="height: 100%;">
+
+
+                                <li class={captureFeedbackClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step6">
+                                        <lightning-button variant="Base" label="Capture Feedback"
+                                            onclick={handleCaptureFeedback}
+                                            disabled={isStepCaptureFeedbackDisabled}></lightning-button>
+                                    </div>
+                                </li>
+
+                                <li class={completeTicketClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step7">
+                                        <lightning-button variant="Base" label="Complete Ticket"
+                                            onclick={handleCompleteTicket}
+                                            disabled={isStepCompleteTicketDisabled}></lightning-button>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div if:true={isCommissioning}>
+                <div class="slds-float_left">
+                    <div class="progress-container">
+                        <div class="slds-progress slds-progress_vertical slds-p-bottom_small progress-list">
+                            <ol class="slds-progress__list" style="height: 100%;">
+
+                                <li class={startTicketClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step1">
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col">
+                                                <lightning-button variant="Base" label="Start Ticket"
+                                                    onclick={handleStartTicket}
+                                                    disabled={isStepStartTicketDisabled}></lightning-button>
+                                            </div>
+                                            <div class="slds-col">
+                                                <lightning-button variant="Base" label="Reject Ticket"
+                                                    onclick={handleRejectTicket}
+                                                    disabled={isStepStartTicketDisabled}></lightning-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class={uploadImageClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step3">
+                                        <lightning-button variant="Base" label="Upload Images/Videos"
+                                            onclick={handleUploadFiles}></lightning-button>
+                                    </div>
+                                </li>
+
+
+                                <li class={captureFeedbackClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step6">
+                                        <lightning-button variant="Base" label="Capture Feedback"
+                                            onclick={handleCaptureFeedback}></lightning-button>
+                                    </div>
+                                </li>
+
+                                <li class={completeTicketClasses}>
+                                    <div class="slds-progress__marker">
+                                        <span class="slds-assistive-text">Active</span>
+                                    </div>
+                                    <div class="slds-progress__item_content slds-grid slds-grid_align-spread step7">
+                                        <lightning-button variant="Base" label="Complete Ticket"
+                                            onclick={handleCompleteTicket}></lightning-button>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div if:true={showProgressList} class="disclaimer">
+            <p class="slds-align_absolute-center slds-p-around_xx-small"><b>Before generating the service report, please
+                    complete the appointment</b></p>
+        </div>
+
+
+
+    </lightning-card>
+
+    <template if:true={startWorkVisibility}>
+        <c-startworkcomponent record-id={recordId}></c-startworkcomponent>
+    </template>
+
+    <template if:true={cancelTicketVisibility}>
+        <c-otp-cancelation-form record-id={recordId} onbackclick={backEventHandler}></c-otp-cancelation-form>
+    </template>
+
+    <!-- Scan Asset cmp -->
+    <template if:true={scanAssetVisibility}>
+        <c-product-registration-f-s-l record-id={recordId} is-installation={Installation} called-from-start-work="false"
+            onbackclick={backEventHandler} onscanassetsuccess={handleScanAssetSuccess}
+            onassetselected={handleAssetScannedSelected}></c-product-registration-f-s-l>
+    </template>
+
+    <!-- Product Registration cmp -->
+    <template if:true={registerProductVisibility}>
+        <c-registration-asset-f-s-l record-id={recordId} is-installation={Installation} onbackclick={backEventHandler}
+            onproductregistersuccess={handleRegisterProductSuccess} onregistersuccess={handleProductRegSuccess}
+            onsplitdetailsaved={handleRegisterSuccess}></c-registration-asset-f-s-l>
+    </template>
+
+    <template if:true={rejectWorkVisibility}>
+        <c-rejectworkcomponent record-id={recordId} onbackevent={backEventHandler}></c-rejectworkcomponent>
+    </template>
+    <template if:true={captureImageUploadVisibility}>
+        <c-fsl-all-file-upload record-id={recordId} is-commissioning={isCommissioning} onbackclick={backEventHandler}
+            onfileuploaded={handleFileUploadSuccess}></c-fsl-all-file-upload>
+    </template>
+    <template if:true={captureSDAVisibility}>
+        <c-fsl-capture-s-d-a record-id={recordId} ondraftsda={handleDraftSDA} onsubmitsda={handleSubmitSDA}
+            onbackclick={backEventHandler}></c-fsl-capture-s-d-a>
+    </template>
+    <template if:true={captureFeedbackVisibility}>
+        <c-capture-customer-feedback record-id={recordId} onfeedbacksubmitted={handleFeedbackSubmitted}
+            onbackclick={backEventHandler}></c-capture-customer-feedback>
+    </template>
+    <template if:true={completeWorkOrderVisibility}>
+        <c-f-s-l-complete-work-order record-id={recordId} onotpverificationsuccess={handleOtpVerificationSuccess}
+            onbackclick={backEventHandler}></c-f-s-l-complete-work-order>
+    </template>
+    <template if:true={createServiceReportVisibilty}>
+        <c-f-s-l-complete-work-order></c-f-s-l-complete-work-order>
+    </template>
+</template>

@@ -1,0 +1,23 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "2fdf17e1-744f-49c2-a107-c2567cf3bf90",
+  "label" : "Service Ticket Line Item List",
+  "regions" : [ {
+    "id" : "9c1056c1-ddae-4956-9eb6-97864037a275",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "8d54a6f3-c0d0-4d66-86d0-77d10399dabd",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "0940f8f7-daf5-40eb-ba54-8e165aef937e",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-1WL"
+}

@@ -1,0 +1,46 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "40a5b85b-7627-4afd-ae31-62a9eac27f4c",
+  "label" : "Product Registration",
+  "regions" : [ {
+    "id" : "f3deb4a1-1953-46aa-b9bf-edc41d0904bd",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:assetRegistrationDealerPortal",
+      "id" : "6d408a85-cb94-46ec-95ee-8fab6248c1c2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "cd8e9839-7265-4311-914e-d91514f72333",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "ca0ac23d-68e9-44ae-8295-6ee39a4a5875",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Product Registration"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "61275e75-b42c-4a8f-8abe-f57112bc96b7",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c67e681c-877b-4486-9786-26c7ed7a45b6",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-product-registration"
+}

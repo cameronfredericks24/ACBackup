@@ -1,0 +1,75 @@
+<template>
+    <lightning-card>
+
+        <label class="slds-form-element__label" for="toSdeInput">From SDE</label>
+
+        <!-- User selected pill styled like an input -->
+        <template if:true={selectedUserId}>
+            <div class="slds-combobox_container">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-selection">
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                        <span class="slds-icon_container slds-icon-standard-user slds-combobox__input-entity-icon slds-input__icon_left" title="User">
+                            <lightning-icon icon-name="standard:user" size="x-small" alternative-text="User"></lightning-icon>
+                        </span>
+                        <input
+                            type="text"
+                            class="slds-input slds-combobox__input slds-combobox__input-value"
+                            readonly
+                            value={selectedUserName}
+                            aria-haspopup="listbox"
+                            role="combobox"
+                        />
+                        <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={clearSearch}>
+                            <lightning-icon icon-name="utility:close" size="x-small" alternative-text="Remove"></lightning-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Search box if no user selected -->
+        <template if:false={selectedUserId}>
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <div class="slds-input-has-icon slds-input-has-icon_right">
+                        <lightning-icon icon-name="utility:search" size="x-small" class="slds-input__icon slds-input__icon_left"></lightning-icon>
+                        <input 
+                            type="text" 
+                            class="slds-input" 
+                            placeholder="Search SDE..." 
+                            value={searchKey}
+                            oninput={handleInput}
+                            onfocus={handleFocus}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dropdown options -->
+            <template if:true={showDropdown}>
+                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-5" role="listbox">
+                    <template for:each={users} for:item="user">
+                        <li 
+                            key={user.Id} 
+                            class="slds-listbox__item" 
+                            data-id={user.Id} 
+                            data-name={user.Name} 
+                            data-emp={user.EmployeeNumber}
+                            onclick={handleUserSelect}
+                        >
+                            <div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                <span class="slds-media__figure">
+                                    <lightning-icon icon-name="standard:user" size="small" class="slds-icon slds-icon_small slds-icon-standard-user"></lightning-icon>
+                                </span>
+                                <span class="slds-media__body">
+                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">{user.EmployeeNumber} {user.Name}</span>
+                                </span>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </template>
+
+    </lightning-card>
+</template>

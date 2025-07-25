@@ -1,0 +1,325 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+
+    <template if:false={isMobileDevice}>
+
+        <lightning-card>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item padding="around-small" size="12">
+                    <div if:true={showDetails} class="slds-p-around_medium">
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item size="6" padding="around-small">
+                                <lightning-combobox label="Make" value={make} placeholder="Select Make"
+                                    options={makeOptions} onchange={handleMakeChange} required="true">
+                                </lightning-combobox>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="6" padding="around-small">
+                                <lightning-input label="Vendor Name" value={vendorName}
+                                    onchange={handleVendorNameChange} if:true={othersSelected} required="true">
+                                </lightning-input>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="6" padding="around-small">
+                                <lightning-input type="search" label="Product Sub Family" value={subFamilyName}
+                                    onchange={handleOnChangeCustomLookupSubFamily}
+                                    onclick={handleOnClickCustomLookupProductSubFamily}
+                                    onfocus={handleOnFocusCustomLookupProductSubFamily}
+                                    onblur={handleOnBlurCustomLookupProductSubFamily} required="true">
+                                </lightning-input>
+                                <template if:true={showSubFamily}>
+                                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                        role="listbox">
+                                        <template for:each={filteredOptionsFamily} for:item="option">
+                                            <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                <div role="option" tabindex="0"
+                                                    class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                    onclick={handleOptionClickProductSubFamily}
+                                                    data-value={option.value} data-name={option.label}>
+                                                    <span class="slds-media__figure">
+                                                        <lightning-icon icon-name="standard:product"
+                                                            size="small"></lightning-icon>
+                                                    </span>
+                                                    <span class="slds-media__body">
+                                                        <span class="slds-truncate">{option.label}</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </template>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="6" padding="around-small">
+
+                                <div class="custom-lookup">
+                                    <lightning-input type="search" label="Model Number"
+                                        onchange={handleOnChangeCustomLookupProductCode}
+                                        onclick={handleOnClickCustomLookupProductCode}
+                                        onfocus={handleOnFocusCustomLookupProductCode}
+                                        onblur={handleOnBlurCustomLookupProductCode} value={model} required>
+                                    </lightning-input>
+                                    <template if:true={showAvailableCodes}>
+                                        <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                            role="listbox">
+                                            <template for:each={filteredOptionsProductCode} for:item="option">
+                                                <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                    <div role="option" tabindex="0"
+                                                        class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                        onclick={handleModelNumberChangeCustomLookup}
+                                                        data-value={option.label} data-index={index}>
+                                                        <span class="slds-media__figure">
+                                                            <!-- Location Icon -->
+                                                            <lightning-icon icon-name="standard:product"
+                                                                size="small"></lightning-icon>
+                                                        </span>
+                                                        <span class="slds-media__body">
+                                                            <span class="slds-truncate">{option.label}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </template>
+                                </div>
+
+                                <!-- 
+                                <lightning-input label="Model" value={model} onchange={handleModelChange}
+                                    required="true">
+                                </lightning-input> -->
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="6" padding="around-small">
+                                <lightning-input label="Serial" value={serial} onchange={handleSerialChange}
+                                    required="true">
+                                </lightning-input>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="6" padding="around-small">
+                                <lightning-input label="Product Name" value={prodName} onchange={handleProdNameChange}
+                                    required="true">
+                                </lightning-input>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="6" padding="around-small">
+
+                                <div class="slds-col">
+                                    <lightning-input label="Capacity" value={capacity} onchange={handleCapacityChange}
+                                        required="true" type="number">
+                                    </lightning-input>
+                                </div>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="6" padding="around-small">
+
+                                <div class="slds-col">
+                                    <!-- <lightning-input label="Capacity UOM" value={capacityUOM} onchange={handleCapacityUOMChange} required="true">
+                                </lightning-input> -->
+
+                                    <lightning-combobox name="Capacity UOM" label="Capacity UOM" value={capacityUOM}
+                                        placeholder="Select UOM" options={capacityUOMOptions}
+                                        onchange={handleCapacityUOMChange}></lightning-combobox>
+
+                                </div>
+
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="6" padding="around-small">
+                                <lightning-input label="Installation Date" type="date" value={installationDate}
+                                    onchange={handleInstallationDateChange}>
+                                </lightning-input>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="6" padding="around-small">
+                                <lightning-input label="Invoice Date" type="date" value={invoiceDate}
+                                    onchange={handleInvoiceDateChange} required="true">
+                                </lightning-input>
+                            </lightning-layout-item>
+
+                            <lightning-record-edit-form object-api-name="Account">
+                                <lightning-input-field field-name="CP__c" label="Channel Partner"
+                                    onchange={handleAccountChange}>
+                                </lightning-input-field>
+                            </lightning-record-edit-form>
+
+                            <lightning-layout-item size="12" padding="around-small">
+                                <lightning-file-upload label="Images" accept=".png, .jpg, .jpeg" multiple
+                                    onuploadfinished={handleUploadFinished} required="true">
+                                </lightning-file-upload>
+
+                                <template if:true={isFileUploaded}>
+                                    <div class="slds-m-top_medium">
+                                        <p class="slds-m-bottom_x-small">Uploaded Files:</p>
+                                        <div class="slds-box slds-box_x-small slds-theme_default">
+                                            <ul class="slds-list_dotted slds-p-around_small">
+                                                <template for:each={uploadedFileNames} for:item="file">
+                                                    <li key={file.name} class="slds-item slds-p-vertical_x-small">
+                                                        <a href="javascript:void(0);" onclick={handleFileClick}
+                                                            data-id={file.id}>{file.name}</a>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </template>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="12" padding="around-small">
+                                <lightning-input type="checkbox" label="Has Warranty?" checked={isChecked}
+                                    onchange={handleCheckboxChange}>
+                                </lightning-input>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="12" padding="around-small" if:true={showWty}>
+                                <lightning-input label="Warranty Start Date" type="date" value={wtyStartDate}
+                                    onchange={handleWtyStartDateChange} required="true">
+                                </lightning-input>
+                                <lightning-input label="Warranty End Date" type="date" value={wtyEndDate}
+                                    onchange={handleWtyEndDateChange} required="true">
+                                </lightning-input>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="12" padding="around-small">
+                                <lightning-button label="Submit" onclick={handleSubmit} class="slds-m-top_medium"
+                                    disabled={disableButton} variant="brand">
+                                </lightning-button>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+
+    </template>
+
+    <template if:true={isMobileDevice}>
+
+        <div class="slds-grid slds-grid_vertical slds-var-p-around_small">
+
+            <div class="slds-col">
+                <lightning-combobox label="Make" value={make} placeholder="Select Make" options={makeOptions}
+                    onchange={handleMakeChange} required="true">
+                </lightning-combobox>
+            </div>
+
+            <div class="slds-col">
+                <lightning-input label="Vendor Name" value={vendorName} onchange={handleVendorNameChange}
+                    if:true={othersSelected} required="true">
+                </lightning-input>
+            </div>
+
+            <div class="slds-col">
+                <lightning-input type="search" label="Product Sub Family" value={subFamilyName}
+                    onchange={handleOnChangeCustomLookupSubFamily} onclick={handleOnClickCustomLookupProductSubFamily}
+                    onfocus={handleOnFocusCustomLookupProductSubFamily}
+                    onblur={handleOnBlurCustomLookupProductSubFamily} required="true">
+                </lightning-input>
+                <template if:true={showSubFamily}>
+                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                        role="listbox">
+                        <template for:each={filteredOptionsFamily} for:item="option">
+                            <li key={option.value} role="presentation" class="slds-listbox__item">
+                                <div role="option" tabindex="0"
+                                    class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                    onclick={handleOptionClickProductSubFamily} data-value={option.value}
+                                    data-name={option.label}>
+                                    <span class="slds-media__figure">
+                                        <lightning-icon icon-name="standard:product" size="small"></lightning-icon>
+                                    </span>
+                                    <span class="slds-media__body">
+                                        <span class="slds-truncate">{option.label}</span>
+                                    </span>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </template>
+            </div>
+
+            <div class="slds-col">
+
+                <div class="custom-lookup">
+                    <lightning-input type="search" label="Model Number" onchange={handleOnChangeCustomLookupProductCode}
+                        onclick={handleOnClickCustomLookupProductCode} onfocus={handleOnFocusCustomLookupProductCode}
+                        onblur={handleOnBlurCustomLookupProductCode} value={model} required>
+                    </lightning-input>
+                    <template if:true={showAvailableCodes}>
+                        <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                            role="listbox">
+                            <template for:each={filteredOptionsProductCode} for:item="option">
+                                <li key={option.value} role="presentation" class="slds-listbox__item">
+                                    <div role="option" tabindex="0"
+                                        class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                        onclick={handleModelNumberChangeCustomLookup} data-value={option.label}
+                                        data-index={index}>
+                                        <span class="slds-media__figure">
+                                            <!-- Location Icon -->
+                                            <lightning-icon icon-name="standard:product" size="small"></lightning-icon>
+                                        </span>
+                                        <span class="slds-media__body">
+                                            <span class="slds-truncate">{option.label}</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                </div>
+
+            </div>
+            <div class="slds-col">
+                <lightning-input label="Serial" value={serial} onchange={handleSerialChange} required="true">
+                </lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-input label="Product Name" value={prodName} onchange={handleProdNameChange} required="true">
+                </lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-input label="Capacity" value={capacity} onchange={handleCapacityChange} required="true"
+                    type="number">
+                </lightning-input>
+            </div>
+            <div class="slds-col">
+
+                <template if:true={capacityUOMOptions}>
+                    <lightning-combobox name="Capacity UOM" label="Capacity UOM" value={capacityUOM}
+                        placeholder="Select UOM" options={capacityUOMOptions}
+                        onchange={handleCapacityUOMChange}></lightning-combobox>
+
+                </template>
+            </div>
+            <div class="slds-col">
+                <lightning-input label="Installation Date" type="date" value={installationDate}
+                    onchange={handleInstallationDateChange}>
+                </lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-input label="Invoice Date" type="date" value={invoiceDate} onchange={handleInvoiceDateChange}
+                    required="true">
+                </lightning-input>
+            </div>
+
+            <div class="slds-col">
+                <lightning-input type="checkbox" label="Has Warranty?" checked={isChecked}
+                    onchange={handleCheckboxChange}>
+                </lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-input label="Warranty Start Date" type="date" value={wtyStartDate}
+                    onchange={handleWtyStartDateChange} required="true">
+                </lightning-input>
+                <lightning-input label="Warranty End Date" type="date" value={wtyEndDate}
+                    onchange={handleWtyEndDateChange} required="true">
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-align_absolute-center">
+                <lightning-button label="Submit" onclick={handleSubmit} class="slds-m-top_medium"
+                    disabled={disableButton} variant="brand">
+                </lightning-button>
+            </div>
+        </div>
+    </template>
+</template>

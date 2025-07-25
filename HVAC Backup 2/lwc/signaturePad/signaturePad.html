@@ -1,0 +1,28 @@
+<template>
+  <div class="signature_pad_flexbox">
+
+    <!-- <template if:true={nameInputLabel}>
+      <div style="padding-bottom: 5px;">{nameInputLabel}</div>
+    </template> -->
+    <!-- <div> 
+      <label class="bold-label">Customer Name</label>
+      <lightning-input class="slds-m-bottom_small" type="text" value={inputText} onchange={drawText} style="position:relative;top:-5px;">
+      </lightning-input>
+    </div> -->
+
+    <div if:true={isCommercial}>
+      <label class="bold-label">Customer Employee Code</label>
+      <lightning-input class="bold-label slds-m-bottom_small" type="text" value={customerCode}
+        onchange={handleCustomerCodeChange} style="position:relative;top:-5px;">
+      </lightning-input>
+    </div>
+
+
+
+    <template if:true={padLabel}>
+      <div class="slds-align_absolute-center" style="padding-bottom: 5px;">{padLabel}</div>
+    </template>
+
+    <canvas class="signature_pad_canvas"></canvas>
+  </div>
+</template>

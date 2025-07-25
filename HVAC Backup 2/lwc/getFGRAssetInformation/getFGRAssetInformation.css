@@ -1,0 +1,190 @@
+.custom-lookup {
+    position: relative;
+}
+
+
+.slds-dropdown {
+   
+    max-height: 150px; /* Adjust as needed */
+    overflow-y: auto; /* Enable vertical scrolling */}
+
+
+.slds-listbox__item {
+    cursor: pointer;
+}
+
+.slds-listbox__item:hover {
+    background-color: #f4f6f9;
+}
+
+.slds-listbox__option {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.invoice-card {
+    border: 1px solid #d8dde6;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    width: 100%;
+    background-color: #f9fafb;
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.invoice-number {
+    font-weight: bold;
+}
+
+.product-header,
+.child-products-header {
+    font-weight: bold;
+}
+.sub-products-header {
+    font-weight: bold;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+.customer-details p {
+    margin-bottom: 4px;
+}
+
+/* General Styles */
+.slds-box {
+    border-radius: 0.25rem;
+    border: 1px solid #d8dde6;
+}
+
+.slds-m-top_x-small {
+    margin-top: 0.5rem;
+}
+
+.slds-m-around_xx-small {
+    margin: 0.5rem;
+}
+
+.slds-p-around_xx-small {
+    padding: 0.5rem;
+}
+
+.slds-p-horizontal_medium {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.slds-align_absolute-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Custom Lookup */
+.custom-lookup {
+    position: relative;
+}
+
+.slds-listbox {
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.slds-listbox__item {
+    cursor: pointer;
+}
+
+.slds-listbox__item:hover {
+    background-color: #f4f6f9;
+}
+
+.slds-listbox__option {
+    display: flex;
+    align-items: center;
+}
+
+.slds-media__figure {
+    margin-right: 0.5rem;
+}
+
+/* Button Styles */
+.lightning-button {
+    margin-top: 1rem;
+}
+
+.lightning-button.variant-brand {
+    background-color: #0070d2;
+    color: white;
+}
+
+.lightning-button.variant-base {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+/* ODU and IDU Sections */
+.slds-box.slds-theme_shade {
+    background-color: #f3f6f9;
+}
+
+.slds-grid.slds-wrap {
+    gap: 1rem;
+}
+
+/* Accordion Styles */
+.slds-accordion {
+    margin-top: 1rem;
+}
+
+.slds-accordion__section {
+    border-bottom: 1px solid #d8dde6;
+}
+
+.slds-accordion__section:last-child {
+    border-bottom: none;
+}
+
+.slds-accordion__section:hover {
+    background-color: #f4f6f9;
+}
+
+/* Card Styles */
+.lightning-card {
+    margin-top: 1rem;
+}
+
+.lightning-card .slds-card__header {
+    background-color: #0070d2;
+    color: white;
+}
+
+.lightning-card .slds-card__body {
+    padding: 1rem;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+    .slds-col.slds-size_1-of-3,
+    .slds-col.slds-size_1-of-2,
+    .slds-col.slds-size_6-of-12 {
+        flex: 1 1 100%;
+    }
+}

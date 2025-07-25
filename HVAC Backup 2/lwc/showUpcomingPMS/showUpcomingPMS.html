@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <template if:true={isUpcomingPMS}>
+        <lightning-datatable
+            key-field="Id"
+            data={workOrders}
+            columns={columns}
+            hide-checkbox-column="true"
+              class="scrollable-datatable">
+        </lightning-datatable>
+        
+        <lightning-layout class="slds-m-top_small">
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-button label="Previous" onclick={handlePrevious} disabled={disablePrevious}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-button label="Next" onclick={handleNext} disabled={disableNext}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+        </template>
+         <template if:false={isUpcomingPMS}>
+              <p class="slds-truncate">No Upcoming PMS:</p>
+         </template>
+    </lightning-card>
+</template>

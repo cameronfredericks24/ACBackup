@@ -1,0 +1,141 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_large bordered-div" style="display: flex; flex-direction: column; align-items: center;background-color: #f1dd6d;">
+<h5><b>PART SCOPE MATRIX</b></h5>
+        </div>
+        <div class="slds-grid slds-wrap bordered-div">
+        <template for:each={modals} for:item="modal">
+            <div class="slds-col slds-large-size_5-of-12 slds-m-around_medium" key={modal.id} >   
+        <div class="slds-m-around_large bordered-div" style="display: flex; flex-direction: column; align-items: center; background-color: #8cb9ce;">
+            <lightning-button variant="brand" class="slds-m-around_large" style="font-weight: bold;" label={modal.Name} onclick={openModal} data-modal-id={modal.id}></lightning-button>
+            <template if:true={showSelected}>
+            <p class="slds-m-around_small"><b>Selected Options:</b></p>
+            <ol>
+                <template for:each={modal.options} for:item="option">
+                    <template if:true={option.checked}>
+                        <li key={option.value}>{option.label}</li>
+                    </template>
+                </template>
+            </ol>
+        </template>
+        </div>
+    </div>
+        <template if:true={modal.show}>
+            <div key={modal.id} class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 class="slds-text-heading_medium">Select Options</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col">Option</th>
+                                    <th scope="col">Select</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template if:true={modal.multipleSelect}>
+                                <template for:each={modal.options} for:item="option">
+                                    <tr key={option.value}>
+                                        <td>{option.label}</td>
+                                        <td>
+                                            <input type="checkbox" value={option.value} checked={option.checked} onchange={handleChange} />
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                            <template if:false={modal.multipleSelect}>
+                                <template for:each={modal.options} for:item="option">
+                                    <tr key={option.value}>
+                                        <td>{option.label}</td>
+                                        <td>
+                                            <input type="radio" name={modal.id} value={option.value} checked={option.checked} onchange={handleChange} />
+                                        </td>
+                                    </tr>
+                                </template>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <template if:true={modal.multipleSelect}>
+                        <lightning-button label={SelectAllLabel} onclick={selectAll} data-modal-id={modal.id} class="slds-p-right_small" variant="brand" ></lightning-button>
+                        </template>
+                        <lightning-button label="Close" onclick={closeModal} data-modal-id={modal.id} class="slds-p-right_small" variant="brand" ></lightning-button>
+                    </footer>
+                </div>
+            </div>
+            <div key={modal.id} class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </template>
+    </div>
+    <!-- Button to show combinations -->
+    <div class="slds-modal__footer slds-m-around_large bordered-div" style="background-color: #f1dd6d;">
+            <lightning-button variant="brand" label="Previous" class="slds-m-right_medium" onclick={handlePrevious}></lightning-button>
+            <lightning-button variant="brand" label="Get Combinations" class="slds-m-right_medium" onclick={showCombinations} disabled={canShowCombinations}></lightning-button>
+    </div>
+    
+    <!-- Table to display combinations -->
+    <div class="slds-m-around_large">
+    <template if:true={showCombinationsTable}>
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-text-title_caps" scope="col">Material Group</th>
+                    <th class="slds-text-title_caps" scope="col">Obligation</th>
+                    <th class="slds-text-title_caps" scope="col">Subtype</th>
+                    <th class="slds-text-title_caps" scope="col">Department</th>
+                    <th class="slds-text-title_caps" scope="col"><lightning-combobox 
+                                                                              name="picklist"
+                                                                              placeholder="Select Scope for All"
+                                                                              options={picklistOptions}
+                                                                              onchange={handleScopeForAll}
+                                                                  ></lightning-combobox></th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={combinations} for:item="combination" for:index="index">
+                    <tr key={combination}>
+                        <td>{combination.MaterialGroup}</td>
+                        <td>{combination.Obligation}</td>
+                        <td>{combination.Subtype}</td>
+                        <td>{combination.Department}</td>
+                        <td>
+                            <lightning-combobox 
+                                name="picklist"
+                                label="Select Option"
+                                value={combination.scope}
+                                options={picklistOptions}
+                                onchange={handlePicklistChange}
+                                data-index={index}
+                            ></lightning-combobox>
+                        </td>
+                        <td>
+                            <lightning-button-icon 
+                                icon-name="utility:delete" 
+                                variant="bare" 
+                                alternative-text="Delete"
+                                title="Delete"
+                                onclick={handleDeleteRow}
+                                data-index={index}
+                            ></lightning-button-icon>
+                        </td>
+                    </tr>
+                </template>
+                              
+                
+            </tbody>
+        </table>
+    </template>
+</div>
+    <template if:true={showSubmit}>
+        <div class="slds-m-right_large slds-m-around_medium bordered-div" style="text-align: right; background-color: #f1dd6d;">
+            <lightning-button label="Submit" onclick={handleSubmit} variant="brand" style="font-weight: bold;"></lightning-button>
+    </div>
+    <template if:true={showError}>
+        <p style="color: red;display: flex; flex-direction: column; align-items: center;" class="slds-m-small" >Please select scope for all combinations before submitting.</p>
+    </template>
+    </template>
+</lightning-card>
+</template>

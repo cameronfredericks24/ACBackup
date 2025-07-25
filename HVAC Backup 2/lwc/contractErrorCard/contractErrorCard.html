@@ -1,0 +1,16 @@
+<template>
+  <lightning-card title="Error Details" icon-name="utility:error">
+    <div class="slds-m-around_medium">
+      <template if:true={errors}>
+        <ul>
+          <template for:each={errors} for:item="error">
+            <li key={error}>{error}</li>
+          </template>
+        </ul>
+      </template>
+      <template if:false={errors}>
+        <p>No errors found.</p>
+      </template>
+    </div>
+  </lightning-card>
+</template>

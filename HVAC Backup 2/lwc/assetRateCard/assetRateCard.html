@@ -1,0 +1,242 @@
+<template>
+    <lightning-card>
+       <!-- 
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-large-size_5-of-12 ">
+               <div class="bordered-div" style="display: flex; flex-direction: column; align-items: center;">
+                  <lightning-button variant="brand" label="Select Product Family" onclick={openModal} data-modal-id="ProductFamily" class="slds-p-around_small" style="font-weight: bold;"></lightning-button>
+               </div>
+               <p style="display: flex; flex-direction: column; align-items: center;"><b>Product Family Name: </b>{selectedProductFamilyName}</p>
+               <p style="display: flex; flex-direction: column; align-items: center;"><b>Product Family Code: </b>{selectedProductFamilyCode}</p>
+            </div>
+            <div class="slds-col slds-large-size_5-of-12 ">
+               <div class="bordered-div" style="display: flex; flex-direction: column; align-items: center;">
+                  <lightning-button variant="brand" label="Select Product Sub Family" onclick={openModal} data-modal-id="ProductSubFamily" class="slds-p-around_small"  style="font-weight: bold;"></lightning-button>
+               </div>
+               <p  style="display: flex; flex-direction: column; align-items: center;"><b>Product Sub Family Name: </b>{selectedProductSubFamilyName}</p>
+               <p  style="display: flex; flex-direction: column; align-items: center;"><b>Product Sub Family Code: </b>{selectedProductSubFamilyCode}</p>
+            </div>
+        </div>
+        
+        <template if:true={show}>
+            <div class="slds-modal slds-fade-in-open">
+               <div class="slds-modal__container slds-modal_small">
+                  <header class="slds-modal__header">
+                  </header>
+                  <div class="slds-modal__content slds-p-around_medium">
+                     <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                           <tr class="slds-line-height_reset">
+                              <th scope="col">{modalData.id}</th>
+                              <th scope="col">Select</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <template for:each={modalData.options} for:item="option">                            
+                            <tr key={option.value}>
+                                <td>{option.label}</td>
+                                <td>
+                                    <input type="radio" name={modalData.id} value={option.value} checked={option.checked} onchange={handleChange} />
+                                </td>
+                            </tr>                         
+                           </template>
+                        </tbody>
+                     </table>
+                  </div>
+                  <footer class="slds-modal__footer">
+                     <lightning-button label="Close" onclick={closeModal} data-modal-id={modalData.id} class="slds-p-right_small" variant="brand"></lightning-button>
+                  </footer>
+               </div>
+            </div>
+            <div  class="slds-backdrop slds-backdrop_open"></div>
+         </template>
+         <div class="slds-modal__footer slds-m-around_medium">
+            <lightning-button variant="brand" label="Fetch Generic Rates" class="slds-m-right_medium" onclick={fetchRateCard} ></lightning-button>
+        </div>
+        -->
+        <template if:true={woStarted}>
+            <template if:true={assetPresent}>
+                <lightning-tabset class="slds-m-around_medium">
+                    <lightning-tab label="Generic Rates">
+                        <template if:true={hasRateMatrix}>
+                            <div class="table-container">
+                                <table class="center-aligned">
+                                    <thead>
+                                        <tr>
+                                            <th>Select</th>
+                                            <th>Type</th>
+                                            <th>Rate (in Rupees)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={rateMatrixesWithSelection} for:item="record">
+                                            <tr key={record.Id}>
+                                                <td>
+                                                    <lightning-input type="checkbox" name={record.Id} value={record.Id} checked={record.isSelected} onchange={handleGenericCheckboxChange}></lightning-input>
+                                                </td>
+                                                <td>{record.type}</td>
+                                                <template if:false={assetUnderWarranty}>
+                                                    <td>{record.rate}</td>
+                                                </template>
+                                                <template if:true={assetUnderWarranty}>
+                                                    <td>0.00</td>
+                                                </template>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </template>
+                        <template if:false={hasRateMatrix}>
+                            <p class="slds-text-align_center">No Rate Card Data Available</p>
+                        </template>
+                    </lightning-tab>
+
+                    <lightning-tab label="Spare Prices">
+                        <div class="slds-m-around_medium">
+
+                            <div class="custom-lookup">
+                                <div class="center-input">
+                                    <lightning-input type="search" label="Model Number"
+                                                    onchange={handleOnChangeCustomLookupProductCodeUnitary}
+                                                    onclick={handleOnClickCustomLookupProductCodeUnitary}
+                                                    onfocus={handleOnFocusCustomLookupProductCodeUnitary}
+                                                    onblur={handleOnBlurCustomLookupProductCodeUnitary} 
+                                                    value={modelNumber} required>
+                                    </lightning-input>
+                                </div>
+                                <template if:true={showAvailableCodesUnitary}>
+                                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                        role="listbox">
+                                        <template for:each={filteredOptionsProductCode} for:item="option">
+                                            <li key={option.value} role="presentation"
+                                                class="slds-listbox__item">
+                                                <div role="option" tabindex="0"
+                                                    class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                    onclick={handleModelNumberChangeCustomLookupUnitary}
+                                                    data-value={option.label} data-index={index}>
+                                                    <span class="slds-media__figure">
+                                                        <!-- Location Icon -->
+                                                        <lightning-icon icon-name="standard:product"
+                                                            size="small"></lightning-icon>
+                                                    </span>
+                                                    <span class="slds-media__body">
+                                                        <span class="slds-truncate">{option.label}</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </template>
+                            </div>
+
+
+                            <!-- <div class="input-container">
+                                <lightning-input
+                                    label="Search by Material Group"
+                                    value={searchKey}
+                                    onchange={handleSearchKeyChange}
+                                    placeholder="Type to search..."
+                                ></lightning-input>
+                            </div> -->
+                    
+                            <div class="slds-m-around_medium">
+                                <template for:each={paginatedData} for:item="record">
+                                    <lightning-card key={record.Id} class="slds-m-around_small">
+                                        <lightning-layout horizontal-align="spread">
+                                            <lightning-layout-item padding="around-small">
+                                                <div>
+                                                    <span style="font-weight: bold;">Name:</span> {record.name} <br/>
+                                                    <span style="font-weight: bold;">Scope:</span> {record.scope} <br/>
+                                                    <span style="font-weight: bold;">Material Group:</span> {record.materialGroup} <br/>
+                                                </div>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item padding="around-small">
+                                                <lightning-input type="checkbox" name={record.Id} value={record.Id} checked={record.selected} onchange={handleSpareCheckboxChange}></lightning-input>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </lightning-card>
+                                </template>
+                            </div>
+                            <!-- Pagination Controls -->
+                            <div class="slds-m-around_medium slds-grid slds-grid_align-center">
+                                <lightning-button label="Previous" onclick={handlePreviousPage} disabled={isFirstPage}></lightning-button>
+                                <span class="slds-m-around_small">Page {currentPage} of {totalPages}</span>
+                                <lightning-button label="Next" onclick={handleNextPage} disabled={isLastPage}></lightning-button>
+                            </div>
+                        </div>
+                    </lightning-tab>
+                    
+
+                    <lightning-tab label="Preview">
+                        <div class="slds-m-around_medium">
+
+                            <template if:true={showRates}>
+                            <div class="table-container">
+                                <table class="center-aligned">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Rate (in Rupees)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={selectedRateMatrixes} for:item="record">
+                                            <tr key={record.Id}>
+                                                <td>{record.type}</td>
+                                                <template if:false={assetUnderWarranty}>
+                                                    <td>{record.rate}</td>
+                                                </template>
+                                                <template if:true={assetUnderWarranty}>
+                                                    <td>0.00</td>
+                                                </template>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+                            </template>
+
+                            <template for:each={selectedItems} for:item="item">
+                                <lightning-card key={item.Id} class="slds-m-around_small">
+                                    <lightning-layout horizontal-align="spread">
+                                        <lightning-layout-item padding="around-small">
+                                            <div>
+                                                <span style="font-weight: bold;">Name:</span> {item.name} <br/>
+                                                <span style="font-weight: bold;">Price:</span> {item.price} <br/>
+                                                <span style="font-weight: bold;">Scope:</span> {item.scope} <br/>
+                                                <span style="font-weight: bold;">Material Group:</span> {item.materialGroup} <br/>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item padding="around-small">
+                                            <lightning-input type="checkbox" name={item.Id} value={item.Id} checked={item.selected} onchange={handleSelectedItemsCheckboxChange}></lightning-input>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </lightning-card>
+                            </template>
+                        </div>
+
+                         <template if:false={isEmailSent}>
+                            <div class="slds-m-around_medium slds-grid slds-grid_align-center">
+                                <lightning-button variant="brand" label="Send Estimate" class="fixed-button" onclick={sendRateCard}></lightning-button>
+                            </div>
+                        </template>
+                    </lightning-tab>
+                </lightning-tabset>
+               
+                <template if:true={isEmailSent}>
+                    <p class="slds-text-align_center">Email Sent Successfully</p>
+                </template>
+                
+            </template>
+
+            <template if:false={assetPresent}>
+                <p class="slds-text-align_center">First Scan asset to the Ticket.</p>
+            </template>
+        </template>
+
+        <template if:false={woStarted}>
+            <p class="slds-text-align_center">Work has not started yet.</p>
+        </template>
+    </lightning-card>       
+</template>

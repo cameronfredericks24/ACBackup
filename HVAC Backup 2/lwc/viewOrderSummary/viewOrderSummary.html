@@ -1,0 +1,178 @@
+<template>
+    <lightning-card>
+        <!-- Section 1: Branch, Department, and SDE with Next Button -->
+       <template if:true={isFormVisible}>
+        <div style="font-weight: bold; font-size:large; text-align:center ">
+        <h1>Please enter required details</h1>
+    </div>
+    <br/>
+    <br/>
+    <lightning-record-edit-form object-api-name="ProductRequest">
+        
+        <!-- Grid Layout for Form -->
+        <div class="slds-grid slds-grid_vertical-align-center slds-p-around_medium slds-text-align_center">
+
+            <!-- Branch Field (First Column) -->
+            <div class="slds-col slds-size_1-of-4 slds-p-horizontal_small">
+                <lightning-input-field 
+                    field-name="Branch__c" 
+                    label="Branch" 
+                    onchange={handleBranchChange} 
+                    class="small-input">
+                </lightning-input-field>
+            </div>
+
+            <!-- Department Field (Second Column) -->
+            <div class="slds-col slds-size_1-of-4 slds-p-horizontal_small">
+                <lightning-input-field 
+                    field-name="Department__c" 
+                    label="Department" 
+                    onchange={handleDepartmentChange} 
+                    class="small-input">
+                </lightning-input-field>
+            </div>
+        </div>
+           </lightning-record-edit-form> 
+        
+         <template if:true={showSDE}>
+            
+
+                <div class="slds-grid slds-grid_vertical-align-center slds-p-around_medium slds-text-align_center">
+
+        <!-- SDE User Field (Centered) -->
+        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+            <lightning-combobox 
+                label="Select SDE User"
+                options={sdeUserOptions}
+                placeholder="Select an SDE User"
+                onchange={handleSDEChange}>
+            </lightning-combobox>
+        </div>
+
+    </div> 
+
+            </template>
+            
+        <!-- End of Grid for Branch and Department -->
+
+        <!-- SDE User Field -->
+       
+
+    <template if:true={showErrorMessage}>
+    <div class="slds-text-color_error slds-text-align_center">
+        All fields (Branch, Department, and SDE User) are required. Please complete them.
+    </div>
+</template>
+
+    <!-- Next Button -->
+    <div class="slds-p-around_medium">
+        <lightning-button label="Next" onclick={handleNextClick} disabled={isNextDisable}></lightning-button>
+    </div>
+</template>
+
+        <!-- Section 2: Order Summary and Table (Visible after Next Button is Clicked) -->
+        <template if:true={isOrderSummaryVisible}>
+            <!-- Order Summary Header -->
+            <div style="font-weight: bold; font-size:large; text-align:center">
+                <h2>Order Summary</h2>
+            </div>
+
+            <!-- Order Summary Table -->
+            <lightning-card style="text-align:center; padding:1%">
+                <div class="slds-table--header-fixed_container" style="height:100%;">
+                    <div class="slds-scrollable_y slds-scrollable_x" style="height:100%;">
+                        <table border="1" cellspacing="0" cellpadding="0" class="slds-table slds-table_cell-buffer">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col" style="width:150px;text-align:center;">
+                                        <div class="slds-truncate" title="Part Name">Part Name</div>
+                                    </th>
+                                    <th scope="col" style="width:150px;text-align:center;">
+                                        <div class="slds-truncate" title="Product Description">Part Code</div>
+                                    </th>
+                                    <th scope="col" style="width:150px;text-align:center;">
+                                        <div class="slds-truncate" title="Status">Unit Price</div>
+                                    </th>
+                                    <th scope="col" style="width:150px;text-align:center;">
+                                        <div class="slds-truncate" title="Quantity">Quantity</div>
+                                    </th>
+                                    <th scope="col" style="width:150px;text-align:center;">
+                                        <div class="slds-truncate" title="Price">Price</div>
+                                    </th>
+                                    <th if:false={isIGSTChecked} scope="col" style="width:150px;text-align:center;">
+                                        <div class="slds-truncate" title="CGST">CGST</div>
+                                    </th>
+                                    <th if:false={isIGSTChecked} scope="col" style="width:150px;text-align:center;">
+                                        <div class="slds-truncate" title="SGST">SGST</div>
+                                    </th>
+                                    <th if:true={isIGSTChecked} scope="col" style="width:150px;text-align:center;">
+                                        <div class="slds-truncate" title="IGST">IGST</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={combinedProducts} for:item="item">
+                                    <tr key={item.id}>
+                                        <td class="slds-cell-wrap">
+                                            <div data-id={item.id}>{item.itemName}</div>
+                                        </td>
+                                        <td class="slds-cell-wrap">
+                                            <div data-id={item.id} style="white-space: pre-wrap; text-align: center;">{item.itemCode}</div>
+                                        </td>
+                                        <td class="slds-cell-wrap">
+                                            <div data-id={item.id} style="white-space: pre-wrap; text-align: center;">{item.originalPrice}</div>
+                                        </td>
+                                        <td class="slds-cell-wrap">
+                                            <div data-id={item.id} style="white-space: pre-wrap; text-align: center;">{item.quantity}</div>
+                                        </td>
+                                        <td class="slds-cell-wrap">
+                                            <div data-id={item.id} style="white-space: pre-wrap; text-align: center;">{item.itemPrice}</div>
+                                        </td>
+                                        <td if:false={isIGSTChecked} class="slds-cell-wrap">
+                                            <div data-id={item.id} style="white-space: pre-wrap; text-align: center;">{item.itemCGST}</div>
+                                        </td>
+                                        <td if:false={isIGSTChecked} class="slds-cell-wrap">
+                                            <div data-id={item.id} style="white-space: pre-wrap; text-align: center;">{item.itemSGST}</div>
+                                        </td>
+                                        <td if:true={isIGSTChecked} class="slds-cell-wrap">
+                                            <div data-id={item.id} style="white-space: pre-wrap; text-align: center;">{item.itemIGST}</div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Summary Section -->
+                <div>
+                    <lightning-layout multiple-rows class="header-row" style="margin-left:550px">
+                        <lightning-layout-item size="3" padding="around-small">
+                            <div class="custom-box slds-box slds-p-around_medium slds-text-align_center" style="font-weight: bold;">Total Part Price</div>
+                            <div class="custom-box slds-box slds-p-around_medium slds-text-align_center" style="font-weight: bold;">Tax:</div>
+                            <div class="custom-box slds-box slds-p-around_medium slds-text-align_center" style="font-weight: bold;">Total Order Amount</div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="3" padding="around-small">
+                            <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">{totalPrice}</div>
+                            <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">{totalTax}</div>
+                            <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">{totalAmount}</div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+
+                <!-- Action Buttons -->
+                <div if:false={isHandMSLBack} class="slds-p-around_large slds-align_absolute-center" style="height:5rem">
+                    <lightning-button label="Back" onclick={handBack} variant="brand"></lightning-button>
+                    <div style="width: 1rem; display: inline-block;"></div> 
+                    <lightning-button label="Place Order" onclick={handleSubmit} disabled={isSubmitDisabled} variant="brand"></lightning-button>
+                </div>
+
+                <div if:true={isHandMSLBack} class="slds-p-around_large slds-align_absolute-center" style="height:5rem">
+                    <lightning-button label="Back" onclick={handBack} variant="brand"></lightning-button>
+                    <div style="width: 1rem; display: inline-block;"></div> 
+                    <lightning-button label="Place MSL Order" onclick={handleMSLSubmit} disabled={isMSLSubmitDis} variant="brand"></lightning-button>
+                </div>
+            </lightning-card>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="AMC Leads">
+        <template if:true={showTable}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={leads}
+                    columns={columns}>
+                </lightning-datatable>
+        </template>
+        <template if:false={showTable}>
+            <div class="slds-p-around_medium">
+                No AMC leads found for this record.
+            </div>
+        </template>
+    </lightning-card>    
+</template>

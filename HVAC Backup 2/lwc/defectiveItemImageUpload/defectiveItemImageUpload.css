@@ -1,0 +1,13 @@
+.dummy{
+	color : black;
+}
+.custom-picklist {
+    width: 200px;
+    margin: 0 auto; /* Center the picklist */
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}

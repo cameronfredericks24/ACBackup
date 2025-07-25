@@ -1,0 +1,239 @@
+<apex:page controller="ProformaInvoiceController" renderAs="pdf" applyBodyTag="false" applyHtmlTag="false" showHeader="false">
+    <html>
+        <head>
+            <style type="text/css" media="print">
+                @page {margin: 20pt; size: A4; padding: 10px;
+                @bottom-center {content: "Page " counter(page) " of " counter(pages); font-size:7pt; font-family:sans-serif }}
+                body {font-family: Arial, sans-serif; font-size: 9pt;}
+                * {box-sizing: border-box;}
+                .ClearFloat {clear: both;}
+                table,th,td {border-collapse: collapse;}
+            </style>
+        </head>
+        <body>
+            
+            <div >
+                <table style="width:100%;border:1px solid black; padding:2px;" >
+                    <tr>
+                        <td colspan="1" style="width:33%; vertical-align: top; padding-top:15px">
+                            <strong>Blue Star Limited</strong><br/>                            
+                            {!quote.SBQQ__Opportunity2__r.Plant__r.Address__Street__s},<br/>
+                            {!quote.SBQQ__Opportunity2__r.Plant__r.Address__City__s}, {!quote.SBQQ__Opportunity2__r.Plant__r.Address__StateCode__s}, {!quote.SBQQ__Opportunity2__r.Plant__r.Address__PostalCode__s},{!quote.SBQQ__Opportunity2__r.Plant__r.Address__CountryCode__s}<br/>
+                            Tel: {!$Label.Bluestar_Telephone}<br/>
+                            Fax: {!$Label.Bluestar_Fax}<br/>
+                            {!$Label.Bluestar_Website}<br/>
+                            {!$Label.Bluestar_Email}<br/>
+                            GSTIN ID: {!quote.SBQQ__Opportunity2__r.Plant__r.GST_Number__c}<br/><br/> 
+                        </td>
+                        <td colspan="1" style="width:33%; vertical-align: top; text-align:center;" >
+                            <h3>PROFORMA INVOICE</h3>
+                        </td>
+                        <td colspan="1" style="width:33%;  vertical-align: top;  text-align:right;" >
+                            <apex:image url="{!$Resource.ISOLogoBSL}" width="175" height="auto"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br/>
+            <div>
+                <table style="width=100%;border:1px solid black; padding:2px;" >
+                    <tr >
+                        <th style="width:30%;border:1px solid black;text-align:center; padding:2px;">Customer Name</th>
+                        <th style="width:30%;border:1px solid black;text-align:center; padding:2px;">Installation Address</th>
+                        <th style="width:40%;border:1px solid black;text-align:center; padding:2px;">Proforma Details</th>
+                    </tr>          
+                    <tr >
+                        <td style="vertical-align: top; text-align:left;border:1px solid black; padding:2px;padding-top:8px">
+                            {!quote.SBQQ__Account__r.Name}<br/>
+                            {!quote.SBQQ__Account__r.BillingStreet},<br/>
+                            {!quote.SBQQ__Account__r.BillingCity}-{!quote.SBQQ__Account__r.BillingPostalCode},<br/> 
+                            
+                            <strong>State:</strong> {!quote.SBQQ__Account__r.BillingState} <strong>Code:</strong>{!gstCode}
+                            <br/>
+                            GSTIN: {!quote.SBQQ__Account__r.GST_Number__c}<br/>
+                            TAN: {!quote.SBQQ__Account__r.TAN_Number__c} <br/>
+                            PAN: {!quote.SBQQ__Account__r.PAN_Number__c} 
+                            
+                        </td><!--Company Info to be retrieved and goes here-->
+                        <td style="vertical-align: top; text-align:left;border:1px solid black;padding:2px;padding-top:8px">
+                            <!--adding ship to party address by utkarsh 1/10/25-->
+                            {!quote.SBQQ__Opportunity2__r.Ship_to_Party__r.Name}<br/>
+                            {!quote.SBQQ__Opportunity2__r.Ship_to_Party__r.ShippingStreet}, <br/>
+                            {!quote.SBQQ__Opportunity2__r.Ship_to_Party__r.ShippingCity}-{!quote.SBQQ__Opportunity2__r.Ship_to_Party__r.ShippingPostalCode},<br/> 
+                            
+                            <strong>State:</strong> {!quote.SBQQ__Opportunity2__r.Ship_to_Party__r.ShippingState} <strong>Code:</strong>{!gstCode}<br/>
+                            GSTIN: {!quote.SBQQ__Opportunity2__r.Ship_to_Party__r.GST_Number__c}<br/>
+                            TAN: {!quote.SBQQ__Opportunity2__r.Ship_to_Party__r.TAN_Number__c} <br/>PAN:{!quote.SBQQ__Opportunity2__r.Ship_to_Party__r.PAN_Number__c}
+                            
+                        </td><!--Installation Address to be retrieved and goes here-->
+                        <td style="vertical-align: top; text-align:left;border:1px solid black;padding:2px;padding-top:8px">
+                            <strong>Proforma No: </strong>{!quote.SBQQ__Opportunity2__r.Opportunity_Name_Auto_Number__c}<br/>
+                            <strong>Proforma Date: </strong>{!invoiceDate} <br/>
+                            <strong>Customer Order No: </strong>{!quote.SBQQ__Opportunity2__r.PO_Number__c}<br/><!--PO_Number__c-->
+                            <strong>Date: </strong>{!quoteDate}<br/><!--PO_Receipt_Date__c-->
+                            <strong>Terms of Payment: </strong>{!quote.Billing_Frequency_Period__c}{!quote.Billing_Due_Period__c}<br/>
+                            <br/>
+                            Place Of Supply State: {!quote.SBQQ__Account__r.BillingState}, Code: {!gstCode}
+                            
+                        </td><!--Proforma Details to be retrieved and goes here-->
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border:1px solid black; padding:2px;">
+                            Contract Period from {!contractDateFrom} to {!contractDateTo}<br/><!--Opportunity_Start_Date__c,Opportunity_End_Date__c-->
+                        </td>
+                        <td style="border:1px solid black; padding:2px;">
+                            Contract Type: {!quote.SBQQ__Opportunity2__r.Contract_Type__c}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="border:1px solid black; padding:2px;" >
+                            Billing from {!billingDateFrom} to {!billingDateTo}
+                        </td>
+                    </tr>
+                </table>
+                
+                <table style="width:100%;border:1px solid black; padding:2px;" >
+                    <tr >
+                        <!-- <th style="width:9%;border:1px solid black; padding:2px; text-align: center; " ><strong>Item No.</strong></th> --> 
+                        <th style="width:38%;border:1px solid black; padding:2px; text-align: left;" ><strong>Description of Services</strong></th>
+                        <th style="width:12%;border:1px solid black; padding:2px; text-align: left;" ><strong>HSN/SAC No</strong></th>
+                        <th style="width:38%;border:1px solid black; padding:2px; text-align: left;" ><strong>Description</strong></th>
+                        <th style="width:12%;border:1px solid black; padding:2px; text-align: left;" ><strong>Total Amount</strong></th>
+                    </tr>
+                    <tbody>
+                        <apex:variable value="{!1}" var="count" />
+                        <apex:repeat value="{!quote}" var="item">
+                            <tr style="vertical-align:top">
+                                <apex:variable value="{!count+1}" var="count" /> 
+                                <!-- COMMETED as there will be only one line item 
+<td style="border:1px solid black; padding:2px; text-align: center; ">
+{!count}
+<apex:variable value="{!count+1}" var="count" /> 
+</td> -->
+                                <td style="border:1px solid black; padding:2px; text-align: left; ">{!item.SBQQ__Opportunity2__r.Customer_Invoice_Text__c}</td>
+                                <td style="border:1px solid black; padding:2px; text-align: center;" >{!hsnhacCode}</td>
+                                <td style="border:1px solid black; padding:2px;" >
+                                    {!item.Billing_Frequency_Period__c}{!item.Billing_Due_Period__c} against your order no {!item.SBQQ__Opportunity2__r.PO_Number__c}<br/>
+                                    Dated : {!quoteDate}
+                                </td><!--quote Description__c-->
+                                <td style="border:1px solid black; padding:2px;text-align: right;">{!totalAmount}</td><!--PO_Total_Value__c-->
+                            </tr>
+                        </apex:repeat>
+                        <tr>
+                            <td colspan="5" style="border:1px solid black; " ><br/><br/><br/><br/><br/><br/><br/><br/><br/> </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="border:1px solid black; " ><br/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="5" style="border:1px solid black; padding:2px;text-align: left;" >
+                                <strong>Total In Words:</strong> {!amtInWord}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="border:1px solid black; padding:2px; text-align:center">
+                                CONTRACT WILL BE VALID ONLY ON PAYMENT OF FEES IN ADVANCE 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table style="width: 100%; table-layout: fixed; border-collapse: collapse; border: 1px solid black;" >
+                    <tbody>
+                        <tr>
+                            <td style="width:60%; border:1px solid black; padding:2px; text-align:left" >
+                                <p>Internal Use Only</p>
+                                
+                                Proposal No: {!quote.Name} &nbsp;, Division: {!quote.SBQQ__Opportunity2__r.Department__r.Name}<br/><!--Department__c-->
+                                Sales Office: {!quote.Branch_Number__c} &nbsp;, Dealer/BA: {!quote.SBQQ__Opportunity2__r.CP__r.Name}<br/><!--CP__c-->
+                                Engineer: {!quote.BSL_SME__r.Name} <!--BSL_SME__c-->
+                                
+                            </td>
+                            <td  style="width:40%; border:1px solid black; padding:2px; text-align:center">
+                                
+                                GSTIN ID: {!quote.SBQQ__Opportunity2__r.Plant__r.GST_Number__c} <br/><br/> 
+                                Income Tax PAN No: {!quote.SBQQ__Opportunity2__r.Plant__r.PAN_Number__c} <br/>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  style ="width:75%;border:1px solid black; padding:2px; text-align:left; font-size:9pt; word-wrap: break-word;">
+                                <p>
+                                    This Proforma invoice is purely for collecting the advance and not for accounting or claiming ITC.<br/>
+                                    A separate TAX INVOICE will be issued by Blue Star Limited on provision of supply at a later date as per CGST Act, 2017
+                                </p>
+                                <p>
+                                    Interest @ 15% per annum will be charged on all accounts unpaid 30 days from the date of contract. Only official receipt
+                                    on printed form will be recognized by the Company.
+                                </p>
+                                <p>
+                                    Within mentioned goods are subjected to our rights of lien and resale as unpaid vendors and the purchases and their
+                                    assigns on taking Delivery shall hold the same in trust, for and on our behalf till full value thereof is paid to us.
+                                </p>
+                                <p>
+                                    We hereby certify that our registration certificate under the THE {!UPPER(quote.SBQQ__Account__r.BillingState)} VALUE ADDED TAX ACT, 2005 the sale of the
+                                    goods specified in the bill/cash memo is made by us and that the transaction of sale covered by the bill/cash memo has
+                                    been effected by us in the regular course of our business.
+                                </p>
+                            </td>
+                            <td  style ="width:25%; border:1px solid black; padding:2px; text-align:center; word-wrap: break-word;">
+                                <p>
+                                    For BLUE STAR LIMITED <br/><br/><br/><br/><br/><br/>Authorized Signatory
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <p style="font-family: Arial, sans-serif; font-size: 7pt; text-align:center">
+                            Registered office: Kasturi Buildings, Mohan T Advani Chowk, Jamshedji Tata Road, Mumbai - 400020, India. Tel: +91 22 66654000 Fax: +91 22 66654152
+                        </p>
+                    </tfoot>
+                </table>
+                
+            </div>
+            
+            <div style="page-break-after: always;"/>
+            <br/>
+            <p>
+                <strong>Annexure For Proposal &nbsp;'<apex:outputText value="{!quote.Name}" />' Covered For, </strong>
+            </p>
+            <br/><br/>
+            
+            
+            <div>
+                <table style="width:100%;border:1px solid black; padding:2px;" >
+                    <thead>
+                        <tr>
+                            <th style="border:1px solid black; padding:2px;text-align: left;"><strong>Sl No.</strong></th>
+                            <!-- <th style="border:1px solid black; padding:2px;text-align: left;"><strong>Contract No</strong></th> -->
+                            <th style="border:1px solid black; padding:2px;text-align: left;" ><strong>Address</strong></th>
+                            <th style="border:1px solid black; padding:2px;text-align: left;" ><strong>Model</strong></th>
+                            <th style="border:1px solid black; padding:2px;text-align: left;" ><strong>Model Description</strong></th>
+                            <th style="border:1px solid black; padding:2px;text-align: left;" ><strong>Serial No</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:variable value="{!1}" var="count" />
+                        <apex:repeat value="{!quoteLines}" var="item">
+                            <tr style="vertical-align:top">
+                                <td style="border:1px solid black; padding:2px;text-align: left;">
+                                    {!count}                                              
+                                    <apex:variable value="{!count+1}" var="count" /> 
+                                </td> 
+                                <!-- <td style="border:1px solid black; padding:2px;text-align: left;" >{!item.SBQQ__Quote__r.Name}</td> -->
+                                <td style="border: 1px solid black; word-wrap: break-word;">{!quote.SBQQ__Account__r.ShippingStreet}, {!quote.SBQQ__Account__r.ShippingCity},<br/> {!quote.SBQQ__Account__r.ShippingState}.<br/></td>
+                                <td style="border:1px solid black; padding:2px;text-align: left;">{!item.Asset__r.Model_Number__c}</td><!--Model_Number__c-->
+                                <td style="border:1px solid black; padding:2px;text-align: left;">{!item.Asset__r.Product2.Name}</td><!--Asset_Names__c-->
+                                <td style="border:1px solid black; padding:2px;text-align: left;" >{!item.Asset__r.SerialNumber}</td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                    <tfoot >
+                        <br/><br/><p style="text-align:right;font-weight:bold"> For Blue Star Limited <br/><br/><br/><br/><br/>Authorized Signatory</p>
+                    </tfoot>
+                </table>
+            </div>
+            
+        </body>
+    </html>
+</apex:page>

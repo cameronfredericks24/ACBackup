@@ -1,0 +1,24 @@
+<template>
+    <template if:false={locationSelected}>
+        <lightning-input type="search" label="Search Places" onchange={handleChange} value={placeSearch} placeholder={searchPlaceholder} class={inputClass} icon-name={iconName}></lightning-input>
+    </template>
+
+    <template if:true={locationSelected}>
+        <lightning-pill label={placeSearch} name={placeSearch} onremove={handleRemovePill} style="width: 100%;">
+            <lightning-icon icon-name="standard:address" alternative-text="location"></lightning-icon>
+        </lightning-pill>
+    </template>
+
+    <template if:true={showResults}>
+        <ul class="suggestions">
+            
+                <li onclick={handleSelection} style="padding: 5px;">
+                    <p><b>item 1</b></p> 
+                    <p><b>item 2</b></p> 
+                    <p><b>item 3</b></p>                  
+                </li>
+        </ul>
+    </template>
+
+
+</template>

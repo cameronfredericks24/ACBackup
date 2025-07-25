@@ -1,0 +1,26 @@
+<!-- announcementMessageDisplay.html -->
+<template>
+    <lightning-card>
+        <div slot="title" class="header">📢 Blue Star Announcements</div>
+        <!--p class="title">Kindly record technician attendance by 11:00 am</p>-->
+        <div class="container">
+            <template if:true={announcementMessages}>
+                <template for:each={announcementMessages} for:item="announcementMessage">
+                    <div key={announcementMessage.Id} class="announcement-item">
+                        <h2 class="title">{announcementMessage.Title__c}</h2>
+                        <p class="message">{announcementMessage.Message__c}</p>
+                       <!-- <p class="date">Start Date: {announcementMessage.Start_Date__c}</p>
+                        <p class="date">End Date: {announcementMessage.End_Date__c}</p> -->
+                         <p class="date">Reference Link: <a href={announcementMessage.Reference_Link__c} target="_blank">{announcementMessage.Reference_Link__c}</a></p> </br>
+                     <p class="date">PDF Link: <a href={announcementMessage.PDF_Link__c} target="_blank">{announcementMessage.PDF_Link__c}</a></p>
+                    
+                    </div>
+                </template>
+                
+            </template>
+            <template if:false={announcementMessages}>
+                <div class="no-message">Kindly record technician attendance by 11:00 am.</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

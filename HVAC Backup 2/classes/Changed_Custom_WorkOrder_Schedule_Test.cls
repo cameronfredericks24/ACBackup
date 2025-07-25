@@ -1,0 +1,19 @@
+@isTest
+public class Changed_Custom_WorkOrder_Schedule_Test {
+    
+    @isTest
+    public static void execute(){
+            // Create a cron expression for the test (run the job in 1 minute)
+            String cronExpression = '0 0 0 15 8 ? 2025'; // Example cron expression
+            
+            // Schedule the batch job
+            Test.startTest();
+            Changed_Custom_WorkOrder_Schedule scheduler = new Changed_Custom_WorkOrder_Schedule();
+            System.schedule('My Scheduled Batch Job', cronExpression, scheduler);
+            Test.stopTest();
+            
+
+
+    }
+    
+}

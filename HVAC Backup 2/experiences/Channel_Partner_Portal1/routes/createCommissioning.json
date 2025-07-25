@@ -1,0 +1,11 @@
+{
+  "activeViewId" : null,
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "4c8aad12-161d-4094-82e8-ae5a544fa624",
+  "label" : "Create Commissioning",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-create-commissioning",
+  "type" : "route",
+  "urlPrefix" : "create-commissioning-"
+}

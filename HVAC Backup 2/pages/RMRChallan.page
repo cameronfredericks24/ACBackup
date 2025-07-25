@@ -1,0 +1,138 @@
+<apex:page standardController="Defective_Product_Item__c" extensions="PartClaimTagPDFController" renderAs="pdf" applyBodyTag="false"  showQuickActionVfHeader="false">
+    <head>
+        <style type="text/css">
+            @page {
+                font-family: sans-serif;
+                font-size: 11px;
+            }
+            table td { word-wrap: break-word; }
+            .column {
+                float: left;
+                width: 50%;
+            }
+            .margin-style {
+                margin-left: 5px;
+                margin-right: 10px;
+                margin-top: 25px;
+            }
+            @bottom-right {
+                content: "Page: " counter(page) " / " counter(pages);
+            }
+        </style>
+    </head>
+    <body>
+        <table width="100%" cellpadding="1" style="border-collapse:collapse; font-size: 11px;" border="1">
+            <tr>
+                <td align="center" width="100%">
+                    <h2>Part Claim Tag</h2>
+                    <h2>Blue Star Limited</h2>
+                    <div class="section">
+                        <div style="margin: 5px; font-size: 90%;">Blue Star Innovation Center, Next to Vihaag's Inn Hotel Kapurbavdi
+                            <p>Ghobandur Road Thane West</p>
+                        </div>
+                    </div>
+                    <table width="100%" cellpadding="1" style="border-collapse:collapse;" border="1">
+                        <tr style="font-size: 90%;">
+                            <td align="left" width="50%" style="border: 1px solid black">
+                                <div style="margin-left: 5px; margin-right: 10px; margin-top: 1%;">
+                                    <div class="column">Obligation Warranty:</div>
+                                    <div class="column"><apex:outputText value="{!defProd.Part_Request__r.Obligation__c}"/><br/><br/></div>
+                                </div>
+                                <div style="margin-left: 5px; margin-right: 10px; margin-top: 25px;">
+                                    <div class="column">Ticket Number:</div>
+                                    <div class="column"><apex:outputText value="{!defProd.Part_Request__r.Ticket_Number__c}"/><br/><br/></div>
+                                </div>
+                                <div style="margin-left: 5px; margin-right: 10px; margin-top: 25px;">
+                                    <div class="column">Dealer and Associate Code:</div>
+                                    <div class="column"><apex:outputText value="{!defProd.CP_Code__c}"/><br/><br/></div>
+                                </div>
+                                <div style="margin-left: 5px; margin-right: 10px; margin-top: 25px;">
+                                    <div class="column">Return Reservation No:</div>
+                                    <div class="column"><apex:outputText value="{!defProd.Part_Request__r.RMR_No__c}"/><br/><br/></div>
+                                </div>
+                            </td>
+                            <td align="left" width="50%" style="border: 1px solid black">
+                                <div style="margin-left: 5px; margin-right: 10px; margin-top: 1%;">
+                                    <div class="column">Branch Name:</div>
+                                    <div class="column"><apex:outputText value="{!defProd.Branch_name__c}"/><br/><br/></div>
+                                </div>
+                                <div style="margin-left: 5px; margin-right: 10px; margin-top: 25px;">
+                                    <div class="column">Customer Name:</div>
+                                    <div class="column"><apex:outputText value="{!defProd.Part_Request__r.Customer_Name__c}"/><br/><br/></div>
+                                </div>
+                                <div style="margin-left: 5px; margin-right: 10px; margin-top: 25px;">
+                                    <div class="column">Machine Model:</div>
+                                    <div class="column"><apex:outputText /><br/><br/></div>
+                                </div>
+                                <div style="margin-left: 5px; margin-right: 10px; margin-top: 25px;">
+                                    <div class="column">Machine Serial No:</div>
+                                    <div class="column"><apex:outputText value="{!defProd.Defective_Part_Serial_Number__c}"/><br/><br/></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="color:#0000; border-bottom:none;">
+                        <table width="100%" cellpadding="2" style="border-collapse:collapse; border-bottom: 2px solid black;" border="1">
+                            <tr style="font-size: 90%;">
+                                <td align="left" width="50%" style="border: 1px solid black">
+                                    <div style="margin-left: 5px; margin-right: 10px; margin-top: 1%;">
+                                        <div class="column">Dealer Name</div>
+                                        <div class="column"><apex:outputText value="{!defProd.Channel_Partner__r.Name}"/><br/><br/></div>
+                                    </div>
+                                    <div class="margin-style">
+                                        <div class="column">Part Number:</div>
+                                        <div class="column"><apex:outputText value="{!partModel}"/><br/><br/></div>
+                                    </div>
+                                    <div class="margin-style">
+                                        <div class="column">Part Name:</div>
+                                        <div class="column"><apex:outputText value="{!partName}"/><br/><br/></div>
+                                    </div>
+                                    <div class="margin-style">
+                                        <div class="column">Part Serial No:</div>
+                                        <div class="column"><apex:outputText value="{!defProd.Defective_Part_Serial_Number__c}"/><br/><br/></div>
+                                    </div>
+                                    <div class="margin-style">
+                                        <div class="column">Delivery Challan No:</div>
+                                        <div class="column"><apex:outputText value=" {!defProd.Part_Claim_Number_Text__c}"/><br/><br/></div>
+                                    </div>
+                                    <div class="margin-style">
+                                        <div class="column">Delivery Challan Date:</div>
+                                        <div class="column"><apex:outputText value="{!defProd.Part_Request__r.Delivery_Challan_Date__c}"/><br/><br/></div>
+                                    </div>
+                                    <div class="margin-style">
+                                        <div class="column">BSL Representative</div>
+                                        <div class="column"><apex:outputText /><br/><br/></div>
+                                    </div>
+                                </td>
+                                <td align="left" width="50%" style="border: 1px solid black">
+                                    <div class="margin-style">
+                                        <div class="column">Nature Of Defect</div>
+                                        <div class="column"><apex:outputText value="{!defProd.Part_Request__r.WorkOrder.Defect__c}"/><br/><br/></div>
+                                        <div class="column"><apex:outputText value="{!defProd.Defective_part_comments__c}"/><br/><br/></div>
+                                    </div>
+                                    <div class="margin-style">
+                                        <div class="column">Dealer Rep Name</div>
+                                        <div class="column"><apex:outputText /><br/><br/></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <h4 style="margin:5px;">Terms And Conditions <br/><br/><br/><br/></h4>
+                    <div style="margin:5px; font-size:90%">
+                        1. No claim will be entertained if the tag is not duly filled in and signed by Dealer/Associate/BSL representative
+                        <br/><br/>
+                        2. Please put this tag in a plastic bag and tie it securely to failed parts
+                    </div>
+                    <div>
+                        <h4 style="margin:5px;">Blue Star Limited <br/><br/></h4>
+                        <div style="margin:5px; font-size:90%">Blue Star Innovation Center, Next to Vihaag's Inn Hotel Kapurbavdi
+                            <p>Ghobandur Road Thane West</p>
+                        </div>
+                        <div style="text-align: right; font-size:60%; margin-right:20px;">Signature Supplier/Authorised Signatory</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </body>
+</apex:page>

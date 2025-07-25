@@ -1,0 +1,30 @@
+<template>
+    <div class="">
+
+        <div class="custom-lookup">
+            <lightning-input variant="label-stacked" type="search" label={label} onchange={HandleOnChangeCustomLookup}
+                onclick={HandleOnClickCustomLookup} onfocus={HandleOnFocusCustomLookup}
+                onblur={HandleOnBlurCustomLookup} value={modelNumber}>
+
+            </lightning-input>
+
+            <template if:true={showOptions}>
+                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                    role="listbox">
+                    <template for:each={filteredOptions} for:item="option">
+                        <li tabindex="0" key={option.value} role="presentation" class="slds-listbox__item" onkeydown={handleKeyDown}>
+                            <div role="option" tabindex="-1"
+                                class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                onclick={handleOptionClick} data-value={option.value}>
+                                <span class="slds-media__body">
+                                    <span class="slds-truncate">{option.label}</span>
+                                </span>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+    </div>
+    
+</template>

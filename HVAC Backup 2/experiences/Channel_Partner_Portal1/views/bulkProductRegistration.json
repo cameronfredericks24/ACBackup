@@ -1,0 +1,70 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "52a9aba0-bbd6-43bb-983a-6a544644c7a2",
+  "label" : "Bulk Product Registration",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "8510ec16-8898-4157-b6f6-974ed2256c20",
+          "columns" : [ {
+            "UUID" : "b26d0dbb-720b-430d-8d3c-9d504e2ac483",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "8510ec16-8898-4157-b6f6-974ed2256c20",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "processName" : "Product Registration"
+          },
+          "componentName" : "c:genericFileUploader",
+          "id" : "ae9f7d8b-6dcb-42b8-a209-6ed3b5d543bc",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "b26d0dbb-720b-430d-8d3c-9d504e2ac483",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b4c61f54-6129-4ec7-987d-42d822c75a60",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Bulk Product Registration"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "b7403f94-bda0-4d14-9add-8d5b7ba29507",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "aebebef9-3647-4bda-b56d-b28e11fe7886",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-bulk-product-registration"
+}

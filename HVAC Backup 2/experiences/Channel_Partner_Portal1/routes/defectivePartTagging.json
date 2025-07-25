@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "6aa07136-e76f-4ce6-b4ae-71f2c549d842",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "2b8f086a-e0ea-4998-b0ad-aa929e39b1d3",
+  "label" : "Defective Part Tagging",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-defective-part-tagging",
+  "type" : "route",
+  "urlPrefix" : "defective-part-tagging"
+}

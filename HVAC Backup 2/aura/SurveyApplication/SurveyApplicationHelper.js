@@ -1,0 +1,5 @@
+({
+	HelperMethod : function() {
+		
+	}
+})

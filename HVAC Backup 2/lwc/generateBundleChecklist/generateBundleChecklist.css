@@ -1,0 +1,158 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Define CSS variables on the host for easy theme adjustments */
+:host {
+    --primary-color: #0070d2;
+    --light-bg: #f9f9f9;
+    --error-color: #d9534f;
+    --border-color: #e6e6e6;
+    --hr-color: #e0e0e0;
+    --card-shadow: rgba(0, 0, 0, 0.15);
+}
+
+/* Card container styling */
+.custom-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--card-shadow);
+    overflow: hidden;
+}
+
+/* Main container for card content */
+.mainContainer {
+    padding: 20px;
+    background-color: var(--light-bg);
+}
+
+/* Disclaimer styling */
+.disclaimer {
+    color: var(--error-color);
+    font-weight: bold;
+    text-align: center;
+    margin: 15px 0;
+    font-size: 14px;
+    padding: 5px;
+    background-color: rgba(217, 83, 79, 0.1);
+    border-radius: 4px;
+}
+
+/* Horizontal rule with spacing */
+hr {
+    border: none;
+    border-top: 1px solid var(--hr-color);
+    margin: 10px 0;
+}
+
+/* Centering content for spinner and buttons */
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 150px;
+}
+
+/* Buttons container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Additional class for the back button */
+.back-button {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Styling for data list items */
+.data-item {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.data-item:hover {
+    background-color: #f0f0f0;
+}
+
+.record-text {
+    margin-left: 8px;
+}
+
+/* New ticket display style */
+.newST {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Consistent button sizing and transition */
+lightning-button.action-button {
+    min-width: 200px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Loading spinner container */
+.exampleHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+/* Error message styling */
+.error-message {
+    color: var(--error-color);
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.swipe-down-indicator {
+    text-align: center;
+    font-size: 16px;
+    color: blue;
+    font-weight: bold;
+    margin-bottom: 5px;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.swipe-down-active {
+    opacity: 1; /* Show animation when active */
+}
+
+.no-data-message {
+    text-align: center;
+    font-size: 1rem;
+    color: gray;
+    margin-top: 10px;
+}
+.error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+.center-content {
+    text-align: center;
+    padding: 20px;
+}
+.button-container {
+    text-align: center;
+    margin-top: 15px;
+}
+.action-button {
+    margin: 10px;
+}

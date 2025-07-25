@@ -1,0 +1,358 @@
+<template>
+    <div if:true={quickAction} class=" slds-modal__header">
+        
+      <!--<lightning-icon icon-name='action:new_child_case' alternative-text='new_child_case' size='small' title='new_case'></lightning-icon>-->CREATE CASE
+    </div>
+    <lightning-card onkeydown={handleKeyDown} class="slds-p-around_large slds-text-heading_small">
+        <div if:true={showSpinner} class="spinner">
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+         
+        <div class="slds-box box-shadow my-div">
+                <div if:false={quickAction} class=" slds-border_bottom" >  <!--<lightning-icon icon-name='action:new_child_case' alternative-text='new_child_case' size='small' title='new_case'></lightning-icon>--> <h2 class="slds-text-heading--medium slds-m-bottom_small slds-align_absolute-center"> Create Case - {recordTypeName}</h2></div>
+
+                <div if:true={showRecordTypeScreen} class="slds-p-around_medium slds-m-top_medium" style="padding:1% 25% 1% 25%">
+                    <lightning-combobox class="fontSize slds-m-bottom_small" name="fieldList" label='Select Customer'
+                        options={lstRecordTypes} placeholder="Select Customer Type"
+                        onchange={assignRecordType}></lightning-combobox>
+                        </br>
+                <div  style="display: flex; justify-content: center;align-items:center">
+                        <!--<lightning-button class="slds-m-right_x-small" variant="brand" label="Next" onclick={handleNext}></lightning-button>-->
+                        <lightning-button class="" variant="Brand" label="Cancel" onclick={navigateToObjectHome}></lightning-button>
+                    </div>
+                </div>
+
+
+            <div if:true={showEnterDetailsScreen} class="slds-p-around_medium lgc-bg">
+                <div class="" style="padding:1% 20% 1% 20%">
+                    <div class="slds-grid" >
+                <lightning-input class="slds-m-bottom_medium slds-col slds-size-1_of_4" type="tel" label="Phone Number" pattern="[6-9]{1}[0-9]{9}"
+                    value={customerPhoneNumber} onchange={handlePhonChange} placeholder="Enter Phone Number"></lightning-input>
+                <lightning-input type="email" label="Email address" value={customerEmailAddress} placeholder="Enter Email"
+                    onchange={handleEmailChange} class="slds-m-bottom_medium slds-col slds-size-1_of_4  slds-m-left_small"></lightning-input>
+                <lightning-input class="slds-m-bottom_medium   slds-col slds-size-2_of_4 slds-m-left_small" type="text" label="CID" 
+                    value={customerId} onchange={handleCustomerIdChange} placeholder="Enter Customer Id" ></lightning-input>
+                </div>
+                
+                <div class="slds-grid">
+                    
+                    <lightning-input class="slds-m-bottom_medium slds-col slds-size-1_of_2 " type="text" label="Account/Contact Name" 
+                        value={resAccName} onchange={handleResAccountNameChange} placeholder="Enter Account/Contact Name"></lightning-input>
+
+                    <span class="slds-m-top_x-large slds-m-left_small slds-m-right_small">&</span>
+                    <lightning-input class="slds-m-bottom_medium  slds-col slds-size-1_of_2" type="text" label="Pincode/Sector" 
+                        value={resPincode} onchange={handlePincodeChange} placeholder="Enter Pincode/Sector" ></lightning-input>
+                </div>
+
+                <div if:true={showDatatable} class="slds-m-bottom_medium" style="padding:1% 20% 1% 20% ;box-shadow: #0606062b 5px 2px 13px; padding: 15px; margin-top:1.5%; width:160%; margin-left:-28%;">
+                    <div  class="slds-m-bottom_medium"><span  class="slds-m-bottom_small">Please select a account from below list to proceed.</span></div>
+                <lightning-datatable if:true={showDatatable}
+                key-field="Id"
+                data={accountdata}
+                columns={accountColumns} class="slds-m-bottom_medium" onrowselection={handleRowSelection}></lightning-datatable></div>
+
+                </div>
+
+                   
+
+                <div class="slds-align_absolute-center">
+                <lightning-button variant="Brand" class="slds-m-right_x-small slds-m-top_small" label="Search"
+                    onclick={handleResAccountSearch}> </lightning-button>
+                <lightning-button variant="Brand" class="slds-m-right_x-small slds-m-top_small"  label="Create New Account"
+                    onclick={createNewAccountJs}> </lightning-button>
+            <!-- <lightning-button variant="Brand" if:true={showNext} class="slds-m-right_x-small slds-m-top_small"  label="Next"
+                    onclick={handleNextAccount}> </lightning-button>-->
+                <lightning-button variant="Brand" class="slds-m-top_small"  label="Cancel"
+                    onclick={navigateToObjectHome} ></lightning-button>
+                <lightning-button variant="Brand" class="slds-m-left_small slds-m-top_small"  label="Back"
+                    onclick={handleBack} ></lightning-button></div>
+            
+            </div>
+
+            <div if:true={showCommCustomerScreen} class=" slds-p-around_medium lgc-bg">
+                <div class=""  style="padding:1% 20% 1% 20%">
+                <!--<lightning-record-picker class="slds-m-bottom_medium " 
+                    label={accountsearchlabel} placeholder="Search Commercial Accounts..." object-api-name="Account"
+                    onchange={setCommercialAccount} onblur={setCustomValidation} filter={filter} matching-info={matchingInfoAccount} display-info={displayInfoAccount}></lightning-record-picker>-->
+
+                <div class="slds-grid" if:false={isNamo}>
+                    <lightning-input class="slds-m-bottom_medium slds-col slds-size-1_of_4  " type="text" label="Account Name" 
+                            value={accName} onchange={handleaccNameChange} placeholder="Enter Account Name"></lightning-input>
+    
+                    <lightning-input class="slds-m-bottom_medium   slds-col slds-size-1_of_4 slds-m-left_small" type="text" label="Pincode" 
+                            value={resPincode} onchange={handlePincodeChange} placeholder="Enter Pincode" ></lightning-input>
+                
+                    <lightning-input class="slds-m-bottom_medium   slds-col slds-size-2_of_4 slds-m-left_small" type="text" label="CID" 
+                            value={customerId} onchange={handleCustomerIdChange} placeholder="Enter Customer Id" ></lightning-input>
+                </div>
+
+                <div class="slds-grid" if:true={isNamo}>
+                    <lightning-input class="slds-m-bottom_medium slds-col slds-size-1_of_4  " type="text" label="Account Name" 
+                            value={accName} onchange={handleaccNameChange} placeholder="Enter Account Name"></lightning-input>
+    
+                    <lightning-input class="slds-m-bottom_medium   slds-col slds-size-1_of_4  slds-m-left_small slds-m-right_small " type="text" label="Pincode" 
+                            value={resPincode} onchange={handlePincodeChange} placeholder="Enter Pincode" ></lightning-input>
+                    
+                    <lightning-input class="slds-m-bottom_medium   slds-col slds-size-1_of_4  slds-m-left_small" type="text" label="Branch" 
+                            value={branch} onchange={handleBranchChange} placeholder="Branch" ></lightning-input>
+
+                    <lightning-input class="slds-m-bottom_medium   slds-col slds-size-1_of_4  slds-m-left_small" type="text" label="SOL ID" 
+                            value={solId} onchange={handlesolIDChange} placeholder="SOL ID" ></lightning-input>
+                </div>
+            
+                <div class="slds-grid">
+                    <lightning-input class="slds-m-bottom_medium slds-m-top_medium slds-col slds-size-1_of_4 " type="text" label="Contact Name" 
+                    value={commContactName} placeholder="Enter Contact Name" onchange={handlecontactNameChange}></lightning-input>
+                        
+                    <span class="slds-m-top_large slds-m-left_small slds-m-right_small" style="margin-top: 5%;">&</span>
+
+                    <lightning-input type="email" label="Email address" value={commEmail}
+                        onchange={handleCommEmailChange}  placeholder="Enter Email"  class="slds-m-bottom_medium slds-m-top_medium slds-col slds-size-1_of_4 "></lightning-input>
+                    
+                    <lightning-input  if:true={isNamo} class="slds-m-bottom_medium slds-m-top_medium   slds-col slds-size-2_of_4 slds-m-left_small" type="text" label="CID" 
+                        value={customerId} onchange={handleCustomerIdChange} placeholder="Enter Customer Id" ></lightning-input>
+                    </div>
+                </div>
+                
+                    <br/>
+                <div class="slds-align_absolute-center">
+                    <!--<lightning-button class="slds-m-left_small " variant="brand"
+                        label="Next" onclick={handleCommAccount}> </lightning-button>-->
+                    <lightning-button variant="Brand" class="slds-m-left_small " 
+                        label="Search" onclick={getCommercialAccount}> </lightning-button>
+                    <lightning-button  if:false={isNamo}  variant="Brand" class="slds-m-left_small " 
+                        label="Create New Account" onclick={createNewAccountJs}> </lightning-button>
+                    <lightning-button variant="Brand" class="slds-m-left_small"  label="Cancel"
+                        onclick={navigateToObjectHome} ></lightning-button>
+                    <lightning-button variant="Brand" class="slds-m-left_small" label="Back"
+                        onclick={handleBack} ></lightning-button>
+                </div>
+
+                <div if:true={showDatatable} class="slds-m-bottom_medium" style="padding:1% 20% 1% 20% ;box-shadow: #0606062b 5px 2px 13px; padding: 15px; margin-top:1.5%;">
+                    <div  class="slds-m-bottom_medium"><span  class="slds-m-bottom_small">Please select a account from below list to proceed.</span></div>
+                <lightning-datatable if:true={showDatatable}
+                key-field="Id"
+                data={accountdata}
+                columns={accountColumns} class="slds-m-bottom_medium" onrowselection={handleRowSelection}></lightning-datatable></div>
+
+                
+
+                
+            </div>
+
+            <div if:true={showAccountScreen} class="slds-p-around_medium">
+                <h1 class="slds-m-bottom_medium slds-text-heading_small slds-m-left-x_small">{accountFoundMessage}</h1>
+                <div class="slds-section account slds-is-open " data-id="account ">
+                    <h3 class="slds-section__title slds-section__title-action slds-m-bottom_small" style="background: white;">
+                        <lightning-icon icon-name="utility:switch" alternative-text="button icon" size="xx-small"
+                        class="slds-section__title-action-icon slds-button__icon_left"></lightning-icon> <span title={label} style="color:black"> &nbsp; <strong> Account Details </strong></span>  
+                    
+                    </h3>
+                    <div class="slds-section__content slds-is-open  " style="box-shadow: #0606062b 5px 2px 13px; padding: 20px 25px;">
+                <lightning-record-edit-form data-id="accountForm" object-api-name="Account"
+                    record-type-id={accountRecordTypeId} record-id={account.Id} onsuccess={handleAccountSuccess}
+                    onerror={handleError}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2">
+                            <div style="margin-left: 6%;margin-right: 8%;margin-top: 2%;">
+                                <lightning-input-field name="accountName" field-name="Name" value={account.Name} required="true"
+                                    onchange={assignAccountValues} disabled={disableAccountName}></lightning-input-field><!--if:true={isCommercial} -->
+
+                                <!--lightning-input-field if:false={isCommercial} name="Salutation"  field-name="Salutation" value={account.Salutation} 
+                                    onchange={assignAccountValues} disabled={disableSal}></lightning-input-field>
+                                <lightning-input-field if:false={isCommercial} name="FirstName" field-name="FirstName" value={account.FirstName} 
+                                    onchange={assignAccountValues} disabled={disableFirstName}></lightning-input-field>
+                                <lightning-input-field if:false={isCommercial} name="MiddleName" field-name="MiddleName" value={account.MiddleName} 
+                                    onchange={assignAccountValues} disabled={disableMiddleName}></lightning-input-field>
+                                <lightning-input-field if:false={isCommercial} name="LastName" field-name="LastName" value={account.LastName} required="true"
+                                    onchange={assignAccountValues} disabled={disableLastName}></lightning-input-field-->
+                                <!--<lightning-input-field if:false={isCommercial} name="Suffix" field-name="Suffix" value={account.Suffix} 
+                                    onchange={assignAccountValues} disabled={disableSuffix}></lightning-input-field>-->
+
+                                <lightning-input-field name="group" field-name="Group__c" value={account.Group__c} if:true={isCommercial}
+                                    disabled="true" onchange={assignAccountValues}></lightning-input-field>
+                                <lightning-input-field name="segment" field-name="Industry" value={account.Industry} 
+                                    disabled={disableSegment} onchange={assignAccountValues} if:true={isCommercial} ></lightning-input-field>
+                                <lightning-input-field field-name="Sub_Segment__c" value={account.Sub_Segment__c}
+                                    onchange={assignAccountValues} disabled={disableSubSegment} if:true={isCommercial}></lightning-input-field>
+                                <lightning-input-field if:true={isCommercial} field-name="ParentId" value={account.ParentId}
+                                    onchange={assignAccountValues} disabled={disableParentId} ></lightning-input-field>
+                                <span if:false={isCommercial}><lightning-input-field if:false={isNamo} field-name="Category__c" value={account.Category__c}
+                                        onchange={assignAccountValues} disabled="true"></lightning-input-field> </span> 
+                            </div>   
+                            
+                        
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-m-left_medium">
+                        
+                            <div style="margin-right: 11%; margin-left: 0%;">
+                                <span if:true={isCommercial}><lightning-input-field if:false={isNamo} field-name="Category__c" value={account.Category__c}
+                                onchange={assignAccountValues} disabled="true"></lightning-input-field> </span>                     
+                                <lightning-input-field if:true={isNamo} field-name="SOL_Store_ID__c" value={account.SOL_Store_ID__c}
+                                onchange={assignAccountValues} disabled={disableSolId} ></lightning-input-field>                       
+                                <lightning-input-field name="languagPreference" field-name="Language_Preference__c" value={account.Language_Preference__c}
+                                    onchange={assignAccountValues}></lightning-input-field>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-record-edit-form>
+                </div>
+                </div>
+                <div if:false={isVIP}>
+                    <c-table-structure  account-id={account.Id} class="contactChild" contact-record-type={contactRecordType} onsubmitparent={setChildData} is-commercial={isCommercial}  object-name="Contact" title="Contact Details" records={contactData} header-labels={headerLabels}></c-table-structure>
+                </div>
+                <div>
+                    <c-table-structure class="addressChild" onsubmitparent={setChildData} is-commercial={isCommercial} records={shippingAddress} show-address=true object-name="Address" title="Shipping Address Details" header-labels={billingAddressheaderLabels} onsubmitpincode={updateAsset}></c-table-structure>
+                </div>
+                <div>
+                    <c-table-structure class="assetChild" selected-pincode={selectedPincode} account-id={account.Id} if:true={existingAsset} onsubmitparent={setChildData} records={assetData} object-name="Asset" title="Asset Details" header-labels={assetLabels}></c-table-structure>
+                </div>
+            </div>
+
+            <div if:true={showAccountScreen} class="slds-p-bottom_medium slds-p-right_medium slds-p-left_medium lgc-bg">
+                <div class="slds-section slds-is-open " data-id="case">
+                    <!--section header-->
+                    <h3 class="slds-section__title slds-section__title-action slds-m-bottom_small" style="background: white;">
+                        <!--<lightning-icon icon-name="utility:switch" alternative-text="button icon" size="x-small"
+                                class=""></lightning-icon>-->
+                        <lightning-icon icon-name="utility:switch" alternative-text="button icon" size="xx-small"
+                                class="slds-section__title-action-icon slds-button__icon_left"></lightning-icon>
+                        <span class="slds-truncate slds-p-left-x_small"  style="color:black"  title={label} > &nbsp;<strong> Case Details </strong></span> 
+                        <!--button type="button" aria-controls={id} class="slds-button "
+                            data-buttonid="case" onclick={toggleSection}>
+                            <lightning-icon icon-name="utility:switch" alternative-text="button icon" size="x-small"
+                                class="slds-section__title-action-icon slds-button__icon_left"></lightning-icon> 
+                            <span class="slds-truncate" title={label}>Case Details</span>                    
+                        </button>-->
+                    
+                    </h3>
+                    <!--section body-->
+                    <div class="slds-section__content slds-is-open" style="box-shadow: #0606062b 5px 2px 13px; padding: 20px 25px;">
+            
+                <lightning-record-edit-form data-id="caseForm" object-api-name="Case" record-type-id={caseRecordTypeId}
+                    onsuccess={handleCaseSubmit} onerror={handleError}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2">
+                            <div style="margin-left: 6%;margin-right: 8%;margin-top: 2%;">
+                                <lightning-input-field field-name="Type" onchange={assignCaseValues} required></lightning-input-field>
+                                <lightning-input-field field-name="Subject__c" onchange={assignCaseValues} required></lightning-input-field>
+                                <lightning-input-field field-name="Description" onchange={assignCaseValues} required></lightning-input-field>
+                                <lightning-input-field field-name="Check_Warranty_Status__c" onchange={assignCaseValues}></lightning-input-field>
+                                <!--<lightning-combobox class="fontSize slds-m-bottom_small" name="fieldList" label='Subject'
+                                    options={issueTypes} placeholder="Select Subject" variant="label-inline"
+                                    onchange={handleSubjectChange}></lightning-combobox>-->
+                                <!--<lightning-input-field field-name="Case_Customer_Type__c" onchange={assignCaseValues} ></lightning-input-field>
+                                <lightning-input-field field-name="Issue_Type__c" onchange={assignCaseValues} ></lightning-input-field>-->
+                                <span style = "visibility : hidden; display:none"><lightning-input-field field-name="Status" disabled="true"></lightning-input-field></span>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-m-left_medium">
+                            <div style="margin-right: 11%; margin-left: 0%;">
+                                <lightning-input-field field-name="Origin" value="Phone" disabled="true"></lightning-input-field>
+                                <lightning-input-field field-name="Sub_Type_Source__c" value="Call From Customer" onchange={assignCaseValues} required></lightning-input-field>
+                                <lightning-input-field field-name="Caller_Name__c" onchange={assignCaseValues}></lightning-input-field>
+                                <lightning-input-field field-name="Caller_Phone__c" onchange={assignCaseValues} ></lightning-input-field>
+                                <lightning-input-field field-name="Preferred_Slot_Start_Time__c" onchange={assignCaseValues}></lightning-input-field>
+                                <span style = "visibility : hidden; display:none"><lightning-input-field field-name="Subject" onchange={assignCaseValues} value={caseRecord.Subject} ></lightning-input-field></span>
+                                
+                                <span style = "visibility : hidden; display:none"><lightning-input-field field-name="Language_Preference__c" value={account.Language_Preference__c} onchange={assignCaseValues} disabled></lightning-input-field></span>
+                                <span style = "visibility : hidden; display:none"><lightning-input-field field-name="Source__c" value="Call From Customer" onchange={assignCaseValues} disabled></lightning-input-field></span>  
+                            </div>                  
+                        </div>
+                    </div>
+                    <div class="slds-m-top_medium"  style="margin-left: 3%;">
+                        <!--<lightning-button if:false={existingAsset} class="margin-top slds-m-right_medium" label="Add Asset "
+                            onclick={handleAsset}></lightning-button>-->
+                        <lightning-helptext content="Clicking 'Add Product' will clear the asset selection. Use this button if the asset serial number is unavailable."></lightning-helptext>
+                        <lightning-button class="margin-top slds-m-left_small" label="Add Product"
+                            onclick={handleProduct}></lightning-button>
+                        <lightning-button  class="margin-top slds-m-left_medium" label="Send Standard Charges"
+                                onclick={sendCharges}></lightning-button>
+                    </div>
+
+                    <div class="slds-m-top_medium" style="display: flex;">
+                        <div if:true={serialNumberNotPresent} class="slds-m-left_small" style="display: flex;">
+                            <lightning-button-icon class="slds-m-top_small slds-m-right_small" icon-name="utility:close" variant="bare" onclick={handleAssetClose} alternative-text="Close window"></lightning-button-icon>
+                            <c-custom-lookup label="Product Sub Family" product-options-parent={productOptions} onsubmitselection={getProductSubFamily}></c-custom-lookup>
+                            <!--<lightning-input-field if:true={serialNumberNotPresent} variant="label-stacked"
+                            class=""
+                            field-name="Product_Sub_Family_temp__c"
+                            onchange={assignCaseValues} required></lightning-input-field>-->
+                        </div>
+                        <div class=" slds-m-left_large " style="margin-left: 5%;margin-right:3%">
+                            <c-custom-lookup  if:true={subfamilySelected} label="Product" class="product" product-options-parent={products} onsubmitselection={getProduct}></c-custom-lookup>
+                            <!--<lightning-record-picker if:true={subfamilySelected}
+                                class="slds-col slds-size_2-of-5 slds-m-bottom_medium slds-m-top_medium" label="Product"
+                                placeholder="Search Products..." object-api-name="Product2" onchange={setProductOnCase}
+                                filter={productfilter} matching-info={matchingInfoProduct} display-info={displayInfoProduct} ></lightning-record-picker>-->
+                            
+                            
+                        </div>
+                        <lightning-button if:true={subfamilySelected}  class="margin-top slds-m-left_large products " label="Fetch Price" onclick={fetchPrice}></lightning-button>
+
+                        
+                    
+                        <!--<lightning-input-field if:true={subfamilySelected} variant="label-stacked"
+                            class="slds-col slds-size_1-of-2 slds-m-bottom_medium slds-m-top_medium"
+                            field-name="ProductId"
+                            onchange={assignCaseValues} required></lightning-input-field>-->
+                    </div>
+                </lightning-record-edit-form>
+
+                <div  if:true={showPrice} class="table-container slds-m-top_medium">
+                    <table border="1" cellspacing="0" cellpadding="0" class=" slds-table slds-table_cell-buffer ">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Type</th>
+                                <th style="text-align: center;" >Rate (in Rupees)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={rateMatrixesWithSelection} for:item="record">
+                                <tr key={record.Id}>
+                                    <!--<td>
+                                        <lightning-input type="checkbox" name={record.Id} value={record.Id} checked={record.isSelected} onchange={handleGenericCheckboxChange}></lightning-input>
+                                    </td>-->
+                                    <td style="text-align: center;"><span style="margin-right: 50%;">{record.type}</span></td>
+                                <template if:false={assetUnderWarranty}>
+                                    <td style="text-align: right;"><span style="margin-right: 50%;">{record.rate} </span></td>
+                                </template>
+                                <template if:true={assetUnderWarranty}>
+                                    <td style="text-align: right;"><span style="margin-right: 50%;">0.00 </span></td>
+                                </template>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+                
+                </div>
+                </div>
+
+                <div if:true={serialNumberPresent}>
+                    <div>
+                        <c-table-structure class="assetChild" if:false={existingAsset} onsubmitparent={setChildData} records={assetData} object-name="Asset" title="Asset Details" header-labels={assetLabels} selected-pincode={selectedPincode}></c-table-structure>
+                    </div>
+                </div>
+            </div>
+
+            <div if:true={showAccountScreen} class="slds-align_absolute-center slds-p-bottom_large" style="margin-bottom: 3rem;">
+                <lightning-button if:true={showServiceTicketButton} class="" variant="brand" label="Submit & Generate Service Ticket"
+                    onclick={generateServiceTicket} disabled={disableButton}></lightning-button>
+                <lightning-button if:false={showServiceTicketButton} class="slds-m-left_x-small" variant="brand" label="Proceed With Case"
+                    onclick={proceedWithCase} disabled={disableButton}></lightning-button>
+                <lightning-button if:true={showAccountScreen} class="slds-m-left_x-small" variant="brand" label="Cancel"
+                    onclick={navigateToObjectHome} ></lightning-button>
+            </div>
+
+            <div if:true={showCPScreen}>
+                <c-create-work-order class="childWorkOrder" record-id={caseRecord.Id} asset-id={assetId} case-type={caseRecord.Type} parent-lwc="true" ></c-create-work-order>
+            </div>
+
+            <div style="display: none;" >
+                <c-send-charges class="sendCharge" email-address={emailAddress}></c-send-charges>
+            </div> 
+        </div>
+
+    </lightning-card>
+</template>

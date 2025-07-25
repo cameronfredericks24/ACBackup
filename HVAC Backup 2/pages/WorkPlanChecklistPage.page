@@ -1,0 +1,109 @@
+<apex:page renderAs="pdf" controller="WorkPlanChecklistController" applyBodyTag="false" showHeader="false" 
+            sidebar="false" 
+            standardStylesheets="false" 
+            applyHtmlTag="false">
+    <html>
+        <head>
+               <style type="text/css" media="print">
+               @page {
+                   	margin-top: 3cm;
+                    margin-bottom: 5cm;
+                    @top-center {
+                        content: element(header);
+                    }
+                    @bottom-center {
+                        content: element(footer);
+                    }
+                }
+
+                div.header {
+                    display: block;
+                    position: running(header);
+                    text-align: left;
+                }
+
+                div.footer {
+                    display: block;
+                    position: running(footer);
+                    text-align: center;	
+                   	padding-top: 20px;
+                    font-size: 12px;
+                }
+                  
+				table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                th, td {
+                    border: 1px solid #000;
+                    padding: 8px;
+                }
+           </style>
+        </head>
+        <body>
+            <!-- Header -->
+            <div >
+                <div class="header" id="header">
+                    <img src="{!$Resource.BSL_Logo}" alt="Company Logo" style="max-width: 200px; max-height: 100px;" />
+                </div>
+                
+                <!-- Footer -->
+                <div class="footer" id="footer">
+                   
+                        <p>
+                            <hr/>
+                        For any query, please email us at: customerservice@bluestarindia.com<br/>
+                        24/7 Customer Care No.: 1800 209 1177 SMS 'SERVICE to 57575<br/><br/>
+                
+                        Visit us at www.bluestarindia.com<br/>
+                        Registered Address<br/><br/>
+                
+                        Blue Star Ltd. Kasturi Buildings, Mohan T Advani Chowk, Jamshedji Tata Road, Mumbai - 400 020, India.<br/>
+                        Tel: +91 22 66654000 Fax: +91 22 66654152 CIN:L28920MH1949PLC006870<br/>
+                    	</p>
+                    </div>
+                    
+                <!-- Main Content -->
+                <div class="content">
+                    <h2>Service Ticket Information</h2>
+                    <p><strong>Ticket Number:</strong> {!workOrder.Ticket_Number_Read_Only__c}</p>
+                    <p><strong>Subject:</strong> {!workOrder.Subject}</p>
+                    <p><strong>Customer Code:</strong> {!workOrder.Customer_Id__c}</p>
+                    <p><strong>CP Code:</strong> {!workOrder.CP__r.CP_Code__c}</p>
+                    <p><strong>Work Type:</strong> {!workOrder.Work_Type_Name__c}</p>
+                    <p><strong>Asset:</strong> {!workOrder.Asset_Name__c}</p>
+    
+                    <apex:repeat value="{!workPlans}" var="wp">
+                        <div class="work-plan">
+                            <h2>{!wp.Name}</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Checklist Item</th>
+                                        <th>Input</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!checklistItemsByWorkPlan[wp.Id]}" var="ci">
+                                        <tr>
+                                            <td>{!ci.Name}</td>
+                                            <td>{!ci.Input_Value__c}</td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                        </div>
+                    </apex:repeat>
+    
+                    <div class="comments-signature">
+                        <p><strong>Technician Comment:</strong></p>
+                        <p><strong>Customer Signature:</strong></p>
+                        <p><strong>Date:</strong></p>
+                    </div>
+                </div>  
+            </div>
+                      
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,46 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "b6a48fc2-2bbc-42b0-ae2a-d3719cc63adf",
+  "label" : "Counter Sales",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:createSaleOrder",
+      "id" : "f14ea2dc-ca91-413e-af81-371df78d33b2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0fe59fb2-9287-415e-8f66-2087cc85279c",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "4efc17b9-8ebd-4c8f-8a54-52a222581d95",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "3257c1b3-2b60-487e-aa1e-89296395d398",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Counter Sales"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "150144ea-300d-4905-81f3-5979146da857",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3f6d0e12-7a49-4e0c-bbaf-d5712059d519",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-counter-sales"
+}

@@ -1,0 +1,27 @@
+<apex:page standardController="GRN__c" extensions="GRNPdfController" showHeader="false" showQuickActionVfHeader="false">
+    <style>
+
+       
+        
+        .buttonStyle { width:60px; background-color:blue; text-align:center; padding-top:4px; height: 30px}
+        
+        
+        
+        </style>
+<apex:form >
+    <center>
+        <apex:commandButton action="{!generateAndAttachPDF}" value="Save PDF" styleClass="buttonStyle"/>
+        
+    </center>
+    <br/><br/>
+    <center>
+        <apex:iframe height="800px" width="1100px" src="/apex/createGRNPDF?id={!grn.Id}"></apex:iframe>
+    </center>
+</apex:form>
+<br/><br/><br/><br/>
+
+
+
+
+
+</apex:page>

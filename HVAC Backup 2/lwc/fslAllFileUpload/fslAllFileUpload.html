@@ -1,0 +1,57 @@
+<template>
+    <template if:true={showFileUpload}>
+         <!-- Note for Video Upload -->
+        <div class="slds-text-color_weak slds-m-top_large">
+            <p>Note:Please upload videos through the feed section.</p>
+        </div>  </br>
+    </template>
+        <!-- Image Upload Section -->
+        <div class="upload-section">
+            <h3>Upload Images</h3>
+            <c-image-upload-container record-id={recordId} is-invoice-file="false" onfileuploaded={handleFileUploaded}>
+            </c-image-upload-container>
+        </div>
+        <!-- Invoice Upload Section -->
+        <div class="upload-section">
+            <h3>Upload Invoice</h3>
+            <c-image-upload-container record-id={recordId} is-invoice-file={isInvoiceFile} onfileuploaded={handleFileUploaded}>
+            </c-image-upload-container>
+        </div>
+
+          <!-- ODU safety check Section -->
+        <div if:true={isCommissioning} class="upload-section">
+            <h3>Upload Outdoor Safety Check Images</h3>
+            <c-image-upload-container record-id={recordId} is-invoice-file={isInvoiceFile} onfileuploaded={handleFileUploaded}>
+            </c-image-upload-container>
+        </div>
+       
+        <!-- Video Upload Section 
+        <div class="upload-section">
+           <lightning-file-upload label="Upload File" name="Upload File" accept={acceptedFormats}
+                        record-id={recordId} onuploadfinished={handleUploadFinished} multiple>
+                    </lightning-file-upload>
+
+               <template if:true={isFileUploaded}>
+                    <div class="slds-m-top_medium">
+                        <p class="slds-m-bottom_x-small">Uploaded Files:</p>
+                        <div class="slds-box slds-box_x-small slds-theme_default">
+                            <ul class="slds-list_dotted slds-p-around_small">
+                                <template for:each={uploadedFileNames} for:item="file">
+                                    <li key={file.name} class="slds-item slds-p-vertical_x-small">
+                                        <a href="javascript:void(0);" onclick={handleFileClick}
+                                            data-id={file.id}>{file.name}</a>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div> 
+                </template>
+        </div>
+        -->
+
+        
+
+    <div class="button-section">
+        <lightning-button variant="brand-outline" label="Back" onclick={handleBackClick}></lightning-button>
+    </div>
+</template>

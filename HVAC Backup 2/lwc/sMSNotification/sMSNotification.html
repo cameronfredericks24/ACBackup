@@ -1,0 +1,61 @@
+<template>
+     <template if:true={showComponent}>
+    <lightning-card>
+        <!-- <h2 slot="title" class="card-container">Send SMS</h2> -->
+     <lightning-layout>
+        <!-- <lightning-layout-item size="12" padding="around-small"> -->
+      <lightning-layout-item size="12">
+      <lightning-combobox
+        name="SMSTemplate"
+        label="SMS Template"
+        value={selectedValue}
+        options={options}
+        onchange={handleSelectTemplate}
+        >
+    </lightning-combobox>
+<div if:true={show} >
+     <div class="checkbox" if:true={contactAvailable} >
+    <template for:each={phoneOption} for:item="option">
+                <div key={option.value}>
+                    <lightning-input type="checkbox"
+                                     label={option.label}
+                                     value={option.value}
+                                     checked={option.checked}
+                                     onchange={handleSelectPhoneNumber}
+                                     >
+                    </lightning-input>
+                </div>
+            </template>
+            </div>
+             <div if:false={contactAvailable} class="paragraph">
+                 <p>There is no contact available to send SMS.</p>
+            </div>
+    </div>
+    <!-- <template for:each={inputData} for:item="item" for:index="index">
+            <lightning-input
+                key={item.key}
+                label={item.label}
+                value={item.value}
+                onchange={handleChangeVar}
+                data-index={index}>
+            </lightning-input>
+        </template> -->
+        <div if:true={show} >
+    <lightning-textarea
+        label-hidden
+        value={textValue}
+        disabled
+        class="textarea-container"
+       >
+    </lightning-textarea>
+        </div>
+    <footer class="slds-m-top_medium">
+    <div if:true={show} class="button-container">
+     <lightning-button label="Send SMS" onclick={handleSend} variant="neutral"></lightning-button>
+    </div>
+     </footer>
+      </lightning-layout-item>
+    </lightning-layout>
+    </lightning-card>
+     </template>
+</template>

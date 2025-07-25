@@ -1,0 +1,88 @@
+<template>
+    <div class="slds-scrollable">
+        <lightning-card>
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+
+            <!-- <lightning-button variant="brand" onclick={onclickHandler}></lightning-button> -->
+
+
+            <div class="slds-grid slds-grid_vertical slds-p-horizontal_medium slds-align_absolute-center">
+                <div class="slds-col technicianDetails">
+                    <h2 class="slds-p-around_x-small"> <b>Name: {technicianName}</b></h2>
+                    <h2 class="slds-p-around_x-small"><b>Code: {technicianCode}</b></h2>
+                </div>
+                <div class="slds-col slds-p-top_small">
+                    <div class="rate ">
+                        <div class="feedback-label slds-p-left_xxx-small slds-align_absolute-center"><b>Please Rate Technician</b></div>
+
+                        <input type="radio" id="star5" name="technician" value="5" onchange={handleRatingChange} />
+                        <label for="star5" title="5 stars">5 stars</label>
+                        <input type="radio" id="star4" name="technician" value="4" onchange={handleRatingChange} />
+                        <label for="star4" title="4 stars">4 stars</label>
+                        <input type="radio" id="star3" name="technician" value="3" onchange={handleRatingChange} />
+                        <label for="star3" title="3 stars">3 stars</label>
+                        <input type="radio" id="star2" name="technician" value="2" onchange={handleRatingChange} />
+                        <label for="star2" title="2 stars">2 stars</label>
+                        <input type="radio" id="star1" name="technician" value="1" onchange={handleRatingChange} />
+                        <label for="star1" title="1 star">1 star</label>
+
+                        <div class="slds-p-vertical-medium"></div>
+
+                    </div>
+                    <br>
+
+                    <div if:true={isLessRating} class="slds-col commentsDiv">
+
+                        <!-- <label class="bold-label"><b>Add Comments</b></label> -->
+    
+                        <lightning-input label="Add Comments" onchange={commentChangeHandler} value={customerComments} placeholder="Please add remarks here..">
+    
+                        </lightning-input>
+                    </div>
+                    
+                </div>
+               
+              
+                <div class="slds-col slds-m-top_large">
+                    <div class="signature-pad">
+                        <c-signature-pad record-id={recordId} enable-name-signing="false"
+                            name-input-label="Type name here:" enable-signature-drawing="true"
+                            pad-label="Draw signature here" stroke-thickness="4" pen-color="black" pad-color="white"
+                            font="30px 'Great Vibes'"
+                            oncustomercodechange={customerCodeChangeHandler}>
+                        </c-signature-pad>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="slds-m-top_medium">
+                        <lightning-button variant="Base" label="Clear" title="Clear" onclick={clearSignature}
+                            class="slds-m-left_x-small"></lightning-button>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <div class="disclaimer">
+                        <p class="slds-align_absolute-center slds-p-around_xx-small"><b>Please submit it before handing
+                                it to technician</b></p>
+                    </div>
+                </div>
+                <div class="slds-col slds-p-top_medium">
+                    <div class="slds-align_absolute-center slds-m-top_medium">
+                        <lightning-button variant="brand-outline" label="Back"
+                            onclick={backClickHandle}></lightning-button>
+                        <div class="slds-p-horizontal_medium">
+
+                        </div>
+
+                        <lightning-button variant="brand" label="Submit" title="Primary action"
+                            onclick={handleSubmit}></lightning-button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </lightning-card>
+    </div>
+</template>

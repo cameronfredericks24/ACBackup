@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>submit_to_AM</name>
+        <label>submit to AM</label>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <connector>
+            <targetReference>mess</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <stringValue>Opportunity_Closed_lost_approval</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>submit</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <choices>
+        <name>Brand_Preference</name>
+        <choiceText>Brand Preference</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Brand Preference</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Budget_Issue</name>
+        <choiceText>Budget Issue</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Budget Issue</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Customer_Not_Available</name>
+        <choiceText>Customer Not Available</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Customer Not Available</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Customer_Not_Occupied</name>
+        <choiceText>Customer Not Occupied</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Customer Not Occupied</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Customer_Relationship</name>
+        <choiceText>Customer Relationship</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Customer Relationship</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Customer_s_Expectation_of_Low_Rate</name>
+        <choiceText>Customer&apos;s Expectation of Low Rate</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Customer&apos;s Expectation of Low Rate</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Dealer_CAD_Outstanding_with_Customer</name>
+        <choiceText>Dealer / CAD Outstanding with Customer</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Dealer / CAD Outstanding with Customer</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Delivery_Schedule</name>
+        <choiceText>Delivery Schedule</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Delivery Schedule</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Documentation_Issue</name>
+        <choiceText>Documentation Issue</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Documentation Issue</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Duplicate</name>
+        <choiceText>Duplicate</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Duplicate</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Future_Potential</name>
+        <choiceText>Future Potential</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Future Potential</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Lost_to_Local_Party</name>
+        <choiceText>Lost to Local Party</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Lost to Local Party</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Lost_to_OEM</name>
+        <choiceText>Lost to OEM</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Lost to OEM</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>On_Call_Support</name>
+        <choiceText>On Call Support</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>On Call Support</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Others</name>
+        <choiceText>Others</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Others</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Own_Setup</name>
+        <choiceText>Own Setup</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Own Setup</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Price</name>
+        <choiceText>Price</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Price	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Product_Quality</name>
+        <choiceText>Product Quality</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Product Quality</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Residential_Less_Usage</name>
+        <choiceText>Residential / Less Usage</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Residential / Less Usage</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Site_Temporarily_Closed_Vacated</name>
+        <choiceText>Site Temporarily Closed / Vacated</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Site Temporarily Closed / Vacated</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Taken_By_CAD</name>
+        <choiceText>Taken By CAD</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Taken By CAD</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Technical</name>
+        <choiceText>Technical</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Technical</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Technical_Dispute_Snag_with_Customer_During_Project</name>
+        <choiceText>Technical Dispute / Snag with Customer During Project</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Technical Dispute / Snag with Customer During Project</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>TurnKey</name>
+        <choiceText>TurnKey</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>TurnKey</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>check_profile</name>
+        <label>check profile</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_mess</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>profile</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Profile.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BSL CBO</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Opportunity_Status_Closed_Lost</targetReference>
+            </connector>
+            <label>profile</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_Status</name>
+        <label>check Status</label>
+        <locationX>380</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Copy_1_of_mess</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>status</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_Opportunity.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed - Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>check_profile</targetReference>
+            </connector>
+            <label>status</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Opportunity Status lost {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity Status lost</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>get_Opportunity</name>
+        <label>get Opportunity</label>
+        <locationX>380</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>check_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>update_Opportunity</name>
+        <label>update Opportunity</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <connector>
+            <targetReference>submit_to_AM</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Closed_Lost_Reason__c</field>
+            <value>
+                <elementReference>Lost_Reason</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Extended_Warranty_End_Date__c</field>
+            <value>
+                <elementReference>Extended_Warranty_End_Date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Extended_Warranty_Start_Date__c</field>
+            <value>
+                <elementReference>Extended_Warranty_Start_Date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Future_Potential_Reason__c</field>
+            <value>
+                <elementReference>Future_Potentials</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lost_To__c</field>
+            <value>
+                <elementReference>Lost_To</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OEM_Name__c</field>
+            <value>
+                <elementReference>OEM</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <screens>
+        <name>Copy_1_of_Copy_1_of_mess</name>
+        <label>Copy 1 of Copy 1 of mess</label>
+        <locationX>578</locationX>
+        <locationY>350</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Copy_1_of_Copy_1_of_message</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(170, 40, 40); font-size: 14px;&quot;&gt;Action cannot be performed at this stage of opportunity.﻿&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Copy_1_of_mess</name>
+        <label>Copy 1 of mess</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Copy_1_of_message</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(244, 34, 34);&quot;&gt;No permission to perform this action&lt;/strong&gt;&lt;strong style=&quot;font-size: 14px; color: rgb(170, 40, 40);&quot;&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>mess</name>
+        <label>mess</label>
+        <locationX>50</locationX>
+        <locationY>782</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>message</name>
+            <fieldText>&lt;p&gt;Approval sent to AM&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Opportunity_Status_Closed_Lost</name>
+        <label>Opportunity Status Closed Lost</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>update_Opportunity</targetReference>
+        </connector>
+        <fields>
+            <name>Opportunity_Status_Closed_Lost_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Opportunity_Status_Closed_Lost_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Lost_To</name>
+                    <choiceReferences>Lost_to_OEM</choiceReferences>
+                    <choiceReferences>Lost_to_Local_Party</choiceReferences>
+                    <choiceReferences>Others</choiceReferences>
+                    <choiceReferences>Duplicate</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Lost To</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Future_Potentials</name>
+                    <choiceReferences>Budget_Issue</choiceReferences>
+                    <choiceReferences>Customer_Not_Available</choiceReferences>
+                    <choiceReferences>Customer_Not_Occupied</choiceReferences>
+                    <choiceReferences>Customer_s_Expectation_of_Low_Rate</choiceReferences>
+                    <choiceReferences>Dealer_CAD_Outstanding_with_Customer</choiceReferences>
+                    <choiceReferences>Documentation_Issue</choiceReferences>
+                    <choiceReferences>On_Call_Support</choiceReferences>
+                    <choiceReferences>Own_Setup</choiceReferences>
+                    <choiceReferences>Residential_Less_Usage</choiceReferences>
+                    <choiceReferences>Site_Temporarily_Closed_Vacated</choiceReferences>
+                    <choiceReferences>Technical_Dispute_Snag_with_Customer_During_Project</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Future Potential</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>OEM</name>
+                    <dataType>String</dataType>
+                    <fieldText>OEM</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Opportunity_Status_Closed_Lost_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Lost_Reason</name>
+                    <choiceReferences>Price</choiceReferences>
+                    <choiceReferences>Technical</choiceReferences>
+                    <choiceReferences>Brand_Preference</choiceReferences>
+                    <choiceReferences>TurnKey</choiceReferences>
+                    <choiceReferences>Product_Quality</choiceReferences>
+                    <choiceReferences>Delivery_Schedule</choiceReferences>
+                    <choiceReferences>Taken_By_CAD</choiceReferences>
+                    <choiceReferences>Customer_Relationship</choiceReferences>
+                    <choiceReferences>Future_Potential</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Lost Reason</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Extended_Warranty_Start_Date</name>
+                    <dataType>Date</dataType>
+                    <fieldText>Extended Warranty Start Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <fields>
+                    <name>Extended_Warranty_End_Date</name>
+                    <dataType>Date</dataType>
+                    <fieldText>Extended Warranty End Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <nextOrFinishButtonLabel>Save</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>get_Opportunity</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

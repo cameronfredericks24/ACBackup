@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Notification_to_CP</name>
+        <label>Send Notification to CP</label>
+        <locationX>50</locationX>
+        <locationY>1055</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Get_Notification_Type.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>recipientIDs</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Technician Leave Request Received.</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>NotificationBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <name>Assign_ids</name>
+        <label>Assign ids</label>
+        <locationX>402</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_on_tickets.Ticket_Number_Read_Only__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_on_tickets</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Manager_to_List_of_Notification_Receivers</name>
+        <label>Assign Manager to List of Notification Receivers</label>
+        <locationX>314</locationX>
+        <locationY>839</locationY>
+        <assignmentItems>
+            <assignToReference>recipientIDs</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Resource.RelatedRecord.Manager.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_CP</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_CP</name>
+        <label>Check CP</label>
+        <locationX>314</locationX>
+        <locationY>947</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_CP_Id</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Resource.RelatedRecord.Manager.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Notification_to_CP</targetReference>
+            </connector>
+            <label>Check CP Id</label>
+        </rules>
+        <rules>
+            <name>CP_Id_is_null</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Resource.RelatedRecord.Manager.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>CP Id is null</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>NotificationBody</name>
+        <dataType>String</dataType>
+        <expression>&quot;Hello &quot; &amp; 
+{!$Record.Resource.RelatedRecord.Manager.FirstName} &amp; &quot; &quot; &amp; 
+{!$Record.Resource.RelatedRecord.Manager.LastName} &amp; &quot;,&quot; &amp; BR() &amp;
+&quot;This is to inform you that Technician &quot; &amp; 
+{!$Record.Resource.RelatedRecord.FirstName} &amp; &quot; &quot; &amp; 
+{!$Record.Resource.RelatedRecord.LastName} &amp; &quot; has applied for leave from &quot; &amp; 
+
+TEXT(DATEVALUE({!$Record.Start})) &amp; &quot; &quot; &amp; 
+
+TEXT(
+    MOD(
+        VALUE(MID(TEXT({!$Record.Start}), 12, 2)) + 5,
+        12
+    )
+) &amp; &quot;:&quot; &amp; 
+
+IF(
+    VALUE(MID(TEXT({!$Record.Start}), 15, 2)) + 30 &gt;= 60,
+    TEXT(
+        VALUE(MID(TEXT({!$Record.Start}), 15, 2)) + 30 - 60
+    ),
+    TEXT(
+        VALUE(MID(TEXT({!$Record.Start}), 15, 2)) + 30
+    )
+) &amp; &quot; &quot; &amp; 
+
+IF(
+    VALUE(MID(TEXT({!$Record.Start}), 12, 2)) + 5 &gt;= 12,
+    &quot;PM&quot;,
+    &quot;AM&quot;
+) &amp; &quot; to &quot; &amp; 
+
+TEXT(DATEVALUE({!$Record.End})) &amp; &quot; &quot; &amp; 
+
+TEXT(
+    MOD(
+        VALUE(MID(TEXT({!$Record.End}), 12, 2)) + 5,
+        12
+    )
+) &amp; &quot;:&quot; &amp; 
+
+IF(
+    VALUE(MID(TEXT({!$Record.End}), 15, 2)) + 30 &gt;= 60,
+    TEXT(
+        VALUE(MID(TEXT({!$Record.End}), 15, 2)) + 30 - 60
+    ),
+    TEXT(
+        VALUE(MID(TEXT({!$Record.End}), 15, 2)) + 30
+    )
+) &amp; &quot; &quot; &amp; 
+
+IF(
+    VALUE(MID(TEXT({!$Record.End}), 12, 2)) + 5 &gt;= 12,
+    &quot;PM&quot;,
+    &quot;AM&quot;
+) &amp; &quot;.&quot; &amp; BR() &amp; BR() &amp;
+&quot;Thank You,&quot; &amp; BR() &amp; BR() &amp;
+&quot;Admin.&quot;</expression>
+    </formulas>
+    <interviewLabel>Resource Absence After Insert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Resource Absence After Insert</label>
+    <loops>
+        <name>Loop_on_tickets</name>
+        <label>Loop on tickets</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <collectionReference>Get_Open_Service_Tickets</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_ids</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Assign_Manager_to_List_of_Notification_Receivers</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Notification_Type</name>
+        <label>Get Notification Type</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Open_Service_Tickets</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Resource_Applied_Leave</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Open_Service_Tickets</name>
+        <label>Get Open Service Tickets</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_on_tickets</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Accepted</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>WorkOrder</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Notification_Type</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>ResourceAbsence</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>ids</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>recipientIDs</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

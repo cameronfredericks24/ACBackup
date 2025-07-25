@@ -1,0 +1,3 @@
+<aura:component implements="force:lightningQuickAction,force:hasRecordId,flexipage:availableForAllPageTypes,force:lightningQuickAction,force:appHostable" access="global">
+    <c:sMSNotification recordId="{!v.recordId}" onclosemodal="{!c.handleCloseModal}" />
+</aura:component>

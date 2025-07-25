@@ -1,0 +1,63 @@
+.slds-progress__marker {
+    border-radius: 50%; /* Make the border-radius 50% to create a circle */
+    overflow:hidden; /* Ensure that the icon remains within the circle */
+}
+
+.noLocationDiv {
+    background-color: #f8d7da; /* Light red background for a warning */
+    color: #721c24; /* Dark red text for contrast */
+    border: 1px solid #f5c6cb; /* Light red border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Space inside the div */
+    margin: 20px; /* Space outside the div */
+    font-family: Arial, sans-serif; /* Font style */
+    text-align: center; /* Center-align text */
+    max-width: 400px; /* Maximum width */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.noLocationDiv p {
+    margin: 0; /* Remove default paragraph margin */
+    font-size: 16px; /* Font size */
+    line-height: 1.5; /* Line height for readability */
+}
+
+
+.full-height .slds-progress,
+.full-height .slds-progress__list,
+.full-height .slds-progress__item_content {
+    height: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-left: 10px;
+}
+.slds-progress__item{
+    height: 100px;
+}
+.progress-list {
+    flex-grow: 1;
+    height: 100%;
+}
+.cancel-button {
+    padding-left: 10%;
+    margin-top: auto;
+}
+
+.disclaimer {
+    background-color: #E1F8DC;
+    color: #2C3E50; /* Dark Gray */
+    border-radius: 5px;
+    margin-top: 20px;
+
+    font-size: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "b6a48fc2-2bbc-42b0-ae2a-d3719cc63adf",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "d01f6f53-9bc8-4355-8855-a10e90fb1a39",
+  "label" : "Counter Sales",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-counter-sales",
+  "type" : "route",
+  "urlPrefix" : "counter-sales"
+}

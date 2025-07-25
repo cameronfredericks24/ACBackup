@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>FGR_Approval_Process_Escalation_Alert</fullName>
+        <description>FGR Approval Process Escalation Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>SDE__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Approval_Process_Escalation</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Final_Approval</fullName>
+        <field>Status</field>
+        <literalValue>PendingCFSApproval</literalValue>
+        <name>Final Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Final_Reject_Status</fullName>
+        <field>Status</field>
+        <literalValue>Rejected</literalValue>
+        <name>Final Reject Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Capture_Approval_Sent_Time</fullName>
+        <field>CaptureApprovalSentDatTime__c</field>
+        <name>Set Capture Approval Sent Time</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_FGR_Owner</fullName>
+        <field>OwnerId</field>
+        <lookupValue>CFS</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Update FGR Owner</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_Awating_FromAIH_AIDH</fullName>
+        <field>Status</field>
+        <literalValue>Awaiting Approval From AIH/AIDH</literalValue>
+        <name>Update Status -Awating FromAIH/AIDH</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_Awating_From_RM</fullName>
+        <field>Status</field>
+        <literalValue>Awaiting Approval From RM</literalValue>
+        <name>Update Status -Awating From RM</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

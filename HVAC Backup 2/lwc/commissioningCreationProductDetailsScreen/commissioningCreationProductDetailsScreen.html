@@ -1,0 +1,324 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+    <template if:false={showSpinner}>
+
+        <template if:true={isFirstScreen}>
+            <lightning-card title="Commissioning Details" icon-name="standard:service_report">
+                <div class="slds-m-top_medium slds-m-bottom_x-large" style="border-radius: 5px;">
+                    <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                        Commissioning Details
+                    </h2>
+                    <div class="slds-grid InvoiceGrid slds-p-bottom_medium">
+                        <div class="slds-col slds-p-horizontal_medium">
+                            <span>
+                            <div class="slds-p-around_medium">
+                                <h2 class="slds-text-heading_medium">Account Address</h2>
+                                <div class="slds-grid slds-grid_align-start slds-p-top_small">
+                                    <lightning-icon icon-name="standard:address" alternative-text="Address"
+                                        size="small"></lightning-icon>
+                                    <span class="slds-m-left_small slds-text-body_regular">{addressToDisplay}</span>
+                        </div>
+                    </div>
+
+                    <div class="slds-m-top_medium">
+                        <div if:false={isNAMO} class="slds-m-top_x-small">
+                            <div class="slds-grid slds-wrap">
+                                <!-- <div class="slds-col slds-size_1-of-3">
+                                    <lightning-input type="date" label="Installation Date" placeholder="select date..."
+                                        onchange={handleInstallationDateChange} value={installationDate}></lightning-input>
+                                    </div> -->
+                                <div class="slds-col slds-size_1-of-3"></div>
+                                <div class="slds-col slds-size_1-of-3"></div>
+                            </div>
+                        </div>
+
+                        <div if:true={isNAMO} class="slds-m-top_x-small">
+                            <div class="slds-grid slds-wrap">
+                                <!-- <div class="slds-col slds-size_1-of-2 slds-p-right_x-small">
+                                    <lightning-input type="date" label="Installation Date" placeholder="Select the date..."
+                                        onchange={handleInstallationDateChange} value={installationDate}></lightning-input>
+                                    </div> -->
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input type="text" label="SOL Id" placeholder="Enter the sol id..."
+                                        onchange={handleSOLchange} value={solId}></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </span>
+                </div>
+                </div>
+                <div if:false={nonBsl}>
+                    <div>
+                        <!-- Search Input -->
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_4-of-12"></div>
+                            <div class="slds-col slds-size_4-of-12">
+                                <lightning-input label="Search" value={productSearchTerm} onchange={handleSearchChange}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12"></div>
+                        </div>
+
+                        <!-- Tree Grid -->
+                        <lightning-tree-grid key-field="id" columns={gridColumns} data={filteredData}
+                            onrowselection={rowSelectionHandler} selected-rows={selectedRows}
+                            expanded-rows={currentExpanded} show-checkbox-column={hasProducts}>
+                        </lightning-tree-grid>
+                    </div>
+                    <div
+                        class="slds-grid slds-gutters slds-align_absolute-center slds-m-around_small slds-p-around_small slds-grid_align-center">
+                        <!-- <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12"></div> -->
+                        <div class="slds-col">
+                            <lightning-button variant="brand-outline" label="Back" onclick={handleBackClick}>
+                            </lightning-button>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-button disabled={isButtonDisabled} variant="brand" label="Next"
+                                onclick={handleNextClick}></lightning-button>
+                        </div>
+
+                        <!-- <div class="slds-col">
+                            <lightning-button disabled={isButtonDisabled} variant="brand" label="Register" onclick={assetRegisterHandler}></lightning-button>
+                        </div> -->
+
+                    </div>
+                </div>
+                </div>
+            </lightning-card>
+        </template>
+
+
+        <!-- Screen 2: Selected Rows, Dropdowns, and Create Work Order -->
+        <template if:false={isFirstScreen}>
+            <lightning-card title="Selected Products" icon-name="standard:service_report">
+                <div class="slds-m-top_medium slds-m-bottom_x-large">
+                    <!-- Loop through selected rows and display Asset and Family dropdowns -->
+                    <template for:each={productSelectedLst} for:item="row" for:index="index">
+                        <div key={row.id} class="slds-m-around_medium">
+                            <!-- Grid layout for side-by-side structure -->
+                            <div class="slds-grid slds-wrap slds-gutters">
+
+                                <div class="slds-col slds-size_1-of-6 slds-p-horizontal_small">
+                                    <h2>Model: <strong>{row.MODEL_CODE}</strong></h2>
+                                    <h3>Serial Number: <strong>{row.SERIAL_NUMBER}</strong></h3>
+                                </div>
+                                <div class="slds-col slds-size_1-of-6 slds-p-horizontal_small">
+                                    <lightning-combobox data-index={index} label="Select Product Type"
+                                        placeholder="Select Product Type" options={productTypeOptions}
+                                        onchange={handleProductTypeChange} required>
+                                    </lightning-combobox>
+                                </div>
+
+                                <template if:false={isChillerProductType}>
+
+                                    <!-- Service Ticket Lookup for Commissioning/Installation -->
+                                    <div if:false={isDuctedProductType}
+                                        class="slds-col slds-size_1-of-6 slds-p-horizontal_small">
+                                        <div class="custom-lookup">
+                                            <div class="center-input">
+                                                <lightning-input type="search" label="Existing Service Ticket"
+                                                    data-index={index} placeholder="Enter Ticket Number"
+                                                    onchange={handleOnChangeCustomLookupServiceTicket}
+                                                    onclick={handleOnClickCustomLookupServiceTicket}
+                                                    onfocus={handleOnFocusCustomLookupServiceTicket}
+                                                    onblur={handleOnBlurCustomLookupServiceTicket}
+                                                    value={row.serviceTicketNumber}>
+                                                </lightning-input>
+                                            </div>
+                                            <template if:true={row.showAvailableServiceTicket}>
+                                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                    role="listbox">
+                                                    <template for:each={filteredOptionsST} for:item="ticket"
+                                                        for:index="ticketIndex">
+                                                        <li key={ticket.value} role="presentation"
+                                                            class="slds-listbox__item">
+                                                            <div role="option" tabindex="0"
+                                                                class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                                onclick={handleServiceTicketNameChangeCustomLookup}
+                                                                data-id={ticket.value} data-value={ticket.label}
+                                                                data-index={index}>
+                                                                <span class="slds-media__figure">
+                                                                <lightning-icon icon-name="standard:service_appointment"
+                                                                    size="small"></lightning-icon>
+                                                            </span>
+                                                                <span class="slds-media__body">
+                                                                <span class="slds-truncate">{ticket.label}</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </template>
+                                        </div>
+                                    </div>
+                                    <div if:false={isDuctedProductType}
+                                        class="slds-col slds-size_1-of-6 slds-p-horizontal_small">
+                                        <div class="custom-lookup">
+                                            <div class="center-input">
+                                                <lightning-input type="search" label="Existing Asset" data-index={index}
+                                                    placeholder="Enter Name/SerialNumber"
+                                                    onchange={handleOnChangeCustomLookupAsset}
+                                                    onclick={handleOnClickCustomLookupAsset}
+                                                    onfocus={handleOnFocusCustomLookupAsset}
+                                                    onblur={handleOnBlurCustomLookupAsset} value={row.assetName}
+                                                    disabled={row.isAssetAndFamilySelected}>
+                                                </lightning-input>
+                                            </div>
+                                            <template if:true={row.showAvailableAsset}>
+                                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                    role="listbox">
+                                                    <template for:each={filteredOptionsAsset} for:item="option"
+                                                        for:index="optionIndex">
+                                                        <li key={option.value} role="presentation"
+                                                            class="slds-listbox__item">
+                                                            <div role="option" tabindex="0"
+                                                                class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                                onclick={handleAssetNameChangeCustomLookup}
+                                                                data-id={option.value} data-value={option.label}
+                                                                data-index={index}>
+                                                                <span class="slds-media__figure">
+                                                                <!-- Location Icon -->
+                                                                <lightning-icon icon-name="standard:product"
+                                                                    size="small"></lightning-icon>
+                                                            </span>
+                                                                <span class="slds-media__body">
+                                                                <span class="slds-truncate">{option.label}</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </template>
+                                        </div>
+                                    </div>
+
+                                    <!-- Combobox columns -->
+                                    <div class="slds-col slds-size_1-of-6 slds-p-horizontal_small">
+                                        <lightning-combobox data-index={index} label="Select Asset"
+                                            placeholder="Select Asset" options={assetOptions}
+                                            onchange={handleAssetChange} disabled={row.isLookupAssetSelected} required>
+                                        </lightning-combobox>
+                                    </div>
+                                <!--
+                                    <div class="slds-col slds-size_1-of-5 slds-p-horizontal_small">
+                                        <lightning-input type="text" label="Model Number"
+                                            onchange={handleModelNumberChange} placeholder="Enter Parent Model Number"
+                                            data-index={index} value={row.parentModelNumber}
+                                            disabled={row.isLookupAssetSelected} required>
+                                        </lightning-input>
+                                    </div> -->
+                                    <!-- <div class="slds-col slds-size_1-of-5 slds-p-horizontal_small">
+                                    <lightning-combobox data-index={index} label="Select Family"
+                                        placeholder="Select Family" options={familyOptions} onchange={handleFamilyChange}
+                                        disabled={row.isLookupAssetSelected} required>
+                                    </lightning-combobox>
+                                </div> -->
+                                </template>
+
+                            </div>
+                        </div>
+                    </template>
+                    <template if:true={isChillerProductType}>
+                      <div class="slds-m-bottom_x-small">
+                        <p><strong>Maximum file size allowed is 25 MB.</strong></p>
+                      </div>
+                    </template>
+
+                    <template if:true={isVRFProductType}>
+                       <div class="slds-m-bottom_x-small">
+                           <p><strong>Maximum file size allowed is 25 MB.</strong></p>
+                        </div>
+                    </template>
+
+                    <div
+                        class="slds-p-around_xx-small slds-m-top_x-small sldmultiple={false} s-m-around_xx-small slds-box slds-theme_shade">
+                        <!-- Create a grid container to align file upload components side by side -->
+                         <div class="slds-m-bottom_x-small">
+                           
+                         </div>
+                        <div class="slds-grid slds-wrap slds-gutters">
+                             
+                            <div if:true={isChillerProductType}
+                                class="slds-col slds-size_1-of-5 slds-p-around_xx-small">
+                                <lightning-file-upload label="Pre Commissioning Check List"
+                                    name="Pre Commissioning Check List" accept={acceptedFormats}
+                                    onuploadfinished={handleUploadFinished} multiple="false" required>
+                                </lightning-file-upload>
+                            </div>
+
+                            <div if:true={isVRFProductType} class="slds-col slds-size_1-of-5 slds-p-around_xx-small">
+
+                                <lightning-file-upload label="R1-BSL-HVAC Drawing" name="R1-BSL-HVAC Drawing"
+                                    accept={acceptedFormats} onuploadfinished={handleUploadFinished} multiple="false"
+                                    required>
+                                </lightning-file-upload>
+                            </div>
+
+                            <div if:true={isVRFProductType} class="slds-col slds-size_1-of-5 slds-p-around_xx-small">
+                                <lightning-file-upload label="Liquid Line Calculation" name="Liquid Line Calculation"
+                                    accept={acceptedFormats} onuploadfinished={handleUploadFinished} multiple="false"
+                                    required>
+                                </lightning-file-upload>
+                            </div>
+
+                            <div if:true={isVRFProductType} class="slds-col slds-size_1-of-5 slds-p-around_xx-small">
+                                <lightning-file-upload label="ICL" name="ICL" accept={acceptedFormats}
+                                    onuploadfinished={handleUploadFinished} multiple="false" required>
+                                </lightning-file-upload>
+                            </div>
+
+                            <div if:true={isVRFProductType} class="slds-col slds-size_1-of-5 slds-p-around_xx-small">
+                                <lightning-file-upload label="CCL" name="CCL" accept={acceptedFormats}
+                                    onuploadfinished={handleUploadFinished} multiple="false" required>
+                                </lightning-file-upload>
+                            </div>
+
+                        </div>
+
+                        <template if:true={isFileUploaded}>
+                            <div class="slds-m-top_medium">
+                                
+                                <p class="slds-m-bottom_x-small">Uploaded Files:</p>
+                                <div class="slds-box slds-box_x-small slds-theme_default">
+                                    <ul class="slds-list_dotted slds-p-around_small">
+                                        <template for:each={uploadedFileNames} for:item="file">
+                                            <li key={file.id} class="slds-item slds-p-vertical_x-small">
+                                                <a href="javascript:void(0);" onclick={handleFileClick}
+                                                    data-id={file.id}>{file.name}</a>
+                                                     <span data-id={file.id} onclick={handleCloseFile} class="slds-m-left_small" style="cursor:pointer;">
+                                                 <lightning-icon 
+                                                    icon-name="utility:close" 
+                                                    alternative-text="Remove" 
+                                                    size="small"
+                                                    class="slds-button_icon">
+                                                 </lightning-icon>
+                                             </span>
+
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Create Work Order Button -->
+                    <div
+                        class="slds-grid slds-gutters slds-align_absolute-center slds-m-around_small slds-p-around_small slds-grid_align-center">
+                        <div class="slds-col">
+                            <lightning-button variant="brand-outline" label="Back" onclick={handleBackClick}>
+                            </lightning-button>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-button variant="brand" label="Commissioning Ticket"
+                                onclick={createWorkOrderHandler}></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </lightning-card>
+        </template>
+    </template>
+</template>

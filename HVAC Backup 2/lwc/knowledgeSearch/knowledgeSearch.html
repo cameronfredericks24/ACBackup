@@ -1,0 +1,75 @@
+<template>
+    <div class="knowledge-search">
+        <div class="search-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Blue_Star_primary_logo.png"/>
+        </div>
+        <div class="search-input">
+            <lightning-input onchange={changeHandler} placeholder="Type here to search articles.."></lightning-input>
+        </div>
+        <template if:true={error}>
+            <div class="error">{error}</div>
+        </template>
+        <template if:true={data.length}>
+            <template for:each={data} for:item="article">
+                <div class="article-card" key={article.Id} data-id={article.Id} onclick={showAnswer}>
+                    <div class="question-container">
+                        <div if:true={article.Question__c}>
+                            <p class="question">{article.Question__c}</p>
+                        </div>
+                        <div if:false={article.Question__c}>
+                            <p class="question">{article.Title}</p> 
+                        </div>
+                        <p if:false={article.showAnswer} class="question-icon">+</p>
+                        <p if:true={article.showAnswer} class="question-icon">-</p>
+                    </div>
+                    <div if:true={article.showAnswer} class="answer-container">
+                        <div if:true={article.Answer__c}>
+                            <lightning-formatted-rich-text value={article.Answer__c}></lightning-formatted-rich-text>
+                        </div>
+                        <!-- Added By Himanshi Verma For Pre Live -->
+                        
+                        <div if:true={article.Knowledge_URL__c}>
+                         Reference Link:   <lightning-formatted-rich-text value={article.Knowledge_URL__c}></lightning-formatted-rich-text>
+                        </div>
+                         <!--  Ends here -->
+                        <!-- Show "Answer Not Available" based on the new property -->
+                        <!-- <div if:true={article.showAnswerNotAvailable}>
+                            <b>Answer: Answer Not Available for this article, please check other details below</b><br/>
+                        </div> -->
+                        <div if:true={article.Procedure_Audience__c}>
+                            <b>Procedure Audience: </b><lightning-formatted-rich-text value={article.Procedure_Audience__c}></lightning-formatted-rich-text><br/>
+                        </div>
+                        <div if:true={article.Procedure_Purpose__c}>
+                            <b>Procedure Purpose: </b><lightning-formatted-rich-text value={article.Procedure_Purpose__c}></lightning-formatted-rich-text><br/>
+                        </div>
+                        <div if:true={article.Procedure_Steps__c}>
+                            <b>Procedure Steps: </b><lightning-formatted-rich-text value={article.Procedure_Steps__c}></lightning-formatted-rich-text><br/>
+                        </div>
+                        <div if:true={article.Procedure_Warnings__c}>
+                            <b>Procedure Warnings: </b><lightning-formatted-rich-text value={article.Procedure_Warnings__c}></lightning-formatted-rich-text><br/>
+                        </div>
+                        <div if:true={article.Error__c}>
+                            <b>Error: </b><lightning-formatted-rich-text value={article.Error__c}></lightning-formatted-rich-text><br/>
+                        </div>
+                        <div if:true={article.Error_Description__c}>
+                            <b>Error Description: </b><lightning-formatted-rich-text value={article.Error_Description__c}></lightning-formatted-rich-text><br/>
+                        </div>
+                        <div if:true={article.Fault_Protection__c}>
+                            <b>Fault Protection: </b><lightning-formatted-rich-text value={article.Fault_Protection__c}></lightning-formatted-rich-text><br/>
+                        </div>
+                         <div if:true={article.Check_points__c}>
+                            <b>Check Points: <br> </b><lightning-formatted-rich-text value={article.Check_points__c}></lightning-formatted-rich-text><br/>
+                        </div>
+                    </div>
+                    <div class="view-article">
+                        <strong if:false={article.showAnswer} style="color:Blue;">View Article</strong>
+                        <p if:true={article.showAnswer}></p>
+                    </div>
+                </div>
+            </template>
+        </template>
+        <template if:false={data.length}>
+            <div class="no-articles"><i>No articles found.</i></div>
+        </template>
+    </div>
+</template>

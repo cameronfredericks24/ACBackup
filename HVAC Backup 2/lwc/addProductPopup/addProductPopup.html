@@ -1,0 +1,58 @@
+<!-- addProductPopup.html -->
+<template>
+    <div class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <h2 class="slds-text-heading_medium">Please fill below details</h2>
+                <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="Close" size="small"></lightning-icon>
+                </button>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium">
+                <!-- File Upload 
+                 <lightning-file-upload
+                    label="Upload Defective Part Image"
+                    class="bold-label"
+                    name="fileUploader"
+                    accept=".pdf, .doc, .docx"
+                    record-id={recordId} 
+                    onuploadfinished={handleUploadFinished}>
+                </lightning-file-upload>
+                
+       <lightning-file-upload
+           label="Upload Defective Part Serial Number"
+           class="bold-label"
+           name="fileUploader"
+           accept=".pdf, .doc, .docx"
+           record-id={recordId} 
+           onuploadfinished={handleUploadFinished}>
+        </lightning-file-upload> -->
+
+                <!-- Barcode Scanner -->
+                 <div class="slds-m-top_medium">
+                    <lightning-button label="Scan Serial Number" onclick={handleScanSerialNumber}></lightning-button>
+                </div>
+
+                <div class="slds-m-top_medium">
+                    <lightning-input type="text" label="Enter Serial Number" onchange={handleSerialNumberChange} size="medium"></lightning-input>
+                </div>
+                    <p> Part-{bomItemDetails.Part} </p>
+                <div class="slds-m-top_medium">
+                    <lightning-input type="text" label="QTY Required" value={bomItemDetails.Quantity} onchange={handleSerialNumberChange} size="small" disabled></lightning-input>
+                </div>
+                
+
+                <!-- Add your content here -->
+             
+
+                <div class="slds-m-top_medium slds-text-align_center">
+                    <lightning-button label="Check Stock" onclick={handleClick}></lightning-button>
+                </div>
+                <template if:true={showSecondPopup}>
+                    <c-add-final-popup onclosemodal={closeSecondPopup}></c-add-final-popup>
+                </template>
+        </div>
+    </div>
+  </div>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

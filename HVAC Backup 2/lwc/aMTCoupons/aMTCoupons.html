@@ -1,0 +1,111 @@
+<template>
+    <lightning-card>
+        <div class="card-title">
+            Buy AMT Coupon
+        </div>
+        <template if:false={showSuccess}>
+            <template if:true={isOpportunityExist}>
+                <p>AMT coupons are not eligible</p>
+            </template>
+
+            <template if:false={isOpportunityExist}>
+                <p style="text-align:center">Please Select Option</p>
+                <br />
+                <div class="button-container">
+                    <lightning-button label="Online" onclick={handleOnline} disabled={isOfflineDisabled}></lightning-button>
+                    <lightning-button label="Offline" onclick={handleOffline} disabled={isOfflineDisabled}></lightning-button>
+                </div>
+            </template>
+        </template>
+        <template if:true={showSMS}>
+             <p style="font-weight:bold; color:green;"> 
+                SMS is Sent Successfully. Please click on link to avail AMC online
+                </p>
+        </template>
+
+        <template if:true={showSuccess}>
+            <div if:true={showAccRej}>
+                <div style="font-weight:bold; color:green;">
+                    Quote is sent successfully. Please check your registered email.
+                </div>
+                <br />
+                <br />
+                <div class="button-container">
+                    <lightning-button label="Reject" onclick={handleReject} disabled={isDisabled}></lightning-button>
+                    <lightning-button label="Accept" onclick={handleAccept} disabled={isDisabled}></lightning-button>
+                </div>
+            </div>
+
+            <template if:true={showPODetails}>
+                <div if:false={savePO}>
+                    <div class="input-container">
+                        <lightning-input label="PO Number" value={poNumber} onchange={handleInputChange} data-id="poNumber" required="true"></lightning-input>
+                        <lightning-input label="PO Total Value" value={poTotalValue} type="number" onchange={handleInputChange} required="true"  data-id="poTotalValue"></lightning-input>
+                        <lightning-input label="PO Date" value={poDate} type="date" onchange={handleInputChange} required="true" data-id="poDate"></lightning-input>
+                        <lightning-input label="PO Receipt Date" value={poReceiptDate} type="date" onchange={handleInputChange} required="true" data-id="poReceiptDate"></lightning-input>
+
+                        <lightning-input label="PO Start Date" value={poStartDate} type="date" onchange={handleInputChange} required="true" data-id="poStartDate"></lightning-input>
+                        <lightning-input label="PO End Date" value={poEndDate} type="date" onchange={handleInputChange} required="true" data-id="poEndDate"></lightning-input>
+                        <br/>
+                        <div>
+<c-image-upload-container record-id={oppId} is-invoice-file="false" onfileuploaded={handleFileUploaded}>
+            </c-image-upload-container>
+                        </div>
+                        
+                       
+                        <div if:true={saveFile}>
+                         <p> File saved successfully. </p>
+                        </div>
+                       
+                    </div>
+                    <div class="button-container">
+                        
+                    </div>
+                    <div class="button-container">
+                        <lightning-button label="Back" onclick={handleBack} class="slds-m-top_medium" disabled={disabledSave}></lightning-button>
+                        <lightning-button label="Save" onclick={handleSave} class="slds-m-top_medium" disabled={disabledSave}></lightning-button>
+                    </div>
+                </div>
+                <div if:true={savePO}>
+                    <p> PO details have been saved successfully. </p>
+                </div>
+            </template>
+
+            <template if:true={showRejectDetails}>
+                <div if:true={hideRejectInput}>
+ <div class="input-container">
+                    <lightning-combobox
+                        name="picklist"
+                        label="Select Rejection Reason"
+                        value={picklistValue}
+                        placeholder="Select an option"
+                        options={picklistOptions}
+                        onchange={handlePicklistChange}>
+                    </lightning-combobox>
+
+                    <lightning-combobox
+                        name="lostToPicklist"
+                        label="Select Lost To"
+                        value={lostToValue}
+                        placeholder="Select an option"
+                        options={lostToOptions}
+                        onchange={handleLostToChange}>
+                    </lightning-combobox>
+                    
+                    <div class="button-container">
+                        <lightning-button label="Back" onclick={handleBack} class="slds-m-top_medium" disabled={disabledSave}></lightning-button>
+                        <lightning-button label="Save" onclick={handleRejectSave} class="slds-m-top_medium" disabled={disabledSave}></lightning-button>
+                    </div>
+                </div> 
+                </div>
+               
+                <div if:true={oppLost}>
+                    <p> Opportunity is Lost Successfully</p>
+                </div>
+                <div if:true={showRejectMsg}>
+                    <p> Quote is Rejected Successfully</p>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>

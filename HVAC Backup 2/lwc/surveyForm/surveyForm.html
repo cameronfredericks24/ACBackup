@@ -1,0 +1,184 @@
+<template>
+    <div class="page-wrapper">
+
+        <template if:true={isLoading}>
+            <!-- Show overall loading spinner -->
+            <div class="overall-loading">
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:false={isLoading}>
+            <template if:true={showErrorMessage}>
+
+                <div class="error-message">
+                    <p>Feedback has already been recorded for this survey.</p>
+                    <!-- You can add more descriptive error messages or styling here -->
+                </div>
+            </template>
+
+            <template if:false={showErrorMessage}>
+
+                <lightning-card>
+                    <!-- Thank You screen -->
+                    <template if:true={showThankYouScreen}>
+                        <div class="overlay"></div>
+                        <div class="thank-you-popup">
+                            <p class="thank-you-message">Thank you for your submission!</p>
+                            <p>Have a great day!</p>
+                        </div>
+                    </template>
+
+                    <template if:false={showThankYouScreen}>
+                        <!-- Container for logo, title, and language selector -->
+                        <div class="language-selector">
+                            <lightning-combobox name="languageSelect" label="Select Language" value={selectedLanguage}
+                                options={languageOptions} onchange={handleLanguageChange}>
+                            </lightning-combobox>
+                        </div>
+                    </template>
+
+                    <div class="image-container">
+                        <img src={myImageUrl} alt='Blue Star Logo' class="logo-image" />
+                        <div>
+                            <span class="title-text">Customer Feedback Form </span>
+                            <div class="slds-align_absolute-center" if:true={ticketNumber}>
+                                <span ><strong>Ticket Number : {ticketNumber}</strong></span>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                    
+
+                    <!-- welcome message and header-->
+                    <template if:true={hasWelcomeMessage}>
+                        <div class="slds-m-around_medium">
+                            <lightning-formatted-rich-text
+                                value={welcomeMessageContent}></lightning-formatted-rich-text>
+                        </div>
+                    </template>
+
+                    <div class="slds-m-around_medium">
+                        <!-- Answer Type = Button -->
+                        <template for:each={buttonQuestions} for:item="formattedQuestion">
+                            <p key={formattedQuestion.Id}>
+                                 <template if:true={formattedQuestion.isMandatory}><span style="padding-left:2px;color:red">*</span></template>
+                                <strong>{formattedQuestion.questionNumber}. </strong>
+                                <strong>{formattedQuestion.Question__c}</strong>
+                              
+                            </p>
+                            <br key={formattedQuestion.Id}>
+                            <div class="container" key={formattedQuestion.Id}>
+                                <template for:each={formattedQuestion.buttons} for:item="button">
+                                    <div key={button.value} class="box-wrapper" >
+                                        <div class="box"  onclick={handleBoxClick} data-value={button.value}
+                                            data-questionid={formattedQuestion.Id}>
+                                            <span class="text-top" >{button.textTop}</span>
+                                            {button.value}
+                                        </div>
+                                        <div class="button-space"></div>
+                                    </div>
+                                    
+                                    
+                                    
+                                </template>
+                            </div>
+                            <hr key={formattedQuestion.Id}>
+                        </template>
+
+                        <!-- Answer Type = Radio -->
+                        <template for:each={radioQuestions} for:item="question">
+                            <div key={question.Id}>
+                                <p>
+                                    <template if:true={question.isMandatory}><span style="padding-left:2px;color:red">*</span></template>
+                                    <strong>{question.questionNumber}. </strong><strong>{question.Question__c}</strong>
+                                    
+                                </p>
+                                <br />
+                                <lightning-radio-group name={question.Id} options={question.options}
+                                    value={question.response} onchange={handleRadioChange}
+                                    data-questionid={question.Id}>
+                                </lightning-radio-group>
+                                <hr />
+                            </div>
+                        </template>
+
+                        <!-- Answer Type = Dropdown -->
+                        <template for:each={dropdownQuestions} for:item="question">
+                            <div key={question.Id}>
+                                <p>
+                                    <template if:true={question.isMandatory}><span style="padding-left:2px;color:red">*</span></template>
+                                    <strong>{question.questionNumber}. </strong><strong>{question.Question__c}</strong>
+                                    
+                                </p>
+                                <br />
+                                <lightning-combobox name={question.Id} label="Select an option"
+                                    value={question.response} options={question.dropdownOptions}
+                                    onchange={handleDropdownChange}>
+                                </lightning-combobox>
+                                <hr />
+                            </div>
+                        </template>
+
+                        <!-- Answer Type = star rating -->
+                        <template for:each={ratingQuestions} for:item="question">
+                            <p key={question.Id}>
+                                <template if:true={question.isMandatory}><span style="padding-left:2px;color:red">*</span></template>
+                                <strong>{question.questionNumber}.</strong> {question.Question__c}
+                                
+                            </p>
+                            <div class="rating-container" key={question.Id} data-questionid={question.Id}>
+                                <template for:each={question.ratingArray} for:item="star">
+                                    <span key={star.value} class={star.style} data-value={star.value}
+                                        onclick={handleRatingClick}>
+                                        &#9733;
+                                    </span>
+                                </template>
+                            </div>
+                            <hr key={question.Id}>
+                        </template>
+
+                        <!-- Answer Type = Checkbox Group -->
+                        <template for:each={checkboxGroupQuestions} for:item="question">
+                            <div key={question.Id}>
+                                <p>
+                                    <template if:true={question.isMandatory}><span style="padding-left:2px;color:red">*</span></template>
+                                    <strong>{question.questionNumber}.</strong><strong>{question.Question__c}</strong>
+                                    
+                                </p>
+                                <br />
+                                <template for:each={question.checkboxOptions} for:item="checkboxOption">
+                                    <div key={checkboxOption.value}>
+                                        <lightning-input type="checkbox" label={checkboxOption.label}
+                                            value={checkboxOption.value} data-questionid={question.Id}
+                                            data-checkboxid={checkboxOption.value}
+                                            onchange={handleCheckboxChange}></lightning-input>
+                                    </div>
+                                </template>
+                                <hr />
+                            </div>
+                        </template>
+
+                        <!-- Answer Type = Rich Test/Long Text -->
+                        <template for:each={richLongTextQuestions} for:item="question">
+                        <p key={question.Id}>
+                        <template if:true={question.isMandatory}><span style="padding-left:2px;color:red">*</span></template>
+                        <strong>{question.questionNumber}. </strong> <strong>{question.Question__c}</strong>
+                        
+                    </p>
+                            <br key={question.Id}>
+                            <lightning-input type="text" label="" onchange={handleLongTextChange}
+                                data-id={question.Id} key={question.Id} data-questionid={question.Id}></lightning-input>
+                            <hr key={question.Id}>
+                        </template>
+
+                        <br>
+                        <lightning-button label="Submit" onclick={handleSubmit} variant="Brand"></lightning-button>
+                    </div>
+                </lightning-card>
+            </template>
+        </template>
+    </div>
+</template>

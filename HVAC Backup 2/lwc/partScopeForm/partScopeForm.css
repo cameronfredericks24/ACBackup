@@ -1,0 +1,9 @@
+.bordered-div {
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 1rem; /* Adjust padding as needed */
+}
+.bordered-div:focus {
+    /* Add your styles for focus state here */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}

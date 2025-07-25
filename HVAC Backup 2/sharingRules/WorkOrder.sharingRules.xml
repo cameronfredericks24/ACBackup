@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingGuestRules>
+        <fullName>Guest_user_access</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Guest user access</label>
+        <sharedTo>
+            <guestUser>BSLPublicSite</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Installation,Demo,PDI,Bulk PMS Checklist,PMS,Breakdown,Regular Service,Commissioning</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>WorkOrderNumber</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
+    <sharingGuestRules>
+        <fullName>Guest_user_accesss</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Guest user accesss</label>
+        <sharedTo>
+            <guestUser>BulkChecklistSite</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Bulk PMS Checklist,PMS</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
+</SharingRules>

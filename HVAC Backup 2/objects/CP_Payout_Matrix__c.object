@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>CP_Payout_Matrix_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>CP_Payout_Matrix_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
+    <fields>
+        <fullName>Department__c</fullName>
+        <externalId>false</externalId>
+        <label>Department</label>
+        <length>5</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Family_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Family Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payout__c</fullName>
+        <externalId>false</externalId>
+        <label>Payout</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Family_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub Family Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TAT_Max__c</fullName>
+        <defaultValue>99999</defaultValue>
+        <externalId>false</externalId>
+        <label>TAT Max</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TAT_Min__c</fullName>
+        <externalId>false</externalId>
+        <label>TAT Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Dismantling &amp; Re-Installation</fullName>
+                    <default>false</default>
+                    <label>Dismantling &amp; Re-Installation</label>
+                </value>
+                <value>
+                    <fullName>Breakdown</fullName>
+                    <default>false</default>
+                    <label>Breakdown</label>
+                </value>
+                <value>
+                    <fullName>Demo</fullName>
+                    <default>false</default>
+                    <label>Demo</label>
+                </value>
+                <value>
+                    <fullName>Dismantling &amp; Re-Installation - SAC</fullName>
+                    <default>false</default>
+                    <label>Dismantling &amp; Re-Installation - SAC</label>
+                </value>
+                <value>
+                    <fullName>FGR to be done</fullName>
+                    <default>false</default>
+                    <label>FGR to be done</label>
+                </value>
+                <value>
+                    <fullName>Gas Charging</fullName>
+                    <default>false</default>
+                    <label>Gas Charging</label>
+                </value>
+                <value>
+                    <fullName>Gas Charging - Cassette / Verticool &amp; SAC - 410A</fullName>
+                    <default>false</default>
+                    <label>Gas Charging - Cassette / Verticool &amp; SAC - 410A</label>
+                </value>
+                <value>
+                    <fullName>Gas Charging - SAC R22</fullName>
+                    <default>false</default>
+                    <label>Gas Charging - SAC R22</label>
+                </value>
+                <value>
+                    <fullName>Gas Charging-WAC/PAC</fullName>
+                    <default>false</default>
+                    <label>Gas Charging-WAC/PAC</label>
+                </value>
+                <value>
+                    <fullName>Gas Charging – WRAC</fullName>
+                    <default>false</default>
+                    <label>Gas Charging – WRAC</label>
+                </value>
+                <value>
+                    <fullName>Gas Top up</fullName>
+                    <default>false</default>
+                    <label>Gas Top up</label>
+                </value>
+                <value>
+                    <fullName>Installation</fullName>
+                    <default>false</default>
+                    <label>Installation</label>
+                </value>
+                <value>
+                    <fullName>PDI (Physical Inspection Only)</fullName>
+                    <default>false</default>
+                    <label>PDI (Physical Inspection Only)</label>
+                </value>
+                <value>
+                    <fullName>PDI with Electrical Repair</fullName>
+                    <default>false</default>
+                    <label>PDI with Electrical Repair</label>
+                </value>
+                <value>
+                    <fullName>PM Call - Dry Service</fullName>
+                    <default>false</default>
+                    <label>PM Call - Dry Service</label>
+                </value>
+                <value>
+                    <fullName>PM Call - Wet Service</fullName>
+                    <default>false</default>
+                    <label>PM Call - Wet Service</label>
+                </value>
+                <value>
+                    <fullName>PMS Call</fullName>
+                    <default>false</default>
+                    <label>PMS Call</label>
+                </value>
+                <value>
+                    <fullName>Replacement of IDU</fullName>
+                    <default>false</default>
+                    <label>Replacement of IDU</label>
+                </value>
+                <value>
+                    <fullName>Replacement of IDU/ODU</fullName>
+                    <default>false</default>
+                    <label>Replacement of IDU/ODU</label>
+                </value>
+                <value>
+                    <fullName>Gas Charging ï¿½ WRAC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Gas Charging ï¿½ WRAC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>CP Payout Matrix</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Type__c</columns>
+        <columns>Family_Code__c</columns>
+        <columns>Sub_Family_Code__c</columns>
+        <columns>TAT_Min__c</columns>
+        <columns>TAT_Max__c</columns>
+        <columns>Payout__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>P-{0000}</displayFormat>
+        <label>CP Payout Matrix</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>CP Payout Matrices</pluralLabel>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Work_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Family_Code__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Sub_Family_Code__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TAT_Min__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TAT_Max__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Payout__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

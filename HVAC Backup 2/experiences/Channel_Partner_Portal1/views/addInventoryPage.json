@@ -1,0 +1,49 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "d1768b31-5c48-4b0d-af98-8062647cfb59",
+  "label" : "Add Inventory Page",
+  "regions" : [ {
+    "id" : "1232fc90-d564-405b-a19c-80760f02fd3d",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "flowArguments" : "[]",
+        "flowName" : "Add_Inventory_Item"
+      },
+      "componentName" : "forceCommunity:flowCommunity",
+      "id" : "c2c2caa9-b8f2-4c63-b6af-d26bfa64b248",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "072c0189-7719-4339-b932-0ca9cd6df1c6",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "49d81491-5640-418a-828f-307c0f816f5f",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Add Inventory Page"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "4c1c2f60-3b21-4d63-9d04-130002a268b0",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d63168a5-7fb6-4d5c-9f88-9c889de3db9f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-add-inventory-page"
+}

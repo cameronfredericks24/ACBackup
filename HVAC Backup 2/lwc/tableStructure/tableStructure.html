@@ -1,0 +1,369 @@
+<!-- dynamicTable.html -->
+<template>
+    <lightning-card>
+
+        <div class="slds-section slds-is-open slds-m-bottom_xx-small" data-id={id}>
+            <!--section header-->
+            <h3 class="slds-section__title slds-section__title-action slds-m-bottom_x-small" style="background: white;">
+                <button type="button" aria-controls={id} class="slds-button " data-buttonid={id}
+                    onclick={toggleSection}>
+                    <lightning-icon icon-name="utility:switch" alternative-text="button icon" size="xx-small"
+                        class="slds-section__title-action-icon slds-button__icon_left"></lightning-icon>
+                    <span class="slds-truncate" style="color:black" title={label}><strong>{title}</strong></span>
+
+                </button>
+                <span if:false={isAsset}>
+                    <lightning-button-icon if:true={showNewButton} icon-name="utility:add" alternative-text="Add"
+                        class="slds-m-left_xx-small" title="Add" onclick={handleOpenModal}></lightning-button-icon>
+                </span>
+                <div if:true={isAsset}>
+                </div>
+
+            </h3>
+            <!--section body-->
+            <div class="slds-section__content slds-is-open" style=" ">
+
+                <div if:true={isAsset} class=" slds-m-bottom_small"
+                    style="display: flex; justify-content: space-between;">
+                    <div style="width: 30%;">
+                        <lightning-input if:true={showSearchAsset} label="Search Asset" type="search"
+                            variant="label-hidden" onchange={handleSearch} placeholder="Search Asset">
+                        </lightning-input>
+                    </div>
+
+                    <lightning-button if:false={noDataFound} class="slds-m-left_medium" label="Fetch Price"
+                        onclick={fetchPrice}></lightning-button>
+                </div>
+
+                <div style="box-shadow: #0606062b 5px 2px 13px; padding: 15px;">
+                    <span if:true={noDataFound} class="slds-align_absolute-center"> Data not found. Please create the
+                        data.</span>
+                    <div>
+                        <div class="slds-scrollable_y"
+                            style="overflow-y:scroll; overflow-x:hidden; max-height:200px; padding-bottom : 0px;">
+                            <table if:true={showHeaders} border="1" cellspacing="0" cellpadding="0"
+                                class=" slds-table slds-table_cell-buffer ">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th>
+                                            <div></div>
+                                        </th>
+                                        <template for:each={headerObjectList} for:item="header">
+                                            <th key={header.header}>
+                                                <div title={header.header}>{header.header}
+                                                    <span if:true={header.showSorting}><lightning-button-icon
+                                                            if:true={showAscending} variant="bare-inverse"
+                                                            icon-name="utility:arrowdown" alternative-text="Add"
+                                                            class="slds-m-left_small" title="Arrow Down"
+                                                            onclick={handleDescending}></lightning-button-icon>
+                                                        <lightning-button-icon if:false={showAscending}
+                                                            variant="bare-inverse" icon-name="utility:arrowup"
+                                                            alternative-text="Add" class="slds-m-left_small"
+                                                            title="Arrow Down"
+                                                            onclick={handleAscending}></lightning-button-icon>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                        </template>
+                                        <th>
+                                            <div></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template if:false={isAsset}>
+                                        <template for:each={tableData} for:item="row" for:index="index">
+                                            <tr key={row.id}>
+                                                <td>
+                                                    <div>
+                                                        <input class={objectName} id={index} type="radio"
+                                                            name={objectName} onchange={handleRadioChange}
+                                                            onclick={radioOnClick}></input>
+                                                    </div>
+                                                </td>
+                                                <template for:each={row} for:item="cell">
+                                                    <td key={cell} style="text-wrap: wrap;">
+                                                        <div title={cell}>{cell}</div>
+                                                    </td>
+                                                </template>
+                                                <td>
+                                                    <lightning-button-icon if:true={showEditButton}
+                                                        icon-name="utility:edit" title="Edit" variant="bare"
+                                                        alternative-text="Edit" onclick={handleEdit}
+                                                        data-index={index}></lightning-button-icon>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </template>
+                                    <template if:true={isAsset}>
+                                        <template for:each={recordsList} for:item="record" for:index="index">
+                                            <tr key={record.Id}>
+                                                <td>
+                                                    <div>
+                                                        <input class={objectName} id={index} type="radio"
+                                                            name={objectName} onchange={handleRadioChange}
+                                                            onclick={radioOnClick}></input>
+                                                    </div>
+                                                </td>
+                                                <td>
+
+                                                    <div class="" style="text-wrap: wrap;">{record.AssetName}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate">{record.SerialNumber}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate">{record.Model}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate">{record.ProductSubFamily}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate">{record.Asset_Obligation__c}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate">{record.Status}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate">{record.CP__c}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-truncate" style="text-wrap: wrap;">{record.SDE__c}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <lightning-button-icon if:true={showEditButton}
+                                                        icon-name="utility:edit" title="Edit" variant="bare"
+                                                        alternative-text="Edit" onclick={handleEdit}
+                                                        data-index={index}></lightning-button-icon>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div if:true={showPagination}
+                        class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread"
+                        style="padding-top: 0.5em;">
+                        <!--RECORDS PER PAGE-->
+                        <div class="slds-col">
+                            <div class="slds-list_inline ">
+                                <label class="slds-text-color_weak slds-p-horizontal_x-small" for="recordsPerPage">Page
+                                    Size:</label>
+                                <div class="slds-select_container">
+                                    <select class="slds-select" name="defaultPageSize" id="recordsPerPage"
+                                        onchange={handleRecordsPerPage}>
+                                        <template for:each={pageSizeOptions} for:item="option">
+                                            <option key={option} value={option}>{option}</option>
+                                        </template>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--PAGE NAVIGATION-->
+                        <div class="slds-align_absolute-center" style="height:5rem">
+                            <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left"
+                                class="slds-p-horizontal_x-small" alternative-text="first page"
+                                onclick={firstPage}></lightning-button>
+                            <lightning-button disabled={bDisableFirst} icon-name="utility:back"
+                                alternative-text="Previous" onclick={previousPage}></lightning-button>
+                            &nbsp;
+                            <span class="slds-badge">{pageNumber} &nbsp;of&nbsp; {totalPages} &nbsp;&nbsp;Page(s)</span>
+                            &nbsp;
+                            <lightning-button disabled={bDisableLast} icon-name="utility:forward"
+                                alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small"
+                                icon-position="right"></lightning-button>
+                            <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right"
+                                alternative-text="last page" onclick={lastPage}
+                                icon-position="right"></lightning-button>
+                        </div>
+                        <!--TOTAL RECORDS-->
+                        <div class="slds-clearfix">
+                            <div class="slds-float_right">
+                                <span class="slds-badge"> Total Records: {totalRecords}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <template if:true={createNew}>
+            <div class="slds-m-top_medium"
+                style="padding-left:2%; padding-right:4%;box-shadow: #0606062b 5px 2px 13px; padding: 15px;">
+                <c-address-form oncitystatechange={handleAddressValues}></c-address-form>
+
+            </div>
+        </template>
+
+        <template if:true={createNewContact}>
+            <div class="slds-m-top_medium"
+                style="padding-left:2%; padding-right:4%;box-shadow: #0606062b 5px 2px 13px; padding: 15px;">
+                <lightning-record-edit-form object-api-name="Contact" record-type-id={contactRecordType}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2">
+                            <div style="margin-left: 6%;margin-right: 8%;margin-top: 2%;">
+                                <lightning-input-field field-name="Salutation" class="checkRequired"
+                                    onchange={handleInputChange} value={formData.Salutation}></lightning-input-field>
+                                <lightning-input-field if:false={resContact} field-name="FirstName"
+                                    onchange={handleInputChange} value={formData.FirstName}></lightning-input-field>
+                                <lightning-input-field if:false={resContact} field-name="LastName"
+                                    onchange={handleInputChange} value={formData.LastName} required={isCommercial}
+                                    class="checkRequired"></lightning-input-field>
+                                <lightning-input-field field-name="Phone" onchange={handleInputChange}
+                                    value={formData.Phone} required="true"
+                                    class="checkRequired"></lightning-input-field>
+                            </div>
+
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-m-left_medium">
+                            <div style="margin-right: 11%; margin-left: 0%;">
+                                <lightning-input-field field-name="GenderIdentity" onchange={handleInputChange}
+                                    value={formData.GenderIdentity} class="checkRequired"></lightning-input-field>
+                                <lightning-input-field field-name="Email" onchange={handleInputChange}
+                                    value={formData.Email} required={isCommercial}
+                                    class="checkRequired"></lightning-input-field>
+                                <lightning-input-field field-name="OtherPhone" onchange={handleInputChange}
+                                    value={formData.OtherPhone}></lightning-input-field>
+                                <lightning-input-field if:false={resContact} field-name="Role__c"
+                                    onchange={handleInputChange} value={formData.Role__c}
+                                    disabled={disableRole}></lightning-input-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slds-align_absolute-center slds-m-top_small">
+                        <lightning-button variant="brand" label="Save" onclick={handleAddContact}
+                            class=""></lightning-button>
+                        <lightning-button variant="brand" label="Cancel" class="slds-m-left_small"
+                            onclick={handleCloseModal}></lightning-button>
+                    </div>
+                </lightning-record-edit-form>
+            </div>
+        </template>
+
+        <template if:true={isModalOpen}>
+            <div onkeydown={handleKeyDown} class="slds-backdrop slds-backdrop_open "></div>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large ">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 if:false={searchAsset} id="modal-heading-01"
+                            class="slds-text-heading_medium slds-hyphenate">Edit {objectName}
+                        </h2>
+                        <h2 if:true={searchAsset} class="slds-text-heading_medium slds-hyphenate">Search Asset
+                        </h2>
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={handleCloseModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="Close" variant="inverse">
+                            </lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1"
+                        style="overflow: auto !important;">
+                        <div if:true={isAsset}>
+                            <div style="width: 50%; margin-left:25%">
+                                <lightning-input if:true={addAsset} class="" type="text" label="Enter serial Number"
+                                    onchange={assignSerialNumber} variant=" label-inline"></lightning-input>
+                            </div>
+                        </div>
+                        <div if:true={showAddress} class="slds-align_absolute-center" style="width: fit-content;">
+                            <c-address-form flat-number={formData.House_Flat__c} pin-code={formData.PostalCode}
+                                street-address={formData.Street} city={formData.City} state={formData.State}
+                                selected-sector={formData.Sector__c} selected-locality={formData.Locality__c}
+                                selected-sublocality={formData.Sub_Locality__c}
+                                oncitystatechange={handleAddressValues}></c-address-form>
+                            <!--<lightning-record-edit-form object-api-name="Address">
+                                <lightning-input-field field-name=House_Flat__c onchange={handleInputChange}
+                                    value={formData.House_Flat__c}></lightning-input-field>
+                                <lightning-input-field field-name=Sector__c onchange={handleInputChange}
+                                    value={formData.Sector__c}></lightning-input-field>
+                                <lightning-input-field field-name=Area__c onchange={handleInputChange}
+                                    value={formData.Area__c}></lightning-input-field>
+                                <lightning-input-address address-label="Address" street-label="Street" city-label="City"
+                                    country-label="Country" province-label="State/ Province"
+                                    postal-code-label="Zip/ Postal Code" city={formData.City} street={formData.Street}
+                                    postal-code={formData.PostalCode} province={formData.StateCode} country="India"
+                                    onchange={addressInputChange} province-options={provinceOptions} class="slds-m-bottom_medium checkRequired"
+                                    show-address-lookup required="true"></lightning-input-address>
+                            </lightning-record-edit-form>-->
+                        </div>
+                        <div if:true={isContact} style="width: 30%; margin:auto;">
+                            <lightning-record-edit-form object-api-name="Contact" record-type-id={contactRecordType}>
+                                <lightning-input-field field-name="Salutation" class="checkRequired"
+                                    onchange={handleInputChange} value={formData.Salutation}></lightning-input-field>
+                                <lightning-input-field if:false={resContact} field-name="FirstName"
+                                    onchange={handleInputChange} value={formData.FirstName}></lightning-input-field>
+                                <lightning-input-field if:false={resContact} field-name="LastName"
+                                    onchange={handleInputChange} value={formData.LastName} required={isCommercial}
+                                    class="checkRequired"></lightning-input-field>
+                                <lightning-input-field field-name="Phone" onchange={handleInputChange}
+                                    value={formData.Phone} required="true"
+                                    class="checkRequired"></lightning-input-field>
+                                <lightning-input-field field-name="Email" onchange={handleInputChange}
+                                    value={formData.Email} required={isCommercial}
+                                    class="checkRequired"></lightning-input-field>
+                                <lightning-input-field field-name="OtherPhone" onchange={handleInputChange}
+                                    value={formData.OtherPhone}></lightning-input-field>
+                                <lightning-input-field if:false={resContact} field-name="Role__c"
+                                    onchange={handleInputChange} value={formData.Role__c}
+                                    disabled={disableRole}></lightning-input-field>
+                                <lightning-input-field field-name="GenderIdentity" onchange={handleInputChange}
+                                    value={formData.GenderIdentity} class="checkRequired"></lightning-input-field>
+                            </lightning-record-edit-form>
+                        </div>
+                    </div>
+                    <div class="slds-modal__footer" if:false={showAddress}>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button if:false={isAsset} variant="brand" label="Save"
+                                onclick={handleAddContact}></lightning-button>
+                        </div>
+                        <div if:true={isAsset} class="slds-align_absolute-center">
+                            <lightning-button if:false={searchAsset} variant="brand" label="Add"
+                                onclick={findAsset}></lightning-button>
+
+                            <lightning-button if:true={searchAsset} variant="brand" label="Search"
+                                onclick={findAsset}></lightning-button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <div if:true={showPrice} style="box-shadow: #0606062b 5px 2px 13px; padding: 15px; margin-top:0.5%">
+            <div if:true={showPrice} class="table-container ">
+                <table border="1" cellspacing="0" cellpadding="0" class=" slds-table slds-table_cell-buffer ">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Type</th>
+                            <th style="text-align: center;">Rate (in Rupees)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={rateMatrixesWithSelection} for:item="record">
+                            <tr key={record.Id}>
+                                <!--<td>
+                                    <lightning-input type="checkbox" name={record.Id} value={record.Id} checked={record.isSelected} onchange={handleGenericCheckboxChange}></lightning-input>
+                                </td>-->
+                                <td style="text-align: center;"><span style="margin-right: 50%;">{record.type}</span>
+                                </td>
+                                <template if:false={assetUnderWarranty}>
+                                    <td style="text-align: right;"><span style="margin-right: 50%;">{record.rate}</span>
+                                    </td>
+                                </template>
+                                <template if:true={assetUnderWarranty}>
+                                    <td style="text-align: right;"><span style="margin-right: 50%;">0.00</span></td>
+                                </template>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

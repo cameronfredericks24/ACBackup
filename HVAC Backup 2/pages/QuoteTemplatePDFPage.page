@@ -1,0 +1,605 @@
+<apex:page renderAs="pdf" standardController="Quote" showQuickActionVfHeader="false"   extensions="QuoteTemplateController" standardStylesheets="false" id="pge" >
+    
+    <!-- First Page Header -->
+    <c:QuoteTemplateCmp type="header">
+        <table style="width: 100%; margin-top:10px" >
+            <tr>
+                <td>
+                    <apex:image style="max-width: 100%; display: block;" url="{!$Resource.BlueStarLogo}" width="200" height="auto" />
+                </td>
+                
+                <td >
+                    <apex:image style="max-width: 100%;  display: block;" url="{!$Resource.ISOLogoBSL}" width="200" height="auto" />
+                </td>
+                
+                <td style="width: 25%;"><br/> 
+                    <p style="font-family: sans-serif; font-size: 9pt; " >
+                        <strong style="font-size: 9pt;">Blue Star Limited,</strong><br/>
+                        Blue Star Innovation Centre,<br/>
+                        Next to Vihang’s Inn Hotel,<br/>
+                        Kapurbawadi,Ghodbunder Road,Thane West–400 607.<br/>
+                        www.bluestarindia.com 
+                        <!--apex:outputLink value="">www.bluestarindia.com</apex:outputLink-->
+                    </p>
+                </td>
+            </tr>
+        </table>   
+    </c:QuoteTemplateCmp>
+    
+    <!-- First Page Footer -->
+    <c:QuoteTemplateCmp type="footer">
+        
+        <c:FooterCmpQuoteTemplate ></c:FooterCmpQuoteTemplate>
+        
+    </c:QuoteTemplateCmp>
+    <!-- Content of the First Page -->
+    <div  style="font-family: sans-serif; font-size: 9pt;"> <!-- Adjust margin-top to be greater than header height -->
+        
+        <span>Proposal No : {!quotes.QuoteNumber}</span> <br/>
+        <span>Dated :&nbsp; <apex:outputText value="{0,date,dd/MM/yyyy}"><apex:param value="{!currentDate}" /></apex:outputText></span><br/>
+        
+        <br/>
+        
+        <b>{!quotes.Account.Name}</b>
+        <apex:outputText value="{!IF(NOT(ISNULL(quotes.Account.Shipping_House_Flat_BlockNo__c)), '<br/>', '')}" escape="true"/>                    
+        <apex:outputText style="white-space: pre-line" value="{!quotes.Account.Shipping_House_Flat_BlockNo__c}" rendered="{!NOT(ISNULL(quotes.Account.Shipping_House_Flat_BlockNo__c))}" escape="true"/>
+        <apex:outputText value="{!IF(NOT(ISNULL(quotes.Account.Shipping_Sector__c)), '<br/>', '')}" escape="true"/>                
+        <apex:outputText value="{!quotes.Account.Shipping_Sector__c}" rendered="{!NOT(ISNULL(quotes.Account.Shipping_Sector__c))}" escape="true"/>
+        
+        
+        
+        <apex:outputText value="{!IF(NOT(ISNULL(quotes.Account.ShippingStreet)), '<br/>', '')}" escape="false" />
+        <apex:outputText value="{!SUBSTITUTE(
+                                LEFT(quotes.Account.ShippingStreet, LEN(quotes.Account.ShippingStreet) - 2),'\r', '<br/>') & 
+                                SUBSTITUTE(RIGHT(quotes.Account.ShippingStreet, 2), '\r', ' ')
+                                }" rendered="{!NOT(ISNULL(quotes.Account.ShippingStreet))}" escape="false"/>
+        
+        <apex:outputText value="{!IF(NOT(ISNULL(quotes.Account.Shipping_Area__c)), '<br/>', '')}" escape="false"/>
+        <apex:outputText value="{!quotes.Account.Shipping_Area__c}" rendered="{!NOT(ISNULL(quotes.Account.Shipping_Area__c))}"/>
+        <apex:outputText value="{!IF(NOT(ISNULL(quotes.Account.ShippingCity)), '<br/>', '')}" escape="false"/>
+        <apex:outputText value="{!quotes.Account.ShippingCity}, {!quotes.Account.ShippingState}, {!quotes.Account.ShippingPostalCode}" rendered="{!NOT(ISNULL(quotes.Account.ShippingCity))}"/>
+        <apex:outputText value=", {!quotes.Account.ShippingCountry}" rendered="{!NOT(ISNULL(quotes.Account.ShippingState))}"/>               
+        <br/><br/>
+        
+        <p>
+            <b>Dear {!quotes.Contact.Salutation} {!quotes.Contact.Name}</b>, <b>{!quotes.Contact.Title__c}</b>.<br/>
+        </p>
+        <p>
+            Mobile No : {!quotes.Contact.Phone}, Tel No:{!quotes.Contact.MobilePhone} 
+        </p>
+        
+        <br/>
+        <p style="text-align:justify">
+            It has been wonderful working with you to maintain the
+            <apex:outputText rendered="{!NOT(condition)}">
+                air conditioning/refrigeration 
+            </apex:outputText>
+            <apex:outputText rendered="{!condition}">
+                Bluestar Water Purifier
+            </apex:outputText>
+            facilities at your site, details as stated in the Annexure below. I am sure you must be satisfied with the working of your AC equipment and the services rendered by us. 
+        </p>
+        <p style="text-align:justify">
+            Air conditioning and refrigeration systems, like all mechanical equipment are subject to wear and tear. They lose efficiency and consume more power over time, unless you monitor and maintain them regularly. Studies reveal that with regular tune-ups, a system will deliver up to 95% of original efficiency which helps reduce running and repair costs. What’s more you also save a lot of power. It is our endeavor and commitment to maintain your air conditioning/refrigeration system at its optimal efficiency and ensure high uptime of your equipment.
+            
+        </p>
+        <p style="text-align:justify">
+            I wish to inform you that the current Service expires and it will become due for renewal then. My team and I will be delighted to continue our services and ensure that you put your AC equipment to effective use. I am enclosing our Service Contract renewal offer, which on acceptance will facilitate the planning and execution of services after the expiry of the current contract.</p>
+        <p style="text-align:justify">
+            As you go through this offer you will find that you will continue to have the convenience and benefits of a BLUE STAR Service (Subject to SOW) that include: </p>
+        <ul style="list-style-type: none; padding-left: 0;font-size:9pt">
+            <li>* Service Call Desk</li>
+            <li>* Trained Personnel</li>
+            <li>* Exclusive Service Delivery Team</li>
+            <li>* Expert Advice through the Service Specialist Group (SSG)</li>
+            <li>* Expert monitoring by the Service Quality Assurance Team</li>
+            <li>* Genuine Spare Parts</li>
+            <li>* Priority Service</li>
+            <li>* Preventive Checks and many more</li>
+        </ul>
+        <p style="text-align:justify">The enclosed offer contains the details of a Service Solution in line with your equipment needs and other necessary information. Kindly go through them. Please let us know when would you like our Executive to visit you to collect the signed agreement.</p>
+        <p >
+            In case you need any details or have some special or specific requirements, please call us.</p> 
+        <p >
+            We look forward to serving you better.  </p> 
+        <p>Thank you. With best regards </p> 
+        <br/>
+        <p >
+            <strong>For Blue Star Limited</strong><br/>
+            {!quotes.Division__r.AIDH__r.Name}<br/>
+            Vice President<br/>
+            {!divisonName}<br/>
+            Contact: 022-67154500<br/>
+        </p>
+    </div>
+    <!-- Page Break for Second Page -->
+    <div style="page-break-before: always;"></div>
+    
+    <!-- Second Page Header -->
+    <c:QuoteTemplateCmp type="header">
+        <div style="height: 50px; ">
+            
+            <c:HeaderCmpQuoteTemplate currentDate="{!currentDate}" wareHouseStreet="{!wareHouseStreet}" quotes="{!quotes}"> </c:HeaderCmpQuoteTemplate>
+            
+        </div>
+    </c:QuoteTemplateCmp>
+    
+    <!-- Second Page Footer -->
+    <c:QuoteTemplateCmp type="footer">
+        
+        <c:FooterCmpQuoteTemplate ></c:FooterCmpQuoteTemplate>
+    </c:QuoteTemplateCmp>
+    <!-- Content of the Second Page -->
+    
+    
+    <table style="width: 100%;font-size: 9pt; font-family: sans-serif; ">
+        <caption Style="font-size: 24px;">PROPOSAL / PROFORMA INVOICE </caption>
+        <tr>              
+            <td colspan="2" >
+                Proposal / Proforma Invoice No       : {!quotes.QuoteNumber}<br/>
+                Proposal / Proforma Invoice Date    :&nbsp; <apex:outputText value="{0,date,dd/MM/yyyy}"><apex:param value="{!currentDate}" /></apex:outputText>
+                
+            </td>
+            <td style="text-align: right;" colspan="2">
+                Proposed Period From    :&nbsp;<apex:outputText value="{0,date,dd/MM/yyyy}"><apex:param value="{!quotes.Proposed_Period_From__c}" /></apex:outputText><br/>
+                Proposed Period To      :&nbsp;<apex:outputText value="{0,date,dd/MM/yyyy}"><apex:param value="{!quotes.Proposed_Period_To__c}" /></apex:outputText>
+            </td>
+        </tr>
+    </table>
+    
+    
+    <table style="width: 100%; font-size: 9pt; font-family: sans-serif;   border: 1px solid black; border-collapse: collapse">
+        <tr >
+            <td colspan="3" style="border: 1px solid black; padding: 2px;">
+                <strong>  Customer Name &amp; Address</strong> <br/>
+                <!-- Customer Name -->
+                <apex:outputText value="{!quotes.Account.Name}" escape="false" />
+                <apex:outputText rendered="{!NOT(ISBLANK(quotes.Account.Name))}" value="<br/>" escape="false"/>
+                
+                <!-- Customer Address Line 1 -->
+                <apex:outputText value="{!quotes.Account.BillingStreet}" escape="false" />
+                <apex:outputText rendered="{!NOT(ISBLANK(quotes.Account.BillingStreet))}" value="<br/>" escape="false"/>
+                
+                <!-- Customer Address Line 2 (Additional street information if any) -->
+                
+                <!-- Customer City, State, Postal Code -->
+                <apex:outputText value="{!quotes.Account.BillingCity}" escape="false"/>
+                <apex:outputText rendered="{!NOT(ISBLANK(quotes.Account.BillingCity))}" value=" " escape="false"/>
+                
+                <apex:outputText value="{!quotes.Account.BillingState}" escape="false"/>
+                <apex:outputText rendered="{!NOT(ISBLANK(quotes.Account.BillingState))}" value=" " escape="false"/>
+                
+                <apex:outputText value="{!quotes.Account.BillingPostalCode}" escape="false"/>
+                <apex:outputText rendered="{!NOT(ISBLANK(quotes.Account.BillingPostalCode))}" value="<br/>" escape="false"/>
+                
+                <!-- Customer Country on the last line -->
+                <apex:outputText value="{!quotes.Account.BillingCountry}" escape="false" />
+                <br/>
+                <apex:outputText rendered="{!NOT(ISBLANK(quotes.Account.BillingCountry))}" value="<br/>" escape="false"/>
+                <apex:outputText >GSTIN ID:{!quotes.Account.GST_Number__c}</apex:outputText><br/>
+                <apex:outputText >TAN:{!quotes.Account.TAN_Number__c}  &nbsp;PAN: {!quotes.Account.PAN_Number__c}</apex:outputText>
+                
+            </td>
+            
+            <td colspan="3" style="border: 1px solid black; padding: 2px;">
+                <strong> Installation Address</strong><br/> 
+                <apex:outputText rendered="{!installationAddress}">
+                    <!-- Customer Name -->
+                    <apex:outputText value="{!InstallationCustomer}" escape="false" />
+                    <apex:outputText rendered="{!NOT(ISBLANK(InstallationCustomer))}" value="<br/>" escape="false"/>
+                    <!-- Customer Address Line 1 --> 
+                    <apex:outputText value="{!InstallationStreet}" escape="false" />
+                    <apex:outputText rendered="{!NOT(ISBLANK(InstallationStreet))}" value="<br/>" escape="false"/>
+                    
+                    <!-- Customer Address Line 2 (Additional street information if any) -->
+                    
+                    <!-- Customer City, State, Postal Code -->
+                    <apex:outputText value="{!InstallationCity}" escape="false"/>
+                    <apex:outputText rendered="{!NOT(ISBLANK(InstallationCity))}" value=" " escape="false"/>
+                    
+                    <apex:outputText value="{!InstallationState}" escape="false"/>
+                    <apex:outputText rendered="{!NOT(ISBLANK(InstallationState))}" value=" " escape="false"/>
+                    
+                    <apex:outputText value="{!InstallationPostalCode}" escape="false"/>
+                    <apex:outputText rendered="{!NOT(ISBLANK(InstallationPostalCode))}" value="<br/>" escape="false"/>
+                    
+                    <!-- Customer Country on the last line -->
+                    <apex:outputText value="{!InstallationCountry}" escape="false" />
+                    <br/>
+                    <apex:outputText rendered="{!NOT(ISBLANK(InstallationCountry))}" value="<br/>" escape="false"/>
+                    <apex:outputText > GSTIN ID: {!InstallationGST}</apex:outputText><br/>
+                    <apex:outputText > TAN: {!InstallationTAN} &nbsp;PAN: {!InstallationPAN}</apex:outputText>
+                    
+                </apex:outputText>
+                <apex:outputText rendered="{!NOT(installationAddress)}">
+                    As per attached annexure.
+                </apex:outputText>
+            </td>
+        </tr>
+        <!-- Contract Details Header -->
+        <tr style="font-size: 9pt; font-family: sans-serif;   text-align: left;" >
+            <td style="width: 2%; border: 1px solid black;  text-align: center;padding: 2px;">Sr.No.</td>
+            <th style="width: 40%; border: 1px solid black;  text-align: left;padding: 2px;">Description</th>
+            <th style="width: 8%; border: 1px solid black;  text-align: center;padding: 2px;">HSN / SAC</th>
+            <th style="width: 35%; border: 1px solid black;  text-align: left;padding: 2px;">Type Of Contract</th>
+            <!--th style="width: 20%;border-right: 1px solid black; border-top: 1px solid black; padding: 2px;  text-align: left;">Qty</th-->
+            <th style="width: 15%; border: 1px solid black;  text-align: left;padding: 2px;">Contract Premium Amt</th>
+        </tr>
+        
+        
+        <tr style="border-top: 1px solid black; vertical-align:top"> 
+            <td style="border: 1px solid black; padding: 2px;text-align: center;">1</td>
+            <td style="border: 1px solid black; padding: 2px;">
+                Annual Maintenance Contract for Air Conditioning/Other Equipments as per attached List{!quotes.Customer_Invoice_Text__c}
+            </td>
+            <td style="border: 1px solid black; padding: 2px;text-align: right;">{!HSNCode}</td>
+            <td style="border: 1px solid black; padding: 2px;">{!ContractType}</td>
+            <!--td style=" border-right: 1px solid black; border-top: 1px solid black; padding: 2px;">1</td-->
+            <td style="border: 1px solid black; padding: 2px;text-align: right;">{!quotes.Final_Net_Contract_Value_Curr__c}</td>
+        </tr>
+        
+        <!-- Total Taxable Amount -->
+        <tr style="border: 1px solid black;">
+            <td colspan="3" style="border: 1px solid black;" ></td>
+            
+            <td colspan="1" style="border: 1px solid black;padding: 2px;"><strong>Total Taxable Amount</strong></td>
+            <td colspan="1" style="border: 1px solid black;text-align: right; "><strong>{!quotes.Final_Net_Contract_Value_Curr__c}</strong></td>
+        </tr>
+        <tr style="border: 1px solid black;"> 
+            <td colspan="3" style="border: 1px solid black;padding: 2px;  ">
+                Total Contract Value In Words:<br/><strong> {!totalAmountToWords}</strong><br/>
+                <br/>
+                Taxes as applicable on date of Servicing / Invoicing.<br/>
+                Billing Frequency: {!quotes.Billing_Frequency_Period__c}<br/>
+                Billing Due Period: {!quotes.Billing_Due_Period__c}
+            </td>
+            <td colspan="1" style="border: 1px solid black;padding: 2px;vertical-align:top ">
+                <table>
+                    <tr> <td> <apex:outputText rendered="{!quotes.CGST__c != 0}" value="%">CGST : {!quotes.CGST__c}</apex:outputText>
+                        </td></tr> 
+                    <tr><td> <apex:outputText rendered="{!quotes.SGST__c != 0}" value="%">SGST : {!quotes.SGST__c}</apex:outputText>
+                        </td></tr>
+                    <tr><td> <apex:outputText rendered="{!quotes.UGST__c != 0}" value="%">UGST : {!quotes.UGST__c}</apex:outputText>
+                        </td></tr>
+                    <tr><td>  <apex:outputText rendered="{!quotes.IGST__c != 0}" value="%">IGST : {!quotes.IGST__c}</apex:outputText>
+                        </td></tr>
+                </table>
+            </td> 
+            <td colspan="1" style="border: 1px solid black; padding: 2px;vertical-align:top">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="text-align: right; width: 100%;"> <apex:outputText rendered="{!quotes.CGST_Amount__c != 0}"  > {!quotes.CGST_Amount__c}</apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 100%;"><apex:outputText rendered="{!quotes.SGST_Amount__c != 0}"  > {!quotes.SGST_Amount__c}</apex:outputText></td>
+                    </tr>
+                    <tr>      
+                        <td style="text-align: right; width: 100%;"><apex:outputText rendered="{!quotes.UGST_Amount__c != 0}"  > {!quotes.UGST_Amount__c}</apex:outputText></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 100%;"><apex:outputText rendered="{!quotes.IGST_Amount__c != 0}"  > {!quotes.IGST_Amount__c}</apex:outputText></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="border: 1px solid black;padding: 2px;  ">
+            </td>
+            <td colspan="1" style="border: 1px solid black;padding: 2px;  ">
+                <strong> Grand Total</strong>
+            </td>
+            <td colspan="1" style="border: 1px solid black;padding: 2px; text-align: right;  "><strong>{!quotes.Gross_Contract_Value_Currency__c}</strong></td>
+        </tr>
+        
+        <!-- TOTAL CONTRACT VALUE & TAX DETAILS -->
+        
+        
+        <!-- KEY INCLUSIONS & EXCLUSIONS OF THE CONTRACT -->
+        <tr>
+            <td colspan="3" style="border: 1px solid black;padding: 2px;  ">
+                <Strong>Key Inclusions of the Contract</Strong><br/>
+                *4 Preventive Maintenance Services per Annum.<br/>
+                *All Break Down Calls shall be attended.<br/>
+                *Refer the scope of work annexure.<br/><br/><br/>
+                <!--ol>  <strong>Key Inclusions of the Contract</strong> 
+<li style="font-size: 9pt; font-family: Verdana;">4 Preventive Maintenance Services per Annum</li>
+<li style="font-size: 9pt; font-family: Verdana;">All Break Down Calls shall be attended</li>
+<li style="font-size: 9pt; font-family: Verdana;"> Refer the scope of work annexure.</li><br/>
+</ol--> 
+            </td>
+            <td colspan="3" style="border: 1px solid black;padding: 2px;  ">
+                <Strong>Key Exclusions of the Contract</Strong><br/>
+                *Replacements of the equipment due to ageing.<br/>
+                *Any damages due to the external influences.<br/>
+                *Day to day operations of the equipment.<br/>
+                *Refer the scope of work annexure.<br/><br/>
+                <!--ol>  <strong>Key Exclusions of the Contract</strong>
+<li style="font-size: 9pt; font-family: Verdana;"> Replacements of the equipment due to ageing</li>
+<li style="font-size: 9pt; font-family: Verdana;"> Any damages due to the external influences</li>
+<li style="font-size: 9pt; font-family: Verdana;"> Day to day operations of the equipment</li>
+<li style="font-size: 9pt; font-family: Verdana;"> Refer the scope of work annexure.</li>
+</ol-->
+            </td>
+        </tr>
+        
+        <!-- DIVISION, SALES OFFICE, DEALER NAME, INCOME TAX PAN -->
+        <tr>
+            <td colspan="3" style="border: 1px solid black;padding: 2px; ">
+                Division : {!quotes.Department__r.Name} <br/>
+                Dealer Name/BA Name : {!quotes.CP__r.CP_Code__c} {!quotes.CP__r.Name}
+            </td>
+            <td colspan="3" style="border: 1px solid black;padding: 2px; ">
+                Sales Office : {!quotes.Branch__r.Branch_Code__c} <br/>
+                Income Tax PAN No : {!quotes.Plant__r.PAN_Number__c}
+            </td>
+        </tr>
+    </table>
+    
+    <p style="font-family: sans-serif; font-size: 10pt;">
+        CONTRACT WILL BE VALID ON PAYMENT OF Contract Premium as per agreed Terms of Payment.<br/>
+        <span style="font-family: sans-serif; font-size: 9pt;"> To enter into contract please sign and return to us the duplicate of this contract together with your cheque for the amount.
+            <br/>Customer hereby enters into Maintenance Contract with Blue Star Limited and Blue Star Limited agrees to provide such services for the above machines as per terms and conditions enclosed.
+            <br/>Tax exempted if exemption certification furnished by you.</span>  
+    </p>
+    
+    
+    <div style="font-family: sans-serif; font-size: 9pt;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <!-- Header Row -->
+            <tr>
+                <td colspan="3" style="padding: 2px;">Enclosed Annexure</td>
+                <td colspan="3" style="padding: 2px; text-align: left;text-align: center;">On behalf of customer</td>
+                
+                <td colspan="3" style="padding: 2px; text-align: right;">For <span style="font-weight: bold;">BLUE STAR LIMITED</span></td>
+            </tr>
+            <!-- Signature Row -->
+            <tr>
+            </tr>
+            <!-- Bullet Item Row 1 -->
+            <tr>
+                <td style="padding: 2px; font-size: 9pt;">*</td>
+                <td style="padding: 2px;">Equipment Details</td>
+                <td style="padding: 2px;"></td>
+            </tr>
+            <!-- Bullet Item Row 2 -->
+            <tr>
+                <td style="padding: 2px; font-size: 9pt;">*</td>
+                <td style="padding: 2px;">Scope of the Contract</td>
+                <td style="padding: 2px;"></td>
+                <td style="padding: 2px; text-align: left;"> </td>
+                <td style="padding: 2px;"></td>
+                <td colspan="2" style="padding: 2px;"> </td>
+                
+            </tr>
+            <!-- Bullet Item Row 3 -->
+            <tr> 
+                <td style="padding: 2px; font-size: 9pt;">*</td>
+                <td style="padding: 2px;">Terms &amp;  Condition</td>
+                <td style="padding: 2px;"></td>
+                <td style="padding: 2px;text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signature &amp;  Office Stamp</td>
+                <td style="padding: 2px;"></td>
+                <td style="padding: 2px;"></td>
+                <td style="padding: 2px;"></td>
+                <td style="padding: 2px; text-align: right; ">Authorized Signatory</td>
+                
+            </tr>
+        </table>
+        
+    </div>
+    
+    
+    <!-- Page Break for Third Page --> 
+    <div style="page-break-before: always;"></div>
+    
+    <!-- Third Page Header -->
+    <c:QuoteTemplateCmp type="header">
+        <div style="height: 50px; padding: 8px; box-sizing: border-box;">
+            <h1 style="margin: 0;">  
+                <c:HeaderCmpQuoteTemplate currentDate="{!currentDate}" wareHouseStreet="{!wareHouseStreet}" quotes="{!quotes}"> </c:HeaderCmpQuoteTemplate>
+                
+            </h1>
+        </div>
+        
+    </c:QuoteTemplateCmp>
+    
+    <!-- Third Page Footer -->
+    <c:QuoteTemplateCmp type="footer">
+        
+        <c:FooterCmpQuoteTemplate ></c:FooterCmpQuoteTemplate>
+        
+    </c:QuoteTemplateCmp>
+    <!-- Content of the Third Page -->
+    <div class="content" style="font-family: sans-serif; font-size: 9pt;"> <!-- Adjust margin-top to be greater than header height -->
+        
+        <div style="text-align: center;">
+            <strong >ANNEXURE 1: INSTALLATION / EQUIPMENT DETAILS
+            </strong><br/>  <br/>    
+            <div style="padding:2px; font-weight:bold"  > BSL Service Contract, SAC no: {!HSNCode} Covered For </div> 
+        </div>
+        <!-- Outer Table for Customer and Site Address Information -->
+        
+        
+        <table  style=" border: 1px solid black; width: 100%; border-collapse: collapse;font-family: sans-serif; ">
+            <thead>
+                <tr>
+                    <th colspan="1" style="border: 1px solid black; padding: 2px;">Customer ID</th>
+                    <th colspan="6" style="border: 1px solid black; padding: 2px;">Site Address</th>
+                </tr>
+                <tr>
+                    <td colspan="1" style="border: 1px solid black;padding: 2px;">{!quotes.Ship_to_Party__r.SAP_Customer_Id__c}</td>
+                    <td colspan="6" style="border: 1px solid black; padding: 2px;">
+                        
+                        <!-- Group Component Address 1 -->
+                        <apex:outputText value="{!quotes.Ship_to_Party__r.BillingStreet}" escape="false" />
+                        <apex:outputText rendered="{!NOT(ISBLANK(quotes.Ship_to_Party__r.BillingStreet))}" value="<br/>" escape="false"/>
+                        
+                        <!-- Group Component Address 2 -->
+                        
+                        <!-- Group Component Address 3 (Additional address line if any) -->
+                        
+                        <!-- Group Component City -->
+                        <apex:outputText value="{!quotes.Ship_to_Party__r.BillingCity}" escape="false"/>
+                        <apex:outputText rendered="{!NOT(ISBLANK(quotes.Ship_to_Party__r.BillingCity))}" value="<br/>" escape="false"/>
+                        
+                        <!-- Group Component State -->
+                        <apex:outputText value="{!quotes.Ship_to_Party__r.BillingState}" escape="false"/>
+                        <apex:outputText rendered="{!NOT(ISBLANK(quotes.Ship_to_Party__r.BillingState))}" value="<br/>" escape="false"/>
+                        
+                        <!-- Group Component Pincode -->
+                        <apex:outputText value="{!quotes.Ship_to_Party__r.BillingPostalCode}" escape="false"/>
+                        <apex:outputText rendered="{!NOT(ISBLANK(quotes.Ship_to_Party__r.BillingPostalCode))}" value="<br/>" escape="false"/>
+                        
+                        <!-- Group Component Country -->
+                        <apex:outputText value="{!quotes.Ship_to_Party__r.BillingCountry}" escape="false" />
+                        <apex:outputText rendered="{!NOT(ISBLANK(quotes.Ship_to_Party__r.BillingCountry))}" value="<br/>" escape="false"/>
+                    </td>
+                </tr>
+                <tr >
+                    <th style="border: 1px solid black; padding: 2px;">Sr.No.</th>
+                    <th style="border: 1px solid black; padding: 2px;">Model</th>
+                    <th style="border: 1px solid black; padding: 2px;">Description</th>
+                    <th style="border: 1px solid black; padding: 2px;">Product Serial No</th>
+                    <th style="border: 1px solid black; padding: 2px;">Capacity</th>
+                    <th style="border: 1px solid black; padding: 2px;">Rate</th>
+                    <th style="border: 1px solid black; padding: 2px;">Prev. Oblig. Expiry Date</th>
+                </tr>
+            </thead>
+            <apex:variable var="rowNum" value="{!1}"/>       
+            
+            <tbody>
+                <apex:repeat value="{!quotes.QuoteLineItems}" var="lineItem">
+                    <tr>
+                        <td style="border: 1px solid black; padding: 2px;">{!rowNum}</td>
+                        <td style="border: 1px solid black; padding: 2px;">{!lineItem.Asset__r.Model_Number__c}</td>
+                        <td style="border: 1px solid black; padding: 2px;">{!lineItem.Product2.Name}</td>
+                        <td style="border: 1px solid black; padding: 2px;">{!lineItem.Asset__r.SerialNumber}</td>
+                        <td style="border: 1px solid black; padding: 2px;">{!lineItem.Asset__r.Product2.Capacity__c} {!lineItem.Asset__r.Product2.Capacity_UOM__c}</td>
+                        <td style="border: 1px solid black; padding: 2px;">{!lineItem.TotalPrice}</td>
+                        <td style="border: 1px solid black; padding: 2px;"> <apex:outputText value="{0,date,dd/MM/yyyy}"><apex:param value="{!lineItem.Asset__r.Prev_Obligation_Expiry_Date__c}" /></apex:outputText><br/></td>
+                    </tr>
+                    <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                </apex:repeat>
+            </tbody>
+        </table> 
+        <br/><br/><br/>
+        
+        <!-- ANNEXURE ROWS --> 
+        <apex:variable var="rowNumForAnnexure" value="{!2}"/> 
+        <apex:outputPanel style="font-family: sans-serif; font-size: 9pt;" layout="none" rendered="{!sowPresent == false}">
+            &ensp; 
+            <apex:outputText style="font-family: sans-serif ; font-size: 9pt;"> <strong>  ANNEXURE {!rowNumForAnnexure} - SCOPE OF WORK</strong> </apex:outputText>
+            
+            
+            &ensp; 
+            <apex:outputText style="font-family: sans-serif ; font-size: 9pt;" value="{!defaultSOW}" escape="false" />
+            
+            &ensp;
+            <apex:variable var="rowNumForAnnexure" value="{!rowNumForAnnexure + 1}"/>
+        </apex:outputPanel>
+        
+        <apex:outputPanel style="font-family: sans-serif; font-size: 9pt;" layout="none" rendered="{!sowPresent == true}">
+            <apex:repeat value="{!sow}" var="scope">
+                &ensp;
+                <apex:outputText style="font-family: sans-serif ; font-size: 9pt;" value="{!defaultSOW}" escape="false" />
+                
+                &ensp;
+                <apex:outputText ><strong>ANNEXURE {!rowNumForAnnexure} - {!scope.Name}</strong></apex:outputText>
+                
+                &ensp;
+                <apex:outputText style="font-family: sans-serif ; font-size: 9pt;" value="{!Scope.Scope__c}" escape="false" />
+                &ensp;
+                <apex:variable var="rowNumForAnnexure" value="{!rowNumForAnnexure + 1}"/>
+                <br/><br/><br/></apex:repeat>
+        </apex:outputPanel>
+        
+        <div>
+        	<h3 style="font-family: sans-serif; font-size: 9pt;">ANNEXURE {!rowNumForAnnexure}: TERMS AND CONDITIONS</h3>
+        	<ol> 
+                <li> 
+                    <p><strong>Water Quality</strong><br/>
+                        <span style="text-align: justify; display: block;">Please refer to the Blue Star/manufacturer manual for water quality specification if supplied along with the equipment. Descaling of heat exchangers will not be required if water supplied is as per Blue Star specification. If need be, descaling will be done once a year free of charge. Subsequent descaling in a year is not only detrimental to the health of the equipment but will also be done at additional price.</span>
+                    </p>
+                </li> 
+                <li>
+                    <p><strong>Preventive &amp; Breakdown Maintenance</strong><br/>
+                        <span style="text-align: justify; display: block;">Customers will be responsible for facilitating necessary shutdowns for Preventive Maintenance and Breakdown maintenance as required.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Lubrication</strong><br/>
+                        <span style="text-align: justify; display: block;">With the advent of self-lubricated parts and assemblies, lubrication will be done based on need and not as a matter of routine.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Operating Contract</strong><br/>
+                        <span style="text-align: justify; display: block;">In case of operating contract, normal working hours for an operator shall be 8 hours a day, 6 days a week. If required to work beyond 8 hours in a day or on Sundays/holidays, the same should be supported with sufficient intervals and at overtime charges as applicable.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Power Supply</strong><br/>
+                        <span style="text-align: justify; display: block;">Blue Star takes responsibility of performance of the system or product only if the voltage range is between 210 V to 230 V for single phase and 400V to 440 V for three-phase power supply. The AC frequency range will be between 49.5 Hz to 50.5 Hz. Not withstanding this, specific instructions in the equipment manual will be the guiding/limiting values.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Abnormal Usage/Misuse/Unauthorized Attendance</strong><br/>
+                        <span style="text-align: justify; display: block;">Misuse or usage of equipment other than what the system or product is originally designed for. 
+                            Contract will be null and void if the unit is tampered or repaired by anyone other than our authorized representative, at any time. 
+                            Danger to life and usage of equipment close to direct or indirect heat sources, acidic fumes, reactive chemicals &amp; powders and non-ventilated areas. Under these circumstances, there will be no refund of money for the balance duration of the contract. Atmospheric conditions or hard/contaminated water causing rusting, corrosion or scaling.</span>
+                    </p>
+                </li>  
+                <li>
+                    <p><strong>Taxes And Duties</strong><br/>
+                        <span style="text-align: justify; display: block;">The customer is responsible for paying any applicable taxes, duties, or levies imposed or revised by State, Central government, or local authorities on components, raw materials, installation, or services used to fulfill the contract. These charges shall be payable extra even if they were not applicable at the time of contract initiation. All digitally signed TDS certificates should be sent to our email at <a href="mailto:bsl_ittds_collectionteam@bluestarindia.com">bsl_ittds_collectionteam@bluestarindia.com</a>. In case the TDS certificates are not digitally signed the same should be dispatched to our Outsourcing agency office "Serco Global Services,Ashar IT Park,2nd Floor, Wagle Industrial Estate, Thane(W)-400604" only, followed with an email of invoice-wise breakup to the above email address.</span>
+                    </p>
+                </li> 
+                <li>
+                    <p><strong>Change in Ownership/Location</strong><br/>
+                        <span style="text-align: justify; display: block;">This contract is non-transferable; Blue Star reserves the right to terminate the contract/renegotiate the terms of the contract, in case of change of ownership or location of equipment.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Limitation to Liability/Force Majeure</strong><br/>
+                        <span style="text-align: justify; display: block;">In no event shall Blue Star be liable for any consequential loss or damage arising out of or connected with or caused due to the non/short performance of contract in any way, whatsoever. Blue Star will not be liable for any damage or destruction of any part or parts of the equipment that may occur during the process of handling. No liability shall be attached to Blue Star for non-performance or delayed execution of this contract as a result of force majeure conditions. In any case, Blue Star's liability shall be limited to and not exceeding the contract value agreed between Blue Star Ltd &amp; the customer.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Arbitration</strong><br/>
+                        <span style="text-align: justify; display: block;">Any dispute or difference between the parties with regard to this document and all connected and related matters whatsoever shall be discussed and settled amicably. In the event of any failure to resolve the disputes and differences amicably, all such disputes or differences whatsoever shall be referred to Arbitration. The Arbitration proceedings shall be conducted in English and in accordance with the provisions of Indian Arbitration and Conciliation Act, 1996 or any statutory modification or enactment thereof. The venue of Arbitration shall be Mumbai.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Jurisdiction</strong><br/>
+                        <span style="text-align: justify; display: block;">The scope of work enclosed in Annexure II is of generalized nature and is applicable for the family of the equipment mentioned in the list of equipment (Annexure I). All other equipment available at site but not listed under our coverage are excluded from any obligation of Blue Star.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Applicability of Scope of Work &amp; Terms &amp; Conditions</strong><br/>
+                        <span style="text-align: justify; display: block;">The scope of work in Annexure II applies to equipment listed in Annexure I. Equipment not listed in our coverage is excluded from any obligations by Blue Star.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Terms of Payment</strong><br/>
+                        <span style="text-align: justify; display: block;">The contract shall be effective from the date of receipt of 100% advance or from the date of expiry of the previous contract, whichever is later. The comprehensive coverage (wherever applicable) would lapse in case the payments are not received in time.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Short Closure of Contract</strong><br/>
+                        <span style="text-align: justify; display: block;">Minimum 2 months advance notice is required for short closure of any contract.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Timings</strong><br/>
+                        <span style="text-align: justify; display: block;">Unless and otherwise specifically agreed in writing by Blue Star Ltd, the services covered under the contract shall be rendered from Monday to Saturday during normal working hours of 9 A.M. to 5.30 P.M. No services shall be rendered on Sundays and public holidays. Services requirements shall be charged extra on all Sundays &amp; holidays. Technicians/BSL service executives working after office hours from 6.00 pm to 12AM (night) at site will be with prior approval in authorization form with one day notice from a central team &amp; should not work at night from 12.00AM to 6.00AM at customer sites.</span>
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Validity</strong><br/>
+                        <span style="text-align: justify; display: block;">The price quoted is applicable only if the equipment to be covered under contract is already under Blue Star's warranty or annual maintenance contract. Otherwise the equipment shall be inspected &amp; repaired on a chargeable basis before covering the same under the contract. This offer is valid for one month from its date of issue or till the date of expiry of previous contract / warranty, whichever is later.</span>
+                    </p>
+                </li>
+            </ol>
+        </div>
+
+    </div> 
+</apex:page>

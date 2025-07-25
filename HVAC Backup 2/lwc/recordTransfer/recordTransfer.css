@@ -1,0 +1,30 @@
+.THIS.test .slds-form-element__label{
+    font-size:20pt;   
+    font-weight: bold;  
+}
+
+.THIS.test .slds-form-element__legend{
+    font-size:12pt; 
+  }
+
+.pagination {
+    display: flex;
+    justify-content: center; /* Center the pagination controls */
+    align-items: center;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-top: 1px solid #d8dde6;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Pagination button spacing */
+.pagination lightning-button {
+    margin: 0 10px; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    gap: 20px; /* Adds spacing between the buttons */
+    margin-top: 20px; /* Adds some space above the buttons */
+}

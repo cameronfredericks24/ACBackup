@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Find ESA">
+        <div class="slds-m-around_medium">
+            <lightning-combobox
+                label="Department Number"
+                name="departmentNumber"
+                value={departmentNumber}
+                options={departmentOptions}
+                onchange={handleInputChange}
+                required>
+            </lightning-combobox>
+            <lightning-input
+                label="Pincode Value"
+                name="pincodeValue"
+                value={pincodeValue}
+                onchange={handleInputChange}
+                required >
+            </lightning-input>
+            <lightning-input
+                label="Product Family Code"
+                name="productFamilyCode"
+                value={productFamilyCode}
+                onchange={handleInputChange}>
+            </lightning-input>
+            <lightning-combobox
+                label="Call Type"
+                name="callType"
+                value={callType}
+                options={callTypeOptions}
+                onchange={handleInputChange}>
+            </lightning-combobox>
+            
+            <lightning-input
+                label="Sector"
+                name="sector"
+                value={sector}
+                onchange={handleInputChange}>
+            </lightning-input>
+            <lightning-button
+                label="Find ESA"
+                onclick={handleFindESA}
+                class="slds-m-top_medium">
+            </lightning-button>
+            <div class="slds-m-top_medium">
+                <p><strong>ESA Result:</strong> {esaResult}</p>
+            </div>
+        </div>
+    </lightning-card>
+</template>

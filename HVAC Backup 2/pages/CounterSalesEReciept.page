@@ -1,0 +1,201 @@
+<apex:page standardController="Sale_Order__c" extensions="SalesOrderInvoiceController" applyHtmlTag="false" showHeader="false" renderAs="pdf">
+    <html>
+        <head>
+            <style>
+                @page {
+                    size: A4 landscape;
+                    margin: 1cm;
+
+                    @top-center {
+                        content: element(header);
+                    }
+                }
+                div.header {
+                    position: running(header);
+                }
+                .container {
+                    width: 100%;
+                    display: table;
+                    border : 1px solid;
+                }
+                .section-billing-details, .section-shipping-details{
+                    padding: 10px;
+                    /* border:1px solid red; */
+                }
+                .section-billing-details td, .section-shipping-details td{
+                    line-height:8px;
+                }
+                .section {
+                    display: table-cell;
+                    width: 50%;
+                    vertical-align: top;
+                }
+                .section .title {
+                    /* font-size: 1.5em; */
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                .details {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                .details tr, .details td {
+                    display: block;
+                    width: 100%;
+                }
+                .details td {
+                    padding: 5px 0;
+                }
+                .line-items {
+                    width: 100%;
+                    border-collapse: collapse;
+                    table-layout: fixed; /* Ensures the table does not exceed the page width */
+                }
+                .line-items th, .line-items td {
+                    border: 1px solid #000;
+                    padding: 5px;
+                    text-align: left;
+                    word-wrap: break-word;
+                    white-space: normal;
+                }
+                .line-items th {
+                    background-color: #f2f2f2;
+                }
+                .line-items th, .line-items td {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                
+            </style>
+        </head>
+        <body>
+            <div class="header" style="padding-top:3%;">
+                <table style="width: 100%; border-collapse: collapse; margin-top: 4%;">
+                    <tr>
+                        <td style="width: 20%;"><img class="logo" src="https://bluestarlimited--dev--c.sandbox.vf.force.com/resource/1718906639000/BSL_Logo?" alt="Logo" /></td>
+                        <td class="header-content" style="text-align:center;">COUNTER SALE E-RECEIPT</td>
+                        <td style="width: 20%;"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="content">
+                <div class="container" >
+                    <div class="section section-billing-details">
+                        <div class="title">Customer Details / Billing Details</div>
+                        <table class="details">
+                            <tr>
+                                <td>Ticket Number: {!ServiceTicketNum}</td>
+                            </tr>
+                            <tr>
+                                <td>Name: {!customerName}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone No.: {!customerPhone}</td>
+                            </tr>
+                            <tr>
+                                <td>Address: {!customerAddress}</td>
+                            </tr>
+                            <tr>
+                                <td>Place of Supply: {!placeOfSupply}</td>
+                            </tr>
+                            <tr>
+                                <td>Customer GSTIN: {!customerGSTIN}</td>
+                            </tr>
+                            <tr>
+                                <td>PAN: {!panNumber}</td>   
+                            </tr>
+                        </table>
+                    </div>
+            
+                    <div class="section section-shipping-details" style="border-left:1px solid">
+                        <div class="title">Shipping Details</div>
+                        <table class="details">
+                            <tr>
+                                <td>Name: {!shippingName}</td>
+                            </tr>
+                            <tr>
+                                <td>E-Receipt #: {!eReceiptNumber}</td>
+                            </tr>
+                            <tr>
+                                <td>Order/Bill Date: {!orderBillDate}</td>
+                            </tr>
+                            <tr>
+                                <td>Order Type: {!orderType}</td>
+                            </tr>
+                            <tr>
+                                <td>Status: {!status}</td>
+                            </tr>
+                            <tr>
+                                <td>Dealer GSTIN: {!dealerGSTIN}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <table class="line-items">
+                        <tr>
+                            <th>Line #</th>
+                            <th>HSN Code</th>
+                            <th>Part#</th>
+                            <th>Part Category</th>
+                            <th>Qty</th>
+                            <!-- <th>Serialized</th> -->
+                            <th>Invoice#</th>
+                            <!-- <th>Part Serial#</th> -->
+                            <th>Rate</th>
+                            <th>Discount</th>
+                            <th>Taxable Amount</th>
+                            <th>GST Type</th>
+                            <th>GST %</th>
+                            <th>GST Amount</th>
+                            <th>Total Amount</th>
+                        </tr>
+                        <apex:repeat value="{!salesOrderItems}" var="item">
+                            <tr>
+                                <td>1</td>
+                                <td>{!item.hsnCode}</td>
+                                <td>{!item.productCode}</td>
+                                <td>{!item.productCategory}</td>
+                                <td>{!item.quantitySales}</td>
+                                <!-- <td>{!IF(item.isSerialized, 'Y', 'N')}</td> -->
+                                <td>{!item.invoice}</td>
+                                <!-- <td>{!item.serialNumber}</td> -->
+                                <td>Rs. {!item.unitPrice}</td>
+                                <td>{!item.Discount}</td>
+                                <td>Rs. {!item.taxableAmount}</td>
+                                <td>GST</td>
+                                <td>2</td>
+                                <td>Rs. {!item.gstAmount}</td>
+                                <td>Rs. {!item.totalAmount}</td>
+                            </tr>
+                        </apex:repeat>
+                    </table>
+                </div>
+                                
+            </div>
+            <!-- Adding the new section for the summary details -->
+            <div class="summary-total">
+                <table class="summary">
+                    <br/>
+                    <tr>
+                        <td>Sub Total (Incl. tax): {!subTotal}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Tax Amount: {!totalTaxAmount}</td>
+                    </tr>
+                    <br/>
+                    <tr>
+                        <td><strong>Grand Total in Words:</strong> {!grandTotalInWords}</td>
+                    </tr>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <tr style="display:flex;">
+                        <td>Customer's Signature: </td><td style="padding-left:300px;"></td><td>Authorized Signatory: </td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,678 @@
+<apex:page standardController="WorkOrder" extensions="ProductRegistrationReportController" applyHtmlTag="false"
+           showHeader="false" renderAs="pdf">
+    <html>
+        <head>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: Arial, sans-serif;
+                }
+
+                @page {
+                    size: A4;
+                    margin: 0.5cm;
+                    padding: 0.5cm;
+                    width: 100%;
+                    border: 3px solid black;
+                }
+
+                body {
+                    font-family: Arial, sans-serif;
+                }
+
+                .header {
+                    width: 100%;
+                    background-color: white;
+                }
+
+                .header-table {
+                    width: 100%;
+                }
+
+                .header-table td {
+                    vertical-align: middle;
+                }
+
+                .header-logo {
+                    width: 30%;
+                }
+
+                .header-logo img {
+                    width: 100px;
+                }
+
+                .header-title {
+                    width: 70%;
+                    text-align: left;
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: #304a61;
+                }
+
+                .content {
+                    page-break-after: always;
+                }
+
+                .customer-dealer-columns {
+                    display: table;
+                    width: 100%;
+                    table-layout: fixed;
+                }
+
+                .customer-column, .dealer-column {
+                    display: table-cell;
+                    width: 50%;
+                    vertical-align: top;
+                    border: 1px solid black;
+                }
+
+                .customer-column {
+                    border-right-color: white;
+                }
+
+                .dealer-column {
+                    border-left-color: white;
+                }
+
+                .section-header {
+                    font-weight: bold;
+                    font-size: 16px;
+                    text-align: left;
+                    padding: 10px;
+                    color: white;
+                    background-color: #304a61;
+                }
+
+                .detail-row {
+                    display: table-row;
+                    width: 100%;
+                }
+
+                .detail-label, .detail-colon, .detail-value {
+                    display: table-cell;
+                    padding: 5px;
+                    vertical-align: top;
+                }
+
+                .detail-label {
+                    width: 47%;
+                    font-weight: bold;
+                    text-align: left;
+                }
+
+                .detail-colon {
+                    width: 3%;
+                    text-align: center;
+                }
+
+                .detail-value {
+                    width: 50%;
+                    text-align: left;
+                }
+
+                .unique-product-info-section {
+                    margin-top: 10px;
+                }
+
+                .unique-section-title {
+                    padding: 10px;
+                    background-color: #304a61;
+                    color: white;
+                    text-align: left;
+                    font-weight: bold;
+                }
+
+                .unique-small-section-title {
+                    border: 1px solid;
+                    padding: 10px;
+                    text-align: left;
+                    font-size: 13px;
+                    font-weight: bold;
+                }
+
+                .unique-product-info-table {
+                    margin: 0 auto;
+                    border-collapse: collapse;
+                }
+
+                .unique-products-data {
+                    width: 100%;
+                    border-collapse: collapse;
+                    table-layout: fixed;
+                }
+
+                .unique-products-data th, .unique-products-data td {
+                    border: 1px solid #000;
+                    padding: 8px;
+                    text-align: left;
+                    word-wrap: break-word;
+                    white-space: normal;
+                    font-size: 10pt;
+                }
+
+                .unique-products-data th {
+                    background-color: #f2f2f2;
+                    font-weight: bold;
+                }
+
+                .unique-products-data tr:nth-child(even) {
+                    background-color: #f9f9f9;
+                }
+
+                .unique-products-data tr:hover {
+                    background-color: #f1f1f1;
+                }
+
+                .unique-products-data td {
+                    word-wrap: break-word;
+                    max-width: 100px;
+                }
+
+                .unique-prd-commis-data {
+                    border: 1px solid;
+                }
+
+                .custom-section-title {
+                    padding: 10px;
+                    text-align: left;
+                    font-size: 13px;
+                    font-weight: bold;
+                }
+
+                .unique-commisson-data {
+                    border: 1px solid;
+                    padding: 5px;
+                }
+
+                .custom-commission-data {
+                    border: 1px solid;
+                }
+
+                .custom-product-info-table {
+                    margin: 0 auto;
+                    padding: 5px;
+                    border-collapse: collapse;
+                }
+
+                .custom-products-data {
+                    width: 100%;
+                    border-collapse: collapse;
+                    table-layout: fixed;
+                }
+
+                .custom-products-data th, .custom-products-data td {
+                    border: 1px solid #000;
+                    padding: 8px;
+                    text-align: center;
+                    word-wrap: break-word;
+                    white-space: normal;
+                    font-size: 10pt;
+                }
+
+                .custom-products-data th {
+                    background-color: #f2f2f2;
+                    font-weight: bold;
+                }
+
+                .custom-products-data tr:nth-child(even) {
+                    background-color: #f9f9f9;
+                }
+
+                .custom-products-data tr:hover {
+                    background-color: #f1f1f1;
+                }
+
+                .custom-products-data td {
+                    word-wrap: break-word;
+                    max-width: 100px;
+                }
+
+                .unique-warranty-section {
+                    border: 1px solid;
+                }
+
+                .warranty-section-header {
+                    border: 1px solid;
+                    width: 98%;
+                    margin: auto;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                }
+
+                .warranty-section {
+                    width: 98%;
+                    border-collapse: collapse;
+                    margin: auto;
+                    margin-bottom: 5px;
+                }
+
+                .warranty-section th, .warranty-section td {
+                    width: 100px;
+                    border: 1px solid #000;
+                    padding: 5px;
+                    text-align: center;
+                    font-size: 14px;
+                }
+
+                .small-section-title {
+                    font-size: 14px;
+                    font-weight: bold;
+                    padding-left: 5px;
+                    margin-top: 10px;
+                    margin-bottom: 5px;
+                }
+
+                .note {
+                    padding-left: 5px;
+                    font-size: 12px;
+                }
+
+                .customer-signature-service-columns {
+                    margin-top:10px;
+                    display: table;
+                    width: 100%;
+                    table-layout: fixed;
+                }
+
+                .customer-signature-column, .service-info-column {
+                    display: table-cell;
+                    width: 50%;
+                    vertical-align: top;
+                    border: 1px solid black;
+                }
+
+                .signature-section-header, .service-section-header {
+                    font-weight: bold;
+                    font-size: 16px;
+                    text-align: left;
+                    padding: 10px;
+                    color: white;
+                    background-color: #304a61;
+                }
+
+                .signature-detail-row, .service-detail-row {
+                    display: table-row;
+                    width: 100%;
+                }
+
+                .service-detail-label, .service-detail-colon, .service-detail-value, 
+                .signature-detail-value {
+                    display: table-cell;
+                    padding: 5px;
+                    font-size: 12px;
+                    vertical-align: top;
+                }
+
+                .service-detail-label {
+                    width: 40%;
+                    font-weight: bold;
+                    text-align: left;
+                }
+
+                .service-detail-colon {
+                    width: 5%;
+                    text-align: center;
+                }
+
+                .service-detail-value {
+                    width: 55%;
+                    text-align: left;
+                }
+
+                #customer-signature-image {
+                    width: 150px;
+                    height: auto;
+                }
+
+                .customer-location-wrapper {
+                    display: table;
+                    width: 100%;
+                    table-layout: fixed;
+                }
+
+                .unique-customer-details-column, .unique-location-details-column {
+                    display: table-cell;
+                    width: 50%;
+                    vertical-align: top;
+                    border: 1px solid black;
+                }
+
+                .unique-detail-row {
+                    display: table-row;
+                    width: 100%;
+                }
+
+                .unique-detail-label, .unique-detail-colon, .unique-detail-value {
+                    display: table-cell;
+                    padding: 5px;
+                    font-size: 12px;
+                    vertical-align: top;
+                }
+
+                .unique-detail-label {
+                    width: 40%;
+                    font-weight: bold;
+                    text-align: left;
+                }
+
+                .unique-detail-colon {
+                    width: 5%;
+                    text-align: center;
+                }
+
+                .unique-detail-value {
+                    width: 55%;
+                    text-align: left;
+                }
+                .atch-pro-srl-mdl-img{
+                    margin-top:10px;
+                    border: 1px solid;
+                }
+                .prd-srl-mdl-img{
+                    margin-top:5px;
+                    padding:5px;
+                }
+                .prd-srl-mdl{
+                    background-color: #304a61;
+                    padding:4px;
+                    color:white;
+                }
+
+            </style>
+        </head>
+        <body>
+            <!-- Header Section -->
+            <div class="header">
+                <table class="header-table">
+                    <tr>
+                        <td class="header-logo">
+                            <img src="{!URLFOR($Resource.BSL_Logo)}" alt="Bluestar Logo" />
+                        </td>
+                        <td class="header-title">
+                            PRODUCT REGISTRATION REPORT
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="content">
+                <div class="customer-dealer-columns">
+                    <!-- Customer Section -->
+                    <div class="customer-column">
+                        <div class="section-header">Customer Details</div>
+                        <div class="detail-row">
+                            <div class="detail-label">Customer ID</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.customerId}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Name</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.customerName}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Address</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.address}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Email Id</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.emailId}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Mobile No</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.mobileNo}</div>
+                        </div>
+                    </div>
+
+                    <!-- Dealer Section -->
+                    <div class="dealer-column">
+                        <div class="section-header">Service Ticket Details</div>
+                        <div class="detail-row">
+                            <div class="detail-label">Registration Type</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.registrationType}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Installation Date</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.installationDate}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Equipment Location</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.equipmentLocation}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Channel Partner Type</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.cpType}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Service Provider No</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.cpCode}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Service Provider Name</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!customerDealerWrapper.cpName}</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Products Section -->
+                <div class="unique-product-info-section">
+                    <div class="unique-section-title">Products</div>
+                    <div class="unique-small-section-title">Product Information</div>
+                    <div class="unique-product-info-table">
+                        <table class="unique-products-data">
+                            <thead>
+                                <tr>
+                                    <th>Product No</th>
+                                    <th>Component No</th>
+                                    <th>Product Family</th>
+                                    <th>Model</th>
+                                    <th>Product Serial No</th>
+                                    <th>UOM</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!productWrappers}" var="product">
+                                    <tr>
+                                        <td>{!product.serialNo}</td>
+                                        <td>{!product.sfComponentId}</td>
+                                        <td>{!product.productFamily}</td>
+                                        <td>{!product.modelNumber}</td>
+                                        <td>{!product.serialNumber}</td>
+                                        <td>{!product.capacityUOM}</td>
+                                        <td>{!product.registrationStatus}</td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Commissioning Data Section -->
+                    <div class="unique-commisson-data">
+                        <div class="custom-commission-data">
+                            <div class="custom-section-title">Product Commissioning Data</div>
+                            <div class="custom-product-info-table">
+                                <table class="custom-products-data">
+                                    <thead>
+                                        <tr>
+                                            <th>System Ampere (A)</th>
+                                            <th>Incoming Voltage (V)</th>
+                                            <th>Grille Temperature (°C)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!commissioningWrapper}" var="commissioningInfo">
+                                            <tr>
+                                                <td>{!commissioningInfo.amphere}</td>
+                                                <td>{!commissioningInfo.voltage}</td>
+                                                <td>{!commissioningInfo.temperature}</td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warranty Section -->
+                <div class="unique-warranty-section">
+                    <div class="warranty-section-header">
+                        <div class="small-section-title">Service Coverage Information</div>
+                        <table class="warranty-section">
+                            <tr>
+                                <th>Line No.</th>
+                                <th>Policy Type</th>
+                                <th>Policy No.</th>
+                                <th>Coverage Type</th>
+                                <th>Duration</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                            </tr>
+                            <apex:repeat value="{!warranties}" var="warranty" id="warrantyRepeat">
+                                <tr>
+                                    <td>{!warranty.Index}</td>
+                                    <td>{!warranty.WarrantyType}</td>
+                                    <td>{!warranty.WarrantyTermName}</td>
+                                    <td>{!warranty.WarrantyType}</td>
+                                    <td>{!warranty.WarrantyDurationInYears}</td>
+                                    <td>{!warranty.StartDate}</td>
+                                    <td>{!warranty.EndDate}</td>
+                                </tr>
+                            </apex:repeat>
+                        </table>
+                        <div class="note">
+                            <strong>Note:</strong> Warranty policy stated here is tentative, actual warranty period will be as per the product installation date with condition of 12 months from the date of Installation or 15 months from the date of Invoice, whichever ends earlier.
+                        </div>
+                        <hr/>
+                    </div>
+                </div>
+
+                <!-- Customer Signature and Service Details Section -->
+                <div class="customer-signature-service-columns">
+                    <!-- Customer Signature Section -->
+                    <div class="customer-signature-column">
+                        <div class="signature-section-header">Customer Signature</div>
+                        <div class="signature-detail-row">
+                            <div class="signature-detail-value">
+                                <apex:outputPanel rendered="{!NOT(ISNULL(serviceDetailsWrapper.imageLink))}">
+                                    <img id="customer-signature-image" src="{!serviceDetailsWrapper.imageLink}" alt="Customer Signature" />
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Details Section -->
+                    <div class="service-info-column">
+                        <div class="service-section-header">Service Details</div>
+                        <div class="service-detail-row">
+                            <div class="service-detail-label">Report Submission Date</div>
+                            <div class="service-detail-colon">:</div>
+                            <div class="service-detail-value">{!serviceDetailsWrapper.reportSubmissionDate}</div>
+                        </div>
+                        <div class="service-detail-row">
+                            <div class="service-detail-label">Installation done by</div>
+                            <div class="service-detail-colon">:</div>
+                            <div class="service-detail-value">{!serviceDetailsWrapper.serviceDoneBy}</div>
+                        </div>
+                        <div class="service-detail-row">
+                            <div class="service-detail-label">Technician's Remarks</div>
+                            <div class="service-detail-colon">:</div>
+                            <div class="service-detail-value">{!serviceDetailsWrapper.technicianRemarks}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="customer-location-wrapper">
+                    <!-- Customer Details Section -->
+                    <div class="unique-customer-details-column">
+                        <div class="unique-detail-row">
+                            <div class="unique-detail-label">Customer / Site In-charge</div>
+                            <div class="unique-detail-colon">:</div>
+                            <div class="unique-detail-value">{!custDetailsWrapper.accountName}</div>
+                        </div>
+                        <div class="unique-detail-row">
+                            <div class="unique-detail-label">Mobile No</div>
+                            <div class="unique-detail-colon">:</div>
+                            <div class="unique-detail-value">{!custDetailsWrapper.accountPhone}</div>
+                        </div>
+                        <div class="unique-detail-row">
+                            <div class="unique-detail-label">Email Id</div>
+                            <div class="unique-detail-colon">:</div>
+                            <div class="unique-detail-value">{!custDetailsWrapper.accountEmail}</div>
+                        </div>
+                        <div class="unique-detail-row">
+                            <div class="unique-detail-label">Rating</div>
+                            <div class="unique-detail-colon">:</div>
+                            <div class="unique-detail-value"><apex:outputText value="{!custDetailsWrapper.starRating}" escape="false"/></div>
+                        </div>
+                    </div>
+
+                    <!-- Location Details Section -->
+                    <div class="unique-location-details-column">
+                        <p class="unique-detail-value">
+                            To know your real service site location, please copy &amp; paste latitude and longitude numbers into Google Maps, or click the link below:
+                        </p>
+                        <br/>
+                        <a href="https://www.google.co.in/maps/place/{!custDetailsWrapper.ticketLatitude},{!custDetailsWrapper.ticketLongitude}" class="unique-detail-value" target="_blank">
+                            View Location on Google Maps
+                        </a>
+                    </div>
+                </div>
+                <!-- Customer Location Section -->
+ 
+
+                <div class="atch-pro-srl-mdl-img">
+                    <div class="unique-section-title">Attachments</div>
+                    <div class="prd-srl-mdl-img">
+                        <div class="prd-srl-mdl">
+                           <strong> Product [Serial No. : {!productSerialNo} / Model No. : {!productModelNo}]</strong>
+                        </div>
+                        <div class="prd-img">
+                            <img src="{!imageUrl}"></img>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="footer" style="border-top: 2px solid #333; text-align: center;">
+                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                    <div style="display: table-row; background-color:#314b62; color:white;">
+                        <div style="display: table-cell; text-align: left; font-size: 15px; font-weight: bold; vertical-align: middle;">
+                            Download the Blue Star Customer Care APP
+                        </div>
+                        <div style="display: table-cell; text-align: right; vertical-align: middle; border-radius:5px;">
+                            <img src="{!URLFOR($Resource.Playstore_logo)}" alt="Android App" style="height: 40px; margin-right: 20px; mix-blend-mode: multiply;" />
+                            <img src="{!URLFOR($Resource.Ios_logo)}" alt="iOS App" style="height: 40px; mix-blend-mode: multiply;" />
+                        </div>
+                    </div>
+                </div>
+                <div style="color: #314b62; font-weight: bold; padding: 15px; margin-top: 10px;">
+                    <div style="font-size: 14px; margin-bottom: 5px;">
+                        For any query, please email us at: <a href="mailto:customerservice@bluestarindia.com" style="color: #004080; text-decoration: none;">customerservice@bluestarindia.com</a>
+                    </div>
+                    <div style="font-size: 14px; margin-bottom: 5px;">
+                        24/7 Customer Care No.: 1800 209 1177 SMS 'SERVICE' to 57575
+                    </div>
+                    <div style="font-size: 14px; margin-bottom: 5px;">
+                        Visit us at <a href="http://www.bluestarindia.com" target="_blank" style="color: #004080; text-decoration: none;">www.bluestarindia.com</a>
+                    </div>
+                </div>
+                <div style="margin-top: 5px; font-size: 12px; text-align: center;">
+                    <strong style="text-decoration: underline;">Registered Address</strong><br>
+                    Blue Star Ltd. Kasturi Buildings, Mohan T Advani Chowk, Jamshedji Tata Road, Mumbai - 400 020, India.</br>
+                    Tel: +91 22 66654000 Fax: +91 22 66654152 CIN: L28920MH1949PLC006870
+                </div>
+            </div>
+        </body>
+    </html>
+</apex:page>

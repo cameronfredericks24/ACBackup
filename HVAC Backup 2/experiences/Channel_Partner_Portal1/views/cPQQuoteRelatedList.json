@@ -1,0 +1,39 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "02264a8f-543c-4f2b-810f-d1132139001c",
+  "label" : "CPQ Quote Related List",
+  "regions" : [ {
+    "id" : "1abada54-7105-4f62-b795-fc7753d4739f",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "86bfd022-0ea9-4a5d-9513-ac3d4ee48596",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "929796d9-3e36-4eb4-9aa5-16131e9d978b",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "85e4b8c8-294b-4f59-ab75-0fa0340042c5",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-a2B"
+}

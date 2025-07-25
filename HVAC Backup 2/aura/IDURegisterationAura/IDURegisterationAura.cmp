@@ -1,0 +1,23 @@
+<aura:component implements="lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global">
+    <aura:attribute name="recordId" type="String" />
+    <aura:html tag="style">
+        .cuf-content{
+            padding: 0rem !important;
+        }
+        .slds-modal__container{
+            max-width:50rem !important;
+            width: 50% !important;
+        }
+        .slds-modal__content{
+           
+            height: fit-content !important;
+            max-height: fit-content !important;
+            <!--padding: 0rem !important;-->
+        }
+       
+      
+        
+
+    </aura:html>
+    <c:iDURegistration aura:id="idu" recordId="{!v.recordId}"></c:iDURegistration>
+</aura:component>

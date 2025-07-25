@@ -1,0 +1,71 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "6bbfd01d-cdad-4368-b8b1-2eebb9033f4c",
+  "label" : "TechnicianTermination",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "b0aacbbc-61e9-4360-be13-c820cfae0767",
+          "columns" : [ {
+            "UUID" : "d69467d2-6b8b-45ed-8302-c2527c0c0d39",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "b0aacbbc-61e9-4360-be13-c820cfae0767",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "flowArguments" : "",
+            "flowName" : "Technician_Termination_flow"
+          },
+          "componentName" : "forceCommunity:flowCommunity",
+          "id" : "cfd0e68b-d897-491e-b24d-801e068720ea",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "d69467d2-6b8b-45ed-8302-c2527c0c0d39",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7ac83c02-73bd-434a-b6d3-c814913de93a",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "TechnicianTermination"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "284af8ee-a6c6-474d-9d92-82121af6e6c0",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5299485f-f536-4b20-95c5-3d44744f534c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-techniciantermination"
+}

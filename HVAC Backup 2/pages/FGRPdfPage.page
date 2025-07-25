@@ -1,0 +1,528 @@
+<apex:page standardController="ReturnOrder" extensions="FGRPDFController"  applyHtmlTag="false"
+           showHeader="false" renderAs="pdf">
+    <html>
+        <head>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: Arial, sans-serif;
+                	font-size : 12px;
+                
+                }
+
+                @page {
+                    size: letter;
+                    margin: 0.5cm;
+                    padding: 0.5cm;
+                    width: 100%;
+                    border: 3px solid black;
+                }
+                
+                .no-page-break {
+                    page-break-inside: avoid;
+                }
+
+                body {
+                    font-family: Arial, sans-serif;
+
+                
+                }
+
+                .header {
+                    width: 100%;
+                    background-color: white;
+                }
+
+                .header-table {
+                    width: 100%;
+                }
+
+                .header-table td {
+                    vertical-align: middle;
+                }
+
+                .header-logo {
+                    width: 30%;
+                }
+
+                .header-logo img {
+                    width: 100px;
+                }
+
+                .header-title {
+                    width: 70%;
+                    text-align: left;
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: #304a61;
+                }
+
+                .content {
+                    <!--page-break-after: always;-->
+                }
+
+                .customer-dealer-columns {
+                    display: table;
+                    width: 100%;
+                    table-layout: fixed;
+                }
+
+                .customer-column, .dealer-column {
+                    display: table-cell;
+                    width: 50%;
+                    vertical-align: top;
+                    border: 1px solid black;
+                    padding : 10px;
+                }
+
+                .customer-column {
+                    border-right-color: white;
+                }
+
+                .dealer-column {
+                    border-left-color: white;
+                }
+
+                .section-header {
+                    font-weight: bold;
+                    font-size: 16px;
+                    text-align: left;
+                    padding: 10px;
+                    color: white;
+                    background-color: #304a61;
+                }
+
+                .detail-row {
+                    
+                   display: flex;
+                   flex-wrap: nowrap; 
+                   padding-bottom: 2px;
+                }
+
+                .detail-label, .detail-colon, .detail-value {
+                    display: table-cell;
+                    padding: 5px;
+                    vertical-align: top;
+                }
+
+                .detail-label {
+                    width: 47%;
+                    font-weight: bold;
+                    text-align: left;
+              
+                }
+                
+                .title-label {
+                    font-weight: bold;
+                    padding-left: 10px;
+                  font-size : 14px;
+                }
+
+                .detail-colon {
+                    width: 3%;
+                    text-align: center;
+                }
+
+                .detail-value {
+                    width: 50%;
+                    text-align: left;
+                }
+                .unique-section-title {
+                    padding: 10px;
+                    background-color: #304a61;
+                    color: white;
+                    text-align: left;
+                    font-weight: bold;
+                }
+
+                .unique-small-section-title {
+                    border: 1px solid;
+                    padding: 10px;
+                    text-align: left;
+                    font-size: 13px;
+                    font-weight: bold;
+                }
+             
+
+            </style>
+        </head>
+        <body >
+            <div >
+                
+           
+            <!-- Header Section -->
+            <div class="header ">
+                <table class="header-table">
+                    <tr>
+                        <td class="">
+                            <img src="{!URLFOR($Resource.BSL_Logo)}" alt="Bluestar Logo" />
+                        </td>
+                        <td  class="title-label">
+                            {!returnOrder.FGR_Number__c}
+                        </td>
+                        <td  class="title-label">
+                            Status : {!status}
+                        </td>
+                        <td  class="title-label">
+                            {!TEXT(DAY(TODAY()))}-{!TEXT(MONTH(TODAY()))}-{!TEXT(YEAR(TODAY()))}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="content ">
+                <div class="unique-section-title">Request</div>
+                <div class="customer-dealer-columns">
+                    <!-- Customer Section -->
+                    <div class="customer-column">
+                        <div class="detail-label" Style="margin-bottom:2%;">Request information</div>
+                        <div class="detail-row">
+                            <div class="detail-label">Channel Partner Type</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!ReturnOrder.CP_Name__r.Type}</div>
+                            
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Channel Partner No.</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!ReturnOrder.CP_Name__r.Cp_Code__c}</div>
+                           
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label" >Name </div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!ReturnOrder.CP_Name__r.Name}</div>
+                           
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Dealer Decalartion</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">I/We hereby Confirm that the
+                            machines have been packed in
+                            carton and the packing includes
+                            machines along with all the
+                            accessories. In case any parts
+                            are missing, the cost of the parts
+                            may be debited to me. I/We will
+                            forthwith remit this amount to
+                            BSL.Yes
+							</div>
+                           
+                        </div>
+              
+                    </div>
+
+                    <!-- Dealer Section -->
+                    <div class="dealer-column">
+                        <div class="detail-label" Style="margin-bottom:2%;" >Customer and Dispatch Information</div>
+                        <div class="detail-row">
+                            <div class="detail-label">Dispatch Address </div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!ReturnOrder.Failure_Observed_At__c}</div>
+                           
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Customer </div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value" >{!ReturnOrder.Account.Customer_ID__c}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Name </div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">{!ReturnOrder.Account.Name}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Address</div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value">
+                                
+                                <p>{!ReturnOrder.ShipFromStreet}</p>
+                                <p>{!ReturnOrder.ShipFromCity}{!ReturnOrder.ShipFromState}</p>
+                                <p>{!ReturnOrder.ShipFromPostalCode}{!ReturnOrder.ShipFromCountry}</p>
+                                
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Contact </div>
+                            <div class="detail-colon">:</div>
+                            <div class="detail-value"><p>{!ReturnOrder.Work_Order__r.Contact_Email__c}</p>
+                                <p>{!ReturnOrder.Work_Order__r.Contact_Phone__c}</p></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Products Section -->
+                <div class="unique-product-info-section">
+                    <div class="unique-small-section-title"><div class="detail-label">
+                        
+                       Additional Information</div> </div>
+                    <div class="">
+                        <div class="customer-dealer-columns">
+                            <!-- Customer Section -->
+                            <div class="customer-column">
+                                <div class="detail-row">
+                                    <div class="detail-label">Created date </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!TEXT(DAY(createddate))}-{!TEXT(MONTH(createddate))}-{!TEXT(YEAR(createddate))}</div>
+                                </div>
+                      
+                            </div>
+        
+                            <!-- Dealer Section -->
+                            <div class="dealer-column">
+                               
+                                <div class="detail-row">
+                                    <div class="detail-label">Updated Date</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!TEXT(DAY(LastModifiedDate))}-{!TEXT(MONTH(LastModifiedDate))}-{!TEXT(YEAR(LastModifiedDate))}</div>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="unique-section-title">Product Information</div>
+                        <div class="customer-dealer-columns">
+                            <!-- Customer Section -->
+                            <div class="customer-column">
+                                <div class="detail-row">
+                                    <div class="detail-label" >Product Family </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ProductFamily.Code__c}</div>
+                                    
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Product Sub Family</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ProductSubFamily.Code__c}</div>
+                                   
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Model </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!model}</div>
+                                   
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Product Serial Number </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!productSerialNo}</div>                  
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Branch </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!branch}</div>                  
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">SDE </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.SDE__r.EmployeeNumber}</div>                  
+                                </div>
+                      
+                            </div>
+        
+                            <!-- Dealer Section -->
+                            <div class="dealer-column">
+                                <div class="detail-row">
+                                    <div class="detail-label">Product Family Name </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ProductFamily.Name}</div>
+                                   
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Product Sub Family Name </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ProductSubFamily.name}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Name</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ProductName}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Invoice No </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Invoice_Number__c}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Department</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Service_Department__c}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">SDE Name </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value"> {!ReturnOrder.SDE__r.name}</div>  
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                    <div class="unique-section-title">Failure</div>
+                        <div class="customer-dealer-columns">
+                            <!-- Customer Section -->
+                            <div class="customer-column">
+                                <div class="detail-label" Style="margin-bottom:2%;">Channel Partner Failure Details</div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Failure Observed At </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Failure_Observed_At__c}</div>
+                                    
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Equipment Type</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Equipment_Type_General__c}</div>
+                                   
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Main Defect </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Main_Defect_General__c}</div>
+                                   
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Sub -Defect 1</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Sub_Defect_1_General__c}</div>
+                                   
+                                </div>
+                                  <div class="detail-row">
+                                    <div class="detail-label">Sub -Defect 2</div>
+                                      <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Sub_Defect_2_General__c}</div>
+                                   
+                                </div>
+                      
+                            </div>
+        
+                            <!-- Dealer Section -->
+                            <div class="dealer-column">
+                                <div class="detail-label" Style="margin-bottom:2%;">SDE Failure Details</div>
+                               <div class="detail-row">
+                                    <div class="detail-label">Failure Observed At </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Failure_Observed_At_SDE__c}</div>
+                                    
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Equipment Type </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Equipment_Type_New_SDE__c}</div>
+                                   
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label" >Main Defect </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Main_Defect_New_SDE__c}</div>
+                                   
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Sub -Defect 1</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Sub_Defect_1_New_SDE__c}</div>
+                                   
+                                </div>
+                                  <div class="detail-row">
+                                    <div class="detail-label">Sub -Defect 2 </div>
+                                      <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Sub_Defect_2_New_SDE__c}</div>
+                                   
+                                </div>
+                                 <div class="detail-row">
+                                    <div class="detail-label">Recommend Sales Return </div>
+                                     <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Recommend_Sales_Return__c}</div>
+                                   
+                                </div>
+                                 <div class="detail-row">
+                                    <div class="detail-label">Classification Type </div>
+                                     <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Classification_Type__c}</div>
+                                   
+                                </div>
+                                 <div class="detail-row">
+                                    <div class="detail-label">Estimated Repair Cost</div>
+                                     <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Estimated_Repair_Cost__c}</div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    <div class="unique-small-section-title"><div class="detail-label">Replacement Details</div></div>
+                        <div class="customer-dealer-columns">
+                            <!-- Customer Section -->
+                            <div class="customer-column">
+                                <div class="detail-row">
+                                    <div class="detail-label">DA Reference of New Equipment</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.DA_Reference_of_New_Equipment__c}</div>
+                                    
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Return Invoice No.</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Return_Invoice_No__c}</div>
+                                   
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Action taken on Defective Machine </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Action_Taken_On_Defective_Machine__c}</div>
+                                   
+                                </div>
+                       
+                            </div>
+        
+                            <!-- Dealer Section -->
+                            <div class="dealer-column">
+                                <div class="detail-row">
+                                    <div class="detail-label">Return OBD No.</div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value">{!ReturnOrder.Return_OBD_No__c}</div>
+                                   
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Return SO No. </div>
+                                    <div class="detail-colon">:</div>
+                                    <div class="detail-value" >{!ReturnOrder.Return_SO_No__c}</div>
+                                </div>
+                              
+                            </div>
+                        </div>           
+                </div>
+                <div  style="border-top: 2px solid #333; text-align: center;margin-top: 10%">
+                    <div style="display: table; width: 100%; ">
+                        <div style="padding-left:10px; display: table-row; background-color:#314b62; color:white;">
+                            <div style="padding-left:10px; display: table-cell; text-align: left; font-size: 15px; font-weight: bold; vertical-align: middle;">
+                                Download the Blue Star Customer Care APP
+                            </div>
+                            <div style="display: table-cell; text-align: right; vertical-align: middle; border-radius:5px;">
+                                <img src="{!URLFOR($Resource.Playstore_logo)}" alt="Android App" style="height: 40px; margin-right: 20px; mix-blend-mode: multiply;" />
+                                <img src="{!URLFOR($Resource.Ios_logo)}" alt="iOS App" style="height: 40px; mix-blend-mode: multiply;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="color: #314b62; font-weight: bold; padding: 15px; margin-top: 10px;">
+                        <div style="font-size: 14px; margin-bottom: 5px;">
+                            For any query, please email us at: <a href="mailto:customerservice@bluestarindia.com" style="color: #004080; text-decoration: none;">customerservice@bluestarindia.com</a>
+                        </div>
+                        <div style="font-size: 14px; margin-bottom: 5px;">
+                            24/7 Customer Care No.: 1800 209 1177 SMS 'SERVICE' to 57575
+                        </div>
+                        <div style="font-size: 14px; margin-bottom: 5px;">
+                            Visit us at <a href="http://www.bluestarindia.com" target="_blank" style="color: #004080; text-decoration: none;">www.bluestarindia.com</a>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5px; font-size: 12px; text-align: center;">
+                        <strong style="text-decoration: underline;">Registered Address</strong><br>
+                        Blue Star Ltd. Kasturi Buildings, Mohan T Advani Chowk, Jamshedji Tata Road, Mumbai - 400 020, India.</br>
+                        Tel: +91 22 66654000 Fax: +91 22 66654152 CIN: L28920MH1949PLC006870
+                    </div>
+            </div>
+
+
+            </div>
+             </div>
+            
+        </body>
+    </html>
+</apex:page>

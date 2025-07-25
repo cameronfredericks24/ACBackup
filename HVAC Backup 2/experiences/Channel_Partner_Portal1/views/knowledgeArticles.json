@@ -1,0 +1,46 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "674c04bd-c842-4ef7-ba42-7e886a690f13",
+  "label" : "Knowledge Articles",
+  "regions" : [ {
+    "id" : "a4e8e56b-110e-4f61-b386-9cb34244a283",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:knowledgeSearch",
+      "id" : "218f5afb-92c4-4bc3-bb37-6c04ea27d8fe",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "534f1cd8-6f05-4deb-9ef0-a1a781f52e5e",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "f79738b9-a346-4053-aa6c-4bf0b9c88cfe",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Knowledge Articles"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "0da5467a-dbdb-4c55-9738-44c9100fb241",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b2198eab-cd25-4958-a260-0156b60ff013",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-knowledge-articles"
+}

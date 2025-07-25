@@ -1,0 +1,14 @@
+<template>
+    <lightning-card >
+        <div if:true={showSpinner} class="spinner">
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+        <div  class="slds-m-around_medium slds-align_absolute-center ">Send Survey Link</div>
+        <div class="slds-m-around_medium slds-align_absolute-center ">
+            
+            <template if:true={message}>
+                <div class={messageClass}>{message}</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

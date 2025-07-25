@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <decisions>
+        <name>If_Quote_Status</name>
+        <label>If Quote Status</label>
+        <locationX>710</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Presented</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SBQQ__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Presented</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Records_1</targetReference>
+            </connector>
+            <label>If Presented</label>
+        </rules>
+        <rules>
+            <name>If_In_Review</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SBQQ__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>In Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Records_2</targetReference>
+            </connector>
+            <label>If In Review</label>
+        </rules>
+        <rules>
+            <name>If_In_Approval</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SBQQ__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>In Approval</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Records_3</targetReference>
+            </connector>
+            <label>If In Approval</label>
+        </rules>
+        <rules>
+            <name>If_Approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SBQQ__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Records_4</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If Approved</label>
+        </rules>
+        <rules>
+            <name>If_Accepted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SBQQ__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Accepted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Records_5</targetReference>
+            </connector>
+            <label>If Accepted</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Quote and Opportunity Status Mapping {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Quote and Opportunity Status Mapping CPQ Quote</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Records_1</name>
+        <label>Update Records 1</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Negotiation</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SubStatus__c</field>
+            <value>
+                <stringValue>Proposal Presented</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.SBQQ__Opportunity2__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Records_2</name>
+        <label>Update Records 2</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Negotiation</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SubStatus__c</field>
+            <value>
+                <stringValue>In Review</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.SBQQ__Opportunity2__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Records_3</name>
+        <label>Update Records 3</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Negotiation</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SubStatus__c</field>
+            <value>
+                <stringValue>In Approvals</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.SBQQ__Opportunity2__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Records_4</name>
+        <label>Update Records 4</label>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SubStatus__c</field>
+            <value>
+                <stringValue>Proposal Submitted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.SBQQ__Opportunity2__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Records_5</name>
+        <label>Update Records 5</label>
+        <locationX>1106</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Finalized</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SubStatus__c</field>
+            <value>
+                <stringValue>PO Uploaded</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.SBQQ__Opportunity2__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>584</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>If_Quote_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SBQQ__Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>SBQQ__Quote__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

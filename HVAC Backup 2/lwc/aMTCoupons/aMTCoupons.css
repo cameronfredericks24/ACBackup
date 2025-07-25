@@ -1,0 +1,38 @@
+.card-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem; /* Adjust size as needed */
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+p {
+    text-align: center;
+}
+
+div[style*="font-weight:bold"] {
+    text-align: center;
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the inputs horizontally */
+    margin: 1rem 0; /* Adds vertical spacing between inputs */
+}
+
+lightning-input,
+lightning-combobox {
+    width: 200px; /* Adjust width as needed */
+    margin: 0.5rem 0; /* Adds spacing between input fields */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers buttons */
+    margin-top: 1rem; /* Adds spacing above the button container */
+}

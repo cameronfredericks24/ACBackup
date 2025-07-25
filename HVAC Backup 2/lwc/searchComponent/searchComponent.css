@@ -1,0 +1,52 @@
+/* searchComponent.css */
+.custom-row {
+    display: flex;
+    justify-content: center; /* Center the Lightning card within the container */
+}
+
+.custom-column {
+    margin: 10px; /* Adjust the margin as needed */
+}
+
+.custom-image {
+    width: 100%; /* Adjust the width as needed */
+    height: auto;
+}
+
+/* Additional styling for the table */
+.slds-table {
+    width: 100%;
+}
+
+.slds-table th, .slds-table td {
+    border: 1px solid #d8dde6; /* Adjust the border color as needed */
+}
+
+.slds-table th {
+    background-color: #f2f4f8; /* Adjust the background color as needed */
+}
+.tableData {
+  text-align: center;
+}
+.my-table thead tr th{
+  background-color: #B1cfeb;
+}
+.CenterDiv{
+  display: flex;
+  justify-content: center;
+ align-items: center;
+
+}
+.my-table-head{
+    background-color:  #F1F1F1;
+    text-align: center;
+  }
+  .my-table {
+ position: relative;
+  top:-8px
+}
+.table-container {
+    max-height: 99vh;  /*Adjust the maximum height as needed */
+    max-width: 100%; /* Adjust the maximum width as needed */
+    overflow-y: auto;
+}

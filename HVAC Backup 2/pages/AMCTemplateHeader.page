@@ -1,0 +1,51 @@
+<apex:page contentType="text/xml" showHeader="false" sidebar="false" controller="AMCTemplateController">
+    <table table-layout="fixed" width="100%">
+        <table-body> 
+            <table-row>
+                <!-- First cell with image, spanning 2 columns and vertically aligned to top -->
+                <table-cell vertical-align="top" margin-left="-30pt" >
+                    <block >
+                        <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(firstPageImage1))}">
+                            <external-graphic src="{!firstPageImage1}" scaling="non-uniform" height="1.25in" content-width="2.10in"/>
+                        </apex:outputPanel>
+                    </block>
+                </table-cell>
+                <table-cell vertical-align="top" >
+                    <block >
+                        <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(firstPageImage1))}">
+                            <external-graphic src="{!firstPageISO}" scaling="non-uniform" height="1.25in" content-width="2.0in"/>
+                        </apex:outputPanel>
+                    </block>
+                </table-cell>
+                
+                <table-cell vertical-align="top" number-columns-spanned="1" font-family="sans-serif" font-size="9" padding-left="60pt">
+                    <block font-weight="bold" text-align="left" font-family="sans-serif" font-size="10">&nbsp;</block>       
+                    <block font-weight="bold" text-align="left" font-family="sans-serif" font-size="10">Blue Star Limited</block>
+                    <block  text-align="left" font-family="sans-serif" font-size="8.5" >{!HTMLENCODE(plantStreet)}</block>
+                    <block  text-align="left" font-family="sans-serif" font-size="8.5" >{!HTMLENCODE(plantCity)} - {!HTMLENCODE(plantPostalCode)}</block>
+                    <!-- <block  text-align="left" font-family="sans-serif" font-size="8.5" >{!HTMLENCODE(pantStateCode)}</block>
+<block  text-align="left" font-family="sans-serif" font-size="8.5" >{!HTMLENCODE(plantCountryCode)}</block>
+-->
+                    <block  text-align="left" font-family="sans-serif" font-size="8.5" >GSTIN ID:{!HTMLENCODE(plantGst)}</block>
+                    <apex:outputPanel layout="none" rendered="{!plantCity != ''}" style="display: inline-block; vertical-align: top;">
+                        <block  text-align="left" font-family="sans-serif" font-size="8.5" >Tel No:18602666666</block>
+                        <block  text-align="left" font-family="sans-serif" font-size="7" >Email:customerservice@bluestarindia.com</block>
+                    </apex:outputPanel>
+                </table-cell>                
+            </table-row>
+            <table-row>
+                <!-- First cell with image, spanning 2 columns and vertically aligned to top -->
+                <table-cell vertical-align="top" number-columns-spanned="2">
+                    <block text-align="left" font-family="sans-serif" font-size="10"  >
+                        <apex:outputText >Proposal / Proforma Invoice No: {!HTMLENCODE(proposalName)}  </apex:outputText>
+                    </block>
+                    <block text-align="left" font-family="sans-serif" font-size="10"   >
+                        <apex:outputText >Proposal / Proforma Invoice Date: {!HTMLENCODE(todayDateString)}  </apex:outputText>
+                        
+                    </block> 
+                </table-cell>
+            </table-row>
+        </table-body>     
+    </table>
+    
+</apex:page>

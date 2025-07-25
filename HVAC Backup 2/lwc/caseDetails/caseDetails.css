@@ -1,0 +1,21 @@
+/* caseDetails.css */
+.centered-content {
+    text-align: center;
+    margin: auto;
+    width: 100vw;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2.5vmax;
+    font-style: inherit;
+}
+
+.case-info {
+    margin-top: 20px;
+}

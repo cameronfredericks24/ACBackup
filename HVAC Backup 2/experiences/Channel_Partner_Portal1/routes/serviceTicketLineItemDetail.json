@@ -1,0 +1,10 @@
+{
+  "activeViewId" : "9b122b30-4e4c-4534-895d-32323c27e476",
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "configurationTags" : [ ],
+  "id" : "63d50845-6fe3-44e7-84ae-5cdcd12ae16c",
+  "label" : "Service Ticket Line Item Detail",
+  "routeType" : "detail-1WL",
+  "type" : "route",
+  "urlPrefix" : "workorderlineitem"
+}

@@ -1,0 +1,71 @@
+.message {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Style for "Work already rejected" message */
+.message.work-rejected {
+    background-color: #FF6347; /* Adjust color as needed */
+    color: #fff; /* Adjust text color as needed */
+}
+
+/* Style for "Work rejected successfully" message */
+.message.work-rejected-successfully {
+    background-color: #32CD32; /* Adjust color as needed */
+    color: #fff; /* Adjust text color as needed */
+}
+.custom-combobox {
+    width: 300px; /* Adjust the width as needed */
+    margin: 0 auto;
+}
+.reason-of-reject{
+    width: 340px; /* Adjust the width as needed */
+    margin: 0 auto;
+}
+.next-button {
+    margin-left: 150px; /* Adjust the spacing between combobox and button */
+    display: block; /* Ensure the button takes full width */
+}
+.cancellation-reason label {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    font-size: 18px; /* Adjust font size as needed */
+    font-weight: bold; /* Make the font bold */
+    color: #333; /* Set text color */
+    text-transform: uppercase; /* Convert text to uppercase */
+    padding: 5px 10px; /* Add padding around the label */
+    background-color: #f0f0f0; /* Add background color */
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: background-color 0.3s ease; /* Add smooth transition */
+}
+
+.cancellation-reason label:hover {
+    background-color: #e0e0e0; /* Change background color on hover */
+}
+
+.confirmation-screen {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+   /** background-color: #f9f9f9;**/
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center; /* Center align content */
+   
+}
+
+.confirmation-screen p {
+    margin: 0 0 15px;
+}
+
+.confirmation-screen lightning-button {
+    margin: 0 10px; /* Add margin to buttons */
+}

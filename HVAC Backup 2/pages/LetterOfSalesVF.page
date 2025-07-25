@@ -1,0 +1,251 @@
+<apex:page standardController="WorkOrder" extensions="LetterOfSalesController" applyHtmlTag="false" showHeader="false" renderAs="pdf">
+    <html>
+        <head>
+            <style>
+                @page {
+                    size: A4 landscape;
+                    margin-top: 3cm;
+                    margin-bottom: 2cm;
+                    margin-left: 1cm;
+                    margin-right: 1cm;
+                    @top-center {
+                        content: element(header);
+                    }
+                    @bottom-left {
+                        content: element(footer);
+                    }
+                }
+                div.header {
+                    position: running(header);
+                    margin-top:0.5cm;
+                }
+                div.footer {
+                    display: block;
+                    position: running(footer);
+                }
+                .pagenumber:before {
+                    content: counter(page);
+                }
+                .pagecount:before {
+                    content: counter(pages);
+                }
+                .container {
+                    width: 100%;
+                    display: table;
+                    border: 1px solid black;
+                }
+                .section-billing-details, .section-shipping-details {
+                    padding: 10px;
+                }
+                .section-billing-details td, .section-shipping-details td {
+                    line-height: 8px;
+                }
+                .section {
+                    display: table-cell;
+                    width: 50%;
+                    vertical-align: top;
+                }
+                .section .title {
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+                .details {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                .details tr, .details td {
+                    display: block;
+                    width: 100%;
+                }
+                .details td {
+                    padding: 5px 0;
+                }
+                table.customTable {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                table.customTable, table.customTable th, table.customTable td {
+                    border: 1px solid black;
+                }
+                table.customTable th, table.customTable td {
+                    padding: 8px;
+                    text-align: left;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <!--<table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="width: 20%;"><img class="logo" src="{!URLFOR($Resource.BSL_Logo)}" alt="Logo" /></td>
+                        <td class="header-content" style="text-align:center; font-weight:bold; font-size:20px;">Letter of Sales</td>
+                        <td style="width: 20%;"></td>
+                    </tr>
+                </table>-->
+            </div>
+            <div class="content">
+                <div class="container">
+                    <div class="section section-billing-details">
+                        <div class="title">Customer Details / Billing Details</div>
+                        <table class="details">
+                            <tr>
+                                <td>Ticket Number: {!serviceTicketNum}</td>
+                            </tr>
+                            <tr>
+                                <td>Name: {!customerName}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone No.: {!customerPhone}</td>
+                            </tr>
+                            <apex:outputPanel rendered="{!isCommercial}">
+                            <tr>
+                                <td>Billing Address: {!customerAddress}</td>
+                            </tr>
+                            </apex:outputPanel>
+                            <tr>
+                                <td>Shipping Address: {!customerShipAddress}</td>
+                            </tr>
+                            <tr>
+                                <td>Place of Supply: {!placeOfSupply}</td>
+                            </tr>
+                            <tr>
+                                <td>Status: {!status}</td>
+                            </tr>
+                            <tr>
+                                <td>Order type: {!orderType}</td>
+                            </tr>
+                            <tr>
+                                <td>Bill Date: {!orderBillDate}</td>
+                            </tr>
+                            <apex:outputPanel rendered="{!isCommercial}">
+                                <tr>
+                                    <td>Customer GSTIN: {!customerGSTIN}</td>
+                                </tr>
+                                <tr>
+                                    <td>PAN: {!customerPanNumber}</td>   
+                                </tr>
+                            </apex:outputPanel>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- First Table -->
+                <apex:outputPanel rendered="{!spareLineAvailable}">
+                <table class="customTable" >
+                    <thead>
+                        <tr>
+                            <th>Line No</th>
+                            <th>HSN Code</th>
+                            <th>Part#</th>
+                            <th>Material Group</th>
+                            <th>Qty</th>
+                            <th>Rate</th>
+                            <th>Taxable Amount</th>
+                            <th>GST Type</th>
+                            <th>GST%</th>
+                            <th>GST Amount</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:variable var="rowNum" value="{!0}" />
+                        <apex:repeat value="{!productRequestWrapperList}" var="wrapper">
+                            <apex:variable var="rowNum" value="{!rowNum + 1}" />
+                            <tr>
+                                <td>{!rowNum}</td>
+                                <td>{!wrapper.productRequest.Product__r.HSN_No__c}</td>
+                                <td>{!wrapper.productRequest.Product__r.Code__c}</td>
+                                <td>{!wrapper.productRequest.Product__r.Material_Group__c}</td>
+                                <td>{!wrapper.productRequest.Quantity__c}</td>
+                                <td>{!wrapper.productRequest.Spare_Price__c}</td>
+                                <td>{!wrapper.productRequest.Quantity__c * wrapper.productRequest.Spare_Price__c}</td>
+                                <td style="padding:0px; text-align:center">
+                                    <apex:outputPanel rendered="{!NOT(igstSelected)}">
+                                        <div style="border-bottom: 1px solid #000;">CGST</div>
+                                        <div style="border-bottom: 1px solid #000;">SGST</div>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!igstSelected}">
+                                    <div style="border-bottom: 1px solid #000;">IGST</div>
+                                    </apex:outputPanel>
+                                </td>
+                                <td style="padding:0px; text-align:center">
+                                    <apex:outputPanel rendered="{!NOT(igstSelected)}">
+                                    <div style="border-bottom: 1px solid #000;">{!wrapper.CGST}</div>
+                                    <div style="border-bottom: 1px solid #000;">{!wrapper.SGST}</div></apex:outputPanel>
+                                    <apex:outputPanel rendered="{!igstSelected}">
+                                    <div style="border-bottom: 1px solid #000;">{!wrapper.IGST}</div></apex:outputPanel>
+                                </td>
+                                <td style="padding:0px; text-align:center">
+                                    <apex:outputPanel rendered="{!NOT(igstSelected)}">
+                                    <div style="border-bottom: 1px solid #000;">{!wrapper.CGSTTax}</div>
+                                    <div style="border-bottom: 1px solid #000;">{!wrapper.SGSTTax}</div></apex:outputPanel>
+                                    <apex:outputPanel rendered="{!igstSelected}">
+                                    <div style="border-bottom: 1px solid #000;">{!wrapper.IGSTTax}</div></apex:outputPanel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel rendered="{!NOT(igstSelected)}">
+                                        {!wrapper.totalAmountwithTax}
+                                    </apex:outputPanel>
+                                   
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+                </apex:outputPanel>
+
+                <!-- Second Table -->
+                <!--<apex:outputPanel layout="block" rendered="{!workTypeName == 'Breakdown' || workTypeName == 'Installation'}">-->
+                    <table class="customTable" style="margin-top: 20px;">
+                        <thead>
+                            <tr>
+                                <th>{!IF(workTypeName == 'Breakdown', 'Visiting Charge', 'Installation Charge')}</th>
+                                <th>Gas Charge</th>
+                                <th>Other Charge</th>
+                                <th>Spare Charge</th>
+                                
+                                    <th>Other Material Charge</th>
+                               
+                                <th>Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{!breakdownOrInstallationCharge}</td>
+                                <td>{!gasCharge}</td>
+                                <td>{!otherCharge}</td>
+                                <td>{!spareCharge}</td>
+                               
+                                <td>{!otherMaterial}</td>
+                                
+                                <td>{!totalAmount}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <!--</apex:outputPanel>-->
+
+                <!-- SubTotal and Tax Amount -->
+                <div style="margin-top: 20px;">
+                    <div>Sub Total (Incl. tax): {!subTotal}</div>
+                    <div>Tax Amount: {!taxAmount}</div>
+                    <div>Grand Total in Words: {!totalAmountWords}</div>
+                </div>
+            </div>
+            <div>
+                <table>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <tr style="display:flex;">
+                        <td>Customer's Signature: </td><td style="padding-left:300px;"></td><td>Authorized Signatory: </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="footer">
+                <!-- Footer content can be added here -->
+            </div>
+        </body>
+    </html>
+</apex:page>

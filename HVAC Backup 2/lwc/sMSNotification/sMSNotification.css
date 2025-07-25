@@ -1,0 +1,8 @@
+.checkbox{
+	display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.paragraph {
+     margin-top: 14px;
+}

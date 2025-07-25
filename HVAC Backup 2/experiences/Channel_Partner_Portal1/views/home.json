@@ -1,0 +1,94 @@
+{
+  "appPageId" : "ed75d3c6-296a-4d24-b90e-7d2992d90c42",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "5a4a47a5-63f9-4f92-b70b-9215b50503d3",
+  "label" : "Home",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:announcementMessageDisplay",
+      "id" : "2757c9a8-77a7-48d5-b3e9-9d072257c323",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "flowArguments" : "[{\"label\":\"recordId\",\"dataType\":\"String\",\"supportsRecordId\":false,\"value\":\"{!CurrentUser.accountId}\"}]",
+        "flowName" : "CP_Attendance_Maintenance_Flow"
+      },
+      "componentName" : "forceCommunity:flowCommunity",
+      "id" : "d45dfa8c-4ebd-4c4e-830f-cdc2a29ce3f4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "bannerText" : "",
+        "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "pageType" : "",
+        "showSubTopics" : true,
+        "title" : "Welcome to BlueStar Dealer Portal!",
+        "uniqueNameOrId" : ""
+      },
+      "componentName" : "forceCommunity:headline",
+      "id" : "439e4abf-0267-47c1-ba75-98c78c90a430",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"display: flex; justify-content: center; align-items: center; height: 30vh; margin: 0;\">\n    <img src=\"https://www.bluestarindia.com/media/343694/1920x648-vk-corrected.png\" alt=\"Blue Star Image\" >\n</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "40d66fa0-7bdb-45cd-ad18-1dfb9c6642a6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0d3aaa35-c54f-4b56-bc33-9582b81402ac",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "6c550f21-05f2-4e13-81af-487b72c58adf",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "aa3b39f9-92c1-41c1-9f4a-acf3a0b9104f",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"display: flex; justify-content: space-between; align-items: center;\">\n    <div>© Copyright 2024 Blue Star Limited. All rights reserved.</div>\n    <div>\n        <a href=\"https://www.facebook.com\" target=\"_blank\" style=\"margin-right: 10px; color: #3b5998;\">Facebook</a>\n        <a href=\"https://www.instagram.com\" target=\"_blank\" style=\"margin-right: 10px; color: #E4405F;\">Instagram</a>\n        <a href=\"https://www.linkedin.com\" target=\"_blank\" style=\"margin-right: 10px; color: #0e76a8;\">LinkedIn</a>\n        <a href=\"https://www.youtube.com\" target=\"_blank\" style=\"color: #FF0000;\">YouTube</a>\n    </div>\n</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "cc89d19a-6688-422d-b2f6-79aabb2f1596",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fcc1d668-ada1-4e9e-b3a4-2319ae9ec3ae",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "a196b75f-1f98-46c9-9652-314989906110",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3121e4ea-43c2-4333-a750-bae6694c78ab",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Home",
+  "type" : "view",
+  "viewType" : "home"
+}

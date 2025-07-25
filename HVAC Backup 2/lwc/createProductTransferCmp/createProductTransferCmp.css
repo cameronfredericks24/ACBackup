@@ -1,0 +1,11 @@
+.THIS .slds-grid_align-end {
+    justify-content: center !important;
+}
+
+.THIS .slds-th__action {
+    justify-content: center !important;
+}
+
+.THIS .myTable th {
+    text-align: center !important;
+}

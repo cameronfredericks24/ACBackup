@@ -1,0 +1,18 @@
+<apex:page standardController="SBQQ__Quote__c" extensions="PreviewApprovalsCtrl"
+                title="Preview Approvals" lightningStylesheets="false">
+
+    <style type="text/css">
+        textarea{
+            height: 80px;
+            width:80%;
+        }
+    </style>
+    
+    <apex:outputPanel id="messages">
+        <apex:pageMessages />
+    </apex:outputPanel> 
+
+    <apex:pageBlock title="Approval Preview">
+        <sbaa:approvalPreview approvals="{!approvals}"/>
+    </apex:pageBlock>
+</apex:page>

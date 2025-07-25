@@ -1,0 +1,88 @@
+<template>
+    <lightning-card >
+       
+  
+    <div style="padding:2%"> 
+      <div >  <lightning-input label="Enter BOM Number" value={searchTerm} onchange={handleSearchChange}></lightning-input> </div>
+      <div class = "CenterDiv">  <lightning-button label="Search" onclick={handleSearch}></lightning-button> </div> 
+      <br> </br>
+        <lightning-datatable data={searchResults} columns={columns} key-field="Id" onrowselection={handleRowSelection}></lightning-datatable>
+
+        <!-- Display BOM Document and BOM Item details in a single Lightning card -->
+        <div if:true={selectedRecordId} class="custom-row">
+            <lightning-card title="BOM Details" icon-name="standard:account">
+                <div class="custom-column">
+                    <a href={bomDocumentUrl} target="_blank" rel="noopener noreferrer">
+                        <img src={bomDocumentUrl} alt="BOM Document" class="custom-image" />
+                    </a>
+                </div>
+                <div class="custom-column my-table table-container" >
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="tableData" scope="col">
+                                    <div class="slds-truncate" title="Ref WRT Img">Ref WRT Img</div>
+                                </th>
+                                <th class="tableData" scope="col">
+                                    <div class="slds-truncate" title="Part">Part</div>
+                                </th>
+                                <th class="tableData" scope="col">
+                                    <div class="slds-truncate" title="Quantity">Quantity</div>
+                                </th>
+                                <th class="tableData" scope="col">
+                                    <div class="slds-truncate" title="Unit Price">Unit Price</div>
+                                </th>
+                                <th class="tableData" scope="col">
+                                    <div class="slds-truncate" title="Description">Description</div>
+                                </th>
+                                <th class="tableData" scope="col">
+                                    <div class="slds-truncate" title="Product Required">Product Required</div>
+                                </th>
+                                <th class="tableData" scope="col">
+                                    <div class="slds-truncate" title="Add">Add</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <template
+                for:each={bomItemDetails}
+                for:item="lineItem"
+                for:index="index"
+              >
+    <tr class="slds-hint-parent" key={lineItem.bompathid}>
+        <td class="tableData" data-label="Ref WRT Img">{lineItem.RefWRTImg}</td>
+        <td class="tableData" data-label="Part">{lineItem.Part}</td>
+        <td class="tableData" data-label="Quantity">{lineItem.Quantity}</td>
+        <td class="tableData" data-label="Unit Price">{lineItem.UnitPrice}</td>
+        <td class="tableData" data-label="Description">{lineItem.Description}</td>
+        <td class="tableData" data-label="Product Required">
+            <div class="slds-form-element">
+             
+                <input class="inp"  data-custom-index={index}  value={lineItem.productrequiredquantity} onchange={handleProductRequiredChange} style="width:70px"  
+                type="number" id="returnQty" name="sKUQtyReturn" ></input>
+                
+            </div>
+        </td>
+        <td class="tableData" data-label="Add">
+        <template if:true={lineItem.isproductcreated}>
+            <lightning-button-icon icon-name="utility:new" variant="bare" size="medium"
+											alternative-text="add" title="Add" 
+											data-custom-index={index} onclick={handleAddProduct} disabled ></lightning-button-icon>
+        </template>
+         <template if:false={lineItem.isproductcreated}>
+            <lightning-button-icon icon-name="utility:new" variant="bare" size="medium"
+											alternative-text="add" title="Add" 
+											data-custom-index={index} onclick={handleAddProduct} ></lightning-button-icon>
+        </template>
+        </td>
+    </tr>
+    </template>
+</tbody>
+</table>
+</div>
+
+</lightning-card>
+</div>
+    </div>
+    </lightning-card>
+</template>

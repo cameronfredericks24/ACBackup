@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Quote Line Items">
+        <lightning-datatable
+            key-field="assetId"
+            data={quoteLineWrappers}
+            columns={columns}
+            onrowselection={handleRowSelection}
+            hide-checkbox-column="true"
+        >
+        </lightning-datatable>
+        <lightning-button label="Process Selected" onclick={processSelected}></lightning-button>
+    </lightning-card>
+</template>

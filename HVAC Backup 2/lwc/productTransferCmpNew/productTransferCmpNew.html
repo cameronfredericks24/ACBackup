@@ -1,0 +1,122 @@
+<template>
+    <template if:true={loader}>
+        <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+    </template>
+
+    <template if:false={showOrderSummary}>
+        <div class="slds-box slds-theme_default" style="max-width: 80%; margin: auto;">
+            <lightning-card title="Create MSL Order" style="margin: auto;">
+                <div class="slds-grid slds-gutters" style="justify-content: center;">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input type="search" label="Search" onchange={handleSearchChange} placeholder="Search by Part Name or Part Code"></lightning-input>
+                    </div>
+                </div>
+
+                <div>
+                    <div  class="slds-text-align_center slds-p-around_medium" style="font-weight: bolder;">
+                      
+                      <lightning-input 
+                      type="checkbox"
+              
+                      label="Apply IGST?"
+                      checked={isIGSTChecked} 
+                      onchange={handleIGSTChange}>
+                     </lightning-input>
+                    </div>
+                  </div>
+                <br/>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset slds-text-title_caps">
+                            <th class="slds-is-resizable" scope="col">
+                                <div class="slds-truncate" title="Name">Select</div>
+                            </th>
+                            <th class="slds-is-resizable" scope="col">
+                                <div class="slds-truncate" title="Name">Part Name</div>
+                            </th>
+                            <th class="slds-is-resizable" scope="col">
+                                <div class="slds-truncate" title="Account Number">Part Code</div>
+                            </th>
+                            <th class="slds-is-resizable" scope="col">
+                                <div class="slds-truncate" title="Account Number">HSN Code</div>
+                            </th>
+                            <th class="slds-is-resizable" scope="col">
+                             <div class="slds-truncate" title="Part Code">Part Tax</div>
+                                  </th>
+                            <th class="slds-is-resizable" scope="col">
+                                <div class="slds-truncate" title="Account Number">Part MSL Quantity</div>
+                            </th>
+                            <th class="slds-is-resizable" scope="col">
+                                <div class="slds-truncate" title="Account Number">Eligible Part Quantity</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template if:true={accounts}>
+                            <template for:each={accounts} for:item="acc">
+                                <tr key={acc.itemId}>
+                                    <td scope="row">
+                                        <lightning-input type="checkbox" data-id={acc.itemId} checked={acc.isSelected} onchange={handleRowSelection}></lightning-input>
+                                    </td>
+                                    <td scope="row" data-label="Name">
+                                        <div class="slds-truncate" title={acc.itemName}>{acc.itemName}</div>
+                                    </td>
+                                    <td scope="row" data-label="Account Number">
+                                        <div class="slds-truncate" title={acc.itemCode}>{acc.itemCode}</div>
+                                    </td>
+                                    <td scope="row" data-label="Account Number">
+                                        <div class="slds-truncate" title={acc.itemCode}>{acc.itemHSN}</div>
+                                    </td>
+                                    <td scope="row" data-label="Account Number">
+                                        <div class="slds-truncate" title={acc.itemSGST}>{acc.itemIGST}</div>
+                                    </td>
+                                    <td scope="row" data-label="MSL Limit">
+                                        <div class="slds-truncate" title={acc.itemMSLLimit}>{acc.itemMSLLimit}</div>
+                                    </td>
+                                    <td scope="row" data-label="MSL Limit">
+                                        <div class="slds-truncate" title={acc.itemMSLLimit}>{acc.itemEligibleQty}</div>
+                                    </td>
+                                </tr>
+                            </template>
+                        </template>
+                    </tbody>
+                </table>
+                <template if:true={isDisplayNoRecords}>
+                    <div class="slds-align_absolute-center">
+                        <br/>
+                        No records found
+                    </div>
+                </template>
+                <br/>
+                <div class="slds-align_absolute-center">
+                    <div class="slds-p-right_xx-small">
+                        <lightning-button label="Prev"
+                                          disabled={isPrev} onclick={handlePrev}
+                                          variant="brand"
+                                          icon-name="utility:back"
+                                          name="prev"></lightning-button>
+                    </div>
+                    <span class="slds-badge slds-badge_lightest">
+                        {recordStart}-{recordEnd} of {totalRecords} | Page {pageNumber} of {totalPages}
+                    </span>
+                    <div class="slds-p-left_xx-small">
+                        <lightning-button label="Next"
+                                          disabled={isNext} onclick={handleNext}
+                                          variant="brand"
+                                          icon-name="utility:forward"
+                                          icon-position="right"
+                                          name="next"></lightning-button>
+                    </div>
+                </div>
+
+                <div class="slds-align_absolute-center">
+                    <lightning-button label="Submit" onclick={handlePLMSLSubmit} variant="brand"></lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+    </template>
+
+    <template if:true={showOrderSummary}>
+        <c-view-order-summary rec-id={recId} rec-type="MSL" combined-products={pls} is-i-g-s-t-checked={isIGSTChecked} onback={handMSLBack}></c-view-order-summary>
+    </template>
+</template>

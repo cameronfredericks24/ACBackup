@@ -1,0 +1,81 @@
+<!-- appointmentScheduler.html -->
+<template>
+    <div  class=" slds-modal__header">
+        <h4 class="title slds-text-heading--medium">
+            Book Appointment
+        </h4>
+    </div>
+    <lightning-card >
+        <template if:true={showSpinner}>
+            <div class="exampleHolder">
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+            </div>
+        </template>
+        <div class="slds-grid slds-gutters slds-m-left_small slds-p-around_medium">
+            <div class="slds-col  ">
+                <label for="endDateTime"><b>Scheduling Policy</b> </label>
+                <lightning-combobox
+                    label=""
+                    options={schedulingPolicies}
+                    value={selectedPolicy}
+                    onchange={handlePolicyChange} required>
+                </lightning-combobox>
+            </div>
+            <div class="slds-col">
+                <lightning-input type="datetime-local" label="Preferred Slot Start Date"  name="startDateTime" onchange={handleStartDateTimeChange} value={startDateTime} required></lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-input type="datetime-local" label="Preferred Slot End Date"  name="endDateTime" onchange={handleEndDateTimeChange} value={endDateTime} required></lightning-input>
+            </div>
+           
+        </div>
+        <div class="slds-m-top_small slds-align_absolute-center ">
+            <div class=" slds-m-top_small "> <lightning-button label="Get Appointment" variant="Brand" onclick={handleAppointment}></lightning-button></div> 
+            <div class=" slds-m-top_small slds-m-left_small "> <lightning-button label="Close" variant="Brand" onclick={navigateToCase}></lightning-button></div>           
+        </div>
+        <div class="slds-p-around_medium">
+            <div if:true={showError} class="slds-align_absolute-center">
+                No slots were found, you can try extending the dates.
+            </div>
+            <lightning-tabset if:true={showSlots}>
+                <lightning-tab label="Show All">
+                    <template for:each={dateSlots} for:item="item">
+                            <div key={item.date} class="slds-p-around_medium">
+                                <div class="slds-section account slds-is-open " data-id="account ">
+                                    <h3 class="slds-section__title slds-section__title-action slds-align_absolute-center">
+                                        <span class="slds-truncate  slds-p-left-x_small" title={label} style="color: rgb(0, 0, 0);">{item.date}</span>                               
+                                    </h3>
+                                    <div class="slds-section__content slds-is-open ">
+                                        <template for:each={item.slots} for:item="slot">
+                                            <div key={slot} class="slds-grid slds-grid_align-center slds-p-vertical_x-small">
+                                                <button class="slds-button slds-button_neutral slds-button_stretch" name={item.date}  value={slot} onclick={handleSlotSelection}>{slot}</button>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                    </template>
+                </lightning-tab>
+
+                <template for:each={dateSlots} for:item="item">
+                    <lightning-tab key={item.date} label={item.date}>
+                        <div class="slds-p-around_medium">
+                            <div class="slds-section account slds-is-open " data-id="account ">
+                                <h3 class="slds-section__title slds-section__title-action slds-align_absolute-center">
+                                    <span class="slds-truncate  slds-p-left-x_small" title={label} style="color: rgb(0, 0, 0);">{item.date}</span>                               
+                                </h3>
+                                <div class="slds-section__content slds-is-open ">
+                                    <template for:each={item.slots} for:item="slot">
+                                        <div key={slot} class="slds-grid slds-grid_align-center slds-p-vertical_x-small">
+                                            <button class="slds-button slds-button_neutral slds-button_stretch" name={item.date}  value={slot} onclick={handleSlotSelection}>{slot}</button>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-tab>
+                </template>
+            </lightning-tabset>
+        </div>
+    </lightning-card>
+</template>

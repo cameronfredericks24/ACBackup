@@ -1,0 +1,151 @@
+<apex:page standardController="Asset" renderAs="pdf">
+    <body>
+        <div style="border: 5px solid #000000; padding: 10px; width: auto; margin: auto;">
+            <div style="border: 1px solid #000000; padding: 10px; margin-bottom: 10px;">
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr>
+                        <td style="border: 1px solid black; width: 30%; padding: 10px;">Column 1</td>
+                        <td style="border: 1px solid black; width: 70%; padding: 10px;">Column 2</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="border: 1px solid #000000;">
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;">Customer Details</td>
+                        <td style="border: 1px solid black; padding: 10px;">Service Provider Details </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;">Customer ID</td>
+                        <td style="border: 1px solid black; padding: 10px;">Registration Type</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;">Name</td>
+                        <td style="border: 1px solid black; padding: 10px;">Installation Date</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;">Address</td>
+                        <td style="border: 1px solid black; padding: 10px;">Equipment Location</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;">Email Id</td>
+                        <td style="border: 1px solid black; padding: 10px;">Channel Partner Type</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;">Mobile No.</td>
+                        <td style="border: 1px solid black; padding: 10px;">Service Provider No.</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;"></td>
+                        <td style="border: 1px solid black; padding: 10px;">Service Provider Name</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="border: 1px solid #000000; padding: 10px; margin-bottom: 10px;">
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr>
+                        <td colspan="7" style="border: 1px solid black; text-align: left; padding: 10px;">Merged Columns</td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" style="border: 1px solid black; text-align: left; padding: 10px;">Merged</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 1</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 2</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 3</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 4</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 5</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 6</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 7</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 1</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 2</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 3</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 4</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 5</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 6</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 7</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="border: 1px solid #000000; padding: 10px; margin-bottom: 10px;">
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr>
+                        <td colspan="3" style="border: 1px solid black; text-align: left; padding: 10px;">Product Commissioning Data</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 1</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 2</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 3</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 1</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 2</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 3</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="border: 1px solid #000000; padding: 10px; margin-bottom: 10px;">
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr>
+                        <td colspan="7" style="border: 1px solid black; text-align: left; padding: 10px;">Service Coverage Information</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 1</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 2</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 3</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 4</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 5</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 6</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 2, Col 7</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 1</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 2</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 3</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 4</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 5</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 6</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 3, Col 7</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 4, Col 1</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 4, Col 2</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 4, Col 3</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 4, Col 4</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 4, Col 5</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 4, Col 6</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 4, Col 7</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 5, Col 1</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 5, Col 2</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 5, Col 3</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 5, Col 4</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 5, Col 5</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 5, Col 6</td>
+                        <td style="border: 1px solid black; text-align: center; padding: 10px;">Row 5, Col 7</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="border: 1px solid #000000; padding: 0px; margin-bottom: 10px;">
+                <table style="border-collapse: collapse; width: 100%;">
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;">Block 1</td>
+                        <td style="border: 1px solid black; padding: 10px;">Block 8</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;">Block 2</td>
+                        <td style="border: 1px solid black; padding: 10px;">Block 9</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px;">Block 3</td>
+                        <td style="border: 1px solid black; padding: 10px;">Block 10</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="border: 1px solid #000000; padding: 10px; margin-bottom: 10px;">Div 7</div>
+        </div>
+    </body>
+</apex:page>

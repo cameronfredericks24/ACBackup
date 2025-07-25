@@ -1,0 +1,36 @@
+<!-- recordTree.html -->
+<template>
+    <template if:true={hasChildren}>
+        <template for:each={children} for:item="child">
+            <tr key={child}>
+                <td>
+                    
+                </td>
+                <td>
+                    <div class="slds-truncate" >{child.AssetName}</div>
+                </td>
+                <td>
+                    <div class="slds-truncate" >{child.SerialNumber}</div>
+                </td>
+                <td>
+                    <div class="slds-truncate">{child.Model}</div>
+                </td>
+                <td>
+                    <div class="slds-truncate" >{child.ProductSubFamily}</div>
+                </td>
+                <td>
+                    <div class="slds-truncate" >{child.Asset_Obligation__c}</div>
+                </td>
+                <td>
+                    <div class="slds-truncate" >{child.CP__c}</div>
+                </td>
+                <td>
+                    <div class="slds-truncate" >{child.SDE__c}</div>
+                </td>
+                <td>
+                    <div class="slds-truncate">{child.Branch__c}</div>
+                </td>
+            </tr>
+        </template>
+    </template>
+</template>

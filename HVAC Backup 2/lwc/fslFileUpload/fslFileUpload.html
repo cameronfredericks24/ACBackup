@@ -1,0 +1,14 @@
+<template>
+    <div>
+        <template if:true={showFileUpload}>
+            <c-image-upload-container record-id={recordId} onfileuploaded={handleFileUploaded}>
+            </c-image-upload-container>
+
+        </template>
+       
+        <!-- <div  style=" bottom: 20px; left: 20px;">
+            <lightning-button variant="brand-outline" label="Back" onclick={handleBackClick}></lightning-button>
+        </div> -->
+       
+    </div>
+</template>

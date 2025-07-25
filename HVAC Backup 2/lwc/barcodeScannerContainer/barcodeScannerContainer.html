@@ -1,0 +1,38 @@
+<template>
+    <template if:true={showMainContent}>
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <!--div class="slds-grid slds-wrap"-->
+                    
+                        <div >
+                                <template if:true={showBarcodeScanner}>
+                                    <template if:true={showReadOnlyInput}>
+                                        <lightning-input type="text" variant="standard" class="custom-input" name="serialNumber"  label={inputLabelValue} value={scannedValue} onchange={handleValueChange} disabled></lightning-input>
+                                    </template>
+                                    <template if:false={showReadOnlyInput}>
+                                        <lightning-input type="text" data-id="myInput" class="custom-input" variant="standard" name="serialNumber" label={inputLabelValue} value={scannedValue} onchange={handleValueChange} required ></lightning-input>
+                                    </template>
+                                    <button class="slds-button slds-button_icon  icon-button" onclick={handleBeginScanClick} title="Scan">
+                                    <lightning-icon icon-name="utility:scan" alternative-text="Scan" size="medium"></lightning-icon>
+                                </button>
+                                </template>
+                                <template if:false={showBarcodeScanner}>
+                                    <lightning-input type="text" data-id="myInput" class="custom-input" variant="standard" name="serialNumber" label={inputLabelValue} value={scannedValue} onchange={handleValueChange} required ></lightning-input>
+                                </template>
+                        </div>
+                        <!--div class="slds-col slds-size_3-of-12 slds-small-size_4-of-12 slds-large-size_2-of-12">
+                            <button class="slds-button slds-button_icon " onclick={handleBeginScanClick} title="Scan">
+                                <lightning-icon icon-name="utility:scan" alternative-text="Scan" size="medium"></lightning-icon>
+                            </button>
+                        </div-->
+                   
+                  
+                <!--/div-->
+            </div>
+        </div>
+
+    </template>
+    <template if:true={showScanner}>   
+        <c-new-barcode-scanner onhandlesuccess={getScannedValue} onhandleerror={handleErrorResult}></c-new-barcode-scanner>
+    </template>
+</template>

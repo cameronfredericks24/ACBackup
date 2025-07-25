@@ -1,0 +1,237 @@
+<template>
+    <lightning-card title="Capture Failure Information">
+        <!-- Field_Work_Type__c Picklist -->
+        <!-- <lightning-record-edit-form object-api-name="WorkOrder" record-id={recordId} onchange={handleActionChange}
+            onsuccess={handleSuccess} onerror={handleError}>
+            <lightning-messages></lightning-messages>
+            <div class="slds-p-horizontal_medium">
+                <lightning-input-field field-name="Field_Work_Type__c" onchange={handleActionChange} value={fieldworktype}></lightning-input-field>
+            </div>
+        </lightning-record-edit-form> -->
+
+          <div class="slds-p-horizontal_medium">
+        <lightning-combobox 
+            label="Field Work Type"
+            name="Field_Work_Type__c"
+            value={fieldworktype}
+            options={picklistOptions}
+            onchange={handleActionChange}>
+        </lightning-combobox>
+    </div>
+
+     <template if:true={hasGasChargingvalue}>
+        <div class="slds-p-horizontal_medium slds-p-top_medium">
+           <lightning-combobox
+            name="hasGasCharging"
+            label="Has Gas Charging?"
+            options={gasChargingOptions}
+            value={gaschargingrequired}
+            onchange={handleGasChargingChange}>
+           </lightning-combobox>
+       </div>
+       <template if:true={isGaschargeTrue}>
+        <div class="slds-p-horizontal_medium slds-p-top_medium">
+                <lightning-input type="number" label="Gas Charging (kg)" value={gasChargingValue} onchange={handlegaschargingvalue} required></lightning-input>
+            </div> 
+        </template>
+      <template if:true={hasGasChargingvalue}>
+         <div class="slds-p-horizontal_medium slds-p-top_medium">
+           <lightning-combobox
+            name="hasGasCharging"
+            label="Has Gas Leakage?"
+            options={gasLeakageOptions}
+            value={gasleakagerequired}
+            onchange={handleGasLeakageChange}>
+           </lightning-combobox>
+       </div>
+       <template if:true={isGasLeakageTrue}>
+            <c-gas-leakage-schema record-id={recordId}></c-gas-leakage-schema>
+        </template>
+         </template>
+           
+     </template> 
+
+        <!-- <div class="slds-p-horizontal_medium slds-p-top_medium">
+            <lightning-combobox label="Add Details" value={typeselectedValue} options={addDetailsOptions}
+                required="true" onchange={handleAddDetailsChange}>
+            </lightning-combobox>
+        </div> -->
+
+        <!-- Display button if "Waiting for Parts" is selected -->
+        <template if:true={showUpdateButton}>
+            <div class="slds-p-horizontal_medium slds-p-top_medium">
+                <lightning-button variant="brand" label="Update Awaiting for parts" onclick={handleAwaitingParts}></lightning-button>
+            </div>
+        </template>
+
+        <!-- Conditionally render the form -->
+        <template if:true={showForm}>
+            <div class="slds-p-horizontal_medium slds-p-top_medium">
+                <!-- Symptom -->
+                <lightning-combobox class="slds-p-top_xxx-small" label="Symptom" value={selectedSymptom} options={symptomOptions}
+                    onchange={handleSymptomChange}>
+                </lightning-combobox>
+                <lightning-textarea class="slds-p-top_x-small" label="Symptom Comment" value={symptomComt} 
+                    onchange={handleSymptomComtChange}>
+                </lightning-textarea>
+
+                <!-- Defect -->
+                <lightning-combobox class="slds-p-top_x-small" label="Defect" value={selectedDefect} options={defectOptions}
+                    disabled={defectDisabled} onchange={handleDefectChange}>
+                </lightning-combobox>
+                <lightning-textarea class="slds-p-top_x-small" label="Defect Comment" value={defectComt} 
+                    onchange={handleDefectComtChange}>
+                </lightning-textarea>
+
+                <!-- Action -->
+                <lightning-combobox class="slds-p-top_x-small" label="Action" value={selectedAction} options={actionOptions}
+                    disabled={actionDisabled} onchange={handleActionComtChange}>
+                </lightning-combobox>
+                <lightning-textarea class="slds-p-top_x-small" label="Action Comment" value={actionComt} 
+                    onchange={handleActionComtChange}>
+                </lightning-textarea>
+
+                <!-- Spinner -->
+                <template if:true={isLoading}>
+                    <div class="slds-m-top_medium slds-align_absolute-center">
+                        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                    </div>
+                </template>
+         <template if:true={firstProductParameters}>
+           <!-- <p>it's firstProductParameters</p> -->
+                 <div class="slds-grid slds-grid_vertical slds-wrap slds-gutters slds-p-top_medium slds-align_absolute-center">
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Incoming Voltage (V)" value={incomingVoltage} onchange={handleIncVol}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="System Ampere" value={systemAmpere} onchange={handleSysAmpChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Grille Temperature" value={grilleTemperature} onchange={handleGrillTemp}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Actual Capacity" value={actualcapacity} onchange={handleactualcapacity}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Suction pressure" value={suctionpressure} onchange={handleSuctionpressure}></lightning-input>
+                    </div>
+                     <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Discharge Pressure" value={dischargePressure} onchange={handledischargePressure}></lightning-input>
+                    </div>
+                 </div>
+         </template>
+                 <div>
+        
+        
+       
+    </div>
+
+    <!-- Display message for WPD Parameters -->
+    <div>
+        <template if:true={wpdParameters}>
+          <!--  <p>IT'S wpdParameters</p> -->
+             <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Grille Temperature" value={grilleTemperature} onchange={handleGrillTemp}></lightning-input>
+                    </div>
+              <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Incoming Voltage (V)" value={incomingVoltage} onchange={handleIncVol}></lightning-input>
+                    </div>  
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Water pressure" value={waterpressure} onchange={handleWaterpressure}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Raw water TDS" value={rawwaterTDS} onchange={handleRawwaterTDS}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="TDS after purification" value={tDSafterpurification} onchange={handleTDSafterpurification}></lightning-input>
+                    </div>    
+        </template>
+        
+    </div>
+
+    <!-- Display message for Second Product Parameters -->
+    <div>
+        <template if:true={secondProductParameters}>
+           <!-- <p>IT'S secondProductParameters </p> -->
+            <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="System Ampere" value={systemAmpere} onchange={handleSysAmpChange}></lightning-input>
+                    </div>
+             <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Grille Temperature" value={grilleTemperature} onchange={handleGrillTemp}></lightning-input>
+                    </div>
+             <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Incoming Voltage (V)" value={incomingVoltage} onchange={handleIncVol}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Suction pressure" value={suctionpressure} onchange={handlesuctionpressure}></lightning-input>
+                    </div> 
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Ambient temp" value={ambienttemp} onchange={handleambienttemp}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Room temp" value={roomtemp} onchange={handleroomtemp}></lightning-input>
+                    </div>
+            
+        </template>
+    </div>
+
+    <!-- Display message for Unit Functional Parameter -->
+    <div>
+        <template if:true={unitFunctionalParameter}>
+          <!--  <p>IT'S Unit Functional</p>-->
+            <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="AMPS in running condition" value={ampsinrunningcondition} onchange={handleampsinrunningcondition}></lightning-input>
+                    </div> 
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="TR" value={tr} onchange={handletr}></lightning-input>
+                    </div> 
+                    <div class="slds-col slds-size_1-of-1">
+                          <lightning-combobox 
+            name="refrigerant"
+            label="Select Refrigerant"
+            options={refrigerantOptions}
+            value={refrigerant}
+            onchange={handleRefrigerant}>
+        </lightning-combobox>
+                    </div> 
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Range Between Suction Pressure" value={rangeBetweenSuctionPressure} onchange={handlerangeBetweenSuctionPressure}></lightning-input>
+                    </div> 
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Range Between Discharge Pressure" value={rangeBetweenDischargePressure} onchange={handlerangeBetweenDischargePressure}></lightning-input>
+                    </div> 
+        </template>
+        
+    </div>
+
+     <div>
+       
+           <!-- <p>IT'S secondProductParameters </p> -->
+            <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Gas Charges" formatter="currency"  value={gasAmount} onchange={handleGasAmount}></lightning-input>
+                    </div>
+             <div class="slds-col slds-size_1-of-1">
+                        <lightning-input type="number" label="Other Charges" formatter="currency"  value={OtherAmount} onchange={handleOtherAmount}></lightning-input>
+            </div>
+           
+            
+       
+    </div>
+    
+
+
+                <div class="slds-grid slds-gutters slds-p-top_medium">
+                    <div class="slds-col">
+                        <lightning-button variant="brand-outline" label="Back" onclick={handleBackClick}></lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button variant="brand-outline" label="Save" onclick={handleSaveDraft}></lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="Submit" variant="brand" onclick={handleSave}></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>

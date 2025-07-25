@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <assignments>
+        <name>Assign_Branchh</name>
+        <label>Assign Branch</label>
+        <locationX>270</locationX>
+        <locationY>503</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Branchh__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Account.Branch__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_in_Asset_for_Department</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Departmentt</name>
+        <label>Assign Department</label>
+        <locationX>50</locationX>
+        <locationY>803</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Department__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Asset.Service_Department_L__c</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Dept</name>
+        <label>Assign Dept</label>
+        <locationX>314</locationX>
+        <locationY>911</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Department__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Product__r.Product_Sub_Family__r.Service_Department_No__c</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_Branch_From_Asset</name>
+        <label>Check Branch From Asset</label>
+        <locationX>402</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>Check_in_Asset_for_Department</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Branch_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Branchh__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Branchh</targetReference>
+            </connector>
+            <label>If Branch Present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_if_Created_from_PMS_batch</name>
+        <label>check if Created from PMS batch</label>
+        <locationX>666</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>NO</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Is_AMC__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Branch_From_Asset</targetReference>
+            </connector>
+            <label>NO</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_in_Asset_for_Department</name>
+        <label>Check in Asset for Department</label>
+        <locationX>402</locationX>
+        <locationY>695</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Assign_Department</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Asset.Service_Department_L__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Departmentt</targetReference>
+            </connector>
+            <label>Assign Department</label>
+        </rules>
+        <rules>
+            <name>If_Department_blank_in_asset</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Asset.Branch__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Asset.Service_Department_L__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_in_Product_sub_family</targetReference>
+            </connector>
+            <label>If  Department blank in asset</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_in_Product_sub_family</name>
+        <label>Check in Product sub family</label>
+        <locationX>446</locationX>
+        <locationY>803</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_department_present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Product__r.Product_Sub_Family__r.Service_Department_No__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Dept</targetReference>
+            </connector>
+            <label>If department present</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>WO: Assign Branch and Department {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Assign Branch and Department on ServiceTicket</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>540</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>check_if_Created_from_PMS_batch</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Branchh__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Department__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>WorkOrder</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

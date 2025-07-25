@@ -1,0 +1,637 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    <template if:true={firstPage}>
+        <div
+            class="slds-var-p-around_xx-small slds-var-m-top_x-small slds-var-m-around_xx-small slds-box slds-theme_shade">
+            <lightning-radio-group name="Product Owner" label="Product Owner" options={productOwnerOptions}
+                value={productOwner} onchange={handleProductOwnerChange} type="radio" required></lightning-radio-group>
+        </div>
+
+        <div if:true={isBluestar}>
+            <div if:true={assetRegTypeScreen}
+                class="slds-p-around_xx-small slds-m-top_x-small slds-m-around_xx-small slds-box slds-theme_shade">
+                <div>
+                    <lightning-combobox name="Product Type" label="Product Type" value={productType}
+                        placeholder="Select Product Type" options={productTypeOptions}
+                        onchange={handleProductTypeChange}></lightning-combobox>
+                </div>
+            </div>
+
+
+            <div if:true={registrationDetailsVisibility}>
+
+                <div if:true={notUnitary}>
+
+                    <!-- <div if:true={isResidentialCustomer}>
+                        <div class="slds-grid slds-grid_vertical slds-m-around_small">
+                            <div class="slds-col">
+                                <lightning-input type="number" label="Number of IDUs" onchange={handleIDUNumberChange}
+                                    value={totalIDU} required></lightning-input>
+                            </div>
+                            <div class="slds-col slds-m-top_small">
+                                <lightning-input type="number" label="Number of ODUs" onchange={handleODUNumberChange}
+                                    value={totalODU} required></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-align_absolute-center slds-m-top_x-small">
+                            <lightning-button variant="brand" label="Next"
+                                onclick={handleResidentialNext}></lightning-button>
+                        </div>
+
+
+                        <div if:true={residentialRegDetailsVisibility} class="slds-p-horizontal_x-small">
+                            <div class="slds-col slds-size_1-of-1">
+                                <lightning-input type="date" label="Installation Date" placeholder="select date..."
+                                    onchange={handleInstallationDateChange} value={installationDate}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1">
+                                <lightning-input type="text" label="Equipment Location"
+                                    placeholder="enter the location..." onchange={handleEquipmentLocationChange}
+                                    value={equipmentLocation}></lightning-input>
+                            </div>
+
+                            <template for:each={oduInputs} for:item="input" for:index="index">
+                                <div key={input.id} class="slds-grid slds-grid_vertical slds-m-top_x-small">
+                                    <div class="slds-col slds-m-bottom_small">
+                                        <div class="custom-lookup">
+                                            <lightning-input type="search" label={input.modelLabel}
+                                                onchange={handleOnChangeCustomLookupProductCode}
+                                                onclick={handleOnClickCustomLookupProductCode}
+                                                onfocus={handleOnFocusCustomLookupProductCode}
+                                                onblur={handleOnBlurCustomLookupProductCode} value={input.modelNumber}
+                                                data-index={index} required>
+                                            </lightning-input>
+                                            <template if:true={showAvailableCodes}>
+                                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                    role="listbox">
+                                                    <template for:each={filteredOptionsProductCode} for:item="option">
+                                                        <li key={option.value} role="presentation"
+                                                            class="slds-listbox__item">
+                                                            <div role="option" tabindex="0"
+                                                                class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                                onclick={handleModelNumberChangeCustomLookup}
+                                                                data-value={option.label} data-index={index}>
+                                                                <span class="slds-media__figure">
+                                                                    <lightning-icon icon-name="standard:product"
+                                                                        size="small"></lightning-icon>
+                                                                </span>
+                                                                <span class="slds-media__body">
+                                                                    <span class="slds-truncate">{option.label}</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </template>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col">
+                                        <lightning-input type="text" label={input.serialLabel}
+                                            placeholder="Enter ODU Serial Number..."
+                                            onchange={handleODUSerialNumberChange} data-index={index}
+                                            value={input.serialNumber} required></lightning-input>
+                                        <lightning-button variant="Base" label="Scan Barcode/QR Code"
+                                            onclick={handleODUBarcodeClick} index={index}>
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <template for:each={iduInputs} for:item="input" for:index="index">
+                                <div key={input.id} class="slds-grid slds-wrap slds-m-top_x-small">
+                                    <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                                        <div class="custom-lookup">
+                                            <lightning-input type="search" label={input.modelLabel}
+                                                onchange={handleIDUOnChangeCustomLookupProductCode}
+                                                onclick={handleIDUOnClickCustomLookupProductCode}
+                                                onfocus={handleIDUOnFocusCustomLookupProductCode}
+                                                onblur={handleIDUOnBlurCustomLookupProductCode}
+                                                value={input.modelNumber} data-index={index} required>
+                                            </lightning-input>
+                                            <template if:true={input.showAvailableCodesIDU}>
+                                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                    role="listbox">
+                                                    <template for:each={filteredOptionsProductCode} for:item="option">
+                                                        <li key={option.value} role="presentation"
+                                                            class="slds-listbox__item">
+                                                            <div role="option" tabindex="0"
+                                                                class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                                onclick={handleIDUModelNumberChangeCustomLookup}
+                                                                data-value={option.label} data-index={index}>
+                                                                <span class="slds-media__figure">
+                                                                    <lightning-icon icon-name="standard:product"
+                                                                        size="small"></lightning-icon>
+                                                                </span>
+                                                                <span class="slds-media__body">
+                                                                    <span class="slds-truncate">{option.label}</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </template>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                                        <lightning-input type="text" label={input.serialLabel}
+                                            placeholder="Enter IDU Serial Number..."
+                                            onchange={handleIDUSerialNumberChange} data-index={index}
+                                            value={input.serialNumber} required></lightning-input>
+                                        <lightning-button variant="Base" label="Scan Barcode/QR Code"
+                                            onclick={handleIDUBarcodeClick} index={index}>
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <div class="slds-align_absolute-center slds-m-top_x-small">
+                                <lightning-button variant="brand" label="Register"
+                                    onclick={handleRegisterResidentialSplit}></lightning-button>
+                            </div>
+                        </div>
+
+                    </div> -->
+
+                    <div>
+                        <div class="slds-grid slds-grid_vertical slds-m-around_small">
+                            <div class="slds-col">
+                                <lightning-input type="number" label="Number of IDUs" onchange={handleIDUNumberChange}
+                                    value={totalIDU} required></lightning-input>
+                            </div>
+                            <div class="slds-col slds-m-top_small">
+                                <lightning-input type="number" label="Number of ODUs" onchange={handleODUNumberChange}
+                                    value={totalODU} required></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-align_absolute-center slds-m-top_x-small">
+                            <lightning-button variant="brand" label="Next" onclick={handleFirstNext}></lightning-button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div if:true={isUnitary}>
+
+                    <div>
+
+                        <div class="slds-align_absolute-center slds-m-top_x-small">
+                            <div
+                                class="slds-p-around_xx-small slds-m-top_x-small slds-m-around_xx-small slds-box slds-theme_shade">
+                                <div class="slds-grid slds-grid_vertical slds-gutters">
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-input type="date" label="Installation Date"
+                                            placeholder="select date..." onchange={handleInstallationDateChange}
+                                            value={installationDate}></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+
+                                        <lightning-input type="text" label="Equipment Location"
+                                            placeholder="enter the location..." onchange={handleEquipmentLocationChange}
+                                            value={equipmentLocation}></lightning-input>
+                                    </div>
+
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <div class="custom-lookup">
+                                            <lightning-input type="search" label="Unitary Model Number"
+                                                onchange={handleOnChangeCustomLookupProductCodeUnitary}
+                                                onclick={handleOnClickCustomLookupProductCodeUnitary}
+                                                onfocus={handleOnFocusCustomLookupProductCodeUnitary}
+                                                onblur={handleOnBlurCustomLookupProductCodeUnitary} value={modelNumber}
+                                                required>
+                                            </lightning-input>
+                                            <template if:true={showAvailableCodesUnitary}>
+                                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                                    role="listbox">
+                                                    <template for:each={filteredOptionsProductCode} for:item="option">
+                                                        <li key={option.value} role="presentation"
+                                                            class="slds-listbox__item">
+                                                            <div role="option" tabindex="0"
+                                                                class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                                onclick={handleModelNumberChangeCustomLookupUnitary}
+                                                                data-value={option.label} data-index={index}>
+                                                                <span class="slds-media__figure">
+                                                                    <!-- Location Icon -->
+                                                                    <lightning-icon icon-name="standard:product"
+                                                                        size="small"></lightning-icon>
+                                                                </span>
+                                                                <span class="slds-media__body">
+                                                                    <span class="slds-truncate">{option.label}</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </template>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-input type="text" label="Unitary Serial Number"
+                                            placeholder="Enter Serial Number..." onchange={handleSerialNumberChange}
+                                            value={serialNumber} required></lightning-input>
+                                        <lightning-button variant="Base" label="Scan Barcode/QR Code"
+                                            onclick={handleBarcodeClickUnitary} index={index}>
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div if:true={isResidentialCustomer} class="slds-align_absolute-center slds-m-top_x-small">
+
+                            <lightning-button variant="brand" label="Save Unitary Details"
+                                onclick={handleRegisterResidentialUnitary}></lightning-button>
+
+                        </div> -->
+
+                        <div  class="slds-align_absolute-center slds-m-top_x-small">
+                            <lightning-button variant="brand" label="Register"
+                                onclick={fetchUnitaryDetails}></lightning-button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div if:true={showUnitaryDetails}>
+
+                <lightning-card title="Invoice Details" class="slds-p-around_small">
+                    <div class="slds-p-around_small">
+                        <p><b>Invoice Number:</b> {invoiceDetails.INVOICE_NUMBER}</p>
+                        <p><b>Invoice Date:</b> {invoiceDetails.INVOICE_DATE}</p>
+                        <p><b>Customer Code:</b> {invoiceDetails.CUSTOMER_CODE}</p>
+                        <p><b>CP Code:</b> {invoiceDetails.CP_CODE}</p>
+                        <p><b>Sales Department:</b> {invoiceDetails.SALES_DEPARTMENT}</p>
+                        <p>
+                            <b>Service Department:</b> {invoiceDetails.SERVICE_DEPARTMENT}
+                        </p>
+                        <p><b>Branch Code:</b> {invoiceDetails.BRANCH_CODE}</p>
+                    </div>
+                </lightning-card>
+
+                <lightning-accordion allow-multiple-sections-open class="slds-p-around_small">
+                    <template for:each={unitaryProducts} for:item="product">
+                        <lightning-accordion-section key={product.MODEL_CODE} name={product.MODEL_CODE} label="PRODUCT">
+                            <lightning-layout>
+                                <lightning-layout-item flexibility="auto">
+                                    <p><b>Model Code:</b> {product.MODEL_CODE}</p>
+                                    <p><b>Serial Number:</b> {product.SERIAL_NUMBER}</p>
+                                    <p><b>Manufacturing Date:</b> {product.MANUFACTURING_DATE}</p>
+                                    <p><b>Installable:</b> {product.ZIS_INSTALLABLE}</p>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <template if:true={product.SUBCOMPONENT.length}>
+                                <lightning-layout>
+                                    <lightning-layout-item flexibility="auto">
+                                        <lightning-accordion allow-multiple-sections-open>
+                                            <!-- Subcomponent details go here -->
+                                        </lightning-accordion>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </template>
+                        </lightning-accordion-section>
+
+                        <template for:each={product.CHILD_PRODUCTS} for:item="childProduct">
+                            <lightning-accordion-section key={childProduct.MODEL_CODE} name={childProduct.MODEL_CODE}
+                                label="CHILD-PRODUCT">
+                                <lightning-layout>
+                                    <lightning-layout-item flexibility="auto">
+                                        <p><b>Model Code:</b> {childProduct.MODEL_CODE}</p>
+                                        <p><b>Serial Number:</b> {childProduct.SERIAL_NUMBER}</p>
+                                        <p>
+                                            <b>Manufacturing Date:</b>
+                                            {childProduct.MANUFACTURING_DATE}
+                                        </p>
+                                        <p><b>Installable:</b> {childProduct.ZIS_INSTALLABLE}</p>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                                <template if:true={childProduct.SUBCOMPONENT.length}>
+                                    <lightning-layout>
+                                        <lightning-layout-item flexibility="auto">
+                                            <lightning-accordion allow-multiple-sections-open>
+                                                <!-- Subcomponent details go here -->
+                                            </lightning-accordion>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </template>
+                            </lightning-accordion-section>
+                        </template>
+                    </template>
+                </lightning-accordion>
+
+                <div class="slds-align_absolute-center slds-m-top_x-small">
+                    <lightning-button variant="brand" label="Register Unitary" onclick={handleRegisterUnitary}
+                        disabled={registerODUButtonVisibility}></lightning-button>
+                </div>
+            </div>
+
+
+            <div if:true={showODUSection} class="slds-p-horizontal_x-small">
+                <template for:each={oduInputs} for:item="input" for:index="index">
+                    <div key={input.id} class="slds-grid slds-grid_vertical slds-m-top_x-small">
+                        <div class="slds-col slds-m-bottom_small">
+                            <div class="custom-lookup">
+                                <lightning-input type="search" label={input.modelLabel}
+                                    onchange={handleOnChangeCustomLookupProductCode}
+                                    onclick={handleOnClickCustomLookupProductCode}
+                                    onfocus={handleOnFocusCustomLookupProductCode}
+                                    onblur={handleOnBlurCustomLookupProductCode} value={input.modelNumber}
+                                    data-index={index} required>
+                                </lightning-input>
+                                <template if:true={showAvailableCodes}>
+                                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                        role="listbox">
+                                        <template for:each={filteredOptionsProductCode} for:item="option">
+                                            <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                <div role="option" tabindex="0"
+                                                    class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                    onclick={handleModelNumberChangeCustomLookup}
+                                                    data-value={option.label} data-index={index}>
+                                                    <span class="slds-media__figure">
+                                                        <lightning-icon icon-name="standard:product"
+                                                            size="small"></lightning-icon>
+                                                    </span>
+                                                    <span class="slds-media__body">
+                                                        <span class="slds-truncate">{option.label}</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-input type="text" label={input.serialLabel}
+                                placeholder="Enter ODU Serial Number..." onchange={handleODUSerialNumberChange}
+                                data-index={index} value={input.serialNumber} required></lightning-input>
+
+                            <lightning-button variant="Base" label="Scan Barcode/QR Code"
+                                onclick={handleODUBarcodeClick} index={index}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </template>
+
+                <div if:true={fetchODUVisibility} class="slds-align_absolute-center slds-m-top_x-small">
+                    <lightning-button variant="brand" label="Fetch ODU" onclick={handleFetchODU}></lightning-button>
+                </div>
+            </div>
+
+            <div if:true={showODU} class="slds-m-top_x-small slds-p-horizontal_x-small">
+
+                <div class="slds-col slds-size_1-of-1">
+                    <lightning-input type="date" label="Installation Date" placeholder="select date..."
+                        onchange={handleInstallationDateChange} value={installationDate} required></lightning-input>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1">
+
+                    <lightning-input type="text" label="Equipment Location" placeholder="enter the location..."
+                        onchange={handleEquipmentLocationChange} value={equipmentLocation}></lightning-input>
+                </div>
+
+                <lightning-card title="Invoice Details" class="slds-p-around_small">
+                    <div class="slds-p-around_small">
+                        <p><b>Invoice Number:</b> {invoiceDetails.INVOICE_NUMBER}</p>
+                        <p><b>Invoice Date:</b> {invoiceDetails.INVOICE_DATE}</p>
+                        <p><b>Customer Code:</b> {invoiceDetails.CUSTOMER_CODE}</p>
+                        <p><b>CP Code:</b> {invoiceDetails.CP_CODE}</p>
+                        <p><b>Sales Department:</b> {invoiceDetails.SALES_DEPARTMENT}</p>
+                        <p>
+                            <b>Service Department:</b> {invoiceDetails.SERVICE_DEPARTMENT}
+                        </p>
+                        <p><b>Branch Code:</b> {invoiceDetails.BRANCH_CODE}</p>
+                    </div>
+                </lightning-card>
+
+                <lightning-accordion allow-multiple-sections-open class="slds-p-around_small">
+                    <template for:each={oduProducts} for:item="product">
+                        <lightning-accordion-section key={product.MODEL_CODE} name={product.MODEL_CODE} label="PRODUCT">
+                            <lightning-layout>
+                                <lightning-layout-item flexibility="auto">
+                                    <p><b>Model Code:</b> {product.MODEL_CODE}</p>
+                                    <p><b>Serial Number:</b> {product.SERIAL_NUMBER}</p>
+                                    <p><b>Manufacturing Date:</b> {product.MANUFACTURING_DATE}</p>
+                                    <p><b>Installable:</b> {product.ZIS_INSTALLABLE}</p>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <template if:true={product.SUBCOMPONENT.length}>
+                                <lightning-layout>
+                                    <lightning-layout-item flexibility="auto">
+                                        <lightning-accordion allow-multiple-sections-open>
+                                            <!-- Subcomponent details go here -->
+                                        </lightning-accordion>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </template>
+                        </lightning-accordion-section>
+
+                        <template for:each={product.CHILD_PRODUCTS} for:item="childProduct">
+                            <lightning-accordion-section key={childProduct.MODEL_CODE} name={childProduct.MODEL_CODE}
+                                label="CHILD-PRODUCT">
+                                <lightning-layout>
+                                    <lightning-layout-item flexibility="auto">
+                                        <p><b>Model Code:</b> {childProduct.MODEL_CODE}</p>
+                                        <p><b>Serial Number:</b> {childProduct.SERIAL_NUMBER}</p>
+                                        <p>
+                                            <b>Manufacturing Date:</b>
+                                            {childProduct.MANUFACTURING_DATE}
+                                        </p>
+                                        <p><b>Installable:</b> {childProduct.ZIS_INSTALLABLE}</p>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                                <template if:true={childProduct.SUBCOMPONENT.length}>
+                                    <lightning-layout>
+                                        <lightning-layout-item flexibility="auto">
+                                            <lightning-accordion allow-multiple-sections-open>
+                                                <!-- Subcomponent details go here -->
+                                            </lightning-accordion>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </template>
+                            </lightning-accordion-section>
+                        </template>
+                    </template>
+                </lightning-accordion>
+
+                <div class="slds-align_absolute-center slds-m-top_x-small">
+                    <lightning-button variant="brand" label="Register ODU" onclick={handleRegisterODU}
+                        disabled={registerODUButtonVisibility}></lightning-button>
+                </div>
+            </div>
+
+            <div if:true={showEnterIDUDetails} class="slds-p-horizontal_x-small">
+
+                <template for:each={iduInputs} for:item="input" for:index="index">
+                    <div key={input.id} class="slds-grid slds-wrap slds-m-top_x-small">
+                        <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                            <div class="custom-lookup">
+                                <lightning-input type="search" label={input.modelLabel}
+                                    onchange={handleIDUOnChangeCustomLookupProductCode}
+                                    onclick={handleIDUOnClickCustomLookupProductCode}
+                                    onfocus={handleIDUOnFocusCustomLookupProductCode}
+                                    onblur={handleIDUOnBlurCustomLookupProductCode} value={input.modelNumber}
+                                    data-index={index} required>
+                                </lightning-input>
+                                <template if:true={input.showAvailableCodesIDU}>
+                                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                        role="listbox">
+                                        <template for:each={filteredOptionsProductCode} for:item="option">
+                                            <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                <div role="option" tabindex="0"
+                                                    class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                    onclick={handleIDUModelNumberChangeCustomLookup}
+                                                    data-value={option.label} data-index={index}>
+                                                    <span class="slds-media__figure">
+                                                        <lightning-icon icon-name="standard:product"
+                                                            size="small"></lightning-icon>
+                                                    </span>
+                                                    <span class="slds-media__body">
+                                                        <span class="slds-truncate">{option.label}</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                            <lightning-input type="text" label={input.serialLabel}
+                                placeholder="Enter IDU Serial Number..." onchange={handleIDUSerialNumberChange}
+                                data-index={index} value={input.serialNumber} required></lightning-input>
+                            <lightning-button variant="Base" label="Scan Barcode/QR Code"
+                                onclick={handleIDUBarcodeClick} index={index}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </template>
+
+
+
+                <div class="slds-align_absolute-center slds-m-top_x-small">
+                    <lightning-button variant="brand" label="Fetch IDU Details"
+                        onclick={handleFetchIDU}></lightning-button>
+                </div>
+
+            </div>
+
+            <!-- IDU Section -->
+            <div if:true={showIDUSection} class="slds-box slds-theme_shade slds-m-top_small slds-p-horizontal_x-small">
+                <template for:each={iduInputs} for:item="input" for:index="index">
+                    <div key={input.id} class="slds-grid slds-wrap slds-m-top_x-small">
+                        <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                            <div class="custom-lookup">
+                                <lightning-input type="search" label={input.modelLabel}
+                                    onchange={handleIDUOnChangeCustomLookupProductCode}
+                                    onclick={handleIDUOnClickCustomLookupProductCode}
+                                    onfocus={handleIDUOnFocusCustomLookupProductCode}
+                                    onblur={handleIDUOnBlurCustomLookupProductCode} value={input.modelNumber}
+                                    data-index={index} required>
+                                </lightning-input>
+                                <template if:true={input.showAvailableCodesIDU}>
+                                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-scrollable"
+                                        role="listbox">
+                                        <template for:each={filteredOptionsProductCode} for:item="option">
+                                            <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                <div role="option" tabindex="0"
+                                                    class="slds-listbox__option slds-listbox__option_plain slds-media"
+                                                    onclick={handleIDUModelNumberChangeCustomLookup}
+                                                    data-value={option.label} data-index={index}>
+                                                    <span class="slds-media__figure">
+                                                        <lightning-icon icon-name="standard:product"
+                                                            size="small"></lightning-icon>
+                                                    </span>
+                                                    <span class="slds-media__body">
+                                                        <span class="slds-truncate">{option.label}</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                            <lightning-input type="text" label={input.serialLabel}
+                                placeholder="Enter IDU Serial Number..." onchange={handleIDUSerialNumberChange}
+                                data-index={index} value={input.serialNumber} required></lightning-input>
+
+                            <lightning-button variant="Base" label="Scan Barcode/QR Code"
+                                onclick={handleIDUBarcodeClick} index={index}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </template>
+                <div if:true={fetchIDUVisibility} class="slds-align_absolute-center slds-m-top_x-small">
+                    <lightning-button variant="brand" label="Fetch IDU" onclick={handleFetchIDU}></lightning-button>
+                </div>
+
+                <!-- Display the asset details -->
+                <div if:true={showIDU} class="slds-m-top_small">
+                    <lightning-accordion allow-multiple-sections-open>
+                        <template for:each={iduAccordionData} for:item="iduDetail">
+                            <lightning-accordion-section key={iduDetail.IDU_ID} name={iduDetail.IDU_ID}
+                                label="IDU Details">
+                                <template for:each={iduDetail.PRODUCT} for:item="product">
+                                    <lightning-accordion-section key={product.MODEL_CODE} name={product.MODEL_CODE}
+                                        label="PRODUCT">
+                                        <lightning-layout vertical-align="start" multiple-rows="true">
+                                            <lightning-layout-item flexibility="auto">
+                                                <p><b>Model Code:</b> {product.MODEL_CODE}</p>
+                                                <p><b>Serial Number:</b> {product.SERIAL_NUMBER}</p>
+                                                <p>
+                                                    <b>Manufacturing Date:</b>
+                                                    {product.MANUFACTURING_DATE}
+                                                </p>
+                                                <p><b>Installable:</b> {product.ZIS_INSTALLABLE}</p>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </lightning-accordion-section>
+
+                                    <template for:each={product.CHILD_PRODUCTS} for:item="childProduct">
+                                        <lightning-accordion-section key={childProduct.MODEL_CODE}
+                                            name={childProduct.MODEL_CODE} label="CHILD-PRODUCT">
+                                            <lightning-layout vertical-align="start" multiple-rows="true">
+                                                <lightning-layout-item flexibility="auto">
+                                                    <p><b>Model Code:</b> {childProduct.MODEL_CODE}</p>
+                                                    <p>
+                                                        <b>Serial Number:</b> {childProduct.SERIAL_NUMBER}
+                                                    </p>
+                                                    <p>
+                                                        <b>Manufacturing Date:</b>
+                                                        {childProduct.MANUFACTURING_DATE}
+                                                    </p>
+                                                    <p>
+                                                        <b>Installable:</b> {childProduct.ZIS_INSTALLABLE}
+                                                    </p>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-accordion-section>
+                                    </template>
+                                </template>
+                            </lightning-accordion-section>
+                        </template>
+                    </lightning-accordion>
+
+                    <div class="slds-align_absolute-center slds-m-top_small">
+                        <lightning-button variant="brand" label="Register IDU"
+                            onclick={handleRegisterIDU}></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div if:false={isBluestar}>
+            <c-non-b-s-l-asset-registration account-id={accountId}
+                onassetregistersuccess={handleRegistratonSuccessNonBSL}></c-non-b-s-l-asset-registration>
+        </div>
+
+        <lightning-button variant="brand-outline" label="Back" onclick={handleBackClick}></lightning-button>
+    </template>
+
+
+</template>

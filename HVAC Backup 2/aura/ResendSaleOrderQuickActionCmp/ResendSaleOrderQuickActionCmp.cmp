@@ -1,0 +1,4 @@
+<aura:component implements="lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader">
+    <aura:attribute name="recordId" type="String" />
+    <c:resendSaleOrderAction aura:id="resendSaleOrderAction" recordId="{!v.recordId}"></c:resendSaleOrderAction>
+</aura:component>

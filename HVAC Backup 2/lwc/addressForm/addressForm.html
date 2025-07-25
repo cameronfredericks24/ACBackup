@@ -1,0 +1,106 @@
+<template>
+    
+    <lightning-card title={label} icon-name="standard:address">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                
+                <lightning-input
+                    label="Pin Code"
+                    value={pinCode}
+                    onchange={handlePinCodeChange}
+                    data-id="pinCode"
+                    message-when-bad-input="Pin Code must be 6 digits."
+                    pattern="[0-9]{6}"
+                    required
+                ></lightning-input>
+            </div>
+            
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                <lightning-input
+                    label="House/Flat/Shop/Plot/Survey No"
+                    value={flatNumber}
+                    data-id="flatNumber"
+                    disabled={isAddressFieldsDisabled}
+                    onchange={handleFlatNumberChange}
+                    
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                <lightning-input
+                    label="Street Address"
+                    value={streetAddress}
+                    data-id="streetAddress"
+                    disabled={isAddressFieldsDisabled}
+                    onchange={handleStreetChange}
+                    required
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                <lightning-input
+                    label="City"
+                    value={city}
+                    data-id="city"
+                    disabled
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                <lightning-input
+                    label="State"
+                    value={state}
+                    data-id="state"
+                    disabled
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                <lightning-input
+                    label="Country"
+                    value={country}
+                    data-id="country"
+                    disabled
+                ></lightning-input>
+            </div>
+            <template if:true={showLocality}>
+                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                    <lightning-combobox
+                        name="localitySelect"
+                        label="Locality"
+                        placeholder="Select Locality"
+                        options={localities}
+                        onchange={handleLocalityChange}
+                        value={selectedLocality}
+                    ></lightning-combobox>
+
+                    <template if:true={sublocalities.length}>
+                        <lightning-combobox
+                            name="sublocalitySelect"
+                            label="Sub locality"
+                            placeholder="Select Sub-locality"
+                            options={sublocalities}
+                            onchange={handleSublocalityChange}
+                            value={selectedSublocality}
+                        ></lightning-combobox>
+                    </template>
+                    
+                </div>
+            </template>
+             <template if:true={showSector}>
+                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                    <lightning-combobox
+                        name="sectorSelect"
+                        label="Sector"
+                        placeholder="Select Sector"
+                        options={sectors}
+                        onchange={handleSectorChange}
+                        value={selectedSector}
+                    ></lightning-combobox>
+                </div> 
+             </template>
+             
+        </div>
+        <div slot="footer">
+            <lightning-button variant="brand" label="Save" title="saveAddress" onclick={handleSave}></lightning-button>
+            <br/> <br/>
+            <template if:true={showError}><div style="color:red">{errorMessage}</div></template>
+        </div>
+    </lightning-card>
+</template>
